@@ -16,6 +16,12 @@ class HomeController extends Controller
         return view('user.home.index')->with('viewData',$viewData);
     }
 
+    public function about()
+    {
+        $viewData = [];
+        $viewData['title'] = "Trang giới thiệu";
+        return view('user.home.about')->with('viewData',$viewData);
+    }
     /**
      * Show the form for creating a new resource.
      */
