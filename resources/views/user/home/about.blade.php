@@ -1,23 +1,7 @@
 @extends('user.layouts.app')
 @section('title',$viewData['title'])
 @section('content')
-        @include('user.layouts.header')
-        <!--breadcrumbs area start-->
-        <div class="breadcrumbs_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb_content">
-                        <ul>
-                            <li><a href="{{route('user.home.index')}}">Trang chủ</a></li>
-                            <li>{{$viewData['title']}}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--breadcrumbs area end-->
+        @include('user.layouts.breadcrumbs')
         <!--about section area -->
         <section class="about_section mt-60">
         <div class="container">
@@ -197,5 +181,4 @@
         </div>
     </div>
     <!--team area end-->
-    @include('user.layouts.footer')
 @endsection

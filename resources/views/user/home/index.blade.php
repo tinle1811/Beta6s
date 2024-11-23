@@ -1,12 +1,10 @@
 @extends('user.layouts.app')
 @section('title', $viewData['title'])
 @section('content')
-        @include('user.layouts.header')
         @include('user.layouts.home.slider')
         @include('user.layouts.home.shippingArea')
         @include('user.layouts.home.productArea')
         @include('user.layouts.home.featuredProduct')
         @include('user.layouts.home.blogArea')
-        @include('user.layouts.footer')
         @include('user.layouts.popupLogin')
 @endsection

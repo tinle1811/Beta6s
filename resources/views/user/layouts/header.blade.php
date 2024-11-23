@@ -116,14 +116,7 @@
                         <div id="menu" class="text-start ">
                             <ul class="offcanvas_main_menu">
                                 <li class="menu-item-has-children active">
-                                    <a href="#">Home</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index.html">Home 1</a></li>
-                                        <li><a href="index-2.html">Home 2</a></li>
-                                        <li><a href="index-3.html">Home 3</a></li>
-                                        <li><a href="index-4.html">Home 4</a></li>
-                                        <li><a href="index-5.html">Home 5</a></li>
-                                    </ul>
+                                    <a href="{{route('user.home.index')}}">Trang chủ</a>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="#">Shop</a>
@@ -162,9 +155,9 @@
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#">blog</a>
+                                    <a href="{{route('user.blog.index')}}">blog</a>
                                     <ul class="sub-menu">
-                                        <li><a href="blog.html">blog</a></li>
+                                        <li><a href="{{route('user.blog.index')}}">blog</a></li>
                                         <li><a href="blog-details.html">blog details</a></li>
                                         <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
                                         <li><a href="blog-sidebar.html">blog left sidebar</a></li>
@@ -179,7 +172,7 @@
                                         <li><a href="services.html">services</a></li>
                                         <li><a href="privacy-policy.html">privacy policy</a></li>
                                         <li><a href="faq.html">Frequently Questions</a></li>
-                                        <li><a href="contact.html">contact</a></li>
+                                        <li><a href="{{route('user.home.contact')}}">contact</a></li>
                                         <li><a href="login.html">login</a></li>
                                         <li><a href="404.html">Error 404</a></li>
                                         <li><a href="compare.html">Compare</a></li>
@@ -192,7 +185,7 @@
                                     <a href="{{route('user.home.about')}}">Giới thiệu</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="contact.html"> Contact Us</a>
+                                    <a href="{{route('user.home.contact')}}"> Liên hệ</a>
                                 </li>
                             </ul>
                         </div>
@@ -534,7 +527,7 @@
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
+                                        <li><a href="{{route('user.blog.index')}}">blog<i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
                                                 <li><a href="blog-details.html">blog details</a></li>
                                                 <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
@@ -548,7 +541,7 @@
                                                 <li><a href="services.html">services</a></li>
                                                 <li><a href="privacy-policy.html">privacy policy</a></li>
                                                 <li><a href="faq.html">Frequently Questions</a></li>
-                                                <li><a href="contact.html">contact</a></li>
+                                                <li><a href="{{route('user.home.contact')}}">contact</a></li>
                                                 <li><a href="login.html">login</a></li>
                                                 <li><a href="404.html">Error 404</a></li>
                                                 <li><a href="compare.html">Compare</a></li>
@@ -556,7 +549,7 @@
                                         </li>
 
                                         <li><a href="{{route('user.home.about')}}">Giới thiệu</a></li>
-                                        <li><a href="contact.html"> Contact Us</a></li>
+                                        <li><a href="{{route('user.home.contact')}}"> Liên hệ</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -630,7 +623,7 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="{{route('user.blog.index')}}">blog<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                             <li><a href="blog-details.html">blog details</a></li>
                                             <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
@@ -644,7 +637,7 @@
                                             <li><a href="services.html">services</a></li>
                                             <li><a href="privacy-policy.html">privacy policy</a></li>
                                             <li><a href="faq.html">Frequently Questions</a></li>
-                                            <li><a href="contact.html">contact</a></li>
+                                            <li><a href="{{route('user.home.contact')}}">contact</a></li>
                                             <li><a href="login.html">login</a></li>
                                             <li><a href="404.html">Error 404</a></li>
                                             <li><a href="compare.html">Compare</a></li>
@@ -652,7 +645,7 @@
                                     </li>
 
                                     <li><a href="{{route('user.home.about')}}">Giới thiệu</a></li>
-                                    <li><a href="contact.html"> Contact Us</a></li>
+                                    <li><a href="{{route('user.home.contact')}}"> Liên hệ</a></li>
                                 </ul>
                             </nav>
                         </div>

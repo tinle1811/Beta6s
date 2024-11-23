@@ -4,30 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $viewData = [];
-        $viewData['title'] = "Trang chủ";
-        return view('user.home.index')->with('viewData',$viewData);
+        $viewData=[];
+        $viewData['title'] = "Trang Blog";
+        return view('user.blog.index')->with('viewData',$viewData);
     }
 
-    public function about()
-    {
-        $viewData = [];
-        $viewData['title'] = "Trang giới thiệu";
-        return view('user.home.about')->with('viewData',$viewData);
-    }
-    public function contact()
-    {
-        $viewData = [];
-        $viewData['title'] = "Trang liên hệ";
-        return view('user.home.contact')->with('viewData',$viewData);
-    }
     /**
      * Show the form for creating a new resource.
      */
