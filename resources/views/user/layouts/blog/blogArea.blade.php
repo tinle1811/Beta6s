@@ -12,10 +12,10 @@
                                 <article class="single_blog mb-60">
                                     <figure>
                                         <div class="blog_thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/blog1.jpg" alt=""></a>
+                                            <a href="{{route('user.blog.show')}}"><img src="assets/img/blog/blog1.jpg" alt=""></a>
                                         </div>
                                         <figcaption class="blog_content">
-                                            <h3><a href="blog-details.html">Blog image post (sticky)</a></h3>
+                                            <h3><a href="{{route('user.blog.show')}}">Blog image post (sticky)</a></h3>
                                             <div class="blog_meta">
                                                 <span class="author">Posted by : <a href="#">admin</a> / </span>
                                                 <span class="post_date">On : <a href="#">April 10, 2022</a></span>
@@ -27,7 +27,7 @@
                                                     bibendum massa nec, fermentum odio. </p>
                                             </div>
                                             <footer class="readmore_button">
-                                                <a href="blog-details.html">read more</a>
+                                                <a href="{{route('user.blog.show')}}">read more</a>
                                             </footer>
                                         </figcaption>
                                     </figure>
@@ -41,7 +41,7 @@
                                                 allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                         </div>
                                         <figcaption class="blog_content">
-                                            <h3><a href="blog-details.html">Post with Video</a></h3>
+                                            <h3><a href="{{route('user.blog.show')}}">Post with Video</a></h3>
                                             <div class="blog_meta">
                                                 <span class="author">Posted by : <a href="#">admin</a> / </span>
                                                 <span class="post_date">On : <a href="#">April 10, 2022</a></span>
@@ -53,7 +53,7 @@
                                                     bibendum massa nec, fermentum odio. </p>
                                             </div>
                                             <footer class="readmore_button">
-                                                <a href="blog-details.html">read more</a>
+                                                <a href="{{route('user.blog.show')}}">read more</a>
                                             </footer>
                                         </figcaption>
                                     </figure>
@@ -80,7 +80,7 @@
                                             </div>
                                         </div>
                                         <figcaption class="blog_content">
-                                            <h3><a href="blog-details.html">Post with Gallery</a></h3>
+                                            <h3><a href="{{route('user.blog.show')}}">Post with Gallery</a></h3>
                                             <div class="blog_meta">
                                                 <span class="author">Posted by : <a href="#">admin</a> / </span>
                                                 <span class="post_date">On : <a href="#">April 10, 2022</a></span>
@@ -92,7 +92,7 @@
                                                     bibendum massa nec, fermentum odio. </p>
                                             </div>
                                             <footer class="readmore_button">
-                                                <a href="blog-details.html">read more</a>
+                                                <a href="{{route('user.blog.show')}}">read more</a>
                                             </footer>
                                         </figcaption>
                                     </figure>
@@ -102,10 +102,10 @@
                                 <article class="single_blog mb-60">
                                     <figure>
                                         <div class="blog_thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/blog3.jpg" alt=""></a>
+                                            <a href="{{route('user.blog.show')}}"><img src="assets/img/blog/blog3.jpg" alt=""></a>
                                         </div>
                                         <figcaption class="blog_content">
-                                            <h3><a href="blog-details.html">Maecenas ultricies</a></h3>
+                                            <h3><a href="{{route('user.blog.show')}}">Maecenas ultricies</a></h3>
                                             <div class="blog_meta">
                                                 <span class="author">Posted by : <a href="#">admin</a> / </span>
                                                 <span class="post_date">On : <a href="#">April 10, 2022</a></span>
@@ -117,7 +117,7 @@
                                                     bibendum massa nec, fermentum odio. </p>
                                             </div>
                                             <footer class="readmore_button">
-                                                <a href="blog-details.html">read more</a>
+                                                <a href="{{route('user.blog.show')}}">read more</a>
                                             </footer>
                                         </figcaption>
                                     </figure>
@@ -127,10 +127,10 @@
                                 <article class="single_blog mb-60">
                                     <figure>
                                         <div class="blog_thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/blog4.jpg" alt=""></a>
+                                            <a href="{{route('user.blog.show')}}"><img src="assets/img/blog/blog4.jpg" alt=""></a>
                                         </div>
                                         <figcaption class="blog_content">
-                                            <h3><a href="blog-details.html">Post with Audio</a></h3>
+                                            <h3><a href="{{route('user.blog.show')}}">Post with Audio</a></h3>
                                             <div class="blog_meta">
                                                 <span class="author">Posted by : <a href="#">admin</a> / </span>
                                                 <span class="post_date">On : <a href="#">April 10, 2022</a></span>
@@ -149,7 +149,7 @@
                                                     bibendum massa nec, fermentum odio.</p>
                                             </div>
                                             <footer class="readmore_button">
-                                                <a href="blog-details.html">read more</a>
+                                                <a href="{{route('user.blog.show')}}">read more</a>
                                             </footer>
                                         </figcaption>
                                     </figure>
@@ -159,10 +159,10 @@
                                 <article class="single_blog mb-60">
                                     <figure>
                                         <div class="blog_thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/blog5.jpg" alt=""></a>
+                                            <a href="{{route('user.blog.show')}}"><img src="assets/img/blog/blog5.jpg" alt=""></a>
                                         </div>
                                         <figcaption class="blog_content">
-                                            <h3><a href="blog-details.html">Praesent imperdiet</a></h3>
+                                            <h3><a href="{{route('user.blog.show')}}">Praesent imperdiet</a></h3>
                                             <div class="blog_meta">
                                                 <span class="author">Posted by : <a href="#">admin</a> / </span>
                                                 <span class="post_date">On : <a href="#">April 10, 2022</a></span>
@@ -176,7 +176,7 @@
                                                     libero mi, sit amet scelerisque elit suscipit id. </p>
                                             </div>
                                             <footer class="readmore_button">
-                                                <a href="blog-details.html">read more</a>
+                                                <a href="{{route('user.blog.show')}}">read more</a>
                                             </footer>
                                         </figcaption>
                                     </figure>
@@ -198,38 +198,38 @@
                             <h3>Recent Comments</h3>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/comment2.png.jpg" alt=""></a>
+                                    <a href="{{route('user.blog.show')}}"><img src="assets/img/blog/comment2.png.jpg" alt=""></a>
                                 </div>
                                 <div class="post_info">
                                     <span> <a href="#">demo</a> says:</span>
-                                    <a href="blog-details.html">Quisque semper nunc</a>
+                                    <a href="{{route('user.blog.show')}}">Quisque semper nunc</a>
                                 </div>
                             </div>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/comment2.png.jpg" alt=""></a>
+                                    <a href="{{route('user.blog.show')}}"><img src="assets/img/blog/comment2.png.jpg" alt=""></a>
                                 </div>
                                 <div class="post_info">
                                     <span><a href="#">admin</a> says:</span>
-                                    <a href="blog-details.html">Quisque orci porta...</a>
+                                    <a href="{{route('user.blog.show')}}">Quisque orci porta...</a>
                                 </div>
                             </div>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/comment2.png.jpg" alt=""></a>
+                                    <a href="{{route('user.blog.show')}}"><img src="assets/img/blog/comment2.png.jpg" alt=""></a>
                                 </div>
                                 <div class="post_info">
                                     <span><a href="#">demo</a> says:</span>
-                                    <a href="blog-details.html">Quisque semper nunc</a>
+                                    <a href="{{route('user.blog.show')}}">Quisque semper nunc</a>
                                 </div>
                             </div>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/comment2.png.jpg" alt=""></a>
+                                    <a href="{{route('user.blog.show')}}"><img src="assets/img/blog/comment2.png.jpg" alt=""></a>
                                 </div>
                                 <div class="post_info">
                                     <span><a href="#">admin</a> says:</span>
-                                    <a href="blog-details.html">Quisque semper nunc</a>
+                                    <a href="{{route('user.blog.show')}}">Quisque semper nunc</a>
                                 </div>
                             </div>
                         </div>
@@ -237,37 +237,37 @@
                             <h3>Recent Posts</h3>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blog12.jpg" alt=""></a>
+                                    <a href="{{route('user.blog.show')}}"><img src="assets/img/blog/blog12.jpg" alt=""></a>
                                 </div>
                                 <div class="post_info">
-                                    <h3><a href="blog-details.html">Blog image post</a></h3>
+                                    <h3><a href="{{route('user.blog.show')}}">Blog image post</a></h3>
                                     <span>March 16, 2022 </span>
                                 </div>
                             </div>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blog13.jpg" alt=""></a>
+                                    <a href="{{route('user.blog.show')}}"><img src="assets/img/blog/blog13.jpg" alt=""></a>
                                 </div>
                                 <div class="post_info">
-                                    <h3><a href="blog-details.html">Post with Gallery</a></h3>
+                                    <h3><a href="{{route('user.blog.show')}}">Post with Gallery</a></h3>
                                     <span>March 16, 2022 </span>
                                 </div>
                             </div>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blog14.jpg" alt=""></a>
+                                    <a href="{{route('user.blog.show')}}"><img src="assets/img/blog/blog14.jpg" alt=""></a>
                                 </div>
                                 <div class="post_info">
-                                    <h3><a href="blog-details.html">Post with Audio</a></h3>
+                                    <h3><a href="{{route('user.blog.show')}}">Post with Audio</a></h3>
                                     <span>March 16, 2022 </span>
                                 </div>
                             </div>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blog15.jpg" alt=""></a>
+                                    <a href="{{route('user.blog.show')}}"><img src="assets/img/blog/blog15.jpg" alt=""></a>
                                 </div>
                                 <div class="post_info">
-                                    <h3><a href="blog-details.html">Post with Video</a></h3>
+                                    <h3><a href="{{route('user.blog.show')}}">Post with Video</a></h3>
                                     <span>March 16, 2022 </span>
                                 </div>
                             </div>

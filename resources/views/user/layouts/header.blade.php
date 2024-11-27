@@ -20,8 +20,8 @@
                         </div>
                         <div class="top_right text-end">
                             <ul>
-                                <li><a href="my-account.html"> My Account </a></li>
-                                <li><a href="checkout.html"> Checkout </a></li>
+                                <li><a href="{{route('user.account.index')}}"> My Account </a></li>
+                                <li><a href="{{route('user.cart.checkout')}}"> Checkout </a></li>
                             </ul>
                         </div>
                         <div class="search_container">
@@ -101,10 +101,10 @@
 
                                     <div class="mini_cart_footer">
                                         <div class="cart_button">
-                                            <a href="cart.html">View cart</a>
+                                            <a href="{{route('user.cart.index')}}">View cart</a>
                                         </div>
                                         <div class="cart_button">
-                                            <a href="checkout.html">Checkout</a>
+                                            <a href="{{route('user.cart.checkout')}}">Checkout</a>
                                         </div>
 
                                     </div>
@@ -135,10 +135,10 @@
                                         <li class="menu-item-has-children">
                                             <a href="#">other Pages</a>
                                             <ul class="sub-menu">
-                                                <li><a href="cart.html">cart</a></li>
+                                                <li><a href="{{route('user.cart.index')}}">cart</a></li>
                                                 <li><a href="wishlist.html">Wishlist</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
-                                                <li><a href="my-account.html">my account</a></li>
+                                                <li><a href="{{route('user.cart.checkout')}}">Checkout</a></li>
+                                                <li><a href="{{route('user.account.index')}}">my account</a></li>
                                                 <li><a href="404.html">Error 404</a></li>
                                             </ul>
                                         </li>
@@ -179,7 +179,7 @@
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="my-account.html">my account</a>
+                                    <a href="{{route('user.account.index')}}">my account</a>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="{{route('user.home.about')}}">Giới thiệu</a>
@@ -221,8 +221,8 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="top_right text-end">
                                 <ul>
-                                    <li><a href="my-account.html"> My Account </a></li>
-                                    <li><a href="checkout.html"> Checkout </a></li>
+                                    <li><a href="{{route('user.account.index')}}"> My Account </a></li>
+                                    <li><a href="{{route('user.cart.checkout')}}"> Checkout </a></li>
                                 </ul>
                             </div>
                         </div>
@@ -236,7 +236,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-6">
                             <div class="logo">
-                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href="{{route('user.home.index')}}"><img src="assets/img/logo/logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-6">
@@ -245,7 +245,7 @@
                                     <form action="#">
                                         <div class="hover_category">
                                             <select class="select_option" name="select" id="categori1">
-                                                <option selected value="1">All Categories</option>
+                                                <option selected value="1">Các loại sản phẩm</option>
                                                 <option value="2">Accessories</option>
                                                 <option value="3">Accessories & More</option>
                                                 <option value="4">Butters & Eggs</option>
@@ -317,10 +317,10 @@
 
                                             <div class="mini_cart_footer">
                                                 <div class="cart_button">
-                                                    <a href="cart.html">View cart</a>
+                                                    <a href="{{route('user.cart.index')}}">View cart</a>
                                                 </div>
                                                 <div class="cart_button">
-                                                    <a href="checkout.html">Checkout</a>
+                                                    <a href="{{route('user.cart.checkout')}}">Checkout</a>
                                                 </div>
 
                                             </div>
@@ -342,7 +342,7 @@
                         <div class="col-lg-3 col-md-12">
                             <div class="categories_menu">
                                 <div class="categories_title">
-                                    <h2 class="categori_toggle">ALL CATEGORIES</h2>
+                                    <h2 class="categori_toggle">LOẠI SẢN PHẨM</h2>
                                 </div>
                                 <div class="categories_menu_toggle">
                                     <ul>
@@ -492,10 +492,10 @@
                                                     </li>
                                                     <li><a href="#">other Pages</a>
                                                         <ul>
-                                                            <li><a href="cart.html">cart</a></li>
+                                                            <li><a href="{{route('user.cart.index')}}">cart</a></li>
                                                             <li><a href="wishlist.html">Wishlist</a></li>
-                                                            <li><a href="checkout.html">Checkout</a></li>
-                                                            <li><a href="my-account.html">my account</a></li>
+                                                            <li><a href="{{route('user.cart.checkout')}}">Checkout</a></li>
+                                                            <li><a href="{{route('user.account.index')}}">my account</a></li>
                                                             <li><a href="404.html">Error 404</a></li>
                                                         </ul>
                                                     </li>
@@ -592,10 +592,10 @@
                                                 </li>
                                                 <li><a href="#">other Pages</a>
                                                     <ul>
-                                                        <li><a href="cart.html">cart</a></li>
+                                                        <li><a href="{{route('user.cart.index')}}">cart</a></li>
                                                         <li><a href="wishlist.html">Wishlist</a></li>
-                                                        <li><a href="checkout.html">Checkout</a></li>
-                                                        <li><a href="my-account.html">my account</a></li>
+                                                        <li><a href="{{route('user.cart.checkout')}}">Checkout</a></li>
+                                                        <li><a href="{{route('user.account.index')}}">my account</a></li>
                                                         <li><a href="404.html">Error 404</a></li>
                                                     </ul>
                                                 </li>
@@ -697,10 +697,10 @@
 
                                     <div class="mini_cart_footer">
                                         <div class="cart_button">
-                                            <a href="cart.html">View cart</a>
+                                            <a href="{{route('user.cart.index')}}">View cart</a>
                                         </div>
                                         <div class="cart_button">
-                                            <a href="checkout.html">Checkout</a>
+                                            <a href="{{route('user.cart.checkout')}}">Checkout</a>
                                         </div>
 
                                     </div>
