@@ -55,7 +55,7 @@
 
                         <div class="middel_right_info">
                             <div class="header_wishlist">
-                                <a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                <a href="{{route('user.home.wishlist')}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                                 <span class="wishlist_quantity">3</span>
                             </div>
                             <div class="mini_cart_wrapper">
@@ -136,7 +136,7 @@
                                             <a href="#">other Pages</a>
                                             <ul class="sub-menu">
                                                 <li><a href="{{route('user.cart.index')}}">cart</a></li>
-                                                <li><a href="wishlist.html">Wishlist</a></li>
+                                                <li><a href="{{route('user.home.wishlist')}}">Wishlist</a></li>
                                                 <li><a href="{{route('user.cart.checkout')}}">Checkout</a></li>
                                                 <li><a href="{{route('user.account.index')}}">my account</a></li>
                                                 <li><a href="404.html">Error 404</a></li>
@@ -145,7 +145,7 @@
                                         <li class="menu-item-has-children">
                                             <a href="#">Product Types</a>
                                             <ul class="sub-menu">
-                                                <li><a href="product-details.html">product details</a></li>
+                                                <li><a href="{{route('user.home.show')}}">product details</a></li>
                                                 <li><a href="product-sidebar.html">product sidebar</a></li>
                                                 <li><a href="product-grouped.html">product grouped</a></li>
                                                 <li><a href="variable-product.html">product variable</a></li>
@@ -158,7 +158,7 @@
                                     <a href="{{route('user.blog.index')}}">blog</a>
                                     <ul class="sub-menu">
                                         <li><a href="{{route('user.blog.index')}}">blog</a></li>
-                                        <li><a href="blog-details.html">blog details</a></li>
+                                        <li><a href="{{route('user.blog.show')}}">blog details</a></li>
                                         <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
                                         <li><a href="blog-sidebar.html">blog left sidebar</a></li>
                                         <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
@@ -271,7 +271,7 @@
                                 </div>
                                 <div class="middel_right_info">
                                     <div class="header_wishlist">
-                                        <a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                        <a href="{{route('user.home.wishlist')}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                                         <span class="wishlist_quantity">3</span>
                                     </div>
                                     <div class="mini_cart_wrapper">
@@ -493,7 +493,7 @@
                                                     <li><a href="#">other Pages</a>
                                                         <ul>
                                                             <li><a href="{{route('user.cart.index')}}">cart</a></li>
-                                                            <li><a href="wishlist.html">Wishlist</a></li>
+                                                            <li><a href="{{route('user.home.wishlist')}}">Wishlist</a></li>
                                                             <li><a href="{{route('user.cart.checkout')}}">Checkout</a></li>
                                                             <li><a href="{{route('user.account.index')}}">my account</a></li>
                                                             <li><a href="404.html">Error 404</a></li>
@@ -501,7 +501,7 @@
                                                     </li>
                                                     <li><a href="#">Product Types</a>
                                                         <ul>
-                                                            <li><a href="product-details.html">product details</a></li>
+                                                            <li><a href="{{route('user.home.show')}}">product details</a></li>
                                                             <li><a href="product-sidebar.html">product sidebar</a></li>
                                                             <li><a href="product-grouped.html">product grouped</a></li>
                                                             <li><a href="variable-product.html">product variable</a>
@@ -529,7 +529,7 @@
                                         </li>
                                         <li><a href="{{route('user.blog.index')}}">blog<i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
-                                                <li><a href="blog-details.html">blog details</a></li>
+                                                <li><a href="{{route('user.blog.show')}}">blog details</a></li>
                                                 <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
                                                 <li><a href="blog-sidebar.html">blog left sidebar</a></li>
                                                 <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
@@ -593,7 +593,7 @@
                                                 <li><a href="#">other Pages</a>
                                                     <ul>
                                                         <li><a href="{{route('user.cart.index')}}">cart</a></li>
-                                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                                        <li><a href="{{route('user.home.wishlist')}}">Wishlist</a></li>
                                                         <li><a href="{{route('user.cart.checkout')}}">Checkout</a></li>
                                                         <li><a href="{{route('user.account.index')}}">my account</a></li>
                                                         <li><a href="404.html">Error 404</a></li>
@@ -601,7 +601,7 @@
                                                 </li>
                                                 <li><a href="#">Product Types</a>
                                                     <ul>
-                                                        <li><a href="product-details.html">product details</a></li>
+                                                        <li><a href="{{route('user.home.show')}}">product details</a></li>
                                                         <li><a href="product-sidebar.html">product sidebar</a></li>
                                                         <li><a href="product-grouped.html">product grouped</a></li>
                                                         <li><a href="variable-product.html">product variable</a></li>
@@ -625,7 +625,7 @@
                                     </li>
                                     <li><a href="{{route('user.blog.index')}}">blog<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
-                                            <li><a href="blog-details.html">blog details</a></li>
+                                            <li><a href="{{route('user.blog.show')}}">blog details</a></li>
                                             <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
                                             <li><a href="blog-sidebar.html">blog left sidebar</a></li>
                                             <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
@@ -651,7 +651,7 @@
                         </div>
                         <div class="middel_right_info">
                             <div class="header_wishlist">
-                                <a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                <a href="{{route('user.home.wishlist')}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                                 <span class="wishlist_quantity">3</span>
                             </div>
                             <div class="mini_cart_wrapper">

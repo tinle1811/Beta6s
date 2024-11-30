@@ -12,9 +12,9 @@
                     <article class="single_product">
                         <figure>
                             <div class="product_thumb">
-                                <a class="primary_img" href="product-countdown.html"><img src="assets/img/product/product1.jpg"
+                                <a class="primary_img" href="{{route('user.home.show')}}"><img src="assets/img/product/product1.jpg"
                                         alt=""></a>
-                                <a class="secondary_img" href="product-countdown.html"><img
+                                <a class="secondary_img" href="{{route('user.home.show')}}"><img
                                         src="assets/img/product/product2.jpg" alt=""></a>
                                 <div class="label_product">
                                     <span class="label_sale">sale</span>
@@ -41,7 +41,7 @@
                                     <span class="old_price">$86.00</span>
                                     <span class="current_price">$79.00</span>
                                 </div>
-                                <h3 class="product_name"><a href="product-countdown.html">Natus erro at congue massa commodo
+                                <h3 class="product_name"><a href="{{route('user.home.show')}}">Natus erro at congue massa commodo
                                         sit</a></h3>
                             </figcaption>
                         </figure>
@@ -49,9 +49,9 @@
                     <article class="single_product">
                         <figure>
                             <div class="product_thumb">
-                                <a class="primary_img" href="product-countdown.html"><img src="assets/img/product/product3.jpg"
+                                <a class="primary_img" href="{{route('user.home.show')}}"><img src="assets/img/product/product3.jpg"
                                         alt=""></a>
-                                <a class="secondary_img" href="product-countdown.html"><img
+                                <a class="secondary_img" href="{{route('user.home.show')}}"><img
                                         src="assets/img/product/product4.jpg" alt=""></a>
                                 <div class="label_product">
                                     <span class="label_sale">sale</span>
@@ -78,7 +78,7 @@
                                     <span class="old_price">$86.00</span>
                                     <span class="current_price">$79.00</span>
                                 </div>
-                                <h3 class="product_name"><a href="product-countdown.html">Itaque earum velit elementum</a>
+                                <h3 class="product_name"><a href="{{route('user.home.show')}}">Itaque earum velit elementum</a>
                                 </h3>
                             </figcaption>
                         </figure>
@@ -86,9 +86,9 @@
                     <article class="single_product">
                         <figure>
                             <div class="product_thumb">
-                                <a class="primary_img" href="product-countdown.html"><img src="assets/img/product/product5.jpg"
+                                <a class="primary_img" href="{{route('user.home.show')}}"><img src="assets/img/product/product5.jpg"
                                         alt=""></a>
-                                <a class="secondary_img" href="product-countdown.html"><img
+                                <a class="secondary_img" href="{{route('user.home.show')}}"><img
                                         src="assets/img/product/product6.jpg" alt=""></a>
                                 <div class="label_product">
                                     <span class="label_sale">sale</span>
@@ -115,7 +115,7 @@
                                     <span class="old_price">$86.00</span>
                                     <span class="current_price">$79.00</span>
                                 </div>
-                                <h3 class="product_name"><a href="product-countdown.html">Mauris tincidunt eros posuere
+                                <h3 class="product_name"><a href="{{route('user.home.show')}}">Mauris tincidunt eros posuere
                                         placerat</a></h3>
                             </figcaption>
                         </figure>
@@ -123,9 +123,9 @@
                     <article class="single_product">
                         <figure>
                             <div class="product_thumb">
-                                <a class="primary_img" href="product-countdown.html"><img src="assets/img/product/product7.jpg"
+                                <a class="primary_img" href="{{route('user.home.show')}}"><img src="assets/img/product/product7.jpg"
                                         alt=""></a>
-                                <a class="secondary_img" href="product-countdown.html"><img
+                                <a class="secondary_img" href="{{route('user.home.show')}}"><img
                                         src="assets/img/product/product8.jpg" alt=""></a>
                                 <div class="label_product">
                                     <span class="label_sale">sale</span>
@@ -152,7 +152,7 @@
                                     <span class="old_price">$86.00</span>
                                     <span class="current_price">$79.00</span>
                                 </div>
-                                <h3 class="product_name"><a href="product-countdown.html">Morbi ornare vestibulum massa</a>
+                                <h3 class="product_name"><a href="{{route('user.home.show')}}">Morbi ornare vestibulum massa</a>
                                 </h3>
                             </figcaption>
                         </figure>
@@ -160,9 +160,9 @@
                     <article class="single_product">
                         <figure>
                             <div class="product_thumb">
-                                <a class="primary_img" href="product-countdown.html"><img src="assets/img/product/product9.jpg"
+                                <a class="primary_img" href="{{route('user.home.show')}}"><img src="assets/img/product/product9.jpg"
                                         alt=""></a>
-                                <a class="secondary_img" href="product-countdown.html"><img
+                                <a class="secondary_img" href="{{route('user.home.show')}}"><img
                                         src="assets/img/product/product10.jpg" alt=""></a>
                                 <div class="label_product">
                                     <span class="label_sale">sale</span>
@@ -189,7 +189,7 @@
                                     <span class="old_price">$86.00</span>
                                     <span class="current_price">$79.00</span>
                                 </div>
-                                <h3 class="product_name"><a href="product-countdown.html">Porro quisquam eget feugiat
+                                <h3 class="product_name"><a href="{{route('user.home.show')}}">Porro quisquam eget feugiat
                                         pretium</a></h3>
                             </figcaption>
                         </figure>
@@ -197,9 +197,9 @@
                     <article class="single_product">
                         <figure>
                             <div class="product_thumb">
-                                <a class="primary_img" href="product-countdown.html"><img src="assets/img/product/product11.jpg"
+                                <a class="primary_img" href="{{route('user.home.show')}}"><img src="assets/img/product/product11.jpg"
                                         alt=""></a>
-                                <a class="secondary_img" href="product-countdown.html"><img
+                                <a class="secondary_img" href="{{route('user.home.show')}}"><img
                                         src="assets/img/product/product12.jpg" alt=""></a>
                                 <div class="label_product">
                                     <span class="label_sale">sale</span>
@@ -226,7 +226,7 @@
                                     <span class="old_price">$86.00</span>
                                     <span class="current_price">$79.00</span>
                                 </div>
-                                <h3 class="product_name"><a href="product-countdown.html">Laudantium enim fringilla
+                                <h3 class="product_name"><a href="{{route('user.home.show')}}">Laudantium enim fringilla
                                         dignissim ipsum primis</a></h3>
                             </figcaption>
                         </figure>
@@ -234,9 +234,9 @@
                     <article class="single_product">
                         <figure>
                             <div class="product_thumb">
-                                <a class="primary_img" href="product-countdown.html"><img src="assets/img/product/product4.jpg"
+                                <a class="primary_img" href="{{route('user.home.show')}}"><img src="assets/img/product/product4.jpg"
                                         alt=""></a>
-                                <a class="secondary_img" href="product-countdown.html"><img
+                                <a class="secondary_img" href="{{route('user.home.show')}}"><img
                                         src="assets/img/product/product5.jpg" alt=""></a>
                                 <div class="label_product">
                                     <span class="label_sale">sale</span>
@@ -263,7 +263,7 @@
                                     <span class="old_price">$86.00</span>
                                     <span class="current_price">$79.00</span>
                                 </div>
-                                <h3 class="product_name"><a href="product-countdown.html">Natus erro at congue massa commodo
+                                <h3 class="product_name"><a href="{{route('user.home.show')}}">Natus erro at congue massa commodo
                                         sit</a></h3>
                             </figcaption>
                         </figure>
