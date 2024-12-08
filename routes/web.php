@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\AccountController;
 
 Route::get('/', [HomeController::class, 'index'])->name('user.home.index');
+Route::get('/home', [HomeController::class, 'index']);
 Route::get('/product-detail', [HomeController::class, 'show'])->name('user.home.show');
 Route::get('/about', [HomeController::class, 'about'])->name('user.home.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('user.home.contact');
