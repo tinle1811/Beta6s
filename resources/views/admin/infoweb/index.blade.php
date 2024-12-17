@@ -38,8 +38,9 @@
                                     <!-- Logo -->
                                     <div class="form-group d-flex flex-column align-items-center mb-3">
                                         <!-- Logo Label in the center -->
-                                        <label for="logo"
-                                            class="col-sm-3 col-form-label input-label text-center"><h6>LOGO</h6></label>
+                                        <label for="logo" class="col-sm-3 col-form-label input-label text-center">
+                                            <h6>LOGO</h6>
+                                        </label>
 
                                         <!-- Avatar image below the label (Hiển thị logo cũ mặc định) -->
                                         <span class="avatar avatar-xl avatar-centered avatar-circle avatar-border-lg mb-3">
@@ -70,8 +71,8 @@
                                     <div class="form-group d-flex align-items-center mb-3">
                                         <label for="email_support" class="col-sm-3 col-form-label input-label">Email hỗ trợ:
                                         </label>
-                                        <input type="email" class="form-control" name="email_support" id="email_support" readonly
-                                            value="{{ $viewData['websiteInfo']->email }}">
+                                        <input type="email" class="form-control" name="email_support" id="email_support"
+                                            readonly value="{{ $viewData['websiteInfo']->email }}">
                                     </div>
 
                                     <!-- Social Media Links -->
