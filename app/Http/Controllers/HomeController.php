@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\SanPham;
+
 class HomeController extends Controller
 {
   
@@ -11,6 +13,8 @@ class HomeController extends Controller
     public function index()
     {
         $viewData['title'] = "Trang chủ";
+        $viewData["DSSP-BanChay"] = SanPham::limit(10)->get();
+        $viewData["DSSP-NoiBat"] = SanPham::skip(10)->limit(10)->get();
         return view('user.home.index')->with('viewData',$viewData);
     }
 
