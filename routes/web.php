@@ -29,7 +29,7 @@ Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wi
 //KN- Trang giới thiệu - trang blog
 Route::get('/about', [HomeController::class, 'about'])->name('user.home.about');
 Route::get('/blog', [BlogController::class, 'index'])->name('user.blog.index');
-Route::get('/blog-detail', [BlogController::class, 'show'])->name('user.blog.show');
+Route::get('/blog-detail/{id?}', [BlogController::class, 'show'])->name('user.blog.show');
 
 Route::get('/cart', [CartController::class, 'index'])->name('user.cart.index');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('user.cart.checkout');
