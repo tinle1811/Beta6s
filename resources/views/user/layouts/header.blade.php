@@ -188,10 +188,10 @@
                                     <a href="#">Giới thiệu</a>
                                     <ul class="sub-menu">
                                         <li><a href="{{ route('user.home.about') }}">Về chúng tôi</a></li>
-                                        <li><a href="services.html">Danh sách bài viết</a></li>
+                                        <li><a href="{{ route('user.blog.index') }}">Danh sách bài viết</a></li>
                                     </ul>
                                 </li>
-                                
+
                                 <li class="menu-item-has-children">
                                     <a href="{{ route('user.home.contact') }}"> Liên hệ</a>
                                 </li>
@@ -576,7 +576,8 @@
                                         <li><a href="#">Giới thiệu <i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
                                                 <li><a href="{{ route('user.home.about') }}">Về chúng tôi</a></li>
-                                                <li><a href="services.html">Danh sách bài viết</a></li>
+                                                <li><a href="{{ route('user.blog.index') }}">Danh sách bài viết</a>
+                                                </li>
                                             </ul>
                                         </li>
 
@@ -691,7 +692,7 @@
                                     <li><a href="#">Giới thiệu <i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                             <li><a href="{{ route('user.home.about') }}">Về chúng tôi</a></li>
-                                            <li><a href="services.html">Danh sách bài viết</a></li>
+                                            <li><a href="{{ route('user.blog.index') }}">Danh sách bài viết</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="{{ route('user.home.contact') }}"> Liên hệ</a></li>
