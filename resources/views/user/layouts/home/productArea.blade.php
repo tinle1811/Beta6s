@@ -40,7 +40,7 @@
                                 <figcaption class="product_content">
                                     <div class="price_box">
                                         {{-- <span class="old_price">$86.00</span> --}}
-                                        <span class="current_price">{{ $product->getProductPrice() }}</span>
+                                        <span class="current_price">{{ number_format($product->getProductPrice(), 0, ',', '.') }} đ</span>
                                     </div>
                                     <h3 class="product_name"><a href="{{route('user.home.show')}}">{{ $product->getProductName() }}</a></h3>
                                 </figcaption>

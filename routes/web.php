@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminClientController;
 use App\Http\Controllers\Admin\AdminCommentController;
 
+
 Route::get('/', [HomeController::class, 'index'])->name('user.home.index');
 Route::get('/product-detail', [HomeController::class, 'show'])->name('user.home.show');
 Route::get('/about', [HomeController::class, 'about'])->name('user.home.about');
@@ -34,6 +36,8 @@ Route::get('/cart',[CartController::class,'index'])->name('user.cart.index');
 Route::get('/checkout',[CartController::class,'checkout'])->name('user.cart.checkout');
 
 Route::get('/account',[AccountController::class,'index'])->name('user.account.index');
+
+Route::get('/search', [SearchController::class, 'index'])->name('user.search.index');
 
 //admin
 Route::get("/admin",[AdminAnalysisController::class,"index"])->name("admin.analysis");
