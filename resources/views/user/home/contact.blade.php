@@ -32,7 +32,15 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="contact_message form">
                         <h3>Tell us your project</h3>
-                        <form id="contact-form" method="POST" action="https://htmldemo.net/junko/junko/assets/mail.php">
+                        @if ($errors->any())
+                            <ul class="alert alert-danger list-unstyled">
+                                @foreach ($errors->all() as $error)
+                                    <li>- {{ $error }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
+                        <form id="contact-form" method="POST" action="{{ route('user.home.form') }}">
+                            @csrf
                             <p>
                                 <label> Your Name (required)</label>
                                 <input name="name" placeholder="Name *" type="text">
@@ -40,6 +48,10 @@
                             <p>
                                 <label> Your Email (required)</label>
                                 <input name="email" placeholder="Email *" type="email">
+                            </p>
+                            <p>
+                                <label> Your Phone (required)</label>
+                                <input name="phone" placeholder="Phone *" type="phone">
                             </p>
                             <p>
                                 <label> Subject</label>
@@ -50,7 +62,7 @@
                                 <textarea placeholder="Message *" name="message" class="form-control2"></textarea>
                             </div>
                             <button type="submit"> Send</button>
-                            <p class="form-messege"></p>
+                            {{-- <p class="form-messege"></p> --}}
                         </form>
 
                     </div>
