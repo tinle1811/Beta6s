@@ -39,18 +39,7 @@
             <!-- Nav -->
             <ul class="nav nav-tabs nav-tabs-light page-header-tabs" id="pageHeaderTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" href="javascript:;">Overview</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="javascript:;">Status</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="javascript:;">
-                  Sessions
-                  <span class="badge badge-warning badge-pill ml-1">
-                    <i class="tio-warning mr-1"></i> Verification required
-                  </span>
-                </a>
+                <a class="nav-link active" href="javascript:;">Thống kê</a>
               </li>
             </ul>
             <!-- End Nav -->
@@ -68,15 +57,15 @@
       <div class="card mb-3 mb-lg-5">
         <!-- Header -->
         <div class="card-header">
-          <h4 class="card-header-title">Recent projects</h4>
+          <h4 class="card-header-title">Thống kê doanh thu</h4>
 
           <!-- Nav -->
           <ul class="nav nav-segment nav-fill" id="projectsTab" role="tablist">
             <li class="nav-item" data-toggle="chart" data-datasets="0" data-trigger="click" data-action="toggle">
-              <a class="nav-link active" href="javascript:;" data-toggle="tab">This week</a>
+              <a class="nav-link active" href="javascript:;" data-toggle="tab">Tuần này</a>
             </li>
             <li class="nav-item" data-toggle="chart" data-datasets="1" data-trigger="click" data-action="toggle">
-              <a class="nav-link" href="javascript:;" data-toggle="tab">Last week</a>
+              <a class="nav-link" href="javascript:;" data-toggle="tab">Tuần trước</a>
             </li>
           </ul>
           <!-- End Nav -->
@@ -100,10 +89,10 @@
               <!-- Legend Indicators -->
               <div class="row font-size-sm">
                 <div class="col-auto">
-                  <span class="legend-indicator bg-primary"></span> Income
+                  <span class="legend-indicator bg-primary"></span> Doanh thu
                 </div>
                 <div class="col-auto">
-                  <span class="legend-indicator bg-info"></span> Expenses
+                  <span class="legend-indicator bg-info"></span> Lợi nhuận
                 </div>
               </div>
               <!-- End Legend Indicators -->
@@ -192,273 +181,9 @@
         <!-- End Body -->
 
         <!-- Table -->
-        <div class="table-responsive">
-          <table class="table table-borderless table-thead-bordered table-align-middle card-table">
-            <thead class="thead-light">
-              <tr>
-                <th>Project name</th>
-                <th>Members</th>
-                <th>Spent</th>
-                <th>Hours</th>
-                <th>Completion</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>
-                  <a class="media align-items-center" href="project.html">
-                    <img class="avatar avatar-sm mr-3" src="assets\svg\brands\spec.svg" alt="Image Description">
-                    <div class="media-body">
-                      <span class="d-block h5 text-hover-primary mb-0">Install Front pay</span>
-                    </div>
-                  </a>
-                </td>
-                <td>
-                  <!-- Avatar Group -->
-                  <div class="avatar-group avatar-group-xs avatar-circle">
-                    <a class="avatar" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Amanda Harvey">
-                      <img class="avatar-img" src="assets\img\160x160\img10.jpg" alt="Image Description">
-                    </a>
-                    <a class="avatar" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="David Harrison">
-                      <img class="avatar-img" src="assets\img\160x160\img3.jpg" alt="Image Description">
-                    </a>
-                    <a class="avatar avatar-soft-info" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Lisa Iston">
-                      <span class="avatar-initials">L</span>
-                    </a>
-                    <a class="avatar avatar-light avatar-circle" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Lewis Clarke, Chris Mathew and 3 more">
-                      <span class="avatar-initials">+5</span>
-                    </a>
-                  </div>
-                  <!-- End Avatar Group -->
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0">$25,000</span>
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0">34</span>
-                    <span class="badge badge-soft-danger p-1 ml-2">
-                      <i class="tio-trending-down"></i> 1.8
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0 mr-2">26%</span>
-                    <div class="progress table-progress">
-                      <div class="progress-bar" role="progressbar" style="width: 26%" aria-valuenow="26" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a class="media align-items-center" href="project.html">
-                    <img class="avatar avatar-sm mr-3" src="assets\svg\brands\mailchimp.svg" alt="Image Description">
-                    <div class="media-body">
-                      <span class="d-block h5 text-hover-primary mb-0">Update subscription method <i class="tio-verified text-primary" data-toggle="tooltip" data-placement="top" title="Earned extra bonus"></i></span>
-                    </div>
-                  </a>
-                </td>
-                <td>
-                  <!-- Avatar Group -->
-                  <div class="avatar-group avatar-group-xs avatar-circle">
-                    <a class="avatar" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Costa Quinn">
-                      <img class="avatar-img" src="assets\img\160x160\img6.jpg" alt="Image Description">
-                    </a>
-                    <a class="avatar" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Clarice Boone">
-                      <img class="avatar-img" src="assets\img\160x160\img7.jpg" alt="Image Description">
-                    </a>
-                    <a class="avatar avatar-soft-danger" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Adam Keep">
-                      <span class="avatar-initials">A</span>
-                    </a>
-                  </div>
-                  <!-- End Avatar Group -->
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0">$5,783</span>
-                    <span class="badge badge-soft-success p-1 ml-2">
-                      <i class="tio-trending-up"></i> 7.3%
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0">73.1</span>
-                    <span class="badge badge-soft-success p-1 ml-2">
-                      <i class="tio-trending-up"></i> 5.0
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0 mr-2">100%</span>
-                    <div class="progress table-progress">
-                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a class="media align-items-center" href="project.html">
-                    <div class="avatar avatar-sm avatar-soft-primary avatar-circle mr-3">
-                      <span class="avatar-initials">I</span>
-                    </div>
-                    <div class="media-body">
-                      <span class="d-block h5 text-hover-primary mb-0">Increase productivity with reviews</span>
-                    </div>
-                  </a>
-                </td>
-                <td>
-                  <!-- Avatar Group -->
-                  <div class="avatar-group avatar-group-xs avatar-circle">
-                    <a class="avatar" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Finch Hoot">
-                      <img class="avatar-img" src="assets\img\160x160\img5.jpg" alt="Image Description">
-                    </a>
-                    <a class="avatar avatar-soft-dark" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Bob Bardly">
-                      <span class="avatar-initials">B</span>
-                    </a>
-                    <a class="avatar" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Linda Bates">
-                      <img class="avatar-img" src="assets\img\160x160\img8.jpg" alt="Image Description">
-                    </a>
-                    <a class="avatar" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Ella Lauda">
-                      <img class="avatar-img" src="assets\img\160x160\img9.jpg" alt="Image Description">
-                    </a>
-                  </div>
-                  <!-- End Avatar Group -->
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0">$36,678</span>
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0">68.7</span>
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0 mr-2">7%</span>
-                    <div class="progress table-progress">
-                      <div class="progress-bar" role="progressbar" style="width: 7%" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a class="media align-items-center" href="project.html">
-                    <img class="avatar avatar-sm mr-3" src="assets\svg\brands\atlassian.svg" alt="Image Description">
-                    <div class="media-body">
-                      <span class="d-block h5 text-hover-primary mb-0">Develop our mobile app <i class="tio-verified text-primary" data-toggle="tooltip" data-placement="top" title="Earned extra bonus"></i></span>
-                    </div>
-                  </a>
-                </td>
-                <td>
-                  <!-- Avatar Group -->
-                  <div class="avatar-group avatar-group-xs avatar-circle">
-                    <a class="avatar" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Costa Quinn">
-                      <img class="avatar-img" src="assets\img\160x160\img6.jpg" alt="Image Description">
-                    </a>
-                    <a class="avatar" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Clarice Boone">
-                      <img class="avatar-img" src="assets\img\160x160\img7.jpg" alt="Image Description">
-                    </a>
-                    <a class="avatar avatar-soft-danger" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Adam Keep">
-                      <span class="avatar-initials">A</span>
-                    </a>
-                  </div>
-                  <!-- End Avatar Group -->
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0">$2,623</span>
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0">62.4</span>
-                    <span class="badge badge-soft-success p-1 ml-2">
-                      <i class="tio-trending-up"></i> 2.2
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0 mr-2">100%</span>
-                    <div class="progress table-progress">
-                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a class="media align-items-center" href="project.html">
-                    <img class="avatar avatar-sm mr-3" src="assets\svg\brands\google-webdev.svg" alt="Image Description">
-                    <div class="media-body">
-                      <span class="d-block h5 text-hover-primary mb-0">Get a complete store audit</span>
-                    </div>
-                  </a>
-                </td>
-                <td>
-                  <!-- Avatar Group -->
-                  <div class="avatar-group avatar-group-xs avatar-circle">
-                    <a class="avatar" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Amanda Harvey">
-                      <img class="avatar-img" src="assets\img\160x160\img10.jpg" alt="Image Description">
-                    </a>
-                    <a class="avatar" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="David Harrison">
-                      <img class="avatar-img" src="assets\img\160x160\img3.jpg" alt="Image Description">
-                    </a>
-                    <a class="avatar avatar-soft-info" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Lisa Iston">
-                      <span class="avatar-initials">L</span>
-                    </a>
-                    <a class="avatar avatar-light avatar-circle" href="user-profile.html" data-toggle="tooltip" data-placement="top" title="Lewis Clarke, Chris Mathew and 3 more">
-                      <span class="avatar-initials">+5</span>
-                    </a>
-                  </div>
-                  <!-- End Avatar Group -->
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0">$9,000</span>
-                    <span class="badge badge-soft-danger p-1 ml-2">
-                      <i class="tio-trending-down"></i> 0.4
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0">7</span>
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mb-0 mr-2">42%</span>
-                    <div class="progress table-progress">
-                      <div class="progress-bar" role="progressbar" style="width: 42%" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
         <!-- End Table -->
 
         <!-- Card Footer -->
-        <a class="card-footer text-center" href="projects.html">
-          View all projects <i class="tio-chevron-right"></i>
-        </a>
         <!-- End Card Footer -->
       </div>
       <!-- End Card -->
