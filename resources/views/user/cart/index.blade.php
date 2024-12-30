@@ -1,5 +1,5 @@
 @extends('user.layouts.app')
-@section('title',$viewData['title'])
+@section('title', $viewData['title'])
 @section('content')
     @include('user.layouts.breadcrumbs')
         <!--shopping cart area start -->
@@ -13,56 +13,26 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th class="product_remove">Delete</th>
-                                            <th class="product_thumb">Image</th>
-                                            <th class="product_name">Product</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product_quantity">Quantity</th>
-                                            <th class="product_total">Total</th>
+                                            <th class="product_remove">Xoá</th>
+                                            <th class="product_thumb">Hình ảnh</th>
+                                            <th class="product_name">Tên sản phẩm</th>
+                                            <th class="product-price">Giá</th>
+                                            <th class="product_quantity">Số lượng</th>
+                                            <th class="product_total">Thành tiền</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
                                             </td>
-                                            <td class="product_thumb"><a href="#"><img
-                                                        src="assets/img/s-product/product.jpg" alt=""></a></td>
-                                            <td class="product_name"><a href="#">Handbag fringilla</a></td>
-                                            <td class="product-price">£65.00</td>
-                                            <td class="product_quantity"><label>Quantity</label> <input min="1"
-                                                    max="100" value="1" type="number"></td>
-                                            <td class="product_total">£130.00</td>
-
-
+                                            @foreach($viewData['cartItems'] as $item)
+                                                <td>{{$item->product->getProductImage()}}</td>
+                                                <td>{{$item->product->getProductName()}}</td>
+                                                <td>{{$item->product->getProductPrice()}}</td>
+                                                <td>{{$item->soLuong}}</td>
+                                                <td>{{$item->soLuong * $item->product->getProductPrice()}}</td>
+                                            @endforeach()
                                         </tr>
-
-                                        <tr>
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                            <td class="product_thumb"><a href="#"><img
-                                                        src="assets/img/s-product/product2.jpg" alt=""></a></td>
-                                            <td class="product_name"><a href="#">Handbags justo</a></td>
-                                            <td class="product-price">£90.00</td>
-                                            <td class="product_quantity"><label>Quantity</label> <input min="1"
-                                                    max="100" value="1" type="number"></td>
-                                            <td class="product_total">£180.00</td>
-
-
-                                        </tr>
-                                        <tr>
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                            <td class="product_thumb"><a href="#"><img
-                                                        src="assets/img/s-product/product3.jpg" alt=""></a></td>
-                                            <td class="product_name"><a href="#">Handbag elit</a></td>
-                                            <td class="product-price">£80.00</td>
-                                            <td class="product_quantity"><label>Quantity</label> <input min="1"
-                                                    max="100" value="1" type="number"></td>
-                                            <td class="product_total">£160.00</td>
-
-
-                                        </tr>
-
                                     </tbody>
                                 </table>
                             </div>
