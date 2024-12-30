@@ -32,6 +32,10 @@ Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wi
 Route::get('/blog',[BlogController::class,'index'])->name('user.blog.index');
 Route::get('/blog-detail',[BlogController::class,'show'])->name('user.blog.show');
 
+//Route::middleware(['auth'])->group(function () {
+   // Route::post('/cart/add', [CartController::class, 'addToCart'])->name('user.cart.add');
+//});
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('user.cart.add');
 Route::get('/cart',[CartController::class,'index'])->name('user.cart.index');
 Route::get('/checkout',[CartController::class,'checkout'])->name('user.cart.checkout');
 

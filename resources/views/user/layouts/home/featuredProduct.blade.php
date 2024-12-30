@@ -30,7 +30,11 @@
                                 <h3 class="product_name"><a
                                         href="{{ route('user.home.show') }}">{{ $product->getProductName() }}</a></h3>
                                 <div class="add_to_cart">
-                                    <a href="cart.html" title="add to cart">Thêm vào giỏ hàng</a>
+                                    <form action="{{route('user.cart.add')}}" method="POST" class="add-to-cart-form">
+                                        @csrf
+                                        <input type="hidden" name="MaSP" value="{{ $product->MaSP }}">
+                                        <button type="submit">Thêm vào giỏ hàng</button>
+                                    </form>
                                 </div>
                             </figcaption>
                         </figure>
