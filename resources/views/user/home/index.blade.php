@@ -7,4 +7,5 @@
         @include('user.layouts.home.featuredProduct')
         @include('user.layouts.home.blogArea')
         @include('user.layouts.popupLogin')
+        @include('user.layouts.popupChat');
 @endsection
