@@ -8,7 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
     use HasFactory;
-
+    /*public static function validate($request)
+        {
+            $request->validate([
+                'name' => 'required|max:255',
+                'email' => 'required|max:255',
+                'phone' => 'required|max:20',
+                'message' => 'required',
+            ]);
+        }*/
     protected $table = 'lien_hes';
 
     protected $fillable = [
@@ -18,15 +26,7 @@ class Contact extends Model
         'NoiDung',
         'TrangThai',
     ];
-    public static function validate($request)
-        {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
-            'message' => 'required|string',
-        ]);
-        }
+    
 
     public function getId()
     {

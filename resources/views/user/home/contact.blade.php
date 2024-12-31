@@ -38,7 +38,7 @@
                                     <li>- {{ $error }}</li>
                                 @endforeach
                             </ul>
-                            @endif
+                        @endif
                         <form id="contact-form" method="POST" action="{{ route('user.home.form') }}">
                             @csrf
                             <p>
@@ -62,7 +62,12 @@
                                 <textarea placeholder="Message *" name="message" class="form-control2"></textarea>
                             </div>
                             <button type="submit"> Send</button>
-                            {{-- <p class="form-messege"></p> --}}
+                            {{-- <li class="form-messege"></li> --}}
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                         </form>
 
                     </div>
