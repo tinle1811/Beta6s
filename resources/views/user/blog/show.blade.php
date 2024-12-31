@@ -1,5 +1,5 @@
 @extends('user.layouts.app')
-@section('title',$viewData['title'])
+@section('title', $viewData['title'])
 @section('content')
     @include('user.layouts.breadcrumbs')
         <!--blog body area start-->
@@ -341,4 +341,5 @@
         </div>
     </div>
     <!--blog section area end-->
+    @include('user.layouts.popupChat');
 @endsection

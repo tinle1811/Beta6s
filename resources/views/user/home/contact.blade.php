@@ -1,5 +1,5 @@
 @extends('user.layouts.app')
-@section('title',$viewData['title'])
+@section('title', $viewData['title'])
 @section('content')
     @include('user.layouts.breadcrumbs')
         <!--contact map start-->
@@ -60,4 +60,5 @@
     </div>
 
     <!--contact area end-->
+        @include('user.layouts.popupChat');
 @endsection

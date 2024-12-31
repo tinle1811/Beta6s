@@ -36,4 +36,5 @@
     <div class="d-flex justify-content-center">
         {{ $viewData['products']->links('pagination::bootstrap-5') }}
     </div>
+    @include('user.layouts.popupChat');
 @endsection

@@ -84,4 +84,5 @@
         </div>
     </div>
     <!--wishlist area end -->
+        @include('user.layouts.popupChat');
 @endsection
