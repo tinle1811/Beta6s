@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="action_links">
                                     <ul>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                        <li class="wishlist"><a href="javascript:void(0);" onclick="addToWishlist()" title="Add to Wishlist"><i
                                                     class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                         <li class="compare"><a href="#" title="compare"><span class="ion-levels"></span></a>
                                         </li>
@@ -30,7 +30,7 @@
                                     </ul>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="cart.html" title="add to cart">Add to cart</a>
+                                    <a href="javascript:void(0);"  onclick="addToCart()" title="add to cart">Add to cart</a>
                                 </div>
                                 <div class="product_timing">
                                     <div data-countdown="2023/12/15"></div>
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="action_links">
                                     <ul>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                        <li class="wishlist"><a href="javascript:void(0);" onclick="addToWishlist()" title="Add to Wishlist"><i
                                                     class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                         <li class="compare"><a href="#" title="compare"><span class="ion-levels"></span></a>
                                         </li>
@@ -67,7 +67,7 @@
                                     </ul>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="cart.html" title="add to cart">Add to cart</a>
+                                    <a href="javascript:void(0);"  onclick="addToCart()" title="add to cart">Add to cart</a>
                                 </div>
                                 <div class="product_timing">
                                     <div data-countdown="2023/12/15"></div>
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="action_links">
                                     <ul>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                        <li class="wishlist"><a href="javascript:void(0);" onclick="addToWishlist()" title="Add to Wishlist"><i
                                                     class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                         <li class="compare"><a href="#" title="compare"><span class="ion-levels"></span></a>
                                         </li>
@@ -104,7 +104,7 @@
                                     </ul>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="cart.html" title="add to cart">Add to cart</a>
+                                    <a href="javascript:void(0);"  onclick="addToCart()" title="add to cart">Add to cart</a>
                                 </div>
                                 <div class="product_timing">
                                     <div data-countdown="2023/12/15"></div>
@@ -132,7 +132,7 @@
                                 </div>
                                 <div class="action_links">
                                     <ul>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                        <li class="wishlist"><a href="javascript:void(0);" onclick="addToWishlist()" title="Add to Wishlist"><i
                                                     class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                         <li class="compare"><a href="#" title="compare"><span class="ion-levels"></span></a>
                                         </li>
@@ -141,7 +141,7 @@
                                     </ul>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="cart.html" title="add to cart">Add to cart</a>
+                                    <a href="javascript:void(0);"  onclick="addToCart()" title="add to cart">Add to cart</a>
                                 </div>
                                 <div class="product_timing">
                                     <div data-countdown="2023/12/15"></div>
@@ -169,7 +169,7 @@
                                 </div>
                                 <div class="action_links">
                                     <ul>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                        <li class="wishlist"><a href="javascript:void(0);" onclick="addToWishlist()" title="Add to Wishlist"><i
                                                     class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                         <li class="compare"><a href="#" title="compare"><span class="ion-levels"></span></a>
                                         </li>
@@ -178,7 +178,7 @@
                                     </ul>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="cart.html" title="add to cart">Add to cart</a>
+                                    <a href="javascript:void(0);"  onclick="addToCart()" title="add to cart">Add to cart</a>
                                 </div>
                                 <div class="product_timing">
                                     <div data-countdown="2023/12/15"></div>
@@ -206,7 +206,7 @@
                                 </div>
                                 <div class="action_links">
                                     <ul>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                        <li class="wishlist"><a href="javascript:void(0);" onclick="addToWishlist()" title="Add to Wishlist"><i
                                                     class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                         <li class="compare"><a href="#" title="compare"><span class="ion-levels"></span></a>
                                         </li>
@@ -215,7 +215,7 @@
                                     </ul>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="cart.html" title="add to cart">Add to cart</a>
+                                    <a href="javascript:void(0);"  onclick="addToCart()" title="add to cart">Add to cart</a>
                                 </div>
                                 <div class="product_timing">
                                     <div data-countdown="2023/12/15"></div>
@@ -243,7 +243,7 @@
                                 </div>
                                 <div class="action_links">
                                     <ul>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                        <li class="wishlist"><a href="javascript:void(0);" onclick="addToWishlist()" title="Add to Wishlist"><i
                                                     class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                         <li class="compare"><a href="#" title="compare"><span class="ion-levels"></span></a>
                                         </li>
@@ -252,7 +252,7 @@
                                     </ul>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="cart.html" title="add to cart">Add to cart</a>
+                                    <a href="javascript:void(0);"  onclick="addToCart()" title="add to cart">Add to cart</a>
                                 </div>
                                 <div class="product_timing">
                                     <div data-countdown="2023/12/15"></div>

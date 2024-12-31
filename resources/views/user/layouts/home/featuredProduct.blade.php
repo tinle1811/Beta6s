@@ -25,10 +25,10 @@
                                     <div class="price_box">
                                         <span class="current_price">$79.00</span>
                                     </div>
-                                    <h3 class="product_name"><a href="{{route('user.home.show')}}">Pellentesque posuere hendrerit
+                                    <h3 class="product_name"><a href="{{route('user.home.show')}}">Pellentesque  posuere hendrerit
                                             dui</a></h3>
                                     <div class="add_to_cart">
-                                        <a href="cart.html" title="add to cart">Add to cart</a>
+                                        <a href="javascript:void(0);"  onclick="addToCart()" title="add to cart">Add to cart</a>
                                     </div>
                                 </figcaption>
                             </figure>
@@ -51,7 +51,7 @@
                                     <h3 class="product_name"><a href="{{route('user.home.show')}}">Auctor gravida enim pellentesque
                                             quam</a></h3>
                                     <div class="add_to_cart">
-                                        <a href="cart.html" title="add to cart">Add to cart</a>
+                                        <a href="javascript:void(0);" onclick="addToCart()" title="add to cart">Add to cart</a>
                                     </div>
                                 </figcaption>
                             </figure>
@@ -77,7 +77,7 @@
                                     <h3 class="product_name"><a href="{{route('user.home.show')}}">Kaoreet lobortis sagittis
                                             pellentesque</a></h3>
                                     <div class="add_to_cart">
-                                        <a href="cart.html" title="add to cart">Add to cart</a>
+                                        <a href="javascript:void(0);" onclick="addToCart()" title="add to cart">Add to cart</a>
                                     </div>
                                 </figcaption>
                             </figure>
@@ -103,7 +103,7 @@
                                     <h3 class="product_name"><a href="{{route('user.home.show')}}">Cras neque honcus consectetur
                                             magna</a></h3>
                                     <div class="add_to_cart">
-                                        <a href="cart.html" title="add to cart">Add to cart</a>
+                                        <a href="javascript:void(0);" onclick="addToCart()" title="add to cart">Add to cart</a>
                                     </div>
                                 </figcaption>
                             </figure>
@@ -125,7 +125,7 @@
                                     <h3 class="product_name"><a href="{{route('user.home.show')}}">Duis pulvinar obortis eleifend
                                             elementum</a></h3>
                                     <div class="add_to_cart">
-                                        <a href="cart.html" title="add to cart">Add to cart</a>
+                                        <a href="javascript:void(0);" onclick="addToCart()" title="add to cart">Add to cart</a>
                                     </div>
                                 </figcaption>
                             </figure>
@@ -148,7 +148,7 @@
                                     <h3 class="product_name"><a href="{{route('user.home.show')}}">Fusce ultricies dolor vitae
                                             tristique suscipit</a></h3>
                                     <div class="add_to_cart">
-                                        <a href="cart.html" title="add to cart">Add to cart</a>
+                                        <a href="javascript:void(0);" onclick="addToCart()" title="add to cart">Add to cart</a>
                                     </div>
                                 </figcaption>
                             </figure>
@@ -171,7 +171,7 @@
                                     <h3 class="product_name"><a href="{{route('user.home.show')}}">Natus erro at congue massa
                                             commodo sit</a></h3>
                                     <div class="add_to_cart">
-                                        <a href="cart.html" title="add to cart">Add to cart</a>
+                                        <a href="javascript:void(0);" onclick="addToCart()" title="add to cart">Add to cart</a>
                                     </div>
                                 </figcaption>
                             </figure>
@@ -197,7 +197,7 @@
                                     <h3 class="product_name"><a href="{{route('user.home.show')}}">Cras neque honcus consectetur
                                             magna</a></h3>
                                     <div class="add_to_cart">
-                                        <a href="cart.html" title="add to cart">Add to cart</a>
+                                        <a href="javascript:void(0);" onclick="addToCart()" title="add to cart">Add to cart</a>
                                     </div>
                                 </figcaption>
                             </figure>

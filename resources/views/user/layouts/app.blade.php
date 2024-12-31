@@ -9,6 +9,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.ico')}}">
 
+
     <!-- CSS 
     ========================= -->
 
@@ -32,7 +33,8 @@
 
     <!-- Main JS -->
     <script src="{{asset('assets/js/main.js')}}"></script>
-
+    
+    <script src="{{asset('assets/js/popup.js')}}"></script>
 
 
 </body>
