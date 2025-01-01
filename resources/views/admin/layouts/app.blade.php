@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{asset('assetsAdmin\vendor\icon-set\style.css')}}">
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="{{asset('assetsAdmin\css\theme.min.css?v=1.0')}}">
+    <!-- CSS Category -->
+    <link rel="stylesheet" href="{{asset('CssAdmin\category.css')}}">
   </head>
   <body class="footer-offset">
     <script src="{{asset('assetsAdmin\vendor\hs-navbar-vertical-aside\hs-navbar-vertical-aside-mini-cache.js')}}"></script>
