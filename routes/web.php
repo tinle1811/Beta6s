@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AuthController;
 //admin
 use App\Http\Controllers\Admin\AdminAccountController;
 use App\Http\Controllers\Admin\AdminAnalysisController;
@@ -42,6 +43,9 @@ Route::get('/checkout',[CartController::class,'checkout'])->name('user.cart.chec
 Route::get('/account',[AccountController::class,'index'])->name('user.account.index');
 
 Route::get('/search', [SearchController::class, 'index'])->name('user.search.index');
+
+Route::get('/register', [AuthController::class, 'index'])->name('user.auth.register');
+Route::post('/register/add', [AuthController::class, 'register'])->name('register');
 
 //admin
 Route::get("/admin",[AdminAnalysisController::class,"index"])->name("admin.analysis");
