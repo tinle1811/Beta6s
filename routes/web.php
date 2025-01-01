@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\AdminClientController;
 use App\Http\Controllers\Admin\AdminCommentController;
 
 Route::get('/', [HomeController::class, 'index'])->name('user.home.index');
-Route::get('/product-detail', [HomeController::class, 'show'])->name('user.home.show');
+Route::get('/product-detail/{slug}', [HomeController::class, 'show'])->name('user.home.show');
 Route::get('/about', [HomeController::class, 'about'])->name('user.home.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('user.home.contact');
 Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wishlist');

@@ -145,7 +145,7 @@
                                         <li class="menu-item-has-children">
                                             <a href="#">Product Types</a>
                                             <ul class="sub-menu">
-                                                <li><a href="{{route('user.home.show')}}">product details</a></li>
+                                                {{-- <li><a href="{{route('user.home.show', ['slug' => $product->getProductSlug()])}}">product details</a></li> --}}
                                                 <li><a href="product-sidebar.html">product sidebar</a></li>
                                                 <li><a href="product-grouped.html">product grouped</a></li>
                                                 <li><a href="variable-product.html">product variable</a></li>
@@ -501,7 +501,7 @@
                                                     </li>
                                                     <li><a href="#">Product Types</a>
                                                         <ul>
-                                                            <li><a href="{{route('user.home.show')}}">product details</a></li>
+                                                            {{-- <li><a href="{{route('user.home.show', ['slug' => $sanpham->getProductSlug()])}}">product details</a></li> --}}
                                                             <li><a href="product-sidebar.html">product sidebar</a></li>
                                                             <li><a href="product-grouped.html">product grouped</a></li>
                                                             <li><a href="variable-product.html">product variable</a>
@@ -601,7 +601,7 @@
                                                 </li>
                                                 <li><a href="#">Product Types</a>
                                                     <ul>
-                                                        <li><a href="{{route('user.home.show')}}">product details</a></li>
+                                                        {{-- <li><a href="{{route('user.home.show', ['slug' => $sanpham>getProductSlug()])}}">product details</a></li> --}}
                                                         <li><a href="product-sidebar.html">product sidebar</a></li>
                                                         <li><a href="product-grouped.html">product grouped</a></li>
                                                         <li><a href="variable-product.html">product variable</a></li>

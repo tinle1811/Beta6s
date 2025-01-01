@@ -1,7 +1,7 @@
 @extends('user.layouts.app')
-@section('title', $viewData['title'])
+@section('title', $title)
 @section('content')
-    @include('user.layouts.breadcrumbs')
+    {{-- @include('user.layouts.breadcrumbs') --}}
         <!--product details start-->
         <div class="product_details mt-60 mb-60">
         <div class="container">
@@ -10,7 +10,7 @@
                     <div class="product-details-tab">
                         <div id="img-1" class="zoomWrapper single-zoom">
                             <a href="#">
-                                <img id="zoom1" src="assets/img/product/productbig5.jpg"
+                                <img id="zoom1" src="{{asset()}}"
                                     data-zoom-image="assets/img/product/productbig5.jpg" alt="big-1">
                             </a>
                         </div>
@@ -56,7 +56,7 @@
                     <div class="product_d_right">
                         <form action="#">
 
-                            <h1>Nonstick Dishwasher PFOA</h1>
+                            <h1>{{$sanpham->getProductName()}}</h1>
                             <div class="product_nav">
                                 <ul>
                                     <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
@@ -81,9 +81,7 @@
                             </div>
                             <div class="product_desc">
                                 <p>eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus
-                                    eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non
-                                    neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et
-                                    placerat vestibulum, metus nisi posuere nisl, in </p>
+                                    \ </p>
                             </div>
                             <div class="product_timing">
                                 <div data-countdown="2023/12/15"></div>
@@ -166,12 +164,7 @@
                                         est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare
                                         lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus
                                         eu, suscipit id nulla.</p>
-                                    <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis
-                                        fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa
-                                        massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit
-                                        est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere
-                                        nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et,
+                                    <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, qu
                                         luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.
                                     </p>
                                 </div>
@@ -199,11 +192,7 @@
                                 </div>
                                 <div class="product_info_content">
                                     <p>Fashion has been creating well-designed collections since 2010. The brand offers
-                                        feminine designs delivering stylish separates and statement dresses which have
-                                        since evolved into a full ready-to-wear collection in which every item is a
-                                        vital part of a woman's wardrobe. The result? Cool, easy, chic looks with
-                                        youthful elegance and unmistakable signature style. All the beautiful pieces are
-                                        made in Italy and manufactured with the greatest attention. Now Fashion extends
+                                        feminine designs delivering stylish separates and statement dresses which
                                         to a range of accessories including shoes, hats, belts and more!</p>
                                 </div>
                             </div>

@@ -17,12 +17,17 @@ class HomeController extends Controller
         $viewData["DSSP-NoiBat"] = SanPham::skip(10)->limit(10)->get();
         return view('user.home.index')->with('viewData',$viewData);
     }
-
-    public function show()
+    public function show($slug)
     {
-        $viewData['title'] = "Trang chi tiết";
-        return view('user.home.show')->with('viewData',$viewData);
+        $sanpham = SanPham::where('Slug', $slug)->firstOrFail(); 
+        $viewData = [
+            'title' => 'Chi tiết sản phẩm',
+            'sanpham' => $sanpham, 
+        ];
+
+        return view('user.home.show', $viewData); 
     }
+
     public function about()
     {
         $viewData['title'] = "Trang giới thiệu";

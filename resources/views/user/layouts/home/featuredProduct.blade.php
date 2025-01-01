@@ -14,7 +14,7 @@
                             <article class="single_product">
                                 <figure>
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="{{ route('user.home.show') }}"><img
+                                        <a class="primary_img" href="{{ route('user.home.show',['slug'=>$product->getProductSlug()]) }}"><img
                                                 src="{{ asset('/assetsUser/img_product'.$product->getProductImage()) }}" alt="{{ $product->getProductName() }}"></a>
                                         {{-- <a class="secondary_img" href="{{ route('user.home.show') }}"><img
                                                 src="assets/img/product/product14.jpg" alt=""></a> --}}
@@ -26,7 +26,7 @@
                                         <div class="price_box">
                                             <span class="current_price">{{ $product->getProductPrice() }}</span>
                                         </div>
-                                        <h3 class="product_name"><a href="{{ route('user.home.show') }}">{{ $product->getProductName() }}</a></h3>
+                                        <h3 class="product_name"><a href="{{ route('user.home.show',['slug'=>$product->getProductSlug()]) }}">{{ $product->getProductName() }}</a></h3>
                                         <div class="add_to_cart">
                                             <a href="cart.html" title="add to cart">Thêm vào giỏ hàng</a>
                                         </div>
