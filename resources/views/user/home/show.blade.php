@@ -255,7 +255,8 @@
                 </div>
             </div>
             <div class="product_carousel product_column5 owl-carousel">
-                <article class="single_product">
+                @foreach ($relatedProducts as $related)
+                    <article class="single_product">
                     <figure>
                         <div class="product_thumb">
                             <a class="primary_img" href="product-details.html"><img
@@ -281,14 +282,15 @@
                         </div>
                         <figcaption class="product_content">
                             <div class="price_box">
-                                <span class="old_price">$86.00</span>
-                                <span class="current_price">$79.00</span>
+                                <span class="old_price">{{$related->getProductPrice()}}</span>
+                                <span class="current_price">{{$related->getProductPrice()}}</span>
                             </div>
-                            <h3 class="product_name"><a href="product-details.html">Natus erro at congue massa commodo
-                                    sit</a></h3>
+                            <h3 class="product_name"><a href="{{route('user.home.show', ['slug' => $related->getProductSlug()])}}">{{$related->TenSP}}</a></h3>
                         </figcaption>
                     </figure>
-                </article>
+                    </article>
+                @endforeach
+{{--                 
                 <article class="single_product">
                     <figure>
                         <div class="product_thumb">
@@ -492,7 +494,7 @@
                                     sit</a></h3>
                         </figcaption>
                     </figure>
-                </article>
+                </article> --}}
             </div>
         </div>
     </section>

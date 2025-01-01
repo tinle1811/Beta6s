@@ -20,9 +20,15 @@ class HomeController extends Controller
     public function show($slug)
     {
         $sanpham = SanPham::where('Slug', $slug)->firstOrFail(); 
+        $relatedProducts = SanPham::where('LoaiSP', $sanpham->LoaiSP)
+                               ->where('MaSP', '!=', $sanpham->MaSP)
+                               ->limit(5) 
+                               ->get();
+
         $viewData = [
             'title' => 'Chi tiết sản phẩm',
             'sanpham' => $sanpham, 
+            'relatedProducts' => $relatedProducts
         ];
 
         return view('user.home.show', $viewData); 
