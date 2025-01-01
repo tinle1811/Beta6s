@@ -5,6 +5,8 @@
         <div class="alert alert-success">
                 {{ session('success') }}
         </div>
+        @elseif(session('error'))
+        <div class="alert alert-error">{{ session('error') }}</div>
         @endif
         @include('user.layouts.home.slider')
         @include('user.layouts.home.shippingArea')

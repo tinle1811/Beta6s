@@ -21,6 +21,7 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/chat.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/popup_login.css')}}">
 </head>
 
 <body>  
@@ -36,6 +37,7 @@
     <!-- Main JS -->
     <script src="{{asset('assets/js/main.js')}}"></script>
     <script src="{{asset('assets/js/chat.js')}}"></script>
+    <script src="{{asset('assets/js/popup_login')}}"></script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

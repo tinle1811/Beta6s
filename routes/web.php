@@ -23,7 +23,16 @@ use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminClientController;
 use App\Http\Controllers\Admin\AdminCommentController;
 
+// Route login & register
+Route::get('/register', [AuthController::class, 'index'])->name('user.auth.register');
+Route::post('/register/add', [AuthController::class, 'register'])->name('register');
+Route::post('/login',[AuthController::class,'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Các route người dùng sử dụng middleware
+Route::middleware(['auth', 'checkRole:user'])->group(function () {
+   Route::get('/', [HomeController::class, 'index'])->name('user.home.index');
+});
 Route::get('/', [HomeController::class, 'index'])->name('user.home.index');
 Route::get('/product-detail', [HomeController::class, 'show'])->name('user.home.show');
 Route::get('/about', [HomeController::class, 'about'])->name('user.home.about');
@@ -43,12 +52,11 @@ Route::get('/checkout',[CartController::class,'checkout'])->name('user.cart.chec
 Route::get('/account',[AccountController::class,'index'])->name('user.account.index');
 
 Route::get('/search', [SearchController::class, 'index'])->name('user.search.index');
-
-Route::get('/register', [AuthController::class, 'index'])->name('user.auth.register');
-Route::post('/register/add', [AuthController::class, 'register'])->name('register');
-
 //admin
-Route::get("/admin",[AdminAnalysisController::class,"index"])->name("admin.analysis");
+// Các route admin sử dụng middleware
+Route::middleware(['auth', 'checkRole:admin'])->group(function () {
+   Route::get("/admin",[AdminAnalysisController::class,"index"])->name("admin.analysis");
+});
 
 Route::get('/admin/product', [AdminProductController::class,"index"])->name("admin.product");
 Route::get('/admin/product/create',[AdminProductController::class,"create"])->name("admin.product.create");
