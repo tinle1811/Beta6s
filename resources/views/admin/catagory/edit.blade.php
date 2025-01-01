@@ -1,58 +1,101 @@
 @extends('admin.layouts.app')
 @section('content')
-<main id="content" role="main" class="main">
-    <!-- Content -->
-    <div class="content container-fluid">
-      <!-- Page Header -->
-      <div class="page-header">
-        <div class="row align-items-center">
-          <div class="col-sm mb-2 mb-sm-0">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb breadcrumb-no-gutter">
-                <li class="breadcrumb-item"><a class="breadcrumb-link" href="ecommerce-products.html">Products</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Add product</li>
-              </ol>
-            </nav>
+    <main id="content" role="main" class="main">
+        <!-- Content -->
+        <div class="content container-fluid">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col-sm mb-2 mb-sm-0">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb breadcrumb-no-gutter">
+                                <li class="breadcrumb-item"><a class="breadcrumb-link"
+                                        href="{{ route('admin.catagory') }}">Loại sản phẩm</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa loại sản phẩm</li>
+                            </ol>
+                        </nav>
 
-            <h1 class="page-header-title">{{$viewData["title"]}}</h1>
-          </div>
-        </div>
-        <!-- End Row -->
-      </div>
-      <!-- End Page Header -->
-
-      <div class="row">
-        <div class="col-lg-8">
-          <!-- Card -->
-          <div class="card mb-3 mb-lg-5">
-            <!-- Header -->
-            <div class="card-header">
-              <h4 class="card-header-title">Product information</h4>
+                        <h1 class="page-header-title">{{ $viewData['title'] }}</h1>
+                    </div>
+                </div>
+                <!-- End Row -->
             </div>
-            <!-- End Header -->
+            <!-- End Page Header -->
 
-            <!-- Body -->
-            <div class="card-body">
-              <!-- Form Group -->
-              <div class="form-group">
-                <label for="productNameLabel" class="input-label">Name <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip" data-placement="top" title="Products are the goods or services you sell."></i></label>
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Card -->
+                    <div class="card mb-3 mb-lg-5">
+                        <!-- Header -->
+                        <div class="card-header">
+                            <h4 class="card-header-title">Thông tin loại sản phẩm</h4>
+                        </div>
+                        <!-- End Header -->
 
-                <input type="text" class="form-control" name="productName" id="productNameLabel" placeholder="Shirt, t-shirts, etc." aria-label="Shirt, t-shirts, etc.">
-              </div>
-              <!-- End Form Group -->
+                        <!-- Body -->
+                        <div class="card-body">
+                            <form
+                                action="{{ route('admin.catagory.editSubmitForm', ['id' => $viewData['category']->getCategoryId()]) }}"
+                                method="post">
+                                @csrf
+                                @method('PUT')
+                                <!-- Form Group -->
+                                <div class="form-group">
+                                    <label for="categoryIdLabel" class="input-label">Mã loại sản phẩm <i
+                                            class="tio-help-outlined text-body ml-1" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Products are the goods or services you sell."></i></label>
 
-              <div class="row">
-                <div class="col-sm-6">
+                                    <input type="text" class="form-control" style="cursor: not-allowed; font-weight: bold;" name="categoryId" id="categoryIdLabel"
+                                        value="{{ $viewData['category']->getCategoryId() }}" readonly>
+                                </div>
+                                <!-- End Form Group -->
+
+                                <!-- Form Group -->
+                                <div class="form-group">
+                                    <label for="categoryNameLabel" class="input-label">Tên loại sản phẩm <i
+                                            class="tio-help-outlined text-body ml-1" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Products are the goods or services you sell."></i></label>
+
+                                    <input type="text" class="form-control" name="categoryName" id="categoryNameLabel"
+                                        value="{{ $viewData['category']->getCategoryName() }}">
+                                </div>
+                                <!-- End Form Group -->
+
+                                <!-- Form Group -->
+                                <div class="form-group">
+                                    <label for="categoryStatusLabel" class="input-label">Trạng thái <i
+                                            class="tio-help-outlined text-body ml-1" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Products are the goods or services you sell."></i></label>
+
+                                    <select class="form-control" name="categoryStatus" id="categoryStatusLabel">
+                                        @if ($viewData['category']->getCategoryStatus() == 1)
+                                            <option value="1" selected>1</option>
+                                            <option value="0">0</option>
+                                        @else
+                                            <option value="1">1</option>
+                                            <option value="0" selected>0</option>
+                                        @endif
+                                    </select>
+                                </div>
+                                <!-- End Form Group -->
+                                <button type="submit" class="btn btn-dark" id="btn-edit-category">Lưu</button>
+                            </form>
+
+                            {{-- <div class="row"> --}}
+                            {{-- <div class="col-sm-6">
                   <!-- Form Group -->
                 <div class="form-group">
-                  <label for="SKULabel" class="input-label">SKU</label>
+                  <label for="SKULabel" class="input-label">Trạng thái</label>
 
                   <input type="text" class="form-control" name="SKU" id="SKULabel" placeholder="eg. 348121032" aria-label="eg. 348121032">
                 </div>
                 <!-- End Form Group -->
-                </div>
+                </div> --}}
 
-                <div class="col-sm-6">
+                            {{-- <div class="col-sm-6">
                   <!-- Form Group -->
                   <div class="form-group">
                     <label for="weightLabel" class="input-label">Weight</label>
@@ -80,27 +123,27 @@
                     <small class="form-text">Used to calculate shipping rates at checkout and label prices during fulfillment.</small>
                   </div>
                   <!-- End Form Group -->
-                </div>
-              </div>
-              <!-- End Row -->
-              
-              <label class="input-label">Description <span class="input-label-secondary">(Optional)</span></label>
+                </div> --}}
+                            {{-- </div> --}}
+                            <!-- End Row -->
 
-              <!-- Quill -->
-              <div class="quill-custom">
+                            {{-- <label class="input-label">Description <span class="input-label-secondary">(Optional)</span></label> --}}
+
+                            <!-- Quill -->
+                            {{-- <div class="quill-custom">
                 <div class="js-quill" style="min-height: 15rem;" data-hs-quill-options='{
                         "placeholder": "Type your description..."
                        }'>
                 </div>
-              </div>
-              <!-- End Quill -->
-            </div>
-            <!-- Body -->
-          </div>
-          <!-- End Card -->
+              </div> --}}
+                            <!-- End Quill -->
+                        </div>
+                        <!-- Body -->
+                    </div>
+                    <!-- End Card -->
 
-          <!-- Card -->
-          <div class="card mb-3 mb-lg-5">
+                    <!-- Card -->
+                    {{-- <div class="card mb-3 mb-lg-5">
             <!-- Header -->
             <div class="card-header">
               <h4 class="card-header-title">Media</h4>
@@ -141,11 +184,11 @@
               <!-- End Dropzone -->
             </div>
             <!-- Body -->
-          </div>
-          <!-- End Card -->
+          </div> --}}
+                    <!-- End Card -->
 
-          <!-- Card -->
-          <div class="card">
+                    <!-- Card -->
+                    {{-- <div class="card">
             <!-- Header -->
             <div class="card-header">
               <h4 class="card-header-title">Variants</h4>
@@ -242,11 +285,11 @@
               <!-- End Add Another Option Input Field -->
             </div>
             <!-- Body -->
-          </div>
-          <!-- End Card -->
-        </div>
+          </div> --}}
+                    <!-- End Card -->
+                </div>
 
-        <div class="col-lg-4">
+                {{-- <div class="col-lg-4">
           <!-- Card -->
           <div class="card mb-3 mb-lg-5">
             <!-- Header -->
@@ -510,11 +553,11 @@
             <!-- End Body -->
           </div>
           <!-- End Card -->
-        </div>
-      </div>
-      <!-- End Row -->
+        </div> --}}
+            </div>
+            <!-- End Row -->
 
-      <div class="position-fixed bottom-0 content-centered-x w-100 z-index-99 mb-3" style="max-width: 40rem;">
+            {{-- <div class="position-fixed bottom-0 content-centered-x w-100 z-index-99 mb-3" style="max-width: 40rem;">
         <!-- Card -->
         <div class="card card-sm bg-dark border-dark mx-2">
           <div class="card-body">
@@ -531,6 +574,6 @@
           </div>
         </div>
         <!-- End Card -->
-      </div>
-    </div>  
-@endsection
+      </div> --}}
+        </div>
+    @endsection
