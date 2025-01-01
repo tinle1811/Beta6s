@@ -1,7 +1,7 @@
 @extends('user.layouts.app')
 @section('title', $title)
 @section('content')
-    {{-- @include('user.layouts.breadcrumbs') --}}
+    @include('user.layouts.breadcrumbs')
         <!--product details start-->
         <div class="product_details mt-60 mb-60">
         <div class="container">
@@ -10,7 +10,7 @@
                     <div class="product-details-tab">
                         <div id="img-1" class="zoomWrapper single-zoom">
                             <a href="#">
-                                <img id="zoom1" src="{{asset()}}"
+                                <img id="zoom1" src="assets/img/product/productbig5.jpg"
                                     data-zoom-image="assets/img/product/productbig5.jpg" alt="big-1">
                             </a>
                         </div>
@@ -75,15 +75,21 @@
 
                             </div>
                             <div class="price_box">
-                                <span class="current_price">$70.00</span>
-                                <span class="old_price">$80.00</span>
+                                <span class="current_price">{{$sanpham->getProductPrice() -($sanpham->getProductPrice() *10/100)}} VND</span>
+                                <span class="old_price">${{$sanpham->getProductPrice()}} VND</span>
 
                             </div>
                             <div class="product_desc">
-                                <p>eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus
-                                    \ </p>
+                                <p>{{$sanpham->getProductDescription()}}</p>
                             </div>
-                            <div class="product_timing">
+                            <div class="product_status">
+                                @if($sanpham->getProductStatus() == 1)
+                                    <span style="color: green; font-weight: bold;font-size:30px">Còn hàng</span>
+                                @else
+                                    <span style="color: red; font-weight: bold;font-size:30px">Hết hàng</span>
+                                @endif
+                            </div>
+                            {{-- <div class="product_timing">
                                 <div data-countdown="2023/12/15"></div>
                             </div>
                             <div class="product_variant color">
@@ -95,7 +101,7 @@
                                     <li class="color3"><a href="#"></a></li>
                                     <li class="color4"><a href="#"></a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                             <div class="product_variant quantity">
                                 <label>quantity</label>
                                 <input min="1" max="100" value="1" type="number">
@@ -148,10 +154,6 @@
                                         aria-selected="false">Description</a>
                                 </li>
                                 <li>
-                                    <a data-bs-toggle="tab" href="#sheet" role="tab" aria-controls="sheet"
-                                        aria-selected="false">Specification</a>
-                                </li>
-                                <li>
                                     <a data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
                                         aria-selected="false">Reviews (1)</a>
                                 </li>
@@ -160,39 +162,16 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="info" role="tabpanel">
                                 <div class="product_info_content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec
-                                        est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare
-                                        lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus
-                                        eu, suscipit id nulla.</p>
-                                    <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, qu
-                                        luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.
-                                    </p>
+                                    <p>{{$sanpham->getProductDescription()}}</p>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="sheet" role="tabpanel">
-                                <div class="product_d_table">
-                                    <form action="#">
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="first_child">Compositions</td>
-                                                    <td>Polyester</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="first_child">Styles</td>
-                                                    <td>Girly</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="first_child">Properties</td>
-                                                    <td>Short Dress</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </form>
-                                </div>
                                 <div class="product_info_content">
                                     <p>Fashion has been creating well-designed collections since 2010. The brand offers
-                                        feminine designs delivering stylish separates and statement dresses which
+                                        feminine designs delivering stylish separates and statement dresses which have
+                                        since evolved into a full ready-to-wear collection in which every item is a
+                                        vital part of a woman's wardrobe. The result? Cool, easy, chic looks with
+                                        youthful elegance and unmistakable signature style. All the beautiful pieces are
+                                        made in Italy and manufactured with the greatest attention. Now Fashion extends
                                         to a range of accessories including shoes, hats, belts and more!</p>
                                 </div>
                             </div>

@@ -81,7 +81,13 @@ class SanPham extends Model {
     public function setProductType( $producttype ) {
         $this->attributes[ 'LoaiSP' ] = $producttype;
     }
+    public function getProductStatus() {
+        return $this->attributes[ 'TrangThai' ];
+    }
 
+    public function setProductStatus( $productstatus ) {
+        $this->attributes[ 'TrangThai' ] = $productstatus;
+    }
     public function getCreatedAt() {
         return $this->attributes[ 'created_at' ];
     }
