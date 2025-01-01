@@ -40,7 +40,10 @@ Route::get("/admin",[AdminAnalysisController::class,"index"])->name("admin.analy
 
 Route::get('/admin/product', [AdminProductController::class,"index"])->name("admin.product");
 Route::get('/admin/product/create',[AdminProductController::class,"create"])->name("admin.product.create");
+Route::post('/admin/product/createPost',[AdminProductController::class,"createPost"])->name("admin.product.createPost");
+
 Route::get('/admin/product/edit',[AdminProductController::class,"edit"])->name("admin.product.edit");
+Route::get('/admin/product/delete/{id}',[AdminProductController::class,"delete"])->name("admin.product.delete");
 
 Route::get('/admin/catagory',[AdminCatagoryController::class,"index"])->name("admin.catagory");
 Route::get('/admin/catagory/create',[AdminCatagoryController::class,"create"])->name("admin.catagory.create");

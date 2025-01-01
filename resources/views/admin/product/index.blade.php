@@ -8,7 +8,7 @@
       <div class="page-header">
         <div class="row align-items-center mb-3">
           <div class="col-sm mb-2 mb-sm-0">
-            <h1 class="page-header-title">{{$viewData['title']}} <span class="badge badge-soft-dark ml-2">72,031</span></h1>
+            <h1 class="page-header-title">{{$title}} <span class="badge badge-soft-dark ml-2">72,031</span></h1>
 
             <div class="mt-2">
               <a class="text-body mr-3" href="javascript:;" data-toggle="modal" data-target="#exportProductsModal">
@@ -21,7 +21,7 @@
           </div>
 
           <div class="col-sm-auto">
-            <a class="btn btn-primary" href="ecommerce-add-product.html">Add product</a>
+            <a class="btn btn-primary" href="{{route("admin.product.create")}}">Add product</a>
           </div>
         </div>
         <!-- End Row -->
@@ -270,93 +270,66 @@
                   "isShowPaging": false,
                   "pagination": "datatablePagination"
                 }'>
-            <thead class="thead-light">
+            <thead class="thead-light style=text-align:center">
               <tr>
-                <th scope="col" class="table-column-pr-0">
+                {{-- <th scope="col" class="table-column-pr-0">
                   <div class="custom-control custom-checkbox">
                     <input id="datatableCheckAll" type="checkbox" class="custom-control-input">
                     <label class="custom-control-label" for="datatableCheckAll"></label>
                   </div>
-                </th>
-                <th class="table-column-pl-0">Product</th>
-                <th>Type</th>
-                <th>Vendor</th>
-                <th>Stocks</th>
-                <th>SKU</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Variants</th>
-                <th>Actions</th>
+                </th> --}}
+                <th>Mã Sản Phẩm</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Giá</th>
+                <th>Số Lượng</th>
+                <th>Mô Tả</th>
+                <th>Hình Ảnh</th>
+                <th>Loại Sản Phẩm</th>
+                <th>Trạng Thái</th>
+                <th>Hành Động </th>
               </tr>
             </thead>
 
             <tbody>
-              <tr>
-                <td class="table-column-pr-0">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="productsCheck1">
-                    <label class="custom-control-label" for="productsCheck1"></label>
-                  </div>
-                </td>
-                <td class="table-column-pl-0">
-                  <a class="media align-items-center" href="ecommerce-product-details.html">
-                    <img class="avatar avatar-lg mr-3" src="assets\img\400x400\img4.jpg" alt="Image Description">
-                    <div class="media-body">
-                      <h5 class="text-hover-primary mb-0">Photive wireless speakers</h5>
-                    </div>
-                  </a>
-                </td>
-                <td>Electronics</td>
-                <td>Google</td>
-                <td>
-                  <label class="toggle-switch toggle-switch-sm" for="stocksCheckbox1">
-                    <input type="checkbox" class="toggle-switch-input" id="stocksCheckbox1" checked="">
-                    <span class="toggle-switch-label">
-                      <span class="toggle-switch-indicator"></span>
-                    </span>
-                  </label>
-                </td>
-                <td>2384741241</td>
-                <td>$65</td>
-                <td>60</td>
-                <td>2</td>
-                <td>
-                  <div class="btn-group" role="group">
-                    <a class="btn btn-sm btn-danger" href="ecommerce-product-details.html">
-                      <i class="tio-edit"></i> Edit
-                    </a>
-                  <div class="btn-group" role="group">
-                      <a class="btn btn-sm btn-success" href="ecommerce-product-details.html">
-                        <i class="tio-trash"></i> delete
-                      </a>
-                    <!-- Unfold -->
-                    {{-- <div class="hs-unfold btn-group">
-                      <a class="js-hs-unfold-invoker btn btn-icon btn-sm btn-white dropdown-toggle dropdown-toggle-empty" href="javascript:;" data-hs-unfold-options='{
-                          "target": "#productsEditDropdown1",
-                          "type": "css-animation",
-                          "smartPositionOffEl": "#datatable"
-                        }'></a>
+              @foreach ($products as $product)
+                  <tr>
+                    <td>
+                      <p>{{$product->MaSP}}</p>
+                    </td>
+                    <td>
+                      <p>{{$product->TenSP}}</p>
+                    </td>
+                    <td>
+                      <p>{{$product->Gia}}</p>
+                    </td>
+                    <td>
+                      <p>{{$product->SoLuong}}</p>
+                    </td>
+                    <td>
+                      <p>{{$product->MoTa}}</p>
+                    </td>
+                    <td>
+                      <img src="{{ asset('storage/' . $product->HinhAnh) }}" alt="{{ $product->TenSP }}" width="100">
+                    </td>
+                    <td>
+                      <p>{{$product->LoaiSP}}</p>
+                    </td>
+                    <td>
+                      <p>{{$product->TrangThai}}</p>
+                    </td>
+                    <td>
+                      <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-primary">Sửa</a>
+                      {{-- <form action="{{ route('admin.product.delete', $product->id) }}" method="POST" style="display:inline;">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger">Xóa</button>
+                      </form> --}}
+                    </td>
+                  </tr>
 
-                      <div id="productsEditDropdown1" class="hs-unfold-content dropdown-unfold dropdown-menu dropdown-menu-right mt-1">
-                        <a class="dropdown-item" href="#">
-                          <i class="tio-delete-outlined dropdown-item-icon"></i> Delete
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          <i class="tio-archive dropdown-item-icon"></i> Archive
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          <i class="tio-publish dropdown-item-icon"></i> Publish
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          <i class="tio-clear dropdown-item-icon"></i> Unpublish
-                        </a>
-                      </div>
-                    </div> --}}
-                    <!-- End Unfold -->
-                  </div>
-                </td>
-              </tr>
-
+              @endforeach
+              
+           
           
             </tbody>
           </table>
