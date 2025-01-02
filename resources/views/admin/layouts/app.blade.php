@@ -5,6 +5,7 @@
     <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Title -->
     <title>Products - E-commerce | Front - Admin &amp; Dashboard Template</title>
 
@@ -17,6 +18,8 @@
     <link rel="stylesheet" href="{{ asset('assetsAdmin\vendor\icon-set\style.css') }}">
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="{{ asset('assetsAdmin\css\theme.min.css?v=1.0') }}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
 </head>
 
 <body class="footer-offset">
@@ -45,12 +48,18 @@
     <script src="{{ asset('assetsAdmin\vendor\chart.js.extensions\chartjs-extensions.js') }}"></script>
     <script src="{{ asset('assetsAdmin\vendor\chartjs-plugin-datalabels\dist\chartjs-plugin-datalabels.min.js') }}">
     </script>
+    {{-- thống kê doanh thu --}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
     <!-- JS Front -->
     <script src="{{ asset('assetsAdmin\js\theme.min.js') }}"></script>
     <!-- JS Plugins Init. -->
     <script>
         $(document).on('ready', function() {
+
+            //Chạy thống kê doanh thu mặc định
+            chart30daysorder();
             // ONLY DEV
             // =======================================================
 
@@ -128,6 +137,7 @@
             $('.js-select2-custom').each(function() {
                 var select2 = $.HSCore.components.HSSelect2.init($(this));
             });
+
 
 
             // INITIALIZATION OF CHARTJS
@@ -258,6 +268,7 @@
 
             // INITIALIZATION OF DATERANGEPICKER
             // =======================================================
+            //Bảng custom ngày
             $('.js-daterangepicker').daterangepicker();
 
             $('.js-daterangepicker-times').daterangepicker({
@@ -269,6 +280,7 @@
                 }
             });
 
+            //Bảng chọn selector
             var start = moment();
             var end = moment();
 
@@ -292,6 +304,34 @@
             }, cb);
 
             cb(start, end);
+
+            // Gửi dữ liệu qua AJAX khi chọn ngày
+            $('#js-daterangepicker-predefined').on('apply.daterangepicker', function(ev, picker) {
+                var startDate = picker.startDate.format('YYYY-MM-DD');
+                var endDate = picker.endDate.format('YYYY-MM-DD');
+                // Lấy token CSRF để bảo mật yêu cầu
+                var token = $('meta[name="csrf-token"]').attr('content');
+                // Gửi AJAX request tới controller
+                // Gửi yêu cầu Ajax
+                $.ajax({
+                    url: "{{ url('/admin/date') }}", // Đảm bảo URL đúng
+                    method: "POST",
+                    dataType: "JSON",
+                    data: {
+                        _token: token, // Token CSRF
+                        startDate: startDate, // Ngày bắt đầu
+                        endDate: endDate // Ngày kết thúc
+                    },
+                    success: function(data) {
+                        // Gọi hàm để vẽ dữ liệu vào biểu đồ hoặc hiển thị dữ liệu
+                        chart.setData(
+                            data); // Giả sử bạn có đối tượng `chart` để hiển thị dữ liệu
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Đã xảy ra lỗi: ' + error);
+                    }
+                });
+            });
 
 
             // INITIALIZATION OF DATATABLES
@@ -345,6 +385,141 @@
                 var clipboard = $.HSCore.components.HSClipboard.init(this);
             });
         });
+
+
+
+        //THONG KE DOANH THU
+        var chart = new Morris.Bar({
+            element: 'chart',
+            //Line
+            barColors: ['#ff69b4', '#800080'],
+            pointFillColors: ['#ffffff'],
+            pointStrokeColors: ['black'],
+            fillopacity: 0.6,
+            hideHover: 'auto',
+            parseTime: false,
+
+            xkey: 'period',
+            ykeys: ['sales', 'profit'],
+
+            behavelikeLine: true,
+            labels: ['doanh thu', 'lợi nhuận']
+        });
+
+        function getWeekDates(type) {
+            const currentDate = new Date();
+            let startOfWeek, endOfWeek;
+
+            if (type === 'thisWeek') {
+                const dayOfWeek = currentDate.getDay();
+                const diffToMonday = (dayOfWeek === 0 ? 6 : dayOfWeek - 1);
+                startOfWeek = new Date(currentDate);
+                startOfWeek.setDate(currentDate.getDate() - diffToMonday);
+                endOfWeek = new Date(startOfWeek);
+                endOfWeek.setDate(startOfWeek.getDate() + 6);
+            }
+
+            if (type === 'lastWeek') {
+                startOfWeek = new Date(currentDate);
+                startOfWeek.setDate(currentDate.getDate() - currentDate.getDay() - 7);
+                endOfWeek = new Date(startOfWeek);
+                endOfWeek.setDate(startOfWeek.getDate() + 6);
+            }
+
+            return {
+                startOfWeek: startOfWeek.toISOString().split('T')[0],
+                endOfWeek: endOfWeek.toISOString().split('T')[0]
+            };
+        }
+
+        $('#thisWeek').click(function() {
+            // Lấy giá trị từ hàm getWeekDates cho tuần này
+            var weekDates = getWeekDates('thisWeek');
+            var from_date = weekDates.startOfWeek;
+            var to_date = weekDates.endOfWeek;
+
+            // Kiểm tra xem các trường ngày có được nhập hay không
+            if (!from_date || !to_date) {
+                alert('Vui lòng chọn cả ngày bắt đầu và kết thúc.');
+                return;
+            }
+
+            // Lấy token CSRF để bảo mật yêu cầu
+            var token = $('meta[name="csrf-token"]').attr('content');
+
+            // Gửi yêu cầu Ajax
+            $.ajax({
+                url: "{{ url('/admin/date') }}", // Đảm bảo URL đúng
+                method: "POST",
+                dataType: "JSON",
+                data: {
+                    _token: token, // Token CSRF
+                    startDate: from_date, // Ngày bắt đầu
+                    endDate: to_date // Ngày kết thúc
+                },
+                success: function(data) {
+                    // Gọi hàm để vẽ dữ liệu vào biểu đồ hoặc hiển thị dữ liệu
+                    chart.setData(data); // Giả sử bạn có đối tượng `chart` để hiển thị dữ liệu
+                },
+                error: function(xhr, status, error) {
+                    alert('Đã xảy ra lỗi: ' + error);
+                }
+            });
+        });
+        $('#lastWeek').click(function() {
+            // Lấy giá trị từ hàm getWeekDates cho tuần này
+            var weekDates = getWeekDates('lastWeek');
+            var from_date = weekDates.startOfWeek;
+            var to_date = weekDates.endOfWeek;
+
+            // Kiểm tra xem các trường ngày có được nhập hay không
+            if (!from_date || !to_date) {
+                alert('Vui lòng chọn cả ngày bắt đầu và kết thúc.');
+                return;
+            }
+            // Lấy token CSRF để bảo mật yêu cầu
+            var token = $('meta[name="csrf-token"]').attr('content');
+
+            // Gửi yêu cầu Ajax
+            $.ajax({
+                url: "{{ url('/admin/date') }}", // Đảm bảo URL đúng
+                method: "POST",
+                dataType: "JSON",
+                data: {
+                    _token: token, // Token CSRF
+                    startDate: from_date, // Ngày bắt đầu
+                    endDate: to_date // Ngày kết thúc
+                },
+                success: function(data) {
+                    // Gọi hàm để vẽ dữ liệu vào biểu đồ hoặc hiển thị dữ liệu
+                    chart.setData(data); // Giả sử bạn có đối tượng `chart` để hiển thị dữ liệu
+                },
+                error: function(xhr, status, error) {
+                    alert('Đã xảy ra lỗi: ' + error);
+                }
+            });
+        });
+
+        // Hàm thống kê 30 ngày qua
+        function chart30daysorder() {
+            // Lấy token CSRF để bảo mật yêu cầu
+            var token = $('meta[name="csrf-token"]').attr('content');
+
+            $.ajax({
+                url: "{{ url('/admin') }}", // Đảm bảo URL chính xác
+                method: "POST",
+                dataType: "JSON",
+                data: {
+                    _token: token
+                },
+                success: function(data) {
+                    chart.setData(data); // Cập nhật dữ liệu cho chart
+                },
+                error: function(xhr, status, error) {
+                    console.error("Có lỗi xảy ra: ", error); // Xử lý lỗi nếu có
+                }
+            });
+        }
     </script>
 
     <!-- Thong Ke doanh thu -->

@@ -61,30 +61,15 @@
 
                     <!-- Nav -->
                     <ul class="nav nav-segment nav-fill" id="projectsTab" role="tablist">
-                        {{-- <li class="nav-item" data-toggle="chart" data-datasets="0" data-trigger="click"
-                            data-action="toggle">
-                            <a class="nav-link active" href="javascript:;" data-toggle="tab" id="thisWeek"
-                                onclick="loadData('thisWeek')">Tuần này</a>
-                        </li>
-                        <li class="nav-item" data-toggle="chart" data-datasets="1" data-trigger="click"
-                            data-action="toggle">
-                            <a class="nav-link" href="javascript:;" data-toggle="tab" id="lastWeek"
-                                onclick="loadData('lastWeek')">Tuần
-                                trước</a>
-                        </li> --}}
                         <li class="nav-item" data-toggle="chart" data-datasets="0" data-trigger="click"
                             data-action="toggle">
-                            <a class="nav-link active" href="javascript:;" data-toggle="tab" id="thisWeek">Tuần này</a>
+                            <a class="nav-link active" href="javascript:;" data-toggle="tab">Tuần này</a>
                         </li>
                         <li class="nav-item" data-toggle="chart" data-datasets="1" data-trigger="click"
                             data-action="toggle">
-                            <a class="nav-link" href="javascript:;" data-toggle="tab" id="lastWeek">Tuần
-                                trước</a>
+                            <a class="nav-link" href="javascript:;" data-toggle="tab">Tuần trước</a>
                         </li>
                     </ul>
-
-                    <!-- Content to display the data -->
-                    <div id="dataContainer"></div>
                     <!-- End Nav -->
                 </div>
                 <!-- End Header -->
@@ -94,10 +79,10 @@
                     <div class="row align-items-sm-center mb-4">
                         <div class="col-sm mb-3 mb-sm-0">
                             <div class="d-flex align-items-center">
-                                <span class="h1 mb-0"></span>
+                                <span class="h1 mb-0">$7,431.14 USD</span>
 
                                 <span class="text-success ml-2">
-                                    <i class="tio-trending-up"></i>
+                                    <i class="tio-trending-up"></i> 25.3%
                                 </span>
                             </div>
                         </div>
@@ -106,10 +91,10 @@
                             <!-- Legend Indicators -->
                             <div class="row font-size-sm">
                                 <div class="col-auto">
-                                    <span class="legend-indicator" style="background-color: #ff69b4;"></span> Doanh thu
+                                    <span class="legend-indicator bg-primary"></span> Doanh thu
                                 </div>
                                 <div class="col-auto">
-                                    <span class="legend-indicator" style="background-color: #800080;"></span> Lợi nhuận
+                                    <span class="legend-indicator bg-info"></span> Lợi nhuận
                                 </div>
                             </div>
                             <!-- End Legend Indicators -->
@@ -118,7 +103,7 @@
                     <!-- End Row -->
 
                     <!-- Bar Chart -->
-                    {{-- <div class="chartjs-custom" style="height: 18rem;">
+                    <div class="chartjs-custom" style="height: 18rem;">
                         <canvas id="updatingData"
                             data-hs-chartjs-options='{
                       "type": "line",
@@ -193,10 +178,7 @@
                       }
                     }'>
                         </canvas>
-                    </div> --}}
-
-
-                    <div id="chart" style="height: 250px;"></div>
+                    </div>
                     <!-- End Bar Chart -->
                 </div>
                 <!-- End Body -->
