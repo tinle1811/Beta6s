@@ -38,7 +38,7 @@ Route::get('/account', [AccountController::class, 'index'])->name('user.account.
 
 //admin
 Route::get("/admin", [AdminAnalysisController::class, "index"])->name("admin.analysis");
-
+Route::post("/admin/date", [AdminAnalysisController::class, "filter_by_date"])->name("admin.analysis.filter_by_date");
 Route::get('/admin/product', [AdminProductController::class, "index"])->name("admin.product");
 Route::get('/admin/product/create', [AdminProductController::class, "create"])->name("admin.product.create");
 Route::get('/admin/product/edit', [AdminProductController::class, "edit"])->name("admin.product.edit");
