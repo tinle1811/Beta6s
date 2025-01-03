@@ -23,48 +23,36 @@ use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminClientController;
 use App\Http\Controllers\Admin\AdminCommentController;
 
-// Route login & register
+// Route login, logout & register
 Route::get('/register', [AuthController::class, 'index'])->name('user.auth.register');
 Route::post('/register/add', [AuthController::class, 'register'])->name('register');
 Route::post('/login',[AuthController::class,'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Các route người dùng sử dụng middleware
-Route::middleware(['auth', 'checkRole:user'])->group(function () {
+// route không yêu cầu đăng nhập
+Route::get('/', [HomeController::class, 'index'])->name('user.home.index');
+Route::get('/product-detail', [HomeController::class, 'show'])->name('user.home.show');
+Route::get('/about', [HomeController::class, 'about'])->name('user.home.about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('user.home.contact');
+Route::get('/blog',[BlogController::class,'index'])->name('user.blog.index');
+Route::get('/blog-detail',[BlogController::class,'show'])->name('user.blog.show');
+Route::get('/search', [SearchController::class, 'index'])->name('user.search.index');
+
+// các route chung cho cả hai phân hệ
+Route::middleware('checkRole:shared')->group(function(){
+   Route::get('/cart',[CartController::class,'index'])->name('user.cart.index');
    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('user.cart.add');
    Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('user.cart.remove');
    Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('user.cart.update');
-   Route::get('/cart',[CartController::class,'index'])->name('user.cart.index');
-   
    Route::get('/checkout',[CartController::class,'checkout'])->name('user.cart.checkout');
 
    Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wishlist');
 
    Route::get('/account',[AccountController::class,'index'])->name('user.account.index');
 });
-Route::get('/', [HomeController::class, 'index'])->name('user.home.index');
-Route::get('/product-detail', [HomeController::class, 'show'])->name('user.home.show');
-Route::get('/about', [HomeController::class, 'about'])->name('user.home.about');
-Route::get('/contact', [HomeController::class, 'contact'])->name('user.home.contact');
 
-Route::get('/blog',[BlogController::class,'index'])->name('user.blog.index');
-Route::get('/blog-detail',[BlogController::class,'show'])->name('user.blog.show');
-
-Route::get('/search', [SearchController::class, 'index'])->name('user.search.index');
-
-//admin
 // Các route admin sử dụng middleware
-Route::middleware(['auth', 'checkRole:admin'])->group(function () {
-   Route::post('/cart/add', [CartController::class, 'addToCart'])->name('user.cart.add');
-   Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('user.cart.remove');
-   Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('user.cart.update');
-   Route::get('/cart', [CartController::class, 'index'])->name('user.cart.index');
-   Route::get('/checkout', [CartController::class, 'checkout'])->name('user.cart.checkout');
-
-   Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wishlist');
-
-   Route::get('/account', [AccountController::class, 'index'])->name('user.account.index');
-
+Route::middleware('checkRole:admin')->group(function () {
    Route::get("/admin",[AdminAnalysisController::class,"index"])->name("admin.analysis");
    Route::get('/admin/product', [AdminProductController::class,"index"])->name("admin.product");
    Route::get('/admin/product/create',[AdminProductController::class,"create"])->name("admin.product.create");
@@ -81,7 +69,6 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
    Route::get("/admin/role",[AdminRoleController::class,"index"])->name("admin.role");
    Route::get("/admin/role/create",[AdminRoleController::class,"create"])->name("admin.role.create");
    Route::get("/admin/role/edit",[AdminRoleController::class,"edit"])->name("admin.role.edit");
-
 
    Route::get("/admin/form",[AdminFormController::class,"index"])->name("admin.form");
    Route::get("/admin/form/create",[AdminFormController::class,"create"])->name("admin.form.create");
@@ -114,7 +101,6 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
    Route::get("/admin/blog",[AdminBlogController::class,"index"])->name("admin.blog");
    Route::get("/admin/blog/create",[AdminBlogController::class,"create"])->name("admin.blog.create");
    Route::get("/admin/blog/edit",[AdminBlogController::class,"edit"])->name("admin.blog.edit");
-
 
    Route::get("/admin/comment",[AdminCommentController::class,"index"])->name("admin.comment");
    Route::get("/admin/comment/create",[AdminCommentController::class,"create"])->name("admin.comment.create");
