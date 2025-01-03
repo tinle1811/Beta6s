@@ -19,6 +19,11 @@ class SanPham extends Model
         'TrangThai',
     ];
 
+    public function carts()
+    {
+        return $this->hasMany(GioHang::class, 'MaSP', 'MaSP');
+    }
+    
     public function getProductId()
     {
         return $this->attributes['MaSP'];

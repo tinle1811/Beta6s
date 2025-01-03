@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('gio_hangs', function (Blueprint $table) {
-            $table->increments('ID');
+            $table->increments('id');
             $table->unsignedInteger('MaTK');
             $table->unsignedInteger('MaSP');
             $table->integer('soLuong')->default(1);

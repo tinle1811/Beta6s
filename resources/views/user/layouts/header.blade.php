@@ -578,7 +578,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-3">
                     <div class="logo">
-                        <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                        <a href="{{route('user.home.index')}}"><img src="assets/img/logo/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-9">

@@ -30,10 +30,11 @@
                                 <h3 class="product_name"><a
                                         href="{{ route('user.home.show') }}">{{ $product->getProductName() }}</a></h3>
                                 <div class="add_to_cart">
-                                    <form action="{{route('user.cart.add')}}" method="POST" class="add-to-cart-form">
+                                    <form action="{{route('user.cart.add')}}" method="POST" class="add-to-cart-form" id="add-to-cart-form">
                                         @csrf
                                         <input type="hidden" name="MaSP" value="{{ $product->MaSP }}">
-                                        <button type="submit">Thêm vào giỏ hàng</button>
+                                        <input type="number" name="soLuong" value="1" min="1" style="display: none;">
+                                        <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
                                     </form>
                                 </div>
                             </figcaption>
@@ -44,4 +45,3 @@
         </div>
     </div>
 </section>
-<!--featured product area end—->

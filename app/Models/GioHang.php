@@ -15,22 +15,10 @@ class GioHang extends Model
     ];
     public function product()
     {
-        return $this->belongsTo(SanPham::class);
+        return $this->belongsTo(SanPham::class, 'MaSP', 'MaSP');
     }
-    public function getSoLuong()
+    public function user()
     {
-        return $this->attributes['soLuong'];
-    }
-    public function setSoluong($sl)
-    {
-        return $this->attributes['soLuong'] = $sl;
-    }
-    public function getMaTK()
-    {
-        return $this->attributes['MaTK'];
-    }
-    public function getMaSP()
-    {
-        return $this->attributes['MaSP'];
+        return $this->belongsTo(TaiKhoan::class, 'MaTK','MaTK');
     }
 }

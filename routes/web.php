@@ -31,11 +31,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Các route người dùng sử dụng middleware
 Route::middleware(['auth', 'checkRole:user'])->group(function () {
-   //Route::middleware(['auth'])->group(function () {
-      // Route::post('/cart/add', [CartController::class, 'addToCart'])->name('user.cart.add');
-   //});
    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('user.cart.add');
+   Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('user.cart.remove');
+   Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('user.cart.update');
    Route::get('/cart',[CartController::class,'index'])->name('user.cart.index');
+   
    Route::get('/checkout',[CartController::class,'checkout'])->name('user.cart.checkout');
 
    Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wishlist');
@@ -55,6 +55,16 @@ Route::get('/search', [SearchController::class, 'index'])->name('user.search.ind
 //admin
 // Các route admin sử dụng middleware
 Route::middleware(['auth', 'checkRole:admin'])->group(function () {
+   Route::post('/cart/add', [CartController::class, 'addToCart'])->name('user.cart.add');
+   Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('user.cart.remove');
+   Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('user.cart.update');
+   Route::get('/cart', [CartController::class, 'index'])->name('user.cart.index');
+   Route::get('/checkout', [CartController::class, 'checkout'])->name('user.cart.checkout');
+
+   Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wishlist');
+
+   Route::get('/account', [AccountController::class, 'index'])->name('user.account.index');
+
    Route::get("/admin",[AdminAnalysisController::class,"index"])->name("admin.analysis");
    Route::get('/admin/product', [AdminProductController::class,"index"])->name("admin.product");
    Route::get('/admin/product/create',[AdminProductController::class,"create"])->name("admin.product.create");
