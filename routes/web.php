@@ -37,8 +37,10 @@ Route::get('/checkout', [CartController::class, 'checkout'])->name('user.cart.ch
 Route::get('/account', [AccountController::class, 'index'])->name('user.account.index');
 
 //admin
+//THÔNG KẾ DOANH THU
 Route::get("/admin", [AdminAnalysisController::class, "index"])->name("admin.analysis");
 Route::post("/admin/date", [AdminAnalysisController::class, "filter_by_date"])->name("admin.analysis.filter_by_date");
+
 Route::get('/admin/product', [AdminProductController::class, "index"])->name("admin.product");
 Route::get('/admin/product/create', [AdminProductController::class, "create"])->name("admin.product.create");
 Route::get('/admin/product/edit', [AdminProductController::class, "edit"])->name("admin.product.edit");
@@ -92,6 +94,7 @@ Route::get("/admin/blog/create", [AdminBlogController::class, "create"])->name("
 Route::get("/admin/blog/edit", [AdminBlogController::class, "edit"])->name("admin.blog.edit");
 
 
+//bình luận
 Route::get("/admin/comment", [AdminCommentController::class, "index"])->name("admin.comment");
-Route::get("/admin/comment/create", [AdminCommentController::class, "create"])->name("admin.comment.create");
-Route::get("/admin/comment/edit", [AdminCommentController::class, "edit"])->name("admin.comment.edit");
+Route::post("/admin/comment/update", [AdminCommentController::class, "updateStatus"])->name("admin.comment.update");
+Route::post("/admin/comment/delete", [AdminCommentController::class, "delete"])->name("admin.comment.delete");

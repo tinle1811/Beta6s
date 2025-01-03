@@ -18,7 +18,11 @@
     <link rel="stylesheet" href="{{ asset('assetsAdmin\vendor\icon-set\style.css') }}">
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="{{ asset('assetsAdmin\css\theme.min.css?v=1.0') }}">
+    {{-- sử dụng biểu đồ morris thống kê --}}
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    {{-- sử dụng icon star cho bình luận --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
 
 </head>
 
