@@ -26,50 +26,52 @@
                                     href="mailto:demo@example.com">demo@example.com </a>
                             </li>
                             <li><i class="fa fa-phone"></i> Phone:<a href="tel: 0123456789"> 0123456789 </a> </li>
-                        </ul>>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
-                    <div class="contact_message form">
-                        <h3>Tell us your project</h3>
-                        @if ($errors->any())
-                            <ul class="alert alert-danger list-unstyled">
-                                @foreach ($errors->all() as $error)
-                                    <li>- {{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-                        <form id="contact-form" method="POST" action="{{ route('user.home.form') }}">
+                    <div class="contact_message form" id="contact-form-section">
+                        <h3>Hãy cho chúng tôi biết ý kiến của bạn</h3>
+                    
+                        <form id="contact-form" method="POST" action="{{ route('user.form') }}">
                             @csrf
                             <p>
-                                <label> Your Name (required)</label>
-                                <input name="name" placeholder="Name *" type="text">
+                                <label> Họ tên</label>
+                                <input name="name" value="{{ old('name') }}" placeholder="Họ tên..." type="text">
+                                @if ($errors->has('name'))
+                                    <div class="alert alert-danger">Vui lòng nhập họ tên</div>
+                                @endif
                             </p>
                             <p>
-                                <label> Your Email (required)</label>
-                                <input name="email" placeholder="Email *" type="email">
+                                <label> Email</label>
+                                <input name="email" value="{{ old('email') }}" placeholder="Email..." type="email">
+                                @if ($errors->has('email'))
+                                    <div class="alert alert-danger">Vui lòng nhập email</div>
+                                @endif
                             </p>
                             <p>
-                                <label> Your Phone (required)</label>
-                                <input name="phone" placeholder="Phone *" type="phone">
-                            </p>
-                            <p>
-                                <label> Subject</label>
-                                <input name="subject" placeholder="Subject *" type="text">
+                                <label> Số điện thoại</label>
+                                <input name="phone" value="{{ old('phone') }}" placeholder="Số điện thoại..." type="text">
+                                @if ($errors->has('phone'))
+                                    <div class="alert alert-danger">Vui lòng nhập số điện thoại</div>
+                                @endif
                             </p>
                             <div class="contact_textarea">
-                                <label> Your Message</label>
-                                <textarea placeholder="Message *" name="message" class="form-control2"></textarea>
+                                <label> Nội dung</label>
+                                <textarea placeholder="Điền nội dung..." name="message" class="form-control2">{{ old('message') }}</textarea>
+                                @if ($errors->has('message'))
+                                    <div class="alert alert-danger">Vui lòng nhập nội dung</div>
+                                @endif
                             </div>
-                            <button type="submit"> Send</button>
-                            {{-- <li class="form-messege"></li> --}}
+                            <button type="submit" class="btn-submit"> Gửi</button>
+                    
                             @if (session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
                                 </div>
                             @endif
                         </form>
-
+                    </div>                   
                     </div>
                 </div>
             </div>

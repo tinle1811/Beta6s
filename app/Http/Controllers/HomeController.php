@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -30,6 +31,7 @@ class HomeController extends Controller
     public function contact()
     {
         $viewData['title'] = "Trang liên hệ";
+        $viewData['errors'] = "";
         return view('user.home.contact')->with('viewData',$viewData);
     }
     public function wishlist()
@@ -40,25 +42,21 @@ class HomeController extends Controller
 
     public function handleContactForm(Request $request)
 {
-    // Thực hiện validate dữ liệu
-    $request->validate([
-        'name' => 'required|max:255',
-        'email' => 'required|email|max:255',
-        'phone' => 'required|max:20',
-        'message' => 'required',
-    ]);
+    Contact::validate($request);
+    // Tạo mới đối tượng Contact
+    $newContact = new \App\Models\Contact();
+    $newContact->setCustomerName($request->input('name')); 
+    $newContact->setEmail($request->input('email'));       
+    $newContact->setPhone($request->input('phone'));       
+    $newContact->setContent($request->input('message'));   
+    $newContact->setStatus(0);                             
 
-    // Tạo mới đối tượng Contact và lưu dữ liệu
-    \App\Models\Contact::create([
-        'TenKH' => $request->input('name'),
-        'Email' => $request->input('email'),
-        'SDT' => $request->input('phone'),
-        'NoiDung' => $request->input('message'),
-        'TrangThai' => 0
-    ]);
+    // Lưu vào cơ sở dữ liệu
+    $newContact->save();
 
     // Chuyển hướng hoặc hiển thị thông báo sau khi lưu
-    return back()->with('success', 'Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.');
+    return back()->with('success', 'Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.')
+    ->withFragment('contact-form-section');
 }
 
 }
