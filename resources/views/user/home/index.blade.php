@@ -2,11 +2,9 @@
 @section('title', $viewData['title'])
 @section('content')
         @if (session('success'))
-        <div class="alert alert-success">
-                {{ session('success') }}
-        </div>
+                <div class="alert alert-success">{{ session('success') }}</div>
         @elseif(session('error'))
-        <div class="alert alert-error">{{ session('error') }}</div>
+                <div class="alert alert-danger">{{ session('error') }}</div>
         @endif
         @include('user.layouts.home.slider')
         @include('user.layouts.home.shippingArea')
