@@ -11,11 +11,11 @@ class Contact extends Model
     public static function validate($request)
 {
     $request->validate([
-        'name' => 'required|max:255',
-        'email' => 'required|email|max:255',
-        'phone' => 'required|max:20',
-        'message' => 'required',
-    ]);
+    'name' => 'required|max:255',
+    'email' => 'required|email|max:255',
+    'phone' => 'nullable|max:20',  // Để trường phone có thể rỗng
+    'message' => 'required',
+]);
 }
 
     protected $table = 'lien_hes';

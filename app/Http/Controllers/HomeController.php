@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\TaiKhoan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -32,7 +33,8 @@ class HomeController extends Controller
     {
         $viewData['title'] = "Trang liên hệ";
         $viewData['errors'] = "";
-        return view('user.home.contact')->with('viewData',$viewData);
+        $viewData['taikhoan'] = TaiKhoan::find(auth()->id());
+        return view('user.home.contact')->with('viewData', $viewData);
     }
     public function wishlist()
     {

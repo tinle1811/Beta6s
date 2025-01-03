@@ -25,7 +25,7 @@ Route::get('/', [HomeController::class, 'index'])->name('user.home.index');
 Route::get('/product-detail', [HomeController::class, 'show'])->name('user.home.show');
 Route::get('/about', [HomeController::class, 'about'])->name('user.home.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('user.home.contact');
-Route::post('/contact',[HomeController::class, 'handleContactForm'])->name('user.form');
+Route::post('/contact',[HomeController::class, 'handleContactForm'])->name('contact.form');
 Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wishlist');
 
 Route::get('/blog',[BlogController::class,'index'])->name('user.blog.index');

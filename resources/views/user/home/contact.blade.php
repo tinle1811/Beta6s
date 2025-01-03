@@ -33,8 +33,9 @@
                     <div class="contact_message form" id="contact-form-section">
                         <h3>Hãy cho chúng tôi biết ý kiến của bạn</h3>
                     
-                        <form id="contact-form" method="POST" action="{{ route('user.form') }}">
+                        <form id="contact-form" method="POST" action="{{ route('contact.form') }}">
                             @csrf
+                            @guest
                             <p>
                                 <label> Họ tên</label>
                                 <input name="name" value="{{ old('name') }}" placeholder="Họ tên..." type="text">
@@ -49,6 +50,23 @@
                                     <div class="alert alert-danger">Vui lòng nhập email</div>
                                 @endif
                             </p>
+                            @else
+                            <p>
+                                <label> Họ tên</label>
+                                <input name="name" value="{{ old('name',$viewData['taikhoan']->TenDN) }}" placeholder="Họ tên..." type="text">
+                                @if ($errors->has('name'))
+                                    <div class="alert alert-danger">Vui lòng nhập họ tên</div>
+                                @endif
+                            </p>
+                            <p>
+                                <label> Email</label>
+                                <input name="email" value="{{ old('email', $viewData['taikhoan']->Email) }}" placeholder="Email..." type="email">
+
+                                @if ($errors->has('email'))
+                                    <div class="alert alert-danger">Vui lòng nhập email</div>
+                                @endif
+                            </p>
+                            @endguest
                             <p>
                                 <label> Số điện thoại</label>
                                 <input name="phone" value="{{ old('phone') }}" placeholder="Số điện thoại..." type="text">
