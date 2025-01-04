@@ -42,7 +42,8 @@
                                         {{-- <span class="old_price">$86.00</span> --}}
                                         <span class="current_price">{{ $product->getProductPrice() }}</span>
                                     </div>
-                                    <h3 class="product_name"><a href="{{route('user.home.show')}}">{{ $product->getProductName() }}</a></h3>
+                                    <h3 class="product_name"><a href="{{route('user.home.show')}}">{{ Str::limit($product->getProductName(), 20, '...') }}</a></h3>
+                                    <p class="product_description" style="font-size: .7rem">{{ Str::limit($product->getProductDescription(), 60, '...') }}</p>
                                 </figcaption>
                             </figure>
                         </article>
