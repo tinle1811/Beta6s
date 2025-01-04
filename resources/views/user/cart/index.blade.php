@@ -27,7 +27,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($viewData['cartItems'] as $item)
+                                        @forelse ($viewData['cartItems'] as $item)
                                             <tr>
                                                 <td class="product_thumb">
                                                     <img src="{{ asset('/assetsUser/img_product/' . $item->product->HinhAnh) }}" alt="">
@@ -53,7 +53,11 @@
                                                     </form>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="6">Giỏ hàng của bạn hiện đang trống!</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
