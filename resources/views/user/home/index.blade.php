@@ -5,6 +5,7 @@
         @include('user.layouts.home.shippingArea')
         @include('user.layouts.home.productArea')
         @include('user.layouts.home.featuredProduct')
+        @include('user.layouts.home.NewProduct')
         @include('user.layouts.home.blogArea')
         @include('user.layouts.popupLogin')
 @endsection
