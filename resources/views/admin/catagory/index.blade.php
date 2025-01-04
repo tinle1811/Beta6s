@@ -317,7 +317,7 @@
                                         </a>
                                     </td>
                                     <td>{{ $category->getCategoryName() }}</td>
-                                    <td>{{ $category->getCategoryStatus() }}</td>
+                                    <td class="TrangThai">{{ $category->getCategoryStatus() }}</td>
                                     {{-- <td>
                   <label class="toggle-switch toggle-switch-sm" for="stocksCheckbox1">
                     <input type="checkbox" class="toggle-switch-input" id="stocksCheckbox1" checked="">
@@ -441,7 +441,12 @@
                     },
                     success: function(response) {
                         if (response.success) {
-                            $('tr[data-id="' + categoryId + '"]').remove();
+                            var row = $('tr[data-id="' + categoryId + '"]');
+                            var statusCell = row.find('.TrangThai');
+
+                            if (response.newStatus == 0) {
+                                statusCell.text('0');
+                            }
                             alert(response.success);
                         }
                     },

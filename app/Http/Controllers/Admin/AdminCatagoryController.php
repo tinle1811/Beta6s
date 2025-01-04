@@ -42,7 +42,6 @@ class AdminCatagoryController extends Controller {
             'categoryName' => 'required|max:255',
         ] );
         $category = LoaiSanPham::findOrFail( $id );
-        $category->setCategoryId( $request->input( 'categoryId' ) );
         $category->setCategoryName( $request->input( 'categoryName' ) );
         $category->setCategoryStatus( $request->input( 'categoryStatus' ) );
         $category->save();
@@ -50,7 +49,12 @@ class AdminCatagoryController extends Controller {
     }
 
     public function delete( $id ) {
-        LoaiSanPham::destroy( $id );
-        return response()->json(['success' => 'Loại sản phẩm đã được xóa.']);
+        $category = LoaiSanPham::findOrFail( $id );
+        $category->setCategoryStatus( 0 );
+        $category->save();
+        return response()->json([
+            'success' => 'Loại sản phẩm đã được xóa.',
+            'newStatus' => $category->getCategoryStatus()
+        ]);
     }
 }
