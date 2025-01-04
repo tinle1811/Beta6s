@@ -21,6 +21,7 @@
                                         {{-- <div class="label_product">
                                             <span class="label_sale">sale</span>
                                         </div> --}}
+                                        {{-- Khoa Note --}}
                                     </div>
                                     <figcaption class="product_content">
                                         <div class="price_box">
