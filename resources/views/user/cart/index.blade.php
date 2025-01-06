@@ -1,12 +1,8 @@
 @extends('user.layouts.app')
 @section('title', $viewData['title'])
 @section('content')
-        @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @elseif(session('error'))
-            <div class="alert alert-danger">{{ session('error') }}</div>
-        @endif
     @include('user.layouts.breadcrumbs')
+    @include('user.layouts.notice')
         <!--shopping cart area start -->
         <div class="shopping_cart_area mt-60">
         <div class="container">

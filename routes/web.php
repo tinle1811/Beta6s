@@ -47,6 +47,8 @@ Route::middleware('checkRole:shared')->group(function(){
    Route::get('/checkout',[CartController::class,'checkout'])->name('user.cart.checkout');
 
    Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wishlist');
+   Route::post('/wishlist/add',[HomeController::class,'addToWishlist'])->name('user.home.addWishlist');
+   Route::delete('/wishlist/remove/{id}',[HomeController::class,'removeToWishlist'])->name('user.home.removeWishlist');
 
    Route::get('/account',[AccountController::class,'index'])->name('user.account.index');
 });

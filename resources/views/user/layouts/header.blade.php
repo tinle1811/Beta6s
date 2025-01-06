@@ -53,7 +53,7 @@
                         <div class="middel_right_info">
                             <div class="header_wishlist">
                                 <a href="{{route('user.home.wishlist')}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                <span class="wishlist_quantity">3</span>
+                                <span class="wishlist_quantity">{{$viewData['wishlistCount']}}</span>
                             </div>
                             <div class="mini_cart_wrapper">
                                         <a href="javascript:void(0)"><i class="fa fa-shopping-bag"
@@ -256,7 +256,7 @@
                                 <div class="middel_right_info">
                                     <div class="header_wishlist">
                                         <a href="{{route('user.home.wishlist')}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                        <span class="wishlist_quantity">3</span>
+                                        <span class="wishlist_quantity">{{$viewData['wishlistCount']}}</span>
                                     </div>
                                     <!-- sử dụng View Composer khai báo trong app/Providers/AppServiceProvider.php để truyền dữ liệu cho tất cả các view cùng một lúc -->
                                     <div class="mini_cart_wrapper">
@@ -513,7 +513,7 @@
                         <div class="middel_right_info">
                             <div class="header_wishlist">
                                 <a href="{{route('user.home.wishlist')}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                <span class="wishlist_quantity">3</span>
+                                <span class="wishlist_quantity">{{$viewData['wishlistCount']}}</span>
                             </div>
                             <div class="mini_cart_wrapper">
                                         <a href="javascript:void(0)"><i class="fa fa-shopping-bag"
