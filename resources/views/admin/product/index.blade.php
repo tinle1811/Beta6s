@@ -309,7 +309,7 @@
                       <p>{{$product->MoTa}}</p>
                     </td>
                     <td>
-                      <img src="{{ asset('storage/' . $product->HinhAnh) }}" alt="{{ $product->TenSP }}" width="100">
+                      <img src="{{ asset('storage/'.$product->HinhAnh) }}" alt="{{ $product->TenSP }}" width="100">
                     </td>
                     <td>
                       <p>{{$product->LoaiSP}}</p>
