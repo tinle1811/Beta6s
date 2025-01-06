@@ -12,8 +12,8 @@ class AdminProductController extends Controller
     public $viewData = [];
     public function index()
     {
-        $products = SanPham::orderBy('created_at', 'desc')->limit(10)->get();
-
+        $products = SanPham::with('loaiSanPham')->orderBy('created_at', 'desc')->get();
+        
         $viewData = [
             'title' => 'Danh sách sản phẩm',
             'products' => $products,

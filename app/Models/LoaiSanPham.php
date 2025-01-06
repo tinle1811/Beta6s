@@ -15,10 +15,6 @@ class LoaiSanPham extends Model
 
     // App\Models\SanPham.php
 
-    public function loaiSanPham()
-    {
-        return $this->belongsTo(LoaiSanPham::class, 'LoaiSP', 'MaLSP');
-    }
 
     public function getCategoryId() {
         return $this->attributes[ 'MaLSP' ];

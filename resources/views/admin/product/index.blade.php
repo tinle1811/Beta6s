@@ -311,9 +311,7 @@
                     <td>
                       <img src="{{ asset('storage/'.$product->HinhAnh) }}" alt="{{ $product->TenSP }}" width="100">
                     </td>
-                    <td>
-                      <p>{{$product->LoaiSP}}</p>
-                    </td>
+                    <td>{{ $product->loaiSanPham->getCategoryName() ?? 'Không xác định' }}</td>
                     <td>
                       <p>{{$product->TrangThai}}</p>
                     </td>

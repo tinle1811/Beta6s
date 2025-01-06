@@ -17,7 +17,10 @@ class SanPham extends Model {
         'LoaiSP',
         'TrangThai',
     ];
-
+    public function loaiSanPham()
+    {
+        return $this->belongsTo(LoaiSanPham::class, 'LoaiSP', 'MaLSP');
+    }
     public function getProductId() {
         return $this->attributes[ 'MaSP' ];
     }
