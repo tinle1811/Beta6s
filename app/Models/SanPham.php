@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SanPham extends Model {
     use HasFactory;
+    protected $primaryKey = 'MaSP'; // Khóa chính của bảng
+
     protected $fillable = [
         'TenSP',
         'Gia',

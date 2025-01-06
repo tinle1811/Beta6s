@@ -12,7 +12,7 @@ class AdminProductController extends Controller
     public $viewData = [];
     public function index()
     {
-        $products = SanPham::with('loaiSanPham')->orderBy('created_at', 'desc')->get();
+        $products = SanPham::with('loaiSanPham')->orderBy('created_at', 'desc')->limit(10)->get();
         
         $viewData = [
             'title' => 'Danh sách sản phẩm',
@@ -53,24 +53,68 @@ class AdminProductController extends Controller
         $sanpham->LoaiSP = $validatedData['LoaiSP'];
         $sanpham->TrangThai = $validatedData['TrangThai'];
 
-        // Kiểm tra nếu có ảnh thì upload
+      
         if ($request->hasFile('HinhAnh')) {
             $imagePath = $request->file('HinhAnh')->store('product_images', 'public');
             $sanpham->HinhAnh = $imagePath;
         } else {
-            $sanpham->HinhAnh = null; // Nếu không có ảnh thì gán giá trị NULL
+            $sanpham->HinhAnh = null; 
         }
 
-        // Lưu sản phẩm vào cơ sở dữ liệu
+       
         $sanpham->save();
 
-        // Quay lại trang danh sách sản phẩm với thông báo thành công
+       
         return redirect()->route('admin.product')->with('success', 'Sản phẩm đã được thêm thành công.');
     }
 
-    public function edit(){
-        $viewData['title'] = "Trang sửa Sản Phẩm";
-        return view("admin.product.edit")->with("viewData",$viewData);
+    public function edit($MaSP)
+    {
+        $product = SanPham::find($MaSP);
+
+        if (!$product) {
+            return redirect()->route('admin.product.index')->with('error', 'Sản phẩm không tồn tại.');
+        }
+
+        $categories = LoaiSanPham::where('TrangThai', 1)->get(); 
+
+        return view('admin.product.edit', [
+            'product' => $product,
+            'categories' => $categories,
+        ]);
+    }
+    public function update(Request $request, $MaSP)
+    {
+        $validatedData = $request->validate([
+            'TenSP' => 'required|string|max:255',
+            'Gia' => 'required|numeric|min:0',
+            'SoLuong' => 'required|integer|min:0',
+            'LoaiSP' => 'required|exists:loai_san_phams,MaLSP',
+            'TrangThai' => 'required|boolean',
+            'HinhAnh' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $product = SanPham::find($MaSP);
+
+        if (!$product) {
+            return redirect()->route('admin.product.index')->with('error', 'Sản phẩm không tồn tại.');
+        }
+
+        $product->TenSP = $validatedData['TenSP'];
+        $product->Gia = $validatedData['Gia'];
+        $product->SoLuong = $validatedData['SoLuong'];
+        $product->LoaiSP = $validatedData['LoaiSP'];
+        $product->TrangThai = $validatedData['TrangThai'];
+
+        
+        if ($request->hasFile('HinhAnh')) {
+            $imagePath = $request->file('HinhAnh')->store('product_images', 'public');
+            $product->HinhAnh = $imagePath;
+        }
+
+        $product->save();
+
+        return redirect()->route('admin.product')->with('success', 'Cập nhật sản phẩm thành công.');
     }
     public function delete(){
         $viewData['title'] = "Trang Xoá Sản Phẩm";

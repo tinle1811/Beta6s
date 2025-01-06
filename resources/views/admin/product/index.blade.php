@@ -316,7 +316,8 @@
                       <p>{{$product->TrangThai}}</p>
                     </td>
                     <td>
-                      <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-primary">Sửa</a>
+                      <a href="{{ route('admin.product.edit', $product->MaSP) }}" class="btn btn-primary">Sửa</a>
+
                       {{-- <form action="{{ route('admin.product.delete', $product->id) }}" method="POST" style="display:inline;">
                           @csrf
                           @method('DELETE')
