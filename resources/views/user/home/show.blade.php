@@ -9,14 +9,12 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product-details-tab">
                         <div id="img-1" class="zoomWrapper single-zoom">
-                            <a href="#">
-                                <img id="zoom1" src="assets/img/product/productbig5.jpg"
-                                    data-zoom-image="assets/img/product/productbig5.jpg" alt="big-1">
-                            </a>
+                                <img id="zoom1" src="{{asset('storage/'.$sanpham->getProductImage())}}" alt="Sản phẩm" />
+
                         </div>
-                        <div class="single-zoom-thumb">
+                        {{-- <div class="single-zoom-thumb">
                             <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
-                                <li>
+                                {{-- <li>
                                     <a href="#" class="elevatezoom-gallery active" data-update=""
                                         data-image="assets/img/product/productbig.jpg"
                                         data-zoom-image="assets/img/product/productbig.jpg">
@@ -47,9 +45,9 @@
                                         <img src="assets/img/product/productbig3.jpg" alt="zo-th-1" />
                                     </a>
 
-                                </li>
+                                </li> --}}
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -501,7 +499,7 @@
     <!--product area end-->
 
     <!--product area start-->
-    <section class="product_area upsell_products">
+    {{-- <section class="product_area upsell_products">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -751,6 +749,6 @@
                 </article>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--product area end-->
 @endsection
