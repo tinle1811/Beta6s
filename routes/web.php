@@ -41,12 +41,14 @@ Route::get('/search', [SearchController::class, 'index'])->name('user.search.ind
 // các route chung cho cả hai phân hệ
 Route::middleware('checkRole:shared')->group(function(){
    Route::get('/cart',[CartController::class,'index'])->name('user.cart.index');
-   Route::post('/cart/add', [CartController::class, 'addToCart'])->name('user.cart.add');
+   Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('user.cart.add');
    Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('user.cart.remove');
    Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('user.cart.update');
    Route::get('/checkout',[CartController::class,'checkout'])->name('user.cart.checkout');
 
    Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wishlist');
+   Route::post('/wishlist/add/{id}',[HomeController::class,'addToWishlist'])->name('user.home.addWishlist');
+   Route::delete('/wishlist/remove/{id}',[HomeController::class,'removeToWishlist'])->name('user.home.removeWishlist');
 
    Route::get('/account',[AccountController::class,'index'])->name('user.account.index');
 });

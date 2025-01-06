@@ -22,8 +22,14 @@
                                     </div> --}}
                                     <div class="action_links">
                                         <ul>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
-                                                        class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li class="wishlist">
+                                                @auth
+                                                    <form action="{{route('user.home.addWishlist',['id' => $product->MaSP])}}" method="POST" class="add-to-cart-form" id="add-to-cart-form">
+                                                        @csrf
+                                                        <button type="submit" title="Add to Wishlist" style=" border-radius: 50%;" class="btn btn-primary"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                                    </form>
+                                                @endauth
+                                            </li>
                                             <li class="compare"><a href="#" title="compare"><span class="ion-levels"></span></a>
                                             </li>
                                             <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"

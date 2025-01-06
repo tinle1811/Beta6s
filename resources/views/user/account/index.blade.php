@@ -1,162 +1,121 @@
 @extends('user.layouts.app')
-@section('title',$viewData['title'])
+@section('title', $viewData['title'])
 @section('content')
     @include('user.layouts.breadcrumbs')
-       <!-- my account start  -->
-       <section class="main_content_area">
-        <div class="container">
-            <div class="account_dashboard">
-                <div class="row">
-                    <div class="col-sm-12 col-md-3 col-lg-3">
-                        <!-- Nav tabs -->
-                        <div class="dashboard_tab_button">
-                            <ul role="tablist" class="nav flex-column dashboard-list">
-                                <li><a href="#dashboard" data-bs-toggle="tab" class="nav-link active">Dashboard</a></li>
-                                <li> <a href="#orders" data-bs-toggle="tab" class="nav-link">Orders</a></li>
-                                <li><a href="#downloads" data-bs-toggle="tab" class="nav-link">Downloads</a></li>
-                                <li><a href="#address" data-bs-toggle="tab" class="nav-link">Addresses</a></li>
-                                <li><a href="#account-details" data-bs-toggle="tab" class="nav-link">Account details</a>
-                                </li>
-                                <li><a href="{{route('user.home.index')}}" class="nav-link">logout</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-9 col-lg-9">
-                        <!-- Tab panes -->
-                        <div class="tab-content dashboard_content">
-                            <div class="tab-pane fade show active" id="dashboard">
-                                <h3>Dashboard </h3>
-                                <p>From your account dashboard. you can easily check &amp; view your <a href="#">recent
-                                        orders</a>, manage your <a href="#">shipping and billing addresses</a> and <a
-                                        href="#">Edit your password and account details.</a></p>
-                            </div>
-                            <div class="tab-pane fade" id="orders">
-                                <h3>Orders</h3>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Order</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                                <th>Total</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>May 10, 2022</td>
-                                                <td><span class="success">Completed</span></td>
-                                                <td>$25.00 for 1 item </td>
-                                                <td><a href="cart.html" class="view">view</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>May 10, 2022</td>
-                                                <td>Processing</td>
-                                                <td>$17.00 for 1 item </td>
-                                                <td><a href="cart.html" class="view">view</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-3 profile-sidebar">
+                <div class="profile-avatar-wrapper">
+                    <img src="{{asset('/assetsUser/img_product/4-4.jpg')}}" alt="avata" class="profile-avatar">
+                    <p>Khoa Nguyễn</p>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="bi bi-person"></i><span class="text">Tài khoản của tôi</span></a>
+                    </li>
+                    <li class="nav-item sub">
+                        <a class="nav-link" href="#"> <span class="text">Hồ sơ</span></a>
+                    </li>
+                    <li class="nav-item sub">
+                        <a class="nav-link" href="#"><span class="text">Địa chỉ</span></a>
+                    </li>
+                    <li class="nav-item sub">
+                        <a class="nav-link" href="#"><span class="text">Đổi mật khẩu</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-cart"></i><span class="text">Đơn mua</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-9 profile-content">
+                <h4>Hồ sơ của tôi</h4>
+                <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+                <hr>
+                <form>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="row form-group">
+                                <label for="username" class="col-sm-4 col-form-label">Tên đăng nhập:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="username" value="Nguyễn Hải Đăng Khoa"
+                                        disabled>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="downloads">
-                                <h3>Downloads</h3>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Product</th>
-                                                <th>Downloads</th>
-                                                <th>Expires</th>
-                                                <th>Download</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Shopnovilla - Free Real Estate PSD Template</td>
-                                                <td>May 10, 2022</td>
-                                                <td><span class="danger">Expired</span></td>
-                                                <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Organic - ecommerce html template</td>
-                                                <td>Sep 11, 2022</td>
-                                                <td>Never</td>
-                                                <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            <div class="row form-group">
+                                <label for="displayName" class="col-sm-4 col-form-label">Tên khách hàng:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="displayName" value="Khoa Nguyễn">
                                 </div>
                             </div>
-                            <div class="tab-pane" id="address">
-                                <p>The following addresses will be used on the checkout page by default.</p>
-                                <h4 class="billing-address">Billing address</h4>
-                                <a href="#" class="view">Edit</a>
-                                <p><strong>Bobby Jackson</strong></p>
-                                <address>
-                                    House #70<br>
-                                    Road #5<br>
-                                    Block #J <br>
-                                    Animi <br>
-                                    numquam <br>
-                                    7070
-                                </address>
-                                <p>Noland</p>
+                            <div class="row form-group">
+                                <label for="email" class="col-sm-4 col-form-label">Email:</label>
+                                <div class="col-sm-8">
+                                    <input type="email" class="form-control" id="email" value="0306221240@caothang.edu.vn"
+                                        disabled>
+                                </div>
                             </div>
-                            <div class="tab-pane fade" id="account-details">
-                                <h3>Account details </h3>
-                                <div class="login">
-                                    <div class="login_form_container">
-                                        <div class="account_login_form">
-                                            <form action="#">
-                                                <p>Already have an account? <a href="#">Log in instead!</a></p>
-                                                <div class="input-radio">
-                                                    <span class="custom-radio"><input type="radio" value="1"
-                                                            name="id_gender"> Mr.</span>
-                                                    <span class="custom-radio"><input type="radio" value="1"
-                                                            name="id_gender"> Mrs.</span>
-                                                </div> <br>
-                                                <label>First Name</label>
-                                                <input type="text" name="first-name">
-                                                <label>Last Name</label>
-                                                <input type="text" name="last-name">
-                                                <label>Email</label>
-                                                <input type="text" name="email-name">
-                                                <label>Password</label>
-                                                <input type="password" name="user-password">
-                                                <label>Birthdate</label>
-                                                <input type="text" placeholder="MM/DD/YYYY" value="" name="birthday">
-                                                <span class="example">
-                                                    (E.g.: 05/31/1970)
-                                                </span>
-                                                <br>
-                                                <span class="custom_checkbox">
-                                                    <input type="checkbox" value="1" name="optin">
-                                                    <label>Receive offers from our partners</label>
-                                                </span>
-                                                <br>
-                                                <span class="custom_checkbox">
-                                                    <input type="checkbox" value="1" name="newsletter">
-                                                    <label>Sign up for our newsletter<br><em>You may unsubscribe at any
-                                                            moment. For that purpose, please find our contact info in
-                                                            the legal notice.</em></label>
-                                                </span>
-                                                <div class="save_button primary_btn default_button">
-                                                    <button type="submit">Save</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                            <div class="row form-group">
+                                <label for="phone" class="col-sm-4 col-form-label">Số điện thoại:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="phone" value="0373275100">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-4 col-form-label">Giới tính:</label>
+                                <div class="col-sm-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="male" name="gender" value="male"
+                                            checked>
+                                        <label class="form-check-label" for="male">Nam</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="female" name="gender"
+                                            value="female">
+                                        <label class="form-check-label" for="female">Nữ</label>
                                     </div>
                                 </div>
                             </div>
+                            <div class="row form-group">
+                                <label for="dob" class="col-sm-4 col-form-label">Ngày sinh:</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control" id="dob" value="2004-12-23">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-sm-8 offset-sm-4">
+                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 avatar-section text-center">
+                            <img src="{{asset('/assetsUser/img_product/4-4.jpg')}}" alt="Khoa Nguyễn" class="profile-avatar mb-3">
+                            <button type="button" class="btn btn-primary btn-change-avatar" data-bs-toggle="modal" data-bs-target="#changeAvatarModal" style="margin-left:35%">Đổi Ảnh</button>
+                            <p class="text-small">Dung lượng file tối đa 1MB<br>Định dạng: .JPEG, .PNG</p>
                         </div>
                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for Change Avatar -->
+    <div class="modal fade" id="changeAvatarModal" tabindex="-1" aria-labelledby="changeAvatarModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changeAvatarModalLabel">Đổi ảnh đại diện</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="file" class="form-control" accept=".jpg, .jpeg, .png">
+                    <small class="text-muted">Dung lượng tối đa 1MB, định dạng .JPEG, .PNG</small>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- my account end   -->
+    </div>
 @endsection

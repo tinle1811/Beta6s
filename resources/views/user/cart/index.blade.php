@@ -1,12 +1,8 @@
 @extends('user.layouts.app')
 @section('title', $viewData['title'])
 @section('content')
-        @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @elseif(session('error'))
-            <div class="alert alert-danger">{{ session('error') }}</div>
-        @endif
     @include('user.layouts.breadcrumbs')
+    @include('user.layouts.notice')
         <!--shopping cart area start -->
         <div class="shopping_cart_area mt-60">
         <div class="container">
@@ -27,7 +23,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($viewData['cartItems'] as $item)
+                                        @forelse ($viewData['cartItems'] as $item)
                                             <tr>
                                                 <td class="product_thumb">
                                                     <img src="{{ asset('/assetsUser/img_product/' . $item->product->HinhAnh) }}" alt="">
@@ -53,7 +49,11 @@
                                                     </form>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="6">Giỏ hàng của bạn hiện đang trống!</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
