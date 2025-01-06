@@ -21,7 +21,7 @@
                         <div class="top_right text-end">
                                 <ul>
                                     @auth
-                                        <li>Xin chào, {{ Auth::user()->TenDN }}</li>
+                                        <li><a href="{{route('user.account.index')}}">Xin chào, {{ Auth::user()->TenDN }}</a></li>
                                         <li>
                                             <form action="{{ route('logout') }}" method="POST">
                                                 @csrf
@@ -61,7 +61,7 @@
                                         <span class="cart_quantity">{{ $viewData['cartCount'] }}</span>
                                         <!--mini cart-->
                                         <div class="mini_cart">
-                                            @forelse ($viewData['cartItems'] as $item )
+                                            @forelse ($viewData['cartItems'] as $item)
                                                 <div class="cart_item">
                                                     <div class="cart_img">
                                                         <a href="#"><img src="{{ asset('/assetsUser/img_product/' . $item->product->HinhAnh) }}" alt=""></a>
@@ -209,7 +209,7 @@
                             <div class="top_right text-end">
                                 <ul>
                                     @auth
-                                        <li>Xin chào, {{ Auth::user()->TenDN }}</li>
+                                        <li><a href="{{route('user.account.index')}}">Xin chào, {{ Auth::user()->TenDN }}</a></li>
                                         <li>
                                             <form action="{{ route('logout') }}" method="POST">
                                                 @csrf
@@ -265,7 +265,7 @@
                                         <span class="cart_quantity">{{ $viewData['cartCount'] }}</span>
                                         <!--mini cart-->
                                         <div class="mini_cart">
-                                            @forelse ($viewData['cartItems'] as $item )
+                                            @forelse ($viewData['cartItems'] as $item)
                                                 <div class="cart_item">
                                                     <div class="cart_img">
                                                         <a href="#"><img src="{{ asset('/assetsUser/img_product/' . $item->product->HinhAnh) }}" alt=""></a>
@@ -521,7 +521,7 @@
                                         <span class="cart_quantity">{{ $viewData['cartCount'] }}</span>
                                         <!--mini cart-->
                                         <div class="mini_cart">
-                                            @forelse ($viewData['cartItems'] as $item )
+                                            @forelse ($viewData['cartItems'] as $item)
                                                 <div class="cart_item">
                                                     <div class="cart_img">
                                                         <a href="#"><img src="{{ asset('/assetsUser/img_product/' . $item->product->HinhAnh) }}" alt=""></a>
