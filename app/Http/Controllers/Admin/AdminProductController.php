@@ -5,6 +5,8 @@ use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SanPham;
+use App\Models\LoaiSanPham;
+
 class AdminProductController extends Controller
 {
     public $viewData = [];
@@ -20,8 +22,12 @@ class AdminProductController extends Controller
         return view('admin.product.index', $viewData);
     }
     public function create(){
-        $viewData['title'] = "Trang thêm Sản Phẩm";
-        return view("admin.product.create")->with("viewData",$viewData);
+        $categories = LoaiSanPham::where('TrangThai', 1)->get();
+        $viewData = [
+            'title' => 'Thêm sản phẩm mới',
+            'categories' => $categories,
+        ];
+        return view('admin.product.create', $viewData);
     }
     public function createPost(Request $request)
     {

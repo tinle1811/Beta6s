@@ -100,9 +100,12 @@
                   <div class="form-group">
                    <label for="LoaiSP" class="input-label">Loại Sản Phẩm</label>  
                    <select name="LoaiSP" id="LoaiSP">
-                      <option value="1">Loại 1</option>
-                      <option value="2">Loại 2</option>
-                      <!-- Các loại sản phẩm khác -->
+                    <option value="" disabled selected>-- Chọn loại sản phẩm --</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->getCategoryId() }}">
+                            {{ $category->getCategoryName() }}
+                        </option>
+                    @endforeach
                    </select>
                  </div>
                   <!-- Nút Thêm -->
