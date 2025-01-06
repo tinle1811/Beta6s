@@ -3048,7 +3048,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   line-height: 16px;
   text-align: center;
   font-size: 12px;
-  padding: 12px 40px;
+  padding: 9px 15px;
   text-transform: uppercase;
   font-weight: 500;
   display: inline-block;
@@ -7746,6 +7746,19 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 /*contact page css end*/
 /* 17. login page css here */
+
+#logo {
+  width: 230px;             /* Giữ chiều rộng tự động */
+  max-width: 100%;         /* Giới hạn chiều rộng ảnh tối đa là 100% của phần tử chứa */
+  height: auto;            /* Giữ tỷ lệ chiều cao của ảnh */
+  max-height: 80%;         /* Giới hạn chiều cao tối đa của ảnh là 80% của phần tử chứa */
+  object-fit: contain;     /* Giữ tỷ lệ cho ảnh mà không bị cắt */
+  display: flex;
+  justify-content: center; /* Căn giữa ảnh theo chiều ngang */
+  align-items: center;     /* Căn giữa ảnh theo chiều dọc */
+  height: 15vh;  
+  
+}
 .account_form h2 {
   font-size: 28px;
   text-transform: capitalize;
@@ -7805,17 +7818,20 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .login_submit label input[type=checkbox] {
   width: 15px;
-  height: 13px;
-  margin-right: 3px;
+  height: 15px;
+  margin-right: 5px;
 }
-
+.login_submit label input{
+  font-size: 15px;
+}
 .login_submit {
   text-align: right;
+  display: flex;
+  justify-content: space-between;
 }
 .login_submit a {
-  font-size: 13px;
+  font-size: 15px;
   float: left;
-  line-height: 39px;
 }
 .login_submit a:hover {
   color: #0063d1;
@@ -7833,7 +7849,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     float: none;
     line-height: 18px;
     display: block;
-    margin-bottom: 20px;
   }
 }
 .popup-container .window {
