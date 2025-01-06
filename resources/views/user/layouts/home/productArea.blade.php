@@ -23,12 +23,12 @@
                                     <div class="action_links">
                                         <ul>
                                             <li class="wishlist">
-                                                <form action="{{route('user.home.addWishlist')}}" method="POST" class="add-to-cart-form" id="add-to-cart-form">
-                                                    @csrf
-                                                    <input type="hidden" name="MaSP" value="{{ $product->MaSP }}">
-                                                    <input type="number" name="soLuong" value="1" min="1" style="display: none;">
-                                                    <button type="submit" title="Add to Wishlist" style=" border-radius: 50%;" class="btn btn-primary"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                                                </form>
+                                                @auth
+                                                    <form action="{{route('user.home.addWishlist',['id' => $product->MaSP])}}" method="POST" class="add-to-cart-form" id="add-to-cart-form">
+                                                        @csrf
+                                                        <button type="submit" title="Add to Wishlist" style=" border-radius: 50%;" class="btn btn-primary"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                                    </form>
+                                                @endauth
                                             </li>
                                             <li class="compare"><a href="#" title="compare"><span class="ion-levels"></span></a>
                                             </li>
@@ -37,10 +37,8 @@
                                         </ul>
                                     </div>
                                     <div class="add_to_cart">
-                                        <form action="{{route('user.cart.add')}}" method="POST" class="add-to-cart-form" id="add-to-cart-form">
+                                        <form action="{{route('user.cart.add',['id'=>$product->MaSP])}}" method="POST" class="add-to-cart-form" id="add-to-cart-form">
                                             @csrf
-                                            <input type="hidden" name="MaSP" value="{{ $product->MaSP }}">
-                                            <input type="number" name="soLuong" value="1" min="1" style="display: none;">
                                             <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
                                         </form>
                                     </div>

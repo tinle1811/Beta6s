@@ -50,18 +50,14 @@ class HomeController extends Controller
         ];
         return view('user.home.wishlist')->with('viewData', $viewData);
     }
-    public function addToWishlist(Request $request)
+    public function addToWishlist(Request $request, $id)
     {
         if(!Auth::check()){
             return redirect()->route('user.home.index')->with('error','Vui lòng đăng nhập để thêm vào yêu thích');
         }
 
-        $validated = $request->validate([
-            'MaSP' => 'required|exists:san_phams,MaSP',
-        ]);
-
         $maTk = Auth::user()->MaTK;
-        $productId = $validated['MaSP'];
+        $productId = $id;
 
         $wishlistItems = YeuThich::where('MaTK', $maTk)->where('MaSP', $productId)->first();
         if(!$wishlistItems){

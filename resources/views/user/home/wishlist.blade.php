@@ -38,10 +38,8 @@
                                                 @endif
                                             </td>
                                             <td class="product_quantity">
-                                                <form action="{{route('user.cart.add')}}" method="POST" class="add-to-cart-form" id="add-to-cart-form">
+                                                <form action="{{route('user.cart.add',['id'=> $item->product->MaSP])}}" method="POST" class="add-to-cart-form" id="add-to-cart-form">
                                                     @csrf
-                                                    <input type="hidden" name="MaSP" value="{{ $item->product->MaSP }}">
-                                                    <input type="number" name="soLuong" value="1" min="1" style="display: none;">
                                                     <button type="submit" class="btn btn-primary">Thêm</button>
                                                 </form>
                                             </td>

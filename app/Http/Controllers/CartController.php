@@ -44,32 +44,27 @@ class CartController extends Controller
 
         return View('user.cart.checkout')->with('viewData',$viewData);
     }
-    public function addToCart(Request $request)
+    public function addToCart(Request $request, $id)
     {
         // kiểm tra người dùng đã đăng nhập chưa
         if(!Auth::check()){
             return redirect()->route('user.home.index')->with('error', 'Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng');
         }
-        $validated = $request->validate([
-            'MaSP' => 'required|exists:san_phams,MaSP',
-            'soLuong' => 'required|integer|min:1'
-        ]);
 
         $userId = Auth::id();
-        $productId = $validated['MaSP'];
-        $quantity = $validated['soLuong'];
+        $productId = $id;
 
         //kiểm tra sản phẩm đã tồn tại trong giỏ hàng chưa
         $cartItems = GioHang::where('MaTK', $userId)->where('MaSP', $productId)->first();
         if($cartItems)
         {
-            $cartItems->soLuong += $quantity;
+            $cartItems->soLuong += 1;
             $cartItems->save();
         }else{
             GioHang::create([
                 'MaTK'=>$userId,
                 'MaSP'=>$productId,
-                'soLuong'=>$quantity,
+                'soLuong'=>1,
             ]);
         }
         return redirect()->route('user.cart.index');
@@ -97,11 +92,8 @@ class CartController extends Controller
         if(!$cartItems){
             return redirect()->route('user.cart.index')->with('error', 'Sản phẩm không tồn tại trong giỏ hàng.');
         }
-        $validated = $request->validate([
-            'soLuong' => 'required|integer|min:1'
-        ]);
 
-        $cartItems->soLuong = $validated['soLuong'];
+        $cartItems->soLuong = $request->input('soLuong');
         $cartItems->save();
 
         return redirect()->route('user.cart.index')->with('success', 'Giỏ hàng đã được cập nhật.');
