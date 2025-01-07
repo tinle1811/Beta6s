@@ -44,7 +44,7 @@
     <script src="{{asset('assets/js/chat.js')}}"></script>
     <script src="{{asset('assets/js/popup_login.js')}}"></script>
     {{-- <script src="{{asset('assets/js/popup.js')}}"></script> --}}
-
+    @yield('script')
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
