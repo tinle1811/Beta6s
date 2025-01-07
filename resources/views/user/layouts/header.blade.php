@@ -243,14 +243,15 @@
                                     <form method="GET" action="{{ route('user.search.index') }}">
                                         <div class="hover_category">
                                             <select class="select_option" name="loai_san_pham" id="categori">
-                                                <option selected value="">Các loại sản phẩm</option>
+                                                <option value="" {{ request('loai_san_pham') == '' ? 'selected' : '' }}>Các loại sản phẩm</option>
                                                 @foreach($loaiSanPhams as $loaiSanPham)
-                                                    <option value="{{ $loaiSanPham->MaLSP }}">{{ $loaiSanPham->TenLSP }}</option>
+                                                    <option value="{{ $loaiSanPham->MaLSP }}" {{ request('loai_san_pham') == $loaiSanPham->MaLSP ? 'selected' : '' }}
+                                                        >{{ $loaiSanPham->TenLSP }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="search_box">
-                                            <input placeholder="Tìm sản phẩm..." type="text" name="keyword">
+                                            <input placeholder="Tìm sản phẩm..." type="text" name="keyword" value="{{ request('keyword') }}">
                                             <button type="submit">Search</button>
                                         </div>
                                     </form>
