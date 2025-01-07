@@ -2,9 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\GioHang;
+use App\Models\YeuThich;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\ThongTinWebsite;
+use Illuminate\Support\Facades\Auth;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,10 +25,46 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
         // Chia sẻ dữ liệu logo tới tất cả view
         View::composer('*', function ($view) {
-            $websiteInfo = ThongTinWebsite::first(); 
+            $websiteInfo = ThongTinWebsite::first();
             $view->with('websiteInfo', $websiteInfo);
+        });
+        // Sử dụng View Composer để truyền dữ liệu vào tất cả các view
+        View::composer('user.layouts.header', function ($view) {
+            $viewData = [];
+            $viewData['cartCount'] = 0; // Giá trị mặc định
+            $viewData['wishlistCount'] = 0;
+
+            // Kiểm tra người dùng đã đăng nhập hay chưa
+            if (Auth::check()) {
+                // Lấy id tài khoản người dùng
+                $maTk = Auth::user()->MaTK;
+
+                // Lấy dữ liệu từ giỏ hàng
+                $gioHang = GioHang::where('MaTK', $maTk)->with('product')->get();
+                $viewData['cartItems'] = $gioHang;
+
+                // Đếm số lượng sản phẩm trong giỏ hàng
+                $viewData['cartCount'] = $gioHang->count();
+
+                // Tính tổng giá trị giỏ hàng (subtotal)
+                $viewData['subtotal'] = $gioHang->sum(function ($item) {
+                    return $item->product ? $item->soLuong * $item->product->Gia : 0;
+                });
+
+                //lấy dữ liệu từ yêu thích
+                $yeuThich = YeuThich::where('MaTK', $maTk)->with('product')->get();
+                $viewData['wishlistCount'] = $yeuThich->count();
+            } else {
+                // Người dùng chưa đăng nhập
+                $viewData['cartItems'] = collect(); // Mảng rỗng
+                $viewData['subtotal'] = 0; // Giá trị mặc định
+            }
+
+            // Truyền dữ liệu vào view
+            $view->with('viewData', $viewData);
         });
     }
 }
