@@ -6,30 +6,33 @@
     <div class="row">
         @foreach ($viewData['products'] as $product)
             <div class="col-md-4 mb-4">
-                <div class="card shadow-sm">
-                    <!-- Hình ảnh sản phẩm -->
-                    <a href="{{ route('user.home.show') }}">
-                        <img src="{{ asset('/assetsUser/img_product/' . $product->getProductImage()) }}"
-                            alt="{{ $product->getProductName() }}" class="card-img-top img-fluid">
-                    </a>
-                    <!-- Nội dung sản phẩm -->
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="{{ route('user.home.show') }}" class="text-decoration-none text-dark">
-                                {{ $product->getProductName() }}
+                @if(isset($sanPhams) && $sanPhams->isNotEmpty())
+                        <div class="card shadow-sm">
+                            <!-- Hình ảnh sản phẩm -->
+                            <a href="{{ route('user.home.show', $product->id) }}">
+                                <img src="{{ asset('/assetsUser/img_product/' . $product->getProductImage()) }}"
+                                    alt="{{ $product->getProductName() }}" class="card-img-top img-fluid">
                             </a>
-                        </h5>
-                        <p class="card-text text-success fw-bold">
-                            {{ number_format($product->getProductPrice(), 0, ',', '.') }} đ
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <a href="cart.html" class="btn btn-primary btn-sm">Thêm vào giỏ hàng</a>
-                            <a href="wishlist.html" class="btn btn-outline-secondary btn-sm">Yêu thích</a>
+                            <!-- Nội dung sản phẩm -->
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="{{ route('user.home.show', $product->id) }}" class="text-decoration-none text-dark">
+                                        {{ $product->getProductName() }}
+                                    </a>
+                                </h5>
+                                <p class="card-text text-success fw-bold">
+                                    {{ number_format($product->getProductPrice(), 0, ',', '.') }} đ
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <a href="cart.html" class="btn btn-primary btn-sm">Thêm vào giỏ hàng</a>
+                                    <a href="wishlist.html" class="btn btn-outline-secondary btn-sm">Yêu thích</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                @endif
             </div>
-        @endforeach
+            @endforeach
+
     </div>
 
     <!-- Phân trang -->

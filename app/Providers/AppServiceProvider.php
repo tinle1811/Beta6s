@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\GioHang;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
+use App\Models\LoaiSanPham;
 use View;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,10 +23,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
         // Sử dụng View Composer để truyền dữ liệu vào tất cả các view
         View::composer('user.layouts.header', function ($view) {
             $viewData = [];
             $viewData['cartCount'] = 0; // Giá trị mặc định
+            $loaiSanPhams = LoaiSanPham::all();//Dùng cho chức năng search
+            $view->with('loaiSanPhams', $loaiSanPhams);//Dùng cho chức năng search
 
             // Kiểm tra người dùng đã đăng nhập hay chưa
             if (Auth::check()) {
