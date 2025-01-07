@@ -35,16 +35,17 @@
                                 </ul>
                         </div>
                         <div class="search_container">
-                            <form action="#">
+                            <form method="GET" action="{{ route('user.search.index') }}">
                                 <div class="hover_category">
-                                    <select class="select_option" name="select" id="categori">
-                                        <option selected value="1">Các loại sản phẩm</option>
-                                        <option value="2">Thường</option>
-                                        <option value="3">Đặc biệt</option>
+                                    <select class="select_option" name="loai_san_pham" id="categori">
+                                        <option selected value="">Các loại sản phẩm</option>
+                                        @foreach($loaiSanPhams as $loaiSanPham)
+                                            <option value="{{ $loaiSanPham->MaLSP }}">{{ $loaiSanPham->TenLoaiSP }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="search_box">
-                                    <input placeholder="Search product..." type="text">
+                                    <input placeholder="Tìm sản phẩm..." type="text" name="keyword">
                                     <button type="submit">Search</button>
                                 </div>
                             </form>
@@ -239,16 +240,17 @@
                         <div class="col-lg-9 col-md-6">
                             <div class="middel_right">
                                 <div class="search_container">
-                                    <form action="#">
+                                    <form method="GET" action="{{ route('user.search.index') }}">
                                         <div class="hover_category">
-                                            <select class="select_option" name="select" id="categori1">
-                                                <option selected value="1">Các loại sản phẩm</option>
-                                                <option value="2">Thường</option>
-                                                <option value="3">Đặc biệt</option>
+                                            <select class="select_option" name="loai_san_pham" id="categori">
+                                                <option selected value="">Các loại sản phẩm</option>
+                                                @foreach($loaiSanPhams as $loaiSanPham)
+                                                    <option value="{{ $loaiSanPham->MaLSP }}">{{ $loaiSanPham->TenLSP }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="search_box">
-                                            <input placeholder="Search product..." type="text">
+                                            <input placeholder="Tìm sản phẩm..." type="text" name="keyword">
                                             <button type="submit">Search</button>
                                         </div>
                                     </form>
