@@ -332,7 +332,8 @@
                 <td>2</td> --}}
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a class="btn btn-sm btn-primary" style="display: flex; align-items: center; justify-content: center"
+                                            <a class="btn btn-sm btn-primary"
+                                                style="display: flex; align-items: center; justify-content: center"
                                                 href="{{ route('admin.catagory.edit', ['id' => $category->getCategoryId()]) }}">
                                                 <i class="tio-edit"></i> Sửa
                                             </a>
@@ -428,35 +429,66 @@
     </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).on('click', '.delete-category', function() {
             var categoryId = $(this).closest('tr').data('id');
 
-            if (confirm('Bạn có chắc chắn muốn xóa loại sản phẩm này không?')) {
-                $.ajax({
-                    url: '/admin/catagory/' + categoryId + '/delete',
-                    type: 'DELETE',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                    },
-                    success: function(response) {
-                        if (response.success) {
-                            var row = $('tr[data-id="' + categoryId + '"]');
-                            var statusCell = row.find('.TrangThai');
+            showConfirm('Bạn có chắc chắn muốn xóa loại sản phẩm này không?').then(function(result) {
+                if (result) {
+                    $.ajax({
+                        url: '/admin/catagory/' + categoryId + '/delete',
+                        type: 'DELETE',
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                var row = $('tr[data-id="' + categoryId + '"]');
+                                var statusCell = row.find('.TrangThai');
 
-                            if (response.newStatus == 0) {
-                                statusCell.text('0');
+                                if (response.newStatus == 0) {
+                                    statusCell.text('0');
+                                }
+                                showAlert(response.success, 'success');
                             }
-                            alert(response.success);
+                        },
+                        error: function(xhr) {
+                            showAlert('Có lỗi xảy ra! Vui lòng thử lại.', 'error');
                         }
-                    },
-                    error: function(xhr) {
-                        alert('Có lỗi xảy ra! Vui lòng thử lại.');
+                    });
+                } else {
+                    showAlert('Đã hủy xóa loại sản phẩm.', 'error');
+                }
+            });
+        });
+
+        function showConfirm(question) {
+            return new Promise(function(resolve) {
+                Swal.fire({
+                    title: 'Thông Báo!',
+                    text: question,
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Có, thực hiện!',
+                    cancelButtonText: 'Hủy bỏ'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        resolve(true);
+                    } else {
+                        resolve(false);
                     }
                 });
-            } else {
-                alert('Đã hủy xóa loại sản phẩm.');
-            }
-        });
+            });
+        }
+
+        function showAlert(content, i) {
+            Swal.fire({
+                title: 'Thông Báo!',
+                text: content,
+                icon: i,
+                confirmButtonText: 'Đóng'
+            });
+        }
     </script>
 @endsection
