@@ -2,7 +2,7 @@
     <section class="slider_section mb-70">
         <div class="slider_area owl-carousel">
             @foreach ($viewData['DSSP-Slider'] as $product)
-                <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('/assetsUser/img_product/'.$product->getProductImage()) }}" style="background-repeat: no-repeat; background-position: right center; background-size:  800px 500px;">
+                <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('/assetsUser/img_product/'.$product->getProductImage()) }}" style="background-repeat: no-repeat; background-position: right center; background-size:  600px 500px;">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
