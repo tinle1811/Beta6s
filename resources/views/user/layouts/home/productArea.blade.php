@@ -13,11 +13,7 @@
                         <article class="single_product">
                             <figure>
                                 <div class="product_thumb">
-<<<<<<< HEAD
-                                    <a class="primary_img" href="{{route('user.home.show')}}"><img src="{{ asset('/assetsUser/img_product'.$product->getProductImage()) }}"
-=======
                                     <a class="primary_img" href="{{route('user.home.show')}}"><img src="{{ asset('/assetsUser/img_product/' . $product->getProductImage()) }}"
->>>>>>> fa09cd26096fe77ec75074f82ccc27800c7b62a0
                                             alt="{{ $product->getProductName() }}"></a>
                                     {{-- <a class="secondary_img" href="{{route('user.home.show')}}"><img
                                             src="assets/img/product/product2.jpg" alt=""></a> --}}
