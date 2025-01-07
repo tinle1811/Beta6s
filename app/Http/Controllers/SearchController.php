@@ -18,23 +18,22 @@ class SearchController extends Controller
                     ->select('san_phams.*', 'loai_san_phams.TenLSP');  // Chọn các cột cần thiết từ hai bảng
 
         // Nếu có loại sản phẩm trong request, lọc sản phẩm theo loại
-        if ($request->has('loai_san_pham')) {
+        if ($request->has('loai_san_pham') && $request->input('loai_san_pham') != null) {
             $query->where('san_phams.LoaiSP', $request->input('loai_san_pham'));
         }
 
         // Nếu có từ khóa tìm kiếm trong request, lọc sản phẩm theo tên
-        if ($request->has('keyword')) {
+        if ($request->has('keyword')&& $request->input('keyword') != null) {
             $query->where('san_phams.TenSP', 'like', '%' . $request->input('keyword') . '%');
         }
 
         // Lấy tất cả sản phẩm sau khi lọc
-        $sanPhams = $query->get();
-        $viewData['products'] = SanPham::paginate(9);
+        $viewData['products'] = $query->paginate(9);
 
         // Lấy tất cả loại sản phẩm
         $loaiSanPhams = LoaiSanPham::all();
 
         // Trả về view với dữ liệu tìm kiếm và danh sách loại sản phẩm
-        return view('user.search.index', compact('sanPhams', 'loaiSanPhams', 'viewData'));
+        return view('user.search.index', compact('loaiSanPhams', 'viewData'));
     }
 }

@@ -6,7 +6,6 @@
     <div class="row">
         @foreach ($viewData['products'] as $product)
             <div class="col-md-4 mb-4">
-                @if(isset($sanPhams) && $sanPhams->isNotEmpty())
                         <div class="card shadow-sm">
                             <!-- Hình ảnh sản phẩm -->
                             <a href="{{ route('user.home.show', $product->id) }}">
@@ -29,7 +28,6 @@
                                 </div>
                             </div>
                         </div>
-                @endif
             </div>
             @endforeach
 
