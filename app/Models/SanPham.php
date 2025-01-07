@@ -32,7 +32,11 @@ class SanPham extends Model
     {
         return $this->hasMany(GioHang::class, 'MaSP', 'MaSP');
     }
-
+    // Mối quan hệ với chi tiết hóa đơn
+    public function chiTietHoaDons()
+    {
+        return $this->hasMany(ChiTietHoaDon::class, 'MaSP');
+    }
     public function getProductId()
     {
         return $this->attributes['MaSP'];

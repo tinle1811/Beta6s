@@ -14,4 +14,9 @@ class KhachHang extends Model
     {
         return $this->hasMany(BinhLuan::class, 'MaKH', 'MaTK');
     }
+    
+    public function hoaDons()
+    {
+        return $this->hasMany(HoaDon::class, 'MaTK');
+    }
 }
