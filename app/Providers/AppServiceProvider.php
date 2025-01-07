@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\GioHang;
 use App\Models\LoaiSanPham;
+use App\Models\YeuThich;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use View;
@@ -27,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('user.layouts.header', function ($view) {
             $viewData = [];
             $viewData['cartCount'] = 0; // Giá trị mặc định
+            $viewData['wishlistCount'] = 0;
 
             // Kiểm tra người dùng đã đăng nhập hay chưa
             if (Auth::check()) {
@@ -44,6 +46,11 @@ class AppServiceProvider extends ServiceProvider
                 $viewData['subtotal'] = $gioHang->sum(function ($item) {
                     return $item->product ? $item->soLuong * $item->product->Gia : 0;
                 });
+
+                //lấy dữ liệu từ yêu thích
+                $yeuThich = YeuThich::where('MaTK',$maTk)->with('product')->get();
+                $viewData['wishlistCount'] = $yeuThich->count();
+
             } else {
                 // Người dùng chưa đăng nhập
                 $viewData['cartItems'] = collect(); // Mảng rỗng
