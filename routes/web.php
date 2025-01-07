@@ -31,7 +31,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // route không yêu cầu đăng nhập
 Route::get('/', [HomeController::class, 'index'])->name('user.home.index');
-Route::get('/product-detail', [HomeController::class, 'show'])->name('user.home.show');
+Route::get('/product-detail/{slug}', [HomeController::class, 'show'])->name('user.home.show');
 Route::get('/about', [HomeController::class, 'about'])->name('user.home.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('user.home.contact');
 Route::get('/blog',[BlogController::class,'index'])->name('user.blog.index');

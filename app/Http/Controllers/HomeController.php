@@ -20,9 +20,20 @@ class HomeController extends Controller
         return view('user.home.index')->with('viewData', $viewData);
     }
 
-    public function show()
+    public function show($slug)
     {
-        $viewData['title'] = "Trang chi tiết";
+        $sanpham = SanPham::where('Slug', $slug)->firstOrFail();
+        $relatedProducts = SanPham::where('LoaiSP', $sanpham->LoaiSP)
+            ->where('MaSP', '!=', $sanpham->MaSP)
+            ->limit(5)
+            ->get();
+
+        $viewData = [
+            'title' => 'Chi tiết sản phẩm',
+            'sanpham' => $sanpham,
+            'relatedProducts' => $relatedProducts
+        ];
+
         return view('user.home.show')->with('viewData', $viewData);
     }
     public function about()
@@ -37,33 +48,33 @@ class HomeController extends Controller
     }
     public function wishlist()
     {
-        if(!Auth::check()){
-            return redirect()->route('user.home.index')->with('error','Vui lòng đăng nhập để thêm vào yêu thích');
+        if (!Auth::check()) {
+            return redirect()->route('user.home.index')->with('error', 'Vui lòng đăng nhập để thêm vào yêu thích');
         }
         $maTk = Auth::user()->MaTK;
 
         $yeuThich = YeuThich::where('MaTK', $maTk)->with('product')->get();
 
         $viewData = [
-            'title'=>"Trang yêu thích",
-            'yeuThich'=>$yeuThich,
+            'title' => "Trang yêu thích",
+            'yeuThich' => $yeuThich,
         ];
         return view('user.home.wishlist')->with('viewData', $viewData);
     }
     public function addToWishlist(Request $request, $id)
     {
-        if(!Auth::check()){
-            return redirect()->route('user.home.index')->with('error','Vui lòng đăng nhập để thêm vào yêu thích');
+        if (!Auth::check()) {
+            return redirect()->route('user.home.index')->with('error', 'Vui lòng đăng nhập để thêm vào yêu thích');
         }
 
         $maTk = Auth::user()->MaTK;
         $productId = $id;
 
         $wishlistItems = YeuThich::where('MaTK', $maTk)->where('MaSP', $productId)->first();
-        if(!$wishlistItems){
+        if (!$wishlistItems) {
             YeuThich::create([
-                'MaTK'=>$maTk,
-                'MaSP'=>$productId,
+                'MaTK' => $maTk,
+                'MaSP' => $productId,
             ]);
         }
         return redirect()->route('user.home.wishlist');

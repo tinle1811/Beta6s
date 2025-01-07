@@ -13,7 +13,7 @@
                         <article class="single_product">
                             <figure>
                                 <div class="product_thumb">
-                                    <a class="primary_img" href="{{route('user.home.show')}}"><img src="{{ asset('/assetsUser/img_product/' . $product->getProductImage()) }}"
+                                    <a class="primary_img" href="{{route('user.home.show',['slug' => $product->getProductSlug()])}}"><img src="{{ asset('/assetsUser/img_product/' . $product->getProductImage()) }}"
                                             alt="{{ $product->getProductName() }}"></a>
                                     {{-- <a class="secondary_img" href="{{route('user.home.show')}}"><img
                                             src="assets/img/product/product2.jpg" alt=""></a> --}}
@@ -51,7 +51,7 @@
                                         {{-- <span class="old_price">$86.00</span> --}}
                                         <span class="current_price">{{ number_format($product->getProductPrice(), 0, ',', '.') }} đ</span>
                                     </div>
-                                    <h3 class="product_name"><a href="{{route('user.home.show')}}">{{ $product->getProductName() }}</a></h3>
+                                    <h3 class="product_name"><a href="{{route('user.home.show',['slug'=>$product->getProductSlug()])}}">{{ $product->getProductName() }}</a></h3>
                                 </figcaption>
                             </figure>
                         </article>
