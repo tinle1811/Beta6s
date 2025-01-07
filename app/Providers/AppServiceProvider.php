@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\GioHang;
+use App\Models\LoaiSanPham;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use View;
@@ -48,6 +49,9 @@ class AppServiceProvider extends ServiceProvider
                 $viewData['cartItems'] = collect(); // Mảng rỗng
                 $viewData['subtotal'] = 0; // Giá trị mặc định
             }
+
+            // Lấy danh sách danh mục
+            $viewData['DS-DanhMuc'] = LoaiSanPham::Where('TrangThai', 1)->get();
 
             // Truyền dữ liệu vào view
             $view->with('viewData', $viewData);
