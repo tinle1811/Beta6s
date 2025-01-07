@@ -38,9 +38,12 @@
                             <form action="#">
                                 <div class="hover_category">
                                     <select class="select_option" name="select" id="categori">
-                                        <option selected value="1">Các loại sản phẩm</option>
-                                        <option value="2">Thường</option>
-                                        <option value="3">Đặc biệt</option>
+                                        <option selected value="0">Các loại sản phẩm</option>
+                                        {{-- <option value="2">Thường</option>
+                                        <option value="3">Đặc biệt</option> --}}
+                                        @foreach ($viewData['DS-DanhMuc'] as $category)
+                                            <option value="{{ $category->getCategoryId() }}">{{ $category->getCategoryName() }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="search_box">
