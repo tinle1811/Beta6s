@@ -13,7 +13,11 @@
                         <article class="single_product">
                             <figure>
                                 <div class="product_thumb">
+<<<<<<< HEAD
                                     <a class="primary_img" href="{{route('user.home.show')}}"><img src="{{ asset('/assetsUser/img_product'.$product->getProductImage()) }}"
+=======
+                                    <a class="primary_img" href="{{route('user.home.show')}}"><img src="{{ asset('/assetsUser/img_product/' . $product->getProductImage()) }}"
+>>>>>>> fa09cd26096fe77ec75074f82ccc27800c7b62a0
                                             alt="{{ $product->getProductName() }}"></a>
                                     {{-- <a class="secondary_img" href="{{route('user.home.show')}}"><img
                                             src="assets/img/product/product2.jpg" alt=""></a> --}}
@@ -40,7 +44,7 @@
                                 <figcaption class="product_content">
                                     <div class="price_box">
                                         {{-- <span class="old_price">$86.00</span> --}}
-                                        <span class="current_price">{{ $product->getProductPrice() }}</span>
+                                        <span class="current_price">{{ number_format($product->getProductPrice(), 0, ',', '.') }} đ</span>
                                     </div>
                                     <h3 class="product_name"><a href="{{route('user.home.show')}}">{{ Str::limit($product->getProductName(), 20, '...') }}</a></h3>
                                     <p class="product_description" style="font-size: .7rem">{{ Str::limit($product->getProductDescription(), 60, '...') }}</p>
