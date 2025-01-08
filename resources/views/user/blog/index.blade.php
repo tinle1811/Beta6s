@@ -9,9 +9,19 @@
                 <div class="col-lg-9">
                     <div class="blog_wrapper">
                         <div class="blog_header">
-                            <h1>Danh sách bài viết</h1>
+                            <a href="{{ route('user.blog.index') }}">
+                                <h1>Danh sách bài viết</h1>
+                            </a>
                         </div>
                         <div class="row">
+                            @if (request('search') && $viewData['blogs']->isNotEmpty())
+                                <p>Kết quả tìm kiếm cho từ khóa: "{{ request('search') }}"</p>
+                            @endif
+                            @if (request('search') && $viewData['blogs']->isEmpty())
+                                <div class="alert alert-soft-info" role="alert">
+                                    Không tìm thấy bài viết nào.
+                                </div>
+                            @endif
                             @foreach ($viewData['blogs'] as $blog)
                                 <div class="col-lg-6 col-md-6">
                                     <article class="single_blog mb-60">
@@ -81,12 +91,10 @@
                     <div class="blog_sidebar_widget">
                         <div class="widget_list widget_search">
                             <h3>Search</h3>
-                            <form action="#">
-                                <input placeholder="Search..." type="text">
-                                <button type="submit">search</button>
-                            </form>
+                            @include('user.blog.blogSearch')
+
                         </div>
-                        <div class="widget_list widget_post">
+                        {{-- <div class="widget_list widget_post">
                             <h3>Recent Posts</h3>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
@@ -124,7 +132,7 @@
                                     <span>March 16, 2022 </span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

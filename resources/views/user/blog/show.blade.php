@@ -103,12 +103,9 @@
                     <div class="blog_sidebar_widget">
                         <div class="widget_list widget_search">
                             <h3>Search</h3>
-                            <form action="#">
-                                <input placeholder="Search..." type="text">
-                                <button type="submit">search</button>
-                            </form>
+                            @include('user.blog.blogSearch')
                         </div>
-                        <div class="widget_list widget_post">
+                        {{-- <div class="widget_list widget_post">
                             <h3>Recent Posts</h3>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
@@ -146,7 +143,7 @@
                                     <span>March 16, 2022 </span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
