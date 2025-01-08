@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+//use Auth;
+use Illuminate\Support\Facades\Auth;
+
+
 use Illuminate\Http\Request;
 
 use App\Models\SanPham;
 use App\Models\YeuThich;
+use App\Models\Blog;
 
 class HomeController extends Controller
 {
@@ -17,6 +21,7 @@ class HomeController extends Controller
         $viewData['title'] = "Trang chủ";
         $viewData["DSSP-BanChay"] = SanPham::limit(10)->get();
         $viewData["DSSP-NoiBat"] = SanPham::skip(10)->limit(10)->get();
+        $viewData["blogs"] = Blog::limit(5)->get();
         return view('user.home.index')->with('viewData', $viewData);
     }
 
