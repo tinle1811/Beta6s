@@ -21,7 +21,7 @@ class CartController extends Controller
         $maTk = Auth::user()->MaTK;
 
         //lấy dữ liệu từ giỏ hàng
-        $gioHang = GioHang::where('MaTK', $maTk)->with('product')->get();
+        $gioHang = GioHang::where('MaTK', $maTk)->with('product')->paginate(5);
 
         $subtotal = $gioHang->sum(function ($item) {
             return $item->soLuong * $item->product->Gia;

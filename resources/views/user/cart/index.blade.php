@@ -61,6 +61,10 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <!-- Phân trang -->
+                            <div class="d-flex justify-content-center">
+                                {{ $viewData['cartItems']->links('pagination::bootstrap-5') }}
+                            </div>
                         </div>
                     </div>
                 </div>
