@@ -6,6 +6,7 @@ use App\Models\GioHang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\SanPham;
+use Laravel\Pail\ValueObjects\Origin\Console;
 
 class CartController extends Controller
 {
@@ -52,19 +53,20 @@ class CartController extends Controller
         }
 
         $userId = Auth::id();
-        $productId = $id;
+        $productId = $request->input('MaSP');
+        $quantity = $request->input('soLuong',1);
 
         //kiểm tra sản phẩm đã tồn tại trong giỏ hàng chưa
         $cartItems = GioHang::where('MaTK', $userId)->where('MaSP', $productId)->first();
         if($cartItems)
         {
-            $cartItems->soLuong += 1;
+            $cartItems->soLuong += $quantity;
             $cartItems->save();
         }else{
             GioHang::create([
                 'MaTK'=>$userId,
                 'MaSP'=>$productId,
-                'soLuong'=>1,
+                'soLuong'=>$quantity,
             ]);
         }
         return redirect()->route('user.cart.index');

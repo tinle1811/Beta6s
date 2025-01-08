@@ -23,8 +23,6 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product_d_right">
-                    <form action="#">
-
                         <h1>{{$viewData['sanpham']->getProductName()}}</h1>
                         <div class="product_nav">
 
@@ -55,51 +53,18 @@
                                 <span style="color: red; font-weight: bold;font-size:30px">Hết hàng</span>
                             @endif
                         </div>
-                        {{-- <div class="product_timing">
-                            <div data-countdown="2023/12/15"></div>
-                        </div>
-                        <div class="product_variant color">
-                            <h3>Available Options</h3>
-                            <label>color</label>
-                            <ul>
-                                <li class="color1"><a href="#"></a></li>
-                                <li class="color2"><a href="#"></a></li>
-                                <li class="color3"><a href="#"></a></li>
-                                <li class="color4"><a href="#"></a></li>
-                            </ul>
-                        </div> --}}
                         <div class="product_variant quantity">
-                            <label>quantity</label>
-                            <input min="1" max="100" value="1" type="number">
-                            <button class="button" type="submit">add to cart</button>
-
-                        </div>
-                        <div class=" product_d_action">
-                            <ul>
-                                <li><a href="#" title="Add to wishlist">+ Add to Wishlist</a></li>
-                                <li><a href="#" title="Add to wishlist">+ Compare</a></li>
-                            </ul>
+                            <form action="{{ route('user.cart.add', ['id', $viewData['sanpham']->getProductId()]) }}" method="POST">
+                                @csrf
+                                <label>Số lượng</label>
+                                <input type="hidden" name="MaSP" value="{{$viewData['sanpham']->getProductId()}}">
+                                <input min="1" max="100" name="soLuong" value="1" type="number">
+                                <button class="button" type="submit">Thêm vào giỏ hàng</button>
+                            </form>
                         </div>
                         <div class="product_meta">
-                            <span>Category: <a href="#">Clothing</a></span>
+                            <span>Loại: <a href="#">Clothing</a></span>
                         </div>
-
-                    </form>
-                    <div class="priduct_social">
-                        <ul>
-                            <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i>
-                                    Like</a></li>
-                            <li><a class="twitter" href="#" title="twitter"><i class="fa fa-twitter"></i> tweet</a>
-                            </li>
-                            <li><a class="pinterest" href="#" title="pinterest"><i class="fa fa-pinterest"></i>
-                                    save</a></li>
-                            <li><a class="google-plus" href="#" title="google +"><i class="fa fa-google-plus"></i>
-                                    share</a></li>
-                            <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i>
-                                    linked</a></li>
-                        </ul>
-                    </div>
-
                 </div>
             </div>
         </div>
