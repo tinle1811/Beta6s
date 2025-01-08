@@ -30,4 +30,17 @@ class HoaDon extends Model
     {
         return $this->belongsTo(PhuongThucThanhToan::class, 'ThanhToan', 'MaPT');
     }
+    public function getTrangThaiName()
+    {
+        // Mảng ánh xạ trạng thái
+        $trangThaiList = [
+            0 => 'Tất cả',
+            1 => 'Chờ lấy hàng',
+            2 => 'Chờ giao hàng',
+            3 => 'Hoàn thành',
+            4 => 'Đã huỷ',
+        ];
+
+        return $trangThaiList[$this->TrangThai] ;
+    }
 }

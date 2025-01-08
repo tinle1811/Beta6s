@@ -21,4 +21,9 @@ class ChiTietHoaDon extends Model
     {
         return $this->belongsTo(HoaDon::class, 'MaHD', 'MaHD');
     }
+    public function sanPham()
+    {
+        return $this->belongsTo(SanPham::class, 'MaSP', 'MaSP');
+    }
+
 }

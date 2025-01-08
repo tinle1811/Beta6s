@@ -55,6 +55,8 @@ Route::middleware('checkRole:shared')->group(function(){
    Route::delete('/wishlist/remove/{id}',[HomeController::class,'removeToWishlist'])->name('user.home.removeWishlist');
 
    Route::get('/account',[AccountController::class,'index'])->name('user.account.index');
+   Route::get('/purchase',[AccountController::class,'purchase'])->name('user.account.purchase');
+   
 });
 
 // Các route admin sử dụng middleware
