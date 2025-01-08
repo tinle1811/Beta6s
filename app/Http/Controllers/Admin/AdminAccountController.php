@@ -10,7 +10,7 @@ class AdminAccountController extends Controller
     public $viewData = [];
     public function index()
     {
-        $viewData['title'] = "Trang Tài Khoản";
+        $viewData['title'] = "Trang quản lý tài khoản";
         return view('admin.account.index')->with('viewData',$viewData);
     }
     public function create(){
@@ -18,7 +18,7 @@ class AdminAccountController extends Controller
         return view("admin.account.create")->with("viewData",$viewData);
     }
     public function edit(){
-        $viewData['title'] = "Trang Cập nhật tài khoản";
+        $viewData['title'] = "Trang cập nhật tài khoản";
         return view("admin.account.edit")->with("viewData",$viewData);
     }
 }

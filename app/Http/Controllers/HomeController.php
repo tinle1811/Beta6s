@@ -47,7 +47,7 @@ class HomeController extends Controller
             ->get();
 
         $viewData = [
-            'title' => 'Chi tiết sản phẩm',
+            'title' => 'Trang chi tiết sản phẩm',
             'sanpham' => $sanpham,
             'relatedProducts' => $relatedProducts
         ];

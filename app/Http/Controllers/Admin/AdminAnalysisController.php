@@ -10,7 +10,7 @@ class AdminAnalysisController extends Controller
     public $viewData = [];
     public function index()
     {
-        $viewData['title'] = "Trang Tài Khoản";
+        $viewData['title'] = "Trang quản trị - thống kê";
         return view('admin.analysis.index')->with('viewData',$viewData);
     }
 }

@@ -18,7 +18,7 @@ class AdminCommentController extends Controller
         return view("admin.comment.create")->with("viewData",$viewData);
     }
     public function edit(){
-        $viewData['title'] = "Trang Cập nhật bình luận";
+        $viewData['title'] = "Trang cập nhật bình luận";
         return view("admin.comment.edit")->with("viewData",$viewData);
     }
 }

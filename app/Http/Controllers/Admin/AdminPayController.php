@@ -10,7 +10,7 @@ class AdminPayController extends Controller
     public $viewData = [];
     public function index()
     {
-        $viewData['title'] = "Trang Thanh Toán";
+        $viewData['title'] = "Trang quản lý hình thức thanh toán";
         return view('admin.pay.index')->with('viewData',$viewData);
     }
     public function create(){
@@ -18,7 +18,7 @@ class AdminPayController extends Controller
         return view("admin.pay.create")->with("viewData",$viewData);
     }
     public function edit(){
-        $viewData['title'] = "Trang Cập nhật hình thức thanh toán";
+        $viewData['title'] = "Trang cập nhật hình thức thanh toán";
         return view("admin.pay.edit")->with("viewData",$viewData);
     }
 }

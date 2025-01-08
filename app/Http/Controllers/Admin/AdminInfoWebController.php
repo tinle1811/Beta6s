@@ -10,7 +10,7 @@ class AdminInfoWebController extends Controller
     public $viewData = [];
     public function index()
     {
-        $viewData['title'] = "Trang thông tin website";
+        $viewData['title'] = "Trang quản lý thông tin website";
         return view('admin.infoweb.index')->with('viewData',$viewData);
     }
     public function create(){
@@ -18,7 +18,7 @@ class AdminInfoWebController extends Controller
         return view("admin.infoweb.create")->with("viewData",$viewData);
     }
     public function edit(){
-        $viewData['title'] = "Trang Cập nhật thông tin website";
+        $viewData['title'] = "Trang cập nhật thông tin website";
         return view("admin.infoweb.edit")->with("viewData",$viewData);
     }
 }

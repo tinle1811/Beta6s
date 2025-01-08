@@ -93,7 +93,7 @@ Route::delete('/admin/catagory/{id}/delete',[AdminCatagoryController::class,"del
 
    Route::get("/admin/infoweb",[AdminInfoWebController::class,"index"])->name("admin.infoweb");
    Route::get("/admin/infoweb/create",[AdminInfoWebController::class,"create"])->name("admin.infoweb.create");
-   Route::get("/admin/infoweb/index",[AdminInfoWebController::class,"edit"])->name("admin.infoweb.edit");
+   Route::get("/admin/infoweb/edit",[AdminInfoWebController::class,"edit"])->name("admin.infoweb.edit");
 
    Route::get("/admin/contact",[AdminContactController::class,"index"])->name("admin.contact");
    Route::get("/admin/contact/create",[AdminContactController::class,"create"])->name("admin.contact.create");

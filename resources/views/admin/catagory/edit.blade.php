@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+@section('title', $viewData['title'])
 @section('content')
     <main id="content" role="main" class="main">
         <!-- Content -->
@@ -11,7 +12,7 @@
                             <ol class="breadcrumb breadcrumb-no-gutter">
                                 <li class="breadcrumb-item"><a class="breadcrumb-link"
                                         href="{{ route('admin.catagory') }}">Loại sản phẩm</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa loại sản phẩm</li>
+                                <li class="breadcrumb-item active" aria-current="page">Cập nhật loại sản phẩm</li>
                             </ol>
                         </nav>
 

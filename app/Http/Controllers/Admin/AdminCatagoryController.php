@@ -10,13 +10,13 @@ class AdminCatagoryController extends Controller {
     public $viewData = [];
 
     public function index() {
-        $viewData[ 'title' ] = 'Trang loại sản phẩm';
+        $viewData[ 'title' ] = 'Trang quản lý loại sản phẩm';
         $viewData[ 'categorys' ] = LoaiSanPham::paginate(10);
         return view( 'admin.catagory.index' )->with( 'viewData', $viewData );
     }
 
     public function create() {
-        $viewData[ 'title' ] = 'Trang thêm loại Sản Phẩm';
+        $viewData[ 'title' ] = 'Trang thêm loại sản phẩm';
         return view( 'admin.catagory.create' )->with( 'viewData', $viewData );
     }
 
@@ -32,7 +32,7 @@ class AdminCatagoryController extends Controller {
     }
 
     public function edit( $id ) {
-        $viewData[ 'title' ] = 'Trang Cập nhật loại Sản Phẩm';
+        $viewData[ 'title' ] = 'Trang cập nhật loại sản phẩm';
         $viewData[ 'category' ] = LoaiSanPham::findOrFail( $id );
         return view( 'admin.catagory.edit' )->with( 'viewData', $viewData );
     }
