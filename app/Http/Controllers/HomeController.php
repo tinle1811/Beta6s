@@ -22,14 +22,16 @@ class HomeController extends Controller
         $viewData["DSSP-Slider"] = SanPham::limit(3)->get();
         $viewData["DSSP-BanChay"] = SanPham::join('chi_tiet_hoa_dons', 'san_phams.MaSP', '=', 'chi_tiet_hoa_dons.MaSP')
                                     ->join('hoa_dons', 'chi_tiet_hoa_dons.MaHD', '=', 'hoa_dons.MaHD')
-                                    ->select('san_phams.MaSP', 'san_phams.HinhAnh', 'san_phams.Gia', 'san_phams.TenSP', 'san_phams.MoTa', DB::raw('SUM(chi_tiet_hoa_dons.SoLuong) as total_quantity'))
-                                    ->where('hoa_dons.TrangThai', '1')
-                                    ->groupBy('san_phams.MaSP', 'san_phams.HinhAnh', 'san_phams.Gia', 'san_phams.TenSP', 'san_phams.MoTa')
+                                    ->select('san_phams.MaSP', 'san_phams.Slug', 'san_phams.HinhAnh', 'san_phams.Gia', 'san_phams.TenSP', 'san_phams.MoTa', DB::raw('SUM(chi_tiet_hoa_dons.SoLuong) as total_quantity'))
+                                    ->where('hoa_dons.TrangThai', 1)
+                                    ->where('san_phams.TrangThai', 1)
+                                    ->groupBy('san_phams.MaSP', 'san_phams.Slug', 'san_phams.HinhAnh', 'san_phams.Gia', 'san_phams.TenSP', 'san_phams.MoTa')
                                     ->orderBy('total_quantity', 'Desc')
                                     ->limit(10)
                                     ->get();
-        $viewData["DSSP-NoiBat"] = SanPham::where('TrangThai',2)->get();
+        $viewData["DSSP-NoiBat"] = SanPham::where('TrangThai',2)->limit(10)->get();
         $viewData["DSSP-Moi"] = SanPham::where('created_at', '>=', Carbon::now()->subMonth())
+                                ->where('TrangThai', 1)
                                 ->orderBy('created_at', 'Desc')
                                 ->limit(10)
                                 ->get();

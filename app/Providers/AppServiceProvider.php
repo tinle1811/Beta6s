@@ -58,7 +58,7 @@ class AppServiceProvider extends ServiceProvider
             }
 
             // Lấy danh sách danh mục
-            $viewData['DS-DanhMuc'] = LoaiSanPham::Where('TrangThai', 1)->get();
+            $viewData['DS-DanhMuc'] = LoaiSanPham::Where('TrangThai', 1)->limit(5)->get();
 
             // Truyền dữ liệu vào view
             $view->with('viewData', $viewData);
