@@ -7,6 +7,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CheckoutController;
+
 //admin
 use App\Http\Controllers\Admin\AdminAccountController;
 use App\Http\Controllers\Admin\AdminAnalysisController;
@@ -44,7 +46,9 @@ Route::middleware('checkRole:shared')->group(function(){
    Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('user.cart.add');
    Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('user.cart.remove');
    Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('user.cart.update');
-   Route::get('/checkout',[CartController::class,'checkout'])->name('user.cart.checkout');
+   
+   Route::get('/checkout',[CheckoutController::class,'checkout'])->name('user.cart.checkout');
+   Route::post('/checkout/payment',[CheckoutController::class,'payment'])->name('user.cart.payment');
 
    Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wishlist');
    Route::post('/wishlist/add/{id}',[HomeController::class,'addToWishlist'])->name('user.home.addWishlist');

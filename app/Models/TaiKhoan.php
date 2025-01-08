@@ -27,8 +27,12 @@ class TaiKhoan extends Authenticatable
         'remember_token',
     ];
     public function getAuthPassword()
-{
-    return $this->Password; // Tên trường mật khẩu trong bảng của bạn
-}
+    {
+        return $this->Password; // Tên trường mật khẩu trong bảng của bạn
+    }   
+    public function khachHang()
+    {
+        return $this->hasOne(KhachHang::class, 'MaTK', 'MaTK');  // MaTK là khóa ngoại trong bảng KhachHang
+    }
 
 }

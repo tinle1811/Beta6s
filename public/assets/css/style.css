@@ -7564,7 +7564,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin-bottom: 60px;
   }
 }
-
+#formCheckout{
+  display: flex;
+  justify-content: space-around;
+}
 .order_table {
   margin: 35px 0;
 }
