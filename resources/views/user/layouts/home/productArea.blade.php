@@ -15,18 +15,14 @@
                                 <div class="product_thumb">
                                     <a class="primary_img" href="{{route('user.home.show',['slug' => $product->getProductSlug()])}}"><img src="{{ asset('/assetsUser/img_product/' . $product->getProductImage()) }}"
                                             alt="{{ $product->getProductName() }}"></a>
-                                    {{-- <a class="secondary_img" href="{{route('user.home.show')}}"><img
-                                            src="assets/img/product/product2.jpg" alt=""></a> --}}
-                                    {{-- <div class="label_product">
-                                        <span class="label_sale">sale</span>
-                                    </div> --}}
+
                                     <div class="action_links">
                                         <ul>
                                             <li class="wishlist">
                                                 @auth
                                                     <form action="{{route('user.home.addWishlist',['id' => $product->MaSP])}}" method="POST" class="add-to-cart-form" id="add-to-cart-form">
                                                         @csrf
-                                                        <button type="submit" title="Add to Wishlist" style=" border-radius: 50%;" class="btn btn-primary"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                                        <button type="submit" title="Add to Wishlist" style=" border-radius: 50%;  width: 32px; height: 32px; display: flex; justify-content: center; align-items: center;" class="btn btn-primary"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
                                                     </form>
                                                 @endauth
                                             </li>
