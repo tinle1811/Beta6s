@@ -7,3 +7,56 @@
     margin-left: 90%;
     font-weight: 700;
 }
+
+.btnAddCategory{
+    background-color: #43BF50;
+    border-color: #43BF50;
+}
+
+.btnAddCategory:hover {
+    background-color: #42b14e;
+}
+
+.btnAddCategory:focus {
+    background-color: #43BF50;
+}
+
+.btnEditCategory,
+.delete-category {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 16px;
+    position: relative;
+    overflow: hidden;
+    width: auto;
+    transition: width 0.3s ease;
+}
+
+.editCategory,
+.deleteCategory {
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
+}
+
+.btnEditCategory i,
+.delete-category i {
+    transition: margin-right 0.3s ease;
+    z-index: 1;
+}
+
+.btnEditCategory:hover .editCategory,
+.delete-category:hover .deleteCategory {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.btnEditCategory:hover i,
+.delete-category:hover i {
+    margin-right: 20px;
+    justify-content: flex-start;
+}

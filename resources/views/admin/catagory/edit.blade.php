@@ -46,7 +46,7 @@
                                             data-placement="top"
                                             title="Products are the goods or services you sell."></i></label>
 
-                                    <input type="text" class="form-control" style="cursor: not-allowed; font-weight: bold;" name="categoryId" id="categoryIdLabel"
+                                    <input type="text" class="form-control bg-dark text-white" style="cursor: not-allowed; font-weight: bold;" name="categoryId" id="categoryIdLabel"
                                         value="{{ $viewData['category']->getCategoryId() }}" readonly>
                                 </div>
                                 <!-- End Form Group -->
@@ -81,7 +81,7 @@
                                     </select>
                                 </div>
                                 <!-- End Form Group -->
-                                <button type="submit" class="btn btn-dark" id="btn-edit-category">Lưu</button>
+                                <button type="submit" class="btn btn-primary" id="btn-edit-category">Lưu</button>
                             </form>
 
                             {{-- <div class="row"> --}}

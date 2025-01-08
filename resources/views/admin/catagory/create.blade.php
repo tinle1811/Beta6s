@@ -54,7 +54,7 @@
                                         placeholder="Giới hạn..." aria-label="Giới hạn...">
                                 </div>
                                 <!-- End Form Group -->
-                                <button type="submit" class="btn btn-dark" name="btn" id="btn-add-category">Thêm</button>
+                                <button type="submit" class="btn btn-primary" name="btn" id="btn-add-category">Thêm</button>
                             </form>
 
                             {{-- <div class="row">

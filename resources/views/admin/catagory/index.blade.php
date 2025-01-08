@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="col-sm-auto">
-                        <a class="btn btn-primary" href="{{ route('admin.catagory.create') }}">Thêm loại sản phẩm</a>
+                        <a class="btn btn-primary btnAddCategory" href="{{ route('admin.catagory.create') }}">Thêm loại sản phẩm</a>
                     </div>
                 </div>
                 <!-- End Row -->
@@ -332,17 +332,15 @@
                 <td>2</td> --}}
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a class="btn btn-sm btn-primary"
-                                                style="display: flex; align-items: center; justify-content: center"
-                                                href="{{ route('admin.catagory.edit', ['id' => $category->getCategoryId()]) }}">
-                                                <i class="tio-edit"></i> Sửa
+                                            <a class="btn btn-sm btn-primary btnEditCategory" href="{{ route('admin.catagory.edit', ['id' => $category->getCategoryId()]) }}">
+                                                <i class="tio-edit"></i> <span class="editCategory">Sửa</span>
                                             </a>
                                             <div class="btn-group" role="group">
                                                 {{-- <a class="btn btn-sm btn-success" href="ecommerce-product-details.html">
                                                     <i class="tio-delete"></i> delete
                                                 </a> --}}
                                                 <button type="button" class="btn btn-danger delete-category">
-                                                    <i class="tio-delete"></i> Xóa
+                                                    <i class="tio-delete"></i> <span class="deleteCategory">Xóa</span>
                                                 </button>
                                                 <!-- Unfold -->
                                                 {{-- <div class="hs-unfold btn-group">
