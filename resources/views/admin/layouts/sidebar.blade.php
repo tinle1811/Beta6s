@@ -115,12 +115,12 @@
                 </a>
               </li>
             
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a class="nav-link " href="{{route("admin.blog")}}" title="Blog">
                   <i class="tio-blog-outlined nav-icon"></i> <!-- Thêm biểu tượng Blog -->
                   <span class="text-truncate">Blog</span>
                 </a>
-              </li>
+              </li> --}}
               
               <li class="nav-item">
                 <a class="nav-link " href="{{route("admin.infoweb")}}" title="Thông Tin Website">
