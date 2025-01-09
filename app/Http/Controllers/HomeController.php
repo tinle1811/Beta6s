@@ -27,12 +27,12 @@ class HomeController extends Controller
                                     ->where('san_phams.TrangThai', 1)
                                     ->groupBy('san_phams.MaSP', 'san_phams.Slug', 'san_phams.HinhAnh', 'san_phams.Gia', 'san_phams.TenSP', 'san_phams.MoTa')
                                     ->orderBy('total_quantity', 'Desc')
-                                    ->get();
+                                    ->paginate(8, ['*'], 'page_ban_chay');
         $viewData["DSSP-NoiBat"] = SanPham::where('TrangThai',2)->get();
         $viewData["DSSP-Moi"] = SanPham::where('created_at', '>=', Carbon::now()->subMonth())
                                 ->where('TrangThai', 1)
                                 ->orderBy('created_at', 'Desc')
-                                ->get();
+                                ->paginate(8, ['*'], 'page_moi');
         return view('user.home.index')->with('viewData',$viewData);
     }
 
