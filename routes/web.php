@@ -37,6 +37,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('user.home.cont
 Route::get('/blog',[BlogController::class,'index'])->name('user.blog.index');
 Route::get('/blog-detail',[BlogController::class,'show'])->name('user.blog.show');
 Route::get('/search', [SearchController::class, 'index'])->name('user.search.index');
+Route::post('/product/rate/{slug}', [HomeController::class, 'storeRating'])->name('product.storeRating');
 
 // các route chung cho cả hai phân hệ
 Route::middleware('checkRole:shared')->group(function(){

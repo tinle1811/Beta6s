@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
+use App\Models\BinhLuan;
 use App\Models\SanPham;
 use App\Models\YeuThich;
 
@@ -27,15 +28,54 @@ class HomeController extends Controller
             ->where('MaSP', '!=', $sanpham->MaSP)
             ->limit(5)
             ->get();
+        $comments = BinhLuan::with('khachHang') // Lấy bình luận cùng thông tin khách hàng
+                ->where('MaSP', $sanpham->MaSP)
+                ->get();
+
+        // Tính toán điểm đánh giá trung bình
+        $averageRating = $comments->avg('DanhGia');  
 
         $viewData = [
             'title' => 'Chi tiết sản phẩm',
             'sanpham' => $sanpham,
-            'relatedProducts' => $relatedProducts
+            'relatedProducts' => $relatedProducts,
+            'comments' => $comments,
+            'averageRating' => $averageRating,
         ];
-
+       
         return view('user.home.show')->with('viewData', $viewData);
     }
+        public function storeRating(Request $request, $slug)
+    {
+        // Kiểm tra nếu người dùng đã đăng nhập
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để đánh giá.');
+        }
+
+        // Lấy thông tin sản phẩm từ slug
+        $sanpham = SanPham::where('Slug', $slug)->firstOrFail();
+
+        // Xử lý lưu bình luận và đánh giá
+        $request->validate([
+            'rating' => 'required|integer|between:1,5',
+            'comment' => 'required|string|max:1000',
+        ]);
+
+        // Lưu bình luận
+        BinhLuan::create([
+            'MaSP' => $sanpham->MaSP,
+            'MaKH' => Auth::user()->MaTK,  
+            'rating' => $request->input('rating'),
+            'comment' => $request->input('comment'),
+        ]);
+
+        // Tính lại rating trung bình của sản phẩm
+        $averageRating = BinhLuan::where('MaSP', $sanpham->MaSP)->avg('rating');
+        $sanpham->update(['average_rating' => $averageRating]);
+
+        return redirect()->route('user.product.show', $sanpham->Slug)->with('success', 'Cảm ơn bạn đã đánh giá sản phẩm.');
+    }
+
     public function about()
     {
         $viewData['title'] = "Trang giới thiệu";

@@ -9,7 +9,7 @@
             <div class="col-lg-6 col-md-6">
                 <div class="product-details-tab">
                     <div id="img-1" class="zoomWrapper single-zoom">
-                        <img id="zoom1" src="{{asset('storage/' . $viewData['sanpham']->getProductImage())}}"
+                        <img id="zoom1" src="{{asset('storage/'.$viewData['sanpham']->getProductImage())}}"
                             alt="Sản phẩm" />
 
                     </div>
@@ -27,17 +27,19 @@
                         <div class="product_nav">
 
                         </div>
-                        <div class=" product_ratting">
+                        <div class="product_ratting">
                             <ul>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                <li class="review"><a href="#"> (customer review ) </a></li>
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa {{ $i <= round($viewData['averageRating']) ? 'fa-star' : 'fa-star-o' }}"></i>
+                                        </a>
+                                    </li>
+                                @endfor
+                                <li class="review"><a href="#">({{ $viewData['comments']->count()}} customer reviews)</a></li>
                             </ul>
-
                         </div>
+                        <h2>{{ $viewData['comments']->count() }} review(s) for {{ $viewData['sanpham']->TenSP }}</h2>
                         <div class="price_box">
                             <span
                                 class="current_price">{{number_format($viewData['sanpham']->getProductPrice(), 0, ',', '.') }}đ</span>
@@ -82,7 +84,7 @@
                         <ul class="nav" role="tablist">
                             <li>
                                 <a class="active" data-bs-toggle="tab" href="#info" role="tab" aria-controls="info"
-                                    aria-selected="false">Description</a>
+                                    aria-selected="false">Mô Tả</a>
                             </li>
                             <li>
                                 <a data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
@@ -96,40 +98,55 @@
                                 <p>{{$viewData['sanpham']->getProductDescription()}}</p>
                             </div>
                         </div>
-                        <div class="product_info_content">
-                            <p>Fashion has been creating well-designed collections since 2010. The brand offers
-                                feminine designs delivering stylish separates and statement dresses which have
-                                since evolved into a full ready-to-wear collection in which every item is a
-                                vital part of a woman's wardrobe. The result? Cool, easy, chic looks with
-                                youthful elegance and unmistakable signature style. All the beautiful pieces are
-                                made in Italy and manufactured with the greatest attention. Now Fashion extends
-                                to a range of accessories including shoes, hats, belts and more!</p>
-                        </div>
+                      
                     </div>
 
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                         <div class="reviews_wrapper">
-                            <h2>1 review for Donec eu furniture</h2>
-                            <div class="reviews_comment_box">
-                                <div class="comment_thmb">
-                                    <img src="assets/img/blog/comment2.jpg" alt="">
-                                </div>
-                                <div class="comment_text">
-                                    <div class="reviews_meta">
-                                        <div class="star_rating">
-                                            <ul>
-                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <p><strong>admin </strong>- September 12, 2022</p>
-                                        <span>roadthemes</span>
-                                    </div>
+                            <h2>Đánh Giá</h2>
+                                                        <!-- Form Đánh Giá -->
+                            <form action="{{ route('product.storeRating', $viewData['sanpham']->Slug) }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="rating">Đánh giá (1 đến 5 sao)</label>
+                                    <select name="rating" id="rating" class="form-control">
+                                        <option value="1">1 sao</option>
+                                        <option value="2">2 sao</option>
+                                        <option value="3">3 sao</option>
+                                        <option value="4">4 sao</option>
+                                        <option value="5">5 sao</option>
+                                    </select>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="comment">Bình luận</label>
+                                    <textarea name="comment" id="comment" class="form-control" rows="4"></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                            </form>
+
+                            <div class="reviews_comment_box">
+                                @foreach ($viewData['comments'] as $comment)
+                                    <div class="comment_text">
+                                        <div class="reviews_meta">
+                                            <div class="star_rating">
+                                                <ul>
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        <li>
+                                                            <a href="#">
+                                                                <i class="ion-ios-star {{ $i <= round($comment->DanhGia) ? '' : '-outline' }}"></i>
+                                                            </a>
+                                                        </li>
+                                                    @endfor
+                                                </ul>
+                                            </div>
+                                            <p><strong>{{ $comment->khachHang->TenKH }}</strong> - {{ $comment->created_at->format('F d, Y') }}</p>
+                                            <span>{{ $comment->khachHang->SDT }}</span>
+                                        </div>
+                                        <p>{{ $comment->NoiDung }}</p>  <!-- Nội dung bình luận -->
+                                    </div>
+                                @endforeach
                             </div>
                             <!-- <div class="comment_title">
                                 <h2>Add a review </h2>

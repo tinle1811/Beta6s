@@ -9,7 +9,7 @@
                         <li><a href="{{ route('user.home.index') }}">Trang chủ</a></li>
                         
                         <!-- Tiêu đề trang hiện tại -->
-                        <li>{{$title }}</li>
+                        <li>{{$viewData['title'] }}</li>
                     </ul>
                 </div>
             </div>

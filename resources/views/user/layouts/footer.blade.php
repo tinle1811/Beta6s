@@ -7,7 +7,7 @@
                         <div class="widgets_container contact_us">
                             <div class="footer_logo">
                                 <a href="#">
-                                    @if ($websiteInfo && $websiteInfo->logo)
+                                    {{-- @if ($websiteInfo && $websiteInfo->logo)
                                         <img src="{{ asset('storage/logos/' . $websiteInfo->logo) }}" alt="Website Logo">
                                     @else
                                         <img src="{{ asset('images/default-logo.png') }}" alt="Default Logo">
@@ -18,7 +18,7 @@
                                 <p>Mấy đứa ơi cố lên !!! Ra trường mình đi lấy chồng đại gia!!!!</p>
                                 <p><span>Địa chỉ: </span> {{$websiteInfo->address}}.</p>
                                 <p><span>Hotline: </span>{{$websiteInfo->hotline}} </p>
-                                <p><span>Email hỗ trợ: </span>{{$websiteInfo->email}}</p>
+                                <p><span>Email hỗ trợ: </span>{{$websiteInfo->email}}</p> --}}
                             </div>
                         </div>
                     </div>
@@ -54,14 +54,14 @@
                             <h3>Theo dõi shop tại</h3>
                             <div class="footer_social_link">
                                 <ul>
-                                    <li><a class="facebook" href="{{$websiteInfo->facebook}}" title="Facebook"><i
+                                    {{-- <li><a class="facebook" href="{{$websiteInfo->facebook}}" title="Facebook"><i
                                                 class="fa fa-facebook"></i></a>
                                     </li>
                                     <li><a class="twitter" href="{{$websiteInfo->twitter}}" title="Twitter"><i
                                                 class="fa fa-twitter"></i></a>
                                     </li>
                                     <li><a class="instagram" href="{{$websiteInfo->instagram}}" title="instagram"><i
-                                                class="fa fa-instagram"></i></a></li>
+                                                class="fa fa-instagram"></i></a></li> --}}
 
                                 </ul>
                             </div>
