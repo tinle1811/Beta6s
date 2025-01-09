@@ -1,5 +1,4 @@
     <!--header area start-->
-
     <!--Offcanvas menu area start-->
     <div class="off_canvars_overlay">
 
@@ -20,8 +19,8 @@
                         </div>
                         <div class="top_right text-end">
                             <ul>
-                                <li><a href="{{route('user.account.index')}}"> My Account </a></li>
-                                <li><a href="{{route('user.cart.checkout')}}"> Checkout </a></li>
+                                <li><a href="{{ route('user.account.index') }}"> My Account </a></li>
+                                <li><a href="{{ route('user.cart.checkout') }}"> Checkout </a></li>
                             </ul>
                         </div>
                         <div class="search_container">
@@ -55,7 +54,8 @@
 
                         <div class="middel_right_info">
                             <div class="header_wishlist">
-                                <a href="{{route('user.home.wishlist')}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                <a href="{{ route('user.home.wishlist') }}"><i class="fa fa-heart-o"
+                                        aria-hidden="true"></i></a>
                                 <span class="wishlist_quantity">3</span>
                             </div>
                             <div class="mini_cart_wrapper">
@@ -66,7 +66,8 @@
                                 <div class="mini_cart">
                                     <div class="cart_item">
                                         <div class="cart_img">
-                                            <a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a>
+                                            <a href="#"><img src="assets/img/s-product/product.jpg"
+                                                    alt=""></a>
                                         </div>
                                         <div class="cart_info">
                                             <a href="#">Sit voluptatem rhoncus sem lectus</a>
@@ -78,7 +79,8 @@
                                     </div>
                                     <div class="cart_item">
                                         <div class="cart_img">
-                                            <a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a>
+                                            <a href="#"><img src="assets/img/s-product/product2.jpg"
+                                                    alt=""></a>
                                         </div>
                                         <div class="cart_info">
                                             <a href="#">Natus erro at congue massa commodo</a>
@@ -101,10 +103,10 @@
 
                                     <div class="mini_cart_footer">
                                         <div class="cart_button">
-                                            <a href="{{route('user.cart.index')}}">View cart</a>
+                                            <a href="{{ route('user.cart.index') }}">View cart</a>
                                         </div>
                                         <div class="cart_button">
-                                            <a href="{{route('user.cart.checkout')}}">Checkout</a>
+                                            <a href="{{ route('user.cart.checkout') }}">Checkout</a>
                                         </div>
 
                                     </div>
@@ -116,7 +118,7 @@
                         <div id="menu" class="text-start ">
                             <ul class="offcanvas_main_menu">
                                 <li class="menu-item-has-children active">
-                                    <a href="{{route('user.home.index')}}">Trang chủ</a>
+                                    <a href="{{ route('user.home.index') }}">Trang chủ</a>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="#">Shop</a>
@@ -135,17 +137,17 @@
                                         <li class="menu-item-has-children">
                                             <a href="#">other Pages</a>
                                             <ul class="sub-menu">
-                                                <li><a href="{{route('user.cart.index')}}">cart</a></li>
-                                                <li><a href="{{route('user.home.wishlist')}}">Wishlist</a></li>
-                                                <li><a href="{{route('user.cart.checkout')}}">Checkout</a></li>
-                                                <li><a href="{{route('user.account.index')}}">my account</a></li>
+                                                <li><a href="{{ route('user.cart.index') }}">cart</a></li>
+                                                <li><a href="{{ route('user.home.wishlist') }}">Wishlist</a></li>
+                                                <li><a href="{{ route('user.cart.checkout') }}">Checkout</a></li>
+                                                <li><a href="{{ route('user.account.index') }}">my account</a></li>
                                                 <li><a href="404.html">Error 404</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Product Types</a>
                                             <ul class="sub-menu">
-                                                {{-- <li><a href="{{route('user.home.show', ['slug' => $product->getProductSlug()])}}">product details</a></li> --}}
+                                                <li><a href="{{ route('user.home.show') }}">product details</a></li>
                                                 <li><a href="product-sidebar.html">product sidebar</a></li>
                                                 <li><a href="product-grouped.html">product grouped</a></li>
                                                 <li><a href="variable-product.html">product variable</a></li>
@@ -155,10 +157,10 @@
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{{route('user.blog.index')}}">blog</a>
+                                    <a href="{{ route('user.blog.index') }}">blog</a>
                                     <ul class="sub-menu">
-                                        <li><a href="{{route('user.blog.index')}}">blog</a></li>
-                                        <li><a href="{{route('user.blog.show')}}">blog details</a></li>
+                                        <li><a href="{{ route('user.blog.index') }}">blog</a></li>
+                                        <li><a href="{{ route('user.blog.show') }}">blog details</a></li>
                                         <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
                                         <li><a href="blog-sidebar.html">blog left sidebar</a></li>
                                         <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
@@ -168,24 +170,30 @@
                                 <li class="menu-item-has-children">
                                     <a href="#">pages </a>
                                     <ul class="sub-menu">
-                                        <li><a href="{{route('user.home.about')}}">Giới thiệu</a></li>
+                                        <li><a href="{{ route('user.home.about') }}">Giới thiệu</a></li>
                                         <li><a href="services.html">services</a></li>
                                         <li><a href="privacy-policy.html">privacy policy</a></li>
                                         <li><a href="faq.html">Frequently Questions</a></li>
-                                        <li><a href="{{route('user.home.contact')}}">contact</a></li>
+                                        <li><a href="{{ route('user.home.contact') }}">contact</a></li>
                                         <li><a href="login.html">login</a></li>
                                         <li><a href="404.html">Error 404</a></li>
                                         <li><a href="compare.html">Compare</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{{route('user.account.index')}}">my account</a>
+                                    <a href="{{ route('user.account.index') }}">my account</a>
                                 </li>
+
                                 <li class="menu-item-has-children">
-                                    <a href="{{route('user.home.about')}}">Giới thiệu</a>
+                                    <a href="#">Giới thiệu</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="{{ route('user.home.about') }}">Về chúng tôi</a></li>
+                                        <li><a href="{{ route('user.blog.index') }}">Danh sách bài viết</a></li>
+                                    </ul>
                                 </li>
+
                                 <li class="menu-item-has-children">
-                                    <a href="{{route('user.home.contact')}}"> Liên hệ</a>
+                                    <a href="{{ route('user.home.contact') }}"> Liên hệ</a>
                                 </li>
                             </ul>
                         </div>
@@ -221,8 +229,8 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="top_right text-end">
                                 <ul>
-                                    <li><a href="{{route('user.account.index')}}"> My Account </a></li>
-                                    <li><a href="{{route('user.cart.checkout')}}"> Checkout </a></li>
+                                    <li><a href="{{ route('user.account.index') }}"> My Account </a></li>
+                                    <li><a href="{{ route('user.cart.checkout') }}"> Checkout </a></li>
                                 </ul>
                             </div>
                         </div>
@@ -236,7 +244,14 @@
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-6">
                             <div class="logo">
-                                <a href="{{route('user.home.index')}}"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href="{{ route('user.home.index') }}">
+                                    @if ($websiteInfo && $websiteInfo->logo)
+                                        <img src="{{ asset('storage/logos/' . $websiteInfo->logo) }}"
+                                            alt="Website Logo">
+                                    @else
+                                        <img src="{{ asset('images/default-logo.png') }}" alt="Default Logo">
+                                    @endif
+                                </a>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-6">
@@ -271,7 +286,8 @@
                                 </div>
                                 <div class="middel_right_info">
                                     <div class="header_wishlist">
-                                        <a href="{{route('user.home.wishlist')}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                        <a href="{{ route('user.home.wishlist') }}"><i class="fa fa-heart-o"
+                                                aria-hidden="true"></i></a>
                                         <span class="wishlist_quantity">3</span>
                                     </div>
                                     <div class="mini_cart_wrapper">
@@ -282,7 +298,8 @@
                                         <div class="mini_cart">
                                             <div class="cart_item">
                                                 <div class="cart_img">
-                                                    <a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a>
+                                                    <a href="#"><img src="assets/img/s-product/product.jpg"
+                                                            alt=""></a>
                                                 </div>
                                                 <div class="cart_info">
                                                     <a href="#">Sit voluptatem rhoncus sem lectus</a>
@@ -294,7 +311,8 @@
                                             </div>
                                             <div class="cart_item">
                                                 <div class="cart_img">
-                                                    <a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a>
+                                                    <a href="#"><img src="assets/img/s-product/product2.jpg"
+                                                            alt=""></a>
                                                 </div>
                                                 <div class="cart_info">
                                                     <a href="#">Natus erro at congue massa commodo</a>
@@ -317,10 +335,10 @@
 
                                             <div class="mini_cart_footer">
                                                 <div class="cart_button">
-                                                    <a href="{{route('user.cart.index')}}">View cart</a>
+                                                    <a href="{{ route('user.cart.index') }}">View cart</a>
                                                 </div>
                                                 <div class="cart_button">
-                                                    <a href="{{route('user.cart.checkout')}}">Checkout</a>
+                                                    <a href="{{ route('user.cart.checkout') }}">Checkout</a>
                                                 </div>
 
                                             </div>
@@ -473,7 +491,8 @@
                             <div class="main_menu menu_position">
                                 <nav>
                                     <ul>
-                                        <li><a class="active" href="{{route('user.home.index')}}">Trang chủ</a></li>
+                                        <li><a class="active" href="{{ route('user.home.index') }}">Trang chủ</a>
+                                        </li>
                                         <li class="mega_items"><a href="shop.html">shop<i
                                                     class="fa fa-angle-down"></i></a>
                                             <div class="mega_menu">
@@ -492,16 +511,22 @@
                                                     </li>
                                                     <li><a href="#">other Pages</a>
                                                         <ul>
-                                                            <li><a href="{{route('user.cart.index')}}">cart</a></li>
-                                                            <li><a href="{{route('user.home.wishlist')}}">Wishlist</a></li>
-                                                            <li><a href="{{route('user.cart.checkout')}}">Checkout</a></li>
-                                                            <li><a href="{{route('user.account.index')}}">my account</a></li>
+                                                            <li><a href="{{ route('user.cart.index') }}">cart</a></li>
+                                                            <li><a
+                                                                    href="{{ route('user.home.wishlist') }}">Wishlist</a>
+                                                            </li>
+                                                            <li><a
+                                                                    href="{{ route('user.cart.checkout') }}">Checkout</a>
+                                                            </li>
+                                                            <li><a href="{{ route('user.account.index') }}">my
+                                                                    account</a></li>
                                                             <li><a href="404.html">Error 404</a></li>
                                                         </ul>
                                                     </li>
                                                     <li><a href="#">Product Types</a>
                                                         <ul>
-                                                            {{-- <li><a href="{{route('user.home.show', ['slug' => $sanpham->getProductSlug()])}}">product details</a></li> --}}
+                                                            <li><a href="{{ route('user.home.show') }}">product
+                                                                    details</a></li>
                                                             <li><a href="product-sidebar.html">product sidebar</a></li>
                                                             <li><a href="product-grouped.html">product grouped</a></li>
                                                             <li><a href="variable-product.html">product variable</a>
@@ -527,9 +552,10 @@
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li><a href="{{route('user.blog.index')}}">blog<i class="fa fa-angle-down"></i></a>
+                                        <li><a href="{{ route('user.blog.index') }}">blog<i
+                                                    class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
-                                                <li><a href="{{route('user.blog.show')}}">blog details</a></li>
+                                                <li><a href="{{ route('user.blog.show') }}">blog details</a></li>
                                                 <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
                                                 <li><a href="blog-sidebar.html">blog left sidebar</a></li>
                                                 <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
@@ -537,19 +563,25 @@
                                         </li>
                                         <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
-                                                <li><a href="{{route('user.home.about')}}">Giới thiệu</a></li>
+                                                <li><a href="{{ route('user.home.about') }}">Giới thiệu</a></li>
                                                 <li><a href="services.html">services</a></li>
                                                 <li><a href="privacy-policy.html">privacy policy</a></li>
                                                 <li><a href="faq.html">Frequently Questions</a></li>
-                                                <li><a href="{{route('user.home.contact')}}">contact</a></li>
+                                                <li><a href="{{ route('user.home.contact') }}">contact</a></li>
                                                 <li><a href="login.html">login</a></li>
                                                 <li><a href="404.html">Error 404</a></li>
                                                 <li><a href="compare.html">Compare</a></li>
                                             </ul>
                                         </li>
+                                        <li><a href="#">Giới thiệu <i class="fa fa-angle-down"></i></a>
+                                            <ul class="sub_menu pages">
+                                                <li><a href="{{ route('user.home.about') }}">Về chúng tôi</a></li>
+                                                <li><a href="{{ route('user.blog.index') }}">Danh sách bài viết</a>
+                                                </li>
+                                            </ul>
+                                        </li>
 
-                                        <li><a href="{{route('user.home.about')}}">Giới thiệu</a></li>
-                                        <li><a href="{{route('user.home.contact')}}"> Liên hệ</a></li>
+                                        <li><a href="{{ route('user.home.contact') }}"> Liên hệ</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -568,7 +600,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-3">
                     <div class="logo">
-                        <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                        <a href="index.html">
+                            @if ($websiteInfo && $websiteInfo->logo)
+                                <img src="{{ asset('storage/logos/' . $websiteInfo->logo) }}" alt="Website Logo">
+                            @else
+                                <img src="{{ asset('images/default-logo.png') }}" alt="Default Logo">
+                            @endif
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -576,8 +614,9 @@
                         <div class="main_menu">
                             <nav>
                                 <ul>
-                                    <li><a class="active" href="{{route('user.home.index')}}">Trang chủ</a></li>
-                                    <li class="mega_items"><a href="shop.html">shop<i class="fa fa-angle-down"></i></a>
+                                    <li><a class="active" href="{{ route('user.home.index') }}">Trang chủ</a></li>
+                                    <li class="mega_items"><a href="shop.html">shop<i
+                                                class="fa fa-angle-down"></i></a>
                                         <div class="mega_menu">
                                             <ul class="mega_menu_inner">
                                                 <li><a href="#">Shop Layouts</a>
@@ -592,16 +631,20 @@
                                                 </li>
                                                 <li><a href="#">other Pages</a>
                                                     <ul>
-                                                        <li><a href="{{route('user.cart.index')}}">cart</a></li>
-                                                        <li><a href="{{route('user.home.wishlist')}}">Wishlist</a></li>
-                                                        <li><a href="{{route('user.cart.checkout')}}">Checkout</a></li>
-                                                        <li><a href="{{route('user.account.index')}}">my account</a></li>
+                                                        <li><a href="{{ route('user.cart.index') }}">cart</a></li>
+                                                        <li><a href="{{ route('user.home.wishlist') }}">Wishlist</a>
+                                                        </li>
+                                                        <li><a href="{{ route('user.cart.checkout') }}">Checkout</a>
+                                                        </li>
+                                                        <li><a href="{{ route('user.account.index') }}">my account</a>
+                                                        </li>
                                                         <li><a href="404.html">Error 404</a></li>
                                                     </ul>
                                                 </li>
                                                 <li><a href="#">Product Types</a>
                                                     <ul>
-                                                        {{-- <li><a href="{{route('user.home.show', ['slug' => $sanpham>getProductSlug()])}}">product details</a></li> --}}
+                                                        <li><a href="{{ route('user.home.show') }}">product
+                                                                details</a></li>
                                                         <li><a href="product-sidebar.html">product sidebar</a></li>
                                                         <li><a href="product-grouped.html">product grouped</a></li>
                                                         <li><a href="variable-product.html">product variable</a></li>
@@ -613,7 +656,8 @@
                                                     <ul>
                                                         <li><a href="shop.html">Cables & Connectors</a></li>
                                                         <li><a href="shop-list.html">Graphics Tablets</a></li>
-                                                        <li><a href="shop-fullwidth.html">Printers, Ink & Toner</a></li>
+                                                        <li><a href="shop-fullwidth.html">Printers, Ink & Toner</a>
+                                                        </li>
                                                         <li><a href="shop-fullwidth-list.html">Refurbished Tablets</a>
                                                         </li>
                                                         <li><a href="shop-right-sidebar.html">Optical Drives</a></li>
@@ -623,9 +667,10 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li><a href="{{route('user.blog.index')}}">blog<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="{{ route('user.blog.index') }}">blog<i
+                                                class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
-                                            <li><a href="{{route('user.blog.show')}}">blog details</a></li>
+                                            <li><a href="{{ route('user.blog.show') }}">blog details</a></li>
                                             <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
                                             <li><a href="blog-sidebar.html">blog left sidebar</a></li>
                                             <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
@@ -633,25 +678,31 @@
                                     </li>
                                     <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
-                                            <li><a href="{{route('user.home.about')}}">Giới thiệu</a></li>
+                                            <li><a href="{{ route('user.home.about') }}">Giới thiệu</a></li>
                                             <li><a href="services.html">services</a></li>
                                             <li><a href="privacy-policy.html">privacy policy</a></li>
                                             <li><a href="faq.html">Frequently Questions</a></li>
-                                            <li><a href="{{route('user.home.contact')}}">contact</a></li>
+                                            <li><a href="{{ route('user.home.contact') }}">contact</a></li>
                                             <li><a href="login.html">login</a></li>
                                             <li><a href="404.html">Error 404</a></li>
                                             <li><a href="compare.html">Compare</a></li>
                                         </ul>
                                     </li>
 
-                                    <li><a href="{{route('user.home.about')}}">Giới thiệu</a></li>
-                                    <li><a href="{{route('user.home.contact')}}"> Liên hệ</a></li>
+                                    <li><a href="#">Giới thiệu <i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub_menu pages">
+                                            <li><a href="{{ route('user.home.about') }}">Về chúng tôi</a></li>
+                                            <li><a href="{{ route('user.blog.index') }}">Danh sách bài viết</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{ route('user.home.contact') }}"> Liên hệ</a></li>
                                 </ul>
                             </nav>
                         </div>
                         <div class="middel_right_info">
                             <div class="header_wishlist">
-                                <a href="{{route('user.home.wishlist')}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                <a href="{{ route('user.home.wishlist') }}"><i class="fa fa-heart-o"
+                                        aria-hidden="true"></i></a>
                                 <span class="wishlist_quantity">3</span>
                             </div>
                             <div class="mini_cart_wrapper">
@@ -662,7 +713,8 @@
                                 <div class="mini_cart">
                                     <div class="cart_item">
                                         <div class="cart_img">
-                                            <a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a>
+                                            <a href="#"><img src="assets/img/s-product/product.jpg"
+                                                    alt=""></a>
                                         </div>
                                         <div class="cart_info">
                                             <a href="#">Sit voluptatem rhoncus sem lectus</a>
@@ -674,7 +726,8 @@
                                     </div>
                                     <div class="cart_item">
                                         <div class="cart_img">
-                                            <a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a>
+                                            <a href="#"><img src="assets/img/s-product/product2.jpg"
+                                                    alt=""></a>
                                         </div>
                                         <div class="cart_info">
                                             <a href="#">Natus erro at congue massa commodo</a>
@@ -697,10 +750,10 @@
 
                                     <div class="mini_cart_footer">
                                         <div class="cart_button">
-                                            <a href="{{route('user.cart.index')}}">View cart</a>
+                                            <a href="{{ route('user.cart.index') }}">View cart</a>
                                         </div>
                                         <div class="cart_button">
-                                            <a href="{{route('user.cart.checkout')}}">Checkout</a>
+                                            <a href="{{ route('user.cart.checkout') }}">Checkout</a>
                                         </div>
 
                                     </div>

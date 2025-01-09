@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -7,20 +8,21 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.ico')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
 
-    <!-- CSS 
+
+    <!-- CSS
     ========================= -->
 
     <!-- Plugins CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/plugins.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
 
     <!-- Main Style CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
 </head>
 
-<body>  
+<body>
     @include('user.layouts.header')
     @yield('content')
     @include('user.layouts.footer')
@@ -28,12 +30,13 @@
 ============================================ -->
 
     <!-- Plugins JS -->
-    <script src="{{asset('assets/js/plugins.js')}}"></script>
+    <script src="{{ asset('assets/js/plugins.js') }}"></script>
 
     <!-- Main JS -->
-    <script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
 
 
 
 </body>
+
 </html>
