@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 //use Auth;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
 
 use App\Models\SanPham;
 use App\Models\YeuThich;
 use App\Models\Blog;
+use App\Events\SanPhamUpdated;
 
 class HomeController extends Controller
 {
@@ -28,6 +29,31 @@ class HomeController extends Controller
     public function show($slug)
     {
         $sanpham = SanPham::where('Slug', $slug)->firstOrFail();
+
+        //realtime
+        // Tăng số lượt xem
+        $sanpham->SoLuotXem += 1;
+
+        // Lưu lại số lượt xem vào cơ sở dữ liệu
+        $sanpham->save();
+
+        event(new SanPhamUpdated([
+            'MaSP' => $sanpham->MaSP,
+            'SoLuotYeuThich' => $sanpham->SoLuotYeuThich,
+            'SoLuotXem' => $sanpham->SoLuotXem,
+            'DiemRatingTB' => $sanpham->DiemRatingTB,
+        ]));
+
+        // Phát sự kiện SanPhamUpdated với sản phẩm đã cập nhật
+        //event(new SanPhamUpdated($sanpham));
+        Log::info('SanPhamUpdated event fired', ['sanpham' => $sanpham]);
+        Log::info('SanPhamUpdated event fired', [
+            'MaSP' => $sanpham->MaSP,
+            'SoLuotYeuThich' => $sanpham->SoLuotYeuThich,
+            'SoLuotXem' => $sanpham->SoLuotXem,
+            'DiemRatingTB' => $sanpham->DiemRatingTB,
+        ]);
+
         $relatedProducts = SanPham::where('LoaiSP', $sanpham->LoaiSP)
             ->where('MaSP', '!=', $sanpham->MaSP)
             ->limit(5)
