@@ -36,7 +36,10 @@ Route::get('/about', [HomeController::class, 'about'])->name('user.home.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('user.home.contact');
 Route::get('/blog',[BlogController::class,'index'])->name('user.blog.index');
 Route::get('/blog-detail',[BlogController::class,'show'])->name('user.blog.show');
+
 Route::get('/search', [SearchController::class, 'index'])->name('user.search.index');
+Route::get('/search', [SearchController::class, 'search'])->name('user.product.search');
+
 Route::post('/product/rate/{slug}', [HomeController::class, 'storeRating'])->name('product.storeRating');
 
 // các route chung cho cả hai phân hệ
