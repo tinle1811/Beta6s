@@ -24,6 +24,16 @@ class AuthController extends Controller
             'Password' => 'required|min:6',
         ]);
 
+        // Kiểm tra xem email đã tồn tại hay chưa
+        if (TaiKhoan::where('Email', $request->Email)->exists()) {
+            // Sử dụng viewData để truyền thông báo lỗi
+            $viewData = [
+                'error' => 'Email này đã được sử dụng.',
+                'oldData' => $request->all(),
+            ];
+            return view('user.auth.register')->with('viewData',$viewData);
+        }
+
         $user = TaiKhoan::create([
             'TenDN' => $request->TenDN,
             'Email' => $request->Email,
@@ -48,15 +58,15 @@ class AuthController extends Controller
         if($taiKhoan && Hash::check($request->Password, $taiKhoan->Password)){
             // đăng nhập thành công
             Auth::login($taiKhoan);
-            
-            //kiểm tra phân quyền và điều hướng
-            if($taiKhoan->LoaiTK == 1){
-                return redirect()->route('user.home.index')->with('success','Chào mừng người dùng!');
-            }else{
-                return redirect()->route('admin.analysis')->with('success','Chào mừng admin!');
+
+            // Kiểm tra phân quyền và điều hướng
+            if ($taiKhoan->LoaiTK == 1) {
+                return response()->json(['success' => true, 'redirect' => route('user.home.index')]);
+            } else {
+                return response()->json(['success' => true, 'redirect' => route('admin.analysis')]);
             }
         }else{
-            return redirect()->route('user.home.index')->with('error','Email hoặc mật khẩu không khớp!');
+            return response()->json(['success' => false, 'error' => 'Email hoặc mật khẩu không khớp']);
         }
     }
     public function logout(Request $request)
