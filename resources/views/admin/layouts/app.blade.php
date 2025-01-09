@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     {{-- sử dụng icon star cho bình luận --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- css thống kê lượt mua -->
+    <link rel="stylesheet" href="{{ asset('/cssAdmin/BieuDoTron.css') }}">
 
 
 </head>
@@ -330,6 +332,12 @@
                         // Gọi hàm để vẽ dữ liệu vào biểu đồ hoặc hiển thị dữ liệu
                         chart.setData(
                             data); // Giả sử bạn có đối tượng `chart` để hiển thị dữ liệu
+
+                        // Lưu trữ dữ liệu vào biến toàn cục
+                        window.data = data;  // Biến toàn cục chứa dữ liệu data
+
+                        // Phát ra sự kiện để thông báo cho các file JS khác biết rằng dữ liệu đã sẵn sàng
+                        $(document).trigger('dataLoaded', [window.data]);  // Phát sự kiện 'dataLoaded'
                     },
                     error: function(xhr, status, error) {
                         alert('Đã xảy ra lỗi: ' + error);
@@ -533,6 +541,9 @@
         if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write(
             '<script src="./assetsAdmin/vendor/babel-polyfill/polyfill.min.js"><\/script>');
     </script>
+
+    <!-- Thống Kê Lượt Mua -->
+    <script src="{{ asset('/jsAdmin/BieuDoTron.js') }}"></script>
 
 </body>
 
