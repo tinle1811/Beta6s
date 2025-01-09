@@ -40,6 +40,8 @@ Route::get('/account', [AccountController::class, 'index'])->name('user.account.
 //THÔNG KẾ DOANH THU
 Route::get("/admin", [AdminAnalysisController::class, "index"])->name("admin.analysis");
 Route::post("/admin/date", [AdminAnalysisController::class, "filter_by_date"])->name("admin.analysis.filter_by_date");
+Route::get("/admin/thisweek", [AdminAnalysisController::class, "filter_by_thisweek"])->name("admin.analysis.filter_by_thisweek");
+Route::get("/admin/lastweek", [AdminAnalysisController::class, "filter_by_lastweek"])->name("admin.analysis.filter_by_lastweek");
 
 Route::get('/admin/product', [AdminProductController::class, "index"])->name("admin.product");
 Route::get('/admin/product/create', [AdminProductController::class, "create"])->name("admin.product.create");
