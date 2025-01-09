@@ -43,7 +43,7 @@
                     </span>
 
                     <!-- Nav -->
-                    <div class="text-left">
+                    {{-- <div class="text-left">
                         <ul class="nav nav-segment nav-pills mb-7" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="nav-one-eg1-tab" data-toggle="pill" href="#nav-one-eg1"
@@ -62,14 +62,14 @@
                                     role="tab" aria-controls="nav-four-eg1" aria-selected="false">Đã xóa</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                     <!-- End Nav -->
                     <!-- Nav -->
                     <ul class="nav nav-tabs page-header-tabs" id="pageHeaderTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" href="route{{ 'admin.comment' }}">Tất cả</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Chưa duyệt</a>
                         </li>
                         <li class="nav-item">
@@ -77,7 +77,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Đã xóa</a>
-                        </li>
+                        </li> --}}
                     </ul>
                     <!-- End Nav -->
                 </div>
@@ -113,6 +113,8 @@
             </div>
             <!-- End Row -->
             <div class="alert alert-soft-success" role="alert" style="display: none;" id="notificationDeleteComment">
+            </div>
+            <div class="alert alert-soft-success" role="alert" style="display: none;" id="notificationUpdateComment">
             </div>
 
 
@@ -258,7 +260,7 @@
                 </div>
                 <!-- End Table -->
                 <!-- Tab Content : làm phần chia ra chưa duyệt, đã duyệt, đã xóa-->
-                <div class="tab-content">
+                {{-- <div class="tab-content">
                     <div class="tab-pane fade show active" id="nav-one-eg1" role="tabpanel"
                         aria-labelledby="nav-one-eg1-tab">
                         <p>First tab content...</p>
@@ -275,7 +277,7 @@
                     <div class="tab-pane fade" id="nav-four-eg1" role="tabpanel" aria-labelledby="nav-four-eg1-tab">
                         <p>Four tab content...</p>
                     </div>
-                </div>
+                </div> --}}
                 <!-- End Tab Content -->
 
                 <!-- Footer -->
@@ -329,7 +331,6 @@
         // Hàm thay đổi trạng thái
         function toggleCommentStatus(commentId, currentStatus) {
             var newStatus = currentStatus == 1 ? 0 : 1; // Thay đổi trạng thái
-            alert('Đang thay đổi trạng thái của bình luận ' + commentId);
 
             //Gửi AJAX request
             $.ajax({
@@ -342,12 +343,7 @@
                 },
                 success: function(response) {
                     if (response.success) {
-                        // // Cập nhật trạng thái trên giao diện
-                        // $('button.toggleStatus' + commentId).text(newStatus == 1 ? 'Đã duyệt' :
-                        // 'Chưa duyệt'); // Cập nhật văn bản của nút
-                        // $('button.toggleStatus' + commentId).data('status',
-                        // newStatus); // Cập nhật trạng thái mới
-                        alert('Cập nhật thành công');
+
                         var button = document.querySelector('.toggleStatus' + commentId);
                         button.innerText = newStatus == 1 ? 'Đã duyệt' : 'Chưa duyệt';
                         button.setAttribute('data-status', newStatus);
@@ -359,6 +355,16 @@
                             button.classList.remove('btn-soft-primary');
                             button.classList.add('btn-outline-warning');
                         }
+
+                        // Hiển thị thông báo
+                        const notificationDiv = document.getElementById('notificationUpdateComment');
+                        notificationDiv.textContent = 'Cập nhật trạng thái thành công!';
+                        notificationDiv.style.display = 'block';
+
+                        // Tự động ẩn sau 5 giây
+                        setTimeout(() => {
+                            notificationDiv.style.display = 'none';
+                        }, 5000);
 
                     } else {
                         alert('Có lỗi xảy ra. Vui lòng thử lại.');
