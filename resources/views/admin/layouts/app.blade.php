@@ -31,7 +31,7 @@
     @include('admin.layouts.header')
     @include("admin.layouts.sidebar")
 
-      <script src="{{asset('assetsAdmin\js\demo.js')}}"></script>
+    <script src="{{asset('assetsAdmin\js\demo.js')}}"></script>
     
     <!-- END ONLY DEV -->
     @yield('content')
@@ -41,6 +41,9 @@
     <!-- JS Front -->
     <script src="{{asset('assetsAdmin\js\theme.min.js')}}"></script>
     <!-- JS Plugins Init. -->
+    
+ 
+
     <script>
       $(document).on('ready', function () {
         // ONLY DEV

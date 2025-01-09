@@ -14,7 +14,7 @@
               </ol>
             </nav>
 
-            <h1 class="page-header-title">Thêm Sản Phẩm </h1>
+            <h1 class="page-header-title">Cập Nhật Sản Phẩm </h1>
           </div>
         </div>
         <!-- End Row -->
@@ -89,7 +89,7 @@
                   <!-- Mô tả -->
                   <div class="form-group">
                       <label class="input-label">Mô Tả <span class="input-label-secondary">(Optional)</span></label>
-                      <textarea name="MoTa" class="form-control" rows="5" placeholder="Nhập mô tả sản phẩm"></textarea>
+                      <textarea name="MoTa" class="form-control" rows="5" placeholder="Nhập mô tả sản phẩm">{{ old('MoTa', $product->MoTa) }}</textarea>
                   </div>
           
                   <!-- Trạng thái sản phẩm -->

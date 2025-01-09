@@ -47,7 +47,7 @@
                   <!-- Tên sản phẩm -->
                   <div class="form-group">
                       <label for="productNameLabel" class="input-label">Tên Sản Phẩm <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip" data-placement="top" title="Products are the goods or services you sell."></i></label>
-                      <input type="text" class="form-control" name="TenSP" id="productNameLabel" placeholder="Shirt, t-shirts, etc." aria-label="Shirt, t-shirts, etc." required>
+                      <input type="text" class="form-control" name="TenSP" id="productNameLabel" placeholder="Shirt, t-shirts, etc." aria-label="Shirt, t-shirts, etc." >
                   </div>
           
                   <!-- Hình ảnh -->
@@ -70,7 +70,7 @@
                       <div class="col-sm-6">
                           <div class="form-group">
                               <label for="quantityNameLabel" class="input-label">Số Lượng</label>
-                              <input type="number" class="form-control" name="SoLuong" id="quantityNameLabel" placeholder="0" min="0" required>
+                              <input type="number" class="form-control" name="SoLuong" id="quantityNameLabel" placeholder="0" min="0" >
                           </div>
                       </div>
           
@@ -78,7 +78,7 @@
                       <div class="col-sm-6">
                           <div class="form-group">
                               <label for="priceNameLabel" class="input-label">Giá</label>
-                              <input type="number" class="form-control" name="Gia" id="priceNameLabel" placeholder="0" min="0" step="0.01" required>
+                              <input type="number" class="form-control" name="Gia" id="priceNameLabel" placeholder="0" min="0" step="0.01" >
                           </div>
                       </div>
                   </div>

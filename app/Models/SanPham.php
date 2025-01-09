@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SanPham extends Model {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
     protected $primaryKey = 'MaSP'; // Khóa chính của bảng
 
     protected $fillable = [
@@ -19,6 +20,9 @@ class SanPham extends Model {
         'LoaiSP',
         'TrangThai',
     ];
+    
+    
+
     public function loaiSanPham()
     {
         return $this->belongsTo(LoaiSanPham::class, 'LoaiSP', 'MaLSP');

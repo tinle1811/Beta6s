@@ -16,7 +16,7 @@
                                 <a class="primary_img" href="{{ route('user.home.show', ['slug' => $product->getProductSlug()]) }}">
                                     <img src="{{ asset('/assetsUser/img_product' . $product->getProductImage()) }}" alt="{{ $product->getProductName() }}">
                                 </a>
-                                <div class="action_links">
+                                <div class="action_links">  
                                     <ul>
                                         <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                         <li class="compare"><a href="#" title="compare"><span class="ion-levels"></span></a></li>

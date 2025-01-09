@@ -108,7 +108,7 @@ class AdminProductController extends Controller
 
         
         if ($request->hasFile('HinhAnh')) {
-            $imagePath = $request->file('HinhAnh')->store('product_images', 'public');
+            $imagePath = $request->file('HinhAnh')->store('products', 'public');
             $product->HinhAnh = $imagePath;
         }
 
@@ -116,8 +116,17 @@ class AdminProductController extends Controller
 
         return redirect()->route('admin.product')->with('success', 'Cập nhật sản phẩm thành công.');
     }
-    public function delete(){
-        $viewData['title'] = "Trang Xoá Sản Phẩm";
-        return view("admin.product.delete")->with("viewData",$viewData);
+    public function destroy($id)
+    {
+        
+        $product = SanPham::find($id);
+
+        if (!$product) {
+            return redirect()->route('admin.product')->with('error', 'Sản phẩm không tồn tại.');
+        }
+
+        $product->delete();
+
+        return redirect()->route('admin.product')->with('success', 'Sản phẩm đã được xóa mềm thành công.');
     }
 }

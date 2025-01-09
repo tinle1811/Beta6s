@@ -1,6 +1,15 @@
 @extends('admin.layouts.app')
 {{--   --}}
 @section('content')
+  @if(session('success'))
+  <div class="alert alert-success">
+      {{ session('success') }}
+  </div>
+  @elseif(session('error'))
+  <div class="alert alert-danger">
+      {{ session('error') }}
+  </div>
+  @endif
   <main id="content" role="main" class="main"> 
       <!-- Content -->
     <div class="content container-fluid">
@@ -21,7 +30,7 @@
           </div>
 
           <div class="col-sm-auto">
-            <a class="btn btn-primary" href="{{route("admin.product.create")}}">Add product</a>
+            <a class="btn btn-primary" href="{{route("admin.product.create")}}">Thêm Sản Phẩm</a>
           </div>
         </div>
         <!-- End Row -->
@@ -253,7 +262,7 @@
 
         <!-- Table -->
         <div class="table-responsive datatable-custom">
-          <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" data-hs-datatables-options='{
+          <table id="datatable" class="table table-borderless table-thead-bordered table-align-middle card-table" data-hs-datatables-options='{
                   "columnDefs": [{
                       "targets": [0, 4, 9],
                       "width": "5%",
@@ -315,21 +324,18 @@
                     <td>
                       <p>{{$product->TrangThai}}</p>
                     </td>
-                    <td>
-                      <a href="{{ route('admin.product.edit', $product->MaSP) }}" class="btn btn-primary">Sửa</a>
-
-                      {{-- <form action="{{ route('admin.product.delete', $product->id) }}" method="POST" style="display:inline;">
-                          @csrf
-                          @method('DELETE')
-                          <button type="submit" class="btn btn-danger">Xóa</button>
-                      </form> --}}
+                    <td class="d-flex">
+                      <a href="{{ route('admin.product.edit', $product->MaSP) }}" class="btn btn-primary  mr-2">Sửa</a>
+                      <form action="{{ route('admin.product.delete', $product->MaSP) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                      </form>
+                    
                     </td>
                   </tr>
 
-              @endforeach
-              
-           
-          
+              @endforeach 
             </tbody>
           </table>
         </div>
@@ -378,9 +384,6 @@
       <!-- End Card -->
     </div>
     <!-- End Content -->
-
-
+   
   </main>
 @endsection
-
-   
