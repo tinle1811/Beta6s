@@ -22,6 +22,9 @@ class SanPham extends Model
         'HinhAnh',
         'LoaiSP',
         'TrangThai',
+        'SoLuotYeuThich',
+        'SoLuotXem',
+        'DiemRatingTB',
     ];
     
     public function binhLuans()
