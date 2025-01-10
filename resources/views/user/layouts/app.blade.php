@@ -7,6 +7,7 @@
     <title>@yield('title')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -70,6 +71,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/chat.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/popup_login.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/account.css') }}">
+
+
 </head>
 
 <body>
@@ -85,13 +88,14 @@
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
 
     <!-- Main JS -->
-    <script src="{{asset('assets/js/main.js')}}"></script>
-    <script src="{{asset('assets/js/chat.js')}}"></script>
-    <script src="{{asset('assets/js/popup_login.js')}}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/chat.js') }}"></script>
+    <script src="{{ asset('assets/js/popup_login.js') }}"></script>
     {{-- <script src="{{asset('assets/js/popup.js')}}"></script> --}}
     @yield('script')
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

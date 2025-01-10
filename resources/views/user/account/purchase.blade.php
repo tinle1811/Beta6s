@@ -30,8 +30,8 @@
             <div class="col-md-9 profile-content">
                 <ul class="d-flex justify-content-between align-items-center list-unstyled bg-black py-3 px-4 fs-6">
                     <li><a href="{{ route('user.account.purchase')}}" class="text-white text-decoration-none {{ $type == '0' ? 'fw-bold' : '' }}">Tất cả</a></li>
-                    <li><a href="{{ route('user.account.purchase', ['type' => 1]) }}" class="text-white text-decoration-none {{ $type == 1 ? 'fw-bold' : '' }}">Chờ lấy hàng</a></li>
-                    <li><a href="{{ route('user.account.purchase', ['type' => 2]) }}" class="text-white text-decoration-none {{ $type == 2 ? 'fw-bold' : '' }}">Chờ giao hàng</a></li>
+                    <li><a href="{{ route('user.account.purchase', ['type' => 1]) }}" class="text-white text-decoration-none {{ $type == 1 ? 'fw-bold' : '' }}">Chờ xử lý</a></li>
+                    <li><a href="{{ route('user.account.purchase', ['type' => 2]) }}" class="text-white text-decoration-none {{ $type == 2 ? 'fw-bold' : '' }}">Đang giao hàng</a></li>
                     <li><a href="{{ route('user.account.purchase', ['type' => 3]) }}" class="text-white text-decoration-none {{ $type == 3 ? 'fw-bold' : '' }}">Hoàn thành</a></li>
                     <li><a href="{{ route('user.account.purchase', ['type' => 4]) }}" class="text-white text-decoration-none {{ $type == 4 ? 'fw-bold' : '' }}">Hủy</a></li>
 

@@ -6,12 +6,13 @@
         <div class="row">
             <div class="col-md-3 profile-sidebar">
                 <div class="profile-avatar-wrapper">
-                    <img src="{{asset('/assetsUser/img_product/4-4.jpg')}}" alt="avata" class="profile-avatar">
+                    <img src="{{ asset('/assetsUser/img_product/4-4.jpg') }}" alt="avata" class="profile-avatar">
                     <p>Khoa Nguyễn</p>
                 </div>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#"><i class="bi bi-person"></i><span class="text">Tài khoản của tôi</span></a>
+                        <a class="nav-link active" href="#"><i class="bi bi-person"></i><span class="text">Tài khoản
+                                của tôi</span></a>
                     </li>
                     <li class="nav-item sub">
                         <a class="nav-link" href="#"> <span class="text">Hồ sơ</span></a>
@@ -23,7 +24,12 @@
                         <a class="nav-link" href="#"><span class="text">Đổi mật khẩu</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('user.account.purchase')}}"><i class="bi bi-cart"></i><span class="text">Đơn mua</span></a>
+                        <a class="nav-link" href="{{ route('user.account.purchase') }}"><i class="bi bi-cart"></i><span
+                                class="text">Đơn mua</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('test') }}"><i class="bi bi-cart"></i><span class="text">Danh
+                                sách đơn hàng</span></a>
                     </li>
                 </ul>
             </div>
@@ -50,8 +56,8 @@
                             <div class="row form-group">
                                 <label for="email" class="col-sm-4 col-form-label">Email:</label>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="email" value="0306221240@caothang.edu.vn"
-                                        disabled>
+                                    <input type="email" class="form-control" id="email"
+                                        value="0306221240@caothang.edu.vn" disabled>
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -64,8 +70,8 @@
                                 <label class="col-sm-4 col-form-label">Giới tính:</label>
                                 <div class="col-sm-8">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="male" name="gender" value="male"
-                                            checked>
+                                        <input class="form-check-input" type="radio" id="male" name="gender"
+                                            value="male" checked>
                                         <label class="form-check-label" for="male">Nam</label>
                                     </div>
                                     <div class="form-check form-check-inline">
@@ -88,8 +94,10 @@
                             </div>
                         </div>
                         <div class="col-md-4 avatar-section text-center">
-                            <img src="{{asset('/assetsUser/img_product/4-4.jpg')}}" alt="Khoa Nguyễn" class="profile-avatar mb-3">
-                            <button type="button" class="btn btn-primary btn-change-avatar" data-bs-toggle="modal" data-bs-target="#changeAvatarModal" style="margin-left:35%">Đổi Ảnh</button>
+                            <img src="{{ asset('/assetsUser/img_product/4-4.jpg') }}" alt="Khoa Nguyễn"
+                                class="profile-avatar mb-3">
+                            <button type="button" class="btn btn-primary btn-change-avatar" data-bs-toggle="modal"
+                                data-bs-target="#changeAvatarModal" style="margin-left:35%">Đổi Ảnh</button>
                             <p class="text-small">Dung lượng file tối đa 1MB<br>Định dạng: .JPEG, .PNG</p>
                         </div>
                     </div>
@@ -97,7 +105,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal for Change Avatar -->
     <div class="modal fade" id="changeAvatarModal" tabindex="-1" aria-labelledby="changeAvatarModalLabel"
         aria-hidden="true">
