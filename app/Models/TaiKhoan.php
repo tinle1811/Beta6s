@@ -34,5 +34,9 @@ class TaiKhoan extends Authenticatable
     {
         return $this->hasOne(KhachHang::class, 'MaTK', 'MaTK');  // MaTK là khóa ngoại trong bảng KhachHang
     }
+    public function hoaDon()
+    {
+        return $this->hasMany(HoaDon::class, 'MaKH', 'MaTK');
+    }
 
 }
