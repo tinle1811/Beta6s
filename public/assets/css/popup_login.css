@@ -17,9 +17,20 @@
     transform: translateY(-50px);
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
     opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-
 .modal.show .modal-dialog {
-    transform: translateY(0);
+    transform: translate(-50%, -50%);
     opacity: 1;
 }
+.modal-content {
+    width: 80%; /* Điều chỉnh theo nhu cầu của bạn */
+    max-width: 600px; /* Đảm bảo modal không quá rộng */
+}
+  

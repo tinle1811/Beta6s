@@ -23,7 +23,7 @@
                         <a class="nav-link" href="#"><span class="text">Đổi mật khẩu</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-cart"></i><span class="text">Đơn mua</span></a>
+                        <a class="nav-link" href="{{route('user.account.purchase')}}"><i class="bi bi-cart"></i><span class="text">Đơn mua</span></a>
                     </li>
                 </ul>
             </div>

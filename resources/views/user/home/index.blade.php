@@ -12,6 +12,5 @@
         @include('user.layouts.home.productArea')
         @include('user.layouts.home.NewProduct')
         @include('user.layouts.home.blogArea')
-        @include('user.layouts.popupLogin')
-        @include('user.layouts.popupChat');
+
 @endsection

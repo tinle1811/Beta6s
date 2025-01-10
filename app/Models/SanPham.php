@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class SanPham extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'MaSP';
     protected $fillable = [
         'TenSP',
         'Gia',
@@ -23,7 +24,11 @@ class SanPham extends Model
     {
         return $this->hasMany(GioHang::class, 'MaSP', 'MaSP');
     }
-    
+    public function chiTietHoaDons()
+    {
+        return $this->hasMany(ChiTietHoaDon::class, 'MaSP', 'MaSP');
+    }
+
     public function getProductId()
     {
         return $this->attributes['MaSP'];
