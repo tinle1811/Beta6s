@@ -56,6 +56,8 @@ Route::middleware('checkRole:shared')->group(function(){
 
    Route::get('/account',[AccountController::class,'index'])->name('user.account.index');
    Route::get('/purchase',[AccountController::class,'purchase'])->name('user.account.purchase');
+   Route::get('/purchaseHistory',[AccountController::class,'purchaseHistory'])->name('user.account.purchaseHistory');
+   Route::get('/historyEvaluate',[AccountController::class,'historyEvaluate'])->name('user.account.historyEvaluate');
    
 });
 
