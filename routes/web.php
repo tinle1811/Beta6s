@@ -62,11 +62,18 @@ Route::middleware('checkRole:shared')->group(function () {
 // Các route admin sử dụng middleware
 Route::middleware('checkRole:admin')->group(function () {
    Route::get("/admin", [AdminAnalysisController::class, "index"])->name("admin.analysis");
-   Route::get('/admin/product', [AdminProductController::class, "index"])->name("admin.product");
-   Route::get('/admin/product/create', [AdminProductController::class, "create"])->name("admin.product.create");
-   Route::get('/admin/product/edit', [AdminProductController::class, "edit"])->name("admin.product.edit");
 
-   Route::get('/admin/catagory', [AdminCatagoryController::class, "index"])->name("admin.catagory");
+    Route::get('/admin/product', [AdminProductController::class, "index"])->name("admin.product");
+    Route::get('/admin/product/create', [AdminProductController::class, "create"])->name("admin.product.create");
+    Route::post('/admin/product/createPost', [AdminProductController::class, "createPost"])->name("admin.product.createPost");
+
+    Route::get('/admin/product/edit/{MaSP}', [AdminProductController::class, "edit"])->name("admin.product.edit");
+    Route::post('/admin/product/update/{MaSP}', [AdminProductController::class, 'update'])->name('admin.product.update');
+
+    Route::delete('/admin/product/delete/{MaSP}', [AdminProductController::class, "destroy"])->name("admin.product.delete");
+
+
+    Route::get('/admin/catagory', [AdminCatagoryController::class, "index"])->name("admin.catagory");
    Route::get('/admin/catagory/create', [AdminCatagoryController::class, "create"])->name("admin.catagory.create");
    Route::get('/admin/catagory/edit', [AdminCatagoryController::class, "edit"])->name("admin.catagory.edit");
 
@@ -81,11 +88,6 @@ Route::middleware('checkRole:admin')->group(function () {
    Route::get("/admin/form", [AdminFormController::class, "index"])->name("admin.form");
    Route::get("/admin/form/create", [AdminFormController::class, "create"])->name("admin.form.create");
    Route::get("/admin/form/edit", [AdminFormController::class, "edit"])->name("admin.form.edit");
-
-   Route::get("/admin/form", [AdminFormController::class, "index"])->name("admin.form");
-   Route::get("/admin/form/create", [AdminFormController::class, "create"])->name("admin.form.create");
-   Route::get("/admin/form/edit", [AdminFormController::class, "edit"])->name("admin.form.edit");
-
 
 
    Route::get("/admin/client", [AdminClientController::class, "index"])->name("admin.client");
