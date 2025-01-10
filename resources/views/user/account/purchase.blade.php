@@ -62,7 +62,7 @@
                                     </div>
                                 </div>
                                 <div class="text-end py-3">
-                                    <p class="fw-bold mb-0 fs-5">Tổng tiền: {{ number_format($hoaDon->TongTien, 0, ',', '.' )}}đ</p>
+                                    <p class="fw-bold mb-0 fs-5">Tổng tiền: {{ number_format($cthd->DonGia * $cthd->SoLuong, 0, ',', '.' )}}đ</p>
                                 </div>
                                 <div class="text-end">
                                     {{-- Các nút thao tác có thể tiếp tục ở đây --}}
