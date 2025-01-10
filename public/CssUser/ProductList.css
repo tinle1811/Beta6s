@@ -7,7 +7,7 @@
 }
 
 .product_item {
-    flex: 0 1 calc(25% - 20px);
+    flex: 0 1 calc(20% - 20px);
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -44,7 +44,7 @@
 .product_price {
     margin: 10px 0;
     font-size: 1.2rem;
-    color: #e63946;
+    color: #0063d1;
     font-weight: bold;
 }
 
@@ -63,7 +63,7 @@
 .btn_add_wishlist,
 .btn_add_cart {
     border: none;
-    padding: 10px 15px;
+    padding: 2.5px 5px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9rem;

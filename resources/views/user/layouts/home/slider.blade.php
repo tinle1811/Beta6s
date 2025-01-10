@@ -11,7 +11,7 @@
                                 <h2>{{ Str::limit($product->getProductName(), 15, '...') }}</h2>
                                 {{-- <p>exclusive offer <span> 20% off </span> this week</p> --}}
                                 <p>{{ Str::limit($product->getProductDescription(), 60, '...') }}</p>
-                                <a class="button" href="shop.html">Mua sắm ngay</a>
+                                <a class="button" href="{{ route('user.home.show', ['slug' => $product->getProductSlug()]) }}">Xem thêm</a>
                             </div>
                         </div>
                     </div>

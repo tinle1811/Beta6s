@@ -20,14 +20,14 @@
                             <div class="product_details">
                                 <h3 class="product_title">
                                     <a href="{{ route('user.home.show', ['slug' => $product->getProductSlug()]) }}">
-                                        {{ Str::limit($product->getProductName(), 20, '...') }}
+                                        {{ Str::limit($product->getProductName(), 15, '...') }}
                                     </a>
                                 </h3>
                                 <div class="product_price">
                                     {{ number_format($product->getProductPrice(), 0, ',', '.') }} đ
                                 </div>
                                 <p class="product_description">
-                                    {{ Str::limit($product->getProductDescription(), 60, '...') }}
+                                    {{ Str::limit($product->getProductDescription(), 50, '...') }}
                                 </p>
                                 <div class="product_actions">
                                     @auth
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="pagination">
-                    {{ $viewData['DSSP-BanChay']->appends(['page_ban_chay' => request('page_ban_chay')])->links('') }}
+                    {{ $viewData['DSSP-BanChay']->appends(['pageSPBanChay' => request('pageSPBanChay')])->links('') }}
                 </div>
 
             </div>
