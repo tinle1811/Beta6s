@@ -43,8 +43,10 @@
 
 <script>
     document.getElementById('loginForm').addEventListener('submit', function (e) {
+        // ngăn reload trang
         e.preventDefault();
 
+        // tạo form để lấy dữ liệu
         let formData = new FormData(this);
         fetch('{{ route('login') }}', {
             method: 'POST',
@@ -52,8 +54,9 @@
                 'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
                 'Accept': 'application/json'
             },
-            body: formData
+            body: formData // chứa dữ liệu từ form
         })
+            // xử lý phản hồi
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
@@ -66,6 +69,7 @@
             .catch(error => console.error('Error:', error));
     });
 
+    // Ẩn popup và lớp phủ (overlay) khi người dùng nhấn nút đóng hoặc bên ngoài popup.
     function closeLoginPopup() {
         document.getElementById('login-popup').style.display = 'none';
         document.getElementById('overlay').style.display = 'none';
