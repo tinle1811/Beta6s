@@ -132,6 +132,7 @@ Route::middleware('checkRole:admin')->group(function () {
    //thống kê
    Route::get("/admin", [AdminAnalysisController::class, "index"])->name("admin.analysis");
    Route::post("/admin/date", [AdminAnalysisController::class, "filter_by_date"])->name("admin.analysis.filter_by_date");
+   Route::get('/export-thong-ke', [AdminAnalysisController::class, 'export'])->name("admin.analysis.export");
 
    //cập nhật đơn hàng
    Route::get("/admin/order", [AdminOrderController::class, "index"])->name("admin.order");

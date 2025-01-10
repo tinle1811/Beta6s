@@ -213,6 +213,47 @@
         </div>
         <!-- End Content -->
 
+        <div class="content container-fluid ">
+            <div class="card mb-3 mb-lg-5 shadow-soft p-3 mb-5 bg-white rounded">
+                <div class="card-header border border-dark ">
+                    <h1>Thống kê tổng</h1>
+                    <a href="{{ route('admin.analysis.export') }}" class="btn btn-success">
+                        <i class="tio-download-to mr-1"></i> Export
+                    </a>
+                </div>
+                
+                <!-- Table -->
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="text-align: center;">STT</th>
+                            <th scope="col" style="text-align: center;">Ngày thống kê</th>
+                            <th scope="col" style="text-align: center;">Doanh Thu</th>
+                            <th scope="col" style="text-align: center;">Lợi Nhuận</th>
+                            <th scope="col" style="text-align: center;">Số lượng bán</th>
+                            <th scope="col" style="text-align: center;">Tổng Đơn Hàng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($viewData['thongKes'] as $thongKe)
+                            <tr>
+                                <td scope="row" style="text-align: center;">{{ $thongKe->id }}</td>
+                                <td style="text-align: center;">{{ $thongKe->order_date }}</td>
+                                <td style="text-align: center;">{{ $thongKe->sales }}</td>
+                                <td style="text-align: center;">{{ $thongKe->profit }}</td>
+                                <td style="text-align: center;">{{ $thongKe->quantity }}</td>
+                                <td style="text-align: center;">{{ $thongKe->total_order }}</td>
+
+                            </tr>
+                        @endforeach
+
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
         <!-- Footer -->
 
         <div class="footer">
