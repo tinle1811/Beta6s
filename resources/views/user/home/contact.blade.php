@@ -82,12 +82,6 @@
                                 @endif
                             </div>
                             <button type="submit" class="btn-submit"> Gửi</button>
-                    
-                            @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
                         </form>
                     </div>                   
                     </div>
@@ -95,6 +89,62 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            var messages = {
+                success: 'Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.',
+                error: 'Đã có lỗi xảy ra!',
+                errorMessages: {
+                    'name': 'Vui lòng nhập họ tên',
+                    'email': 'Vui lòng nhập email',
+                    'phone': 'Vui lòng nhập số điện thoại',
+                    'message': 'Vui lòng nhập nội dung',
+                }
+            };
 
+            if (localStorage.getItem("formSuccessMessage")) {
+                $('#contact-form').prepend('<div class="alert alert-success">' + messages.success + '</div>');
+                localStorage.removeItem("formSuccessMessage"); // Xóa thông báo sau khi hiển thị
+            }
+
+            $('#contact-form').on('submit', function(event) {
+                event.preventDefault(); 
+
+                var formData = $(this).serialize();
+                $('.alert').remove();
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            localStorage.setItem("formSuccessMessage", true);
+                            $('#contact-form')[0].reset();
+                            location.reload();
+                        } else {
+                            alert(messages.error);
+                        }
+                    },
+                    error: function(xhr) {
+                        if (xhr.status === 422 || xhr.status === 419) {
+                            var errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, error) {
+                                var errorMessage = messages.errorMessages[key] || error[0];
+                                $('[name="' + key + '"]').after('<div class="alert alert-danger">' + errorMessage + '</div>');
+                            });
+                        } else {
+                            // Đảm bảo rằng nếu có lỗi, form không gửi lại
+                            alert('Đã có lỗi xảy ra khi gửi form!');
+                        }
+                    }
+                });
+            });
+        });
+
+        </script>
+        
+    
+       
     <!--contact area end-->
 @endsection

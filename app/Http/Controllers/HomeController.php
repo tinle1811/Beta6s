@@ -56,9 +56,7 @@ class HomeController extends Controller
     // Lưu vào cơ sở dữ liệu
     $newContact->save();
 
-    // Chuyển hướng hoặc hiển thị thông báo sau khi lưu
-    return back()->with('success', 'Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.')
-    ->withFragment('contact-form-section');
+    return response()->json(['success' => true, 'message' => 'Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.']);
 }
 
 }
