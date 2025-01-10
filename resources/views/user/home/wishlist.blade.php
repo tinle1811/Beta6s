@@ -6,7 +6,6 @@
 <!--wishlist area start -->
 <div class="wishlist_area mt-60">
     <div class="container">
-        <form action="#">
             <div class="row">
                 <div class="col-12">
                     <div class="table_desc wishlist">
@@ -65,8 +64,6 @@
                     </div>
                 </div>
             </div>
-
-        </form>
         <div class="row">
             <div class="col-12">
                 <div class="wishlist_share">

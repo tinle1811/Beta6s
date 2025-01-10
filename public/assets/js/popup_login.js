@@ -1,17 +1,40 @@
 function openLoginPopup() {
-    document.getElementById('login-popup').style.display = 'block';
+    console.log('openLoginPopup đã được gọi');
+    const modalElement = document.getElementById('login-popup');
+    if (!modalElement) {
+        console.error('Không tìm thấy modal');
+        return;
+    }
+    const loginModal = new bootstrap.Modal(modalElement);
+    loginModal.show();
     document.getElementById('overlay').style.display = 'block';
+    console.log('overlay đã được gọi');
+
+
 }
 
+
+
+
 function closeLoginPopup() {
-    document.getElementById('login-popup').style.display = 'none';
+    const loginModal = bootstrap.Modal.getInstance(document.getElementById('login-popup'));
+    loginModal.hide();
     document.getElementById('overlay').style.display = 'none';
 }
+
+
+
 
 document.getElementById('login-form').addEventListener('submit', async function (e) {
     e.preventDefault(); // Ngăn chặn reload trang
 
+
+
+
     const formData = new FormData(this);
+
+
+
 
     try {
         const response = await fetch("{{ route('login') }}", {
@@ -22,7 +45,13 @@ document.getElementById('login-form').addEventListener('submit', async function 
             body: formData
         });
 
+
+
+
         const result = await response.json();
+
+
+
 
         if (response.ok) {
             alert(result.message);

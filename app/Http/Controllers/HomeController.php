@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
 use App\Models\SanPham;
+use App\Models\LoaiSanPham;
 use App\Models\YeuThich;
 use App\Models\Blog;
 use App\Events\SanPhamUpdated;

@@ -16,7 +16,7 @@
                         <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
                     </div>
                     <div class="support_info">
-                        <p>Telephone Enquiry: <a href="tel:0123456789">0123456789</a></p>
+                        <p>Hotline: <a href="tel:{{$websiteInfo->hotline}}">{{$websiteInfo->hotline}}</a></p>
                     </div>
                     <div class="top_right text-end">
                         <ul>
@@ -66,7 +66,7 @@
                                 @forelse ($viewData['cartItems'] as $item)
                                     <div class="cart_item">
                                         <div class="cart_img">
-                                            <a href="#"><img
+                                            <a href="{{route('user.home.index')}}"><img
                                                     src="{{ asset('/assetsUser/img_product/' . $item->product->HinhAnh) }}"
                                                     alt=""></a>
                                         </div>
@@ -213,7 +213,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6">
                         <div class="support_info">
-                            <p>Telephone Enquiry: <a href="tel:0123456789">0123456789</a></p>
+                            <p>Hotline: <a href="tel:{{$websiteInfo->hotline}}">{{$websiteInfo->hotline}}</a></p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
@@ -467,7 +467,7 @@
         <div class="row align-items-center">
             <div class="col-lg-3">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="{{route('user.home.index')}}">
                         @if ($websiteInfo && $websiteInfo->logo)
                             <img src="{{ asset('storage/logos/' . $websiteInfo->logo) }}" alt="Website Logo">
                         @else

@@ -37,7 +37,13 @@
                                     <form action="{{route('user.cart.add', ['id' => $product->MaSP])}}" method="POST"
                                         class="add-to-cart-form" id="add-to-cart-form">
                                         @csrf
-                                        <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
+                                        @auth
+                                            <input type="hidden" name="MaSP" value="{{ $product->MaSP}}">
+                                            <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
+                                        @else
+                                            <a href="javascript:void(0)" onclick="openLoginPopup()" class="btn btn-primary"
+                                                title="add to cart">Thêm vào giỏ hàng</a>
+                                        @endauth
                                     </form>
                                 </div>
                             </figcaption>

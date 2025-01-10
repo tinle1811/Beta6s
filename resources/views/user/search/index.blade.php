@@ -8,14 +8,14 @@
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm">
                     <!-- Hình ảnh sản phẩm -->
-                    <a href="{{ route('user.home.show') }}">
+                    <a href="{{ route('user.home.show', ['slug' => $product->getProductSlug()]) }}">
                         <img src="{{ asset('/assetsUser/img_product/' . $product->getProductImage()) }}"
                             alt="{{ $product->getProductName() }}" class="card-img-top img-fluid">
                     </a>
                     <!-- Nội dung sản phẩm -->
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a href="{{ route('user.home.show') }}" class="text-decoration-none text-dark">
+                            <a href="{{ route('user.home.show', ['slug' => $product->getProductSlug()]) }}" class="text-decoration-none text-dark">
                                 {{ $product->getProductName() }}
                             </a>
                         </h5>

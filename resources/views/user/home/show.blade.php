@@ -11,20 +11,16 @@
                         <div id="img-1" class="zoomWrapper single-zoom">
                             <img id="zoom1" src="{{ asset('storage/' . $viewData['sanpham']->getProductImage()) }}"
                                 alt="Sản phẩm" />
-
                         </div>
                         <div class="single-zoom-thumb ">
-                            <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
-
-
-                            </ul>
+                            <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01"></ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product_d_right">
-                        <form action="#">
-
+                        <form action="{{ route('user.cart.add', ['id' => $viewData['sanpham']->getProductId()]) }}" method="POST">
+                            @csrf
                             <h1>{{ $viewData['sanpham']->getProductName() }}</h1>
                             <div class="product_nav">
 
@@ -55,62 +51,36 @@
                                     class="current_price">{{ number_format($viewData['sanpham']->getProductPrice(), 0, ',', '.') }}đ</span>
 
                             </div>
-                            <div class="product_desc">
-                                <p>{{ $viewData['sanpham']->getProductDescription() }}</p>
-                            </div>
                             <div class="product_status">
                                 @if ($viewData['sanpham']->TrangThai == 1)
-                                    <span style="color: green; font-weight: bold;font-size:30px">Còn hàng</span>
+                                    <p>Tình trạng: <span style="color:#757575">Còn hàng</span></p>
                                 @else
-                                    <span style="color: red; font-weight: bold;font-size:30px">Hết hàng</span>
+                                    <p>Tình trạng: <span class="text-danger">Còn hàng</span></p>
                                 @endif
                             </div>
-                            {{-- <div class="product_timing">
-                            <div data-countdown="2023/12/15"></div>
-                        </div>
-                        <div class="product_variant color">
-                            <h3>Available Options</h3>
-                            <label>color</label>
-                            <ul>
-                                <li class="color1"><a href="#"></a></li>
-                                <li class="color2"><a href="#"></a></li>
-                                <li class="color3"><a href="#"></a></li>
-                                <li class="color4"><a href="#"></a></li>
-                            </ul>
-                        </div> --}}
-                            <div class="product_variant quantity">
-                                <label>quantity</label>
-                                <input min="1" max="100" value="1" type="number">
-                                <button class="button" type="submit">add to cart</button>
-
-                            </div>
-                            <div class=" product_d_action">
-                                <ul>
-                                    <li><a href="#" title="Add to wishlist">+ Add to Wishlist</a></li>
-                                    <li><a href="#" title="Add to wishlist">+ Compare</a></li>
-                                </ul>
-                            </div>
-                            <div class="product_meta">
-                                <span>Category: <a href="#">Clothing</a></span>
-                            </div>
-
+                            @auth
+                                <div class="product_variant quantity">
+                                    <label>Số lượng: </label>
+                                    <input min="1" max="100" name="soLuong" value="1" type="number">
+                                </div>
+                                <div class="product_meta">
+                                    @if($viewData['sanpham']->LoaiSP == 1)
+                                        <span>Phiên bản: <a href="#">Thường</a></span>
+                                    @else
+                                        <span>Phiên bản: <a href="#">Đặc biệt</a></span>
+                                    @endif
+                                </div>
+                                <div class="product_variant quantity">
+                                    <a href="{{ route('user.cart.checkout') }} " class="btn btn-primary">Mua ngay</a>
+                                </div>
+                                <div class="product_variant quantity">
+                                    <input type="hidden" name="MaSP" value="{{ $viewData['sanpham']->getProductId() }}">
+                                    <button type="submit" style="background: yellow">Thêm vào giỏ hàng</button>
+                                </div>
+                            @else
+                                <a href="javascript:void(0)" onclick="openLoginPopup()" class="btn btn-primary" title="add to cart">Thêm vào giỏ hàng</a>
+                            @endauth
                         </form>
-                        <div class="priduct_social">
-                            <ul>
-                                <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i>
-                                        Like</a></li>
-                                <li><a class="twitter" href="#" title="twitter"><i class="fa fa-twitter"></i>
-                                        tweet</a>
-                                </li>
-                                <li><a class="pinterest" href="#" title="pinterest"><i class="fa fa-pinterest"></i>
-                                        save</a></li>
-                                <li><a class="google-plus" href="#" title="google +"><i class="fa fa-google-plus"></i>
-                                        share</a></li>
-                                <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i>
-                                        linked</a></li>
-                            </ul>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -128,11 +98,11 @@
                             <ul class="nav" role="tablist">
                                 <li>
                                     <a class="active" data-bs-toggle="tab" href="#info" role="tab"
-                                        aria-controls="info" aria-selected="false">Description</a>
+                                        aria-controls="info" aria-selected="false">Mô tả</a>
                                 </li>
                                 <li>
                                     <a data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
-                                        aria-selected="false">Reviews (1)</a>
+                                        aria-selected="false">Đánh giá (1)</a>
                                 </li>
                             </ul>
                         </div>

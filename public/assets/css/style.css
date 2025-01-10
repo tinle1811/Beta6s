@@ -11901,3 +11901,23 @@ textarea:-ms-input-placeholder {
     /* Giảm kích thước chữ */
   }
 }
+#logo {
+  width: 230px;
+  /* Giữ chiều rộng tự động */
+  max-width: 100%;
+  /* Giới hạn chiều rộng ảnh tối đa là 100% của phần tử chứa */
+  height: auto;
+  /* Giữ tỷ lệ chiều cao của ảnh */
+  max-height: 80%;
+  /* Giới hạn chiều cao tối đa của ảnh là 80% của phần tử chứa */
+  object-fit: contain;
+  /* Giữ tỷ lệ cho ảnh mà không bị cắt */
+  display: flex;
+  justify-content: center;
+  /* Căn giữa ảnh theo chiều ngang */
+  align-items: center;
+  /* Căn giữa ảnh theo chiều dọc */
+  height: 15vh;
+
+
+}
