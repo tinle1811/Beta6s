@@ -43,11 +43,12 @@ class AuthController extends Controller
             'Email'=>'required|email',
             'Password' => 'required|min:6',
         ]);
-
         $taiKhoan = TaiKhoan::where('Email',$request->Email)->first();
         if($taiKhoan && Hash::check($request->Password, $taiKhoan->Password)){
             // đăng nhập thành công
             Auth::login($taiKhoan);
+            
+            // Lưu thông tin vào session nếu chọn "Nhớ mật khẩu"
             
             //kiểm tra phân quyền và điều hướng
             if($taiKhoan->LoaiTK == 1){

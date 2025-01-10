@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GioHang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\SanPham;
+
 
 class CartController extends Controller
 {
@@ -38,11 +38,6 @@ class CartController extends Controller
             'totalQuantity' => $totalQuantity
         ];
         return View('user.cart.index')->with('viewData',$viewData);
-    }
-    public function checkout(){
-        $viewData['title'] = "Trang thanh toán";
-
-        return View('user.cart.checkout')->with('viewData',$viewData);
     }
     public function addToCart(Request $request, $id)
     {
@@ -99,4 +94,7 @@ class CartController extends Controller
         return redirect()->route('user.cart.index')->with('success', 'Giỏ hàng đã được cập nhật.');
 
     }
+    
+   
+    
 }

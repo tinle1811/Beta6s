@@ -58,5 +58,7 @@
                     @endforeach
                 </div>
             </div>
-        </section>
-        <!--product area end-->
+        </div>
+    </div>
+</section>
+<!--product area end-->

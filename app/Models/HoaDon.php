@@ -2,44 +2,68 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class HoaDon extends Model
 {
-    use HasFactory, SoftDeletes;
-
-    protected $table = 'hoa_dons'; // Tên bảng trong cơ sở dữ liệu
-    protected $primaryKey = 'MaHD'; // Khóa chính
-    public $incrementing = true; // Mã tự tăng
-    protected $keyType = 'int'; // Kiểu của khóa chính
-
-    // Các cột có thể được gán giá trị
+    use HasFactory;
+    protected $table = 'hoa_dons';
+    protected $primaryKey = 'MaHD';
     protected $fillable = [
         'MaKH',
         'ThanhToan',
         'TongTien',
         'GhiChu',
         'TrangThaiThanhToan',
-        'TrangThai',
+        'TrangThai'
     ];
-
-    // Quan hệ với bảng `khach_hangs`
+    public function chiTietHoaDons()
+    {
+        return $this->hasMany(ChiTietHoaDon::class, 'MaHD', 'MaHD');
+    }
+    public function binhLuans()
+    {
+        return $this->hasMany(BinhLuan::class, 'MaHD', 'MaHD');
+    }
     public function khachHang()
     {
         return $this->belongsTo(KhachHang::class, 'MaKH', 'MaTK');
     }
-
-    // Quan hệ với bảng `phuong_thuc_thanh_toans`
     public function phuongThucThanhToan()
     {
         return $this->belongsTo(PhuongThucThanhToan::class, 'ThanhToan', 'MaPT');
     }
-
-    // Mối quan hệ với chi tiết hóa đơn
-    public function chiTietHoaDons()
+    public function taiKhoan()
     {
-        return $this->hasMany(ChiTietHoaDon::class, 'MaHD');
+        return $this->belongsTo(TaiKhoan::class, 'MaKH', 'MaTK');
+    }
+    /** 
+    public function getTrangThaiName()
+    {
+        // Mảng ánh xạ trạng thái
+        $trangThaiList = [
+            0 => 'Tất cả',
+            1 => 'Chờ lấy hàng',
+            2 => 'Chờ giao hàng',
+            3 => 'Hoàn thành',
+            4 => 'Đã huỷ',
+        ];
+
+        return $trangThaiList[$this->TrangThai] ;
+    }
+     */
+    public function getTrangThaiName()
+    {
+        // Mảng ánh xạ trạng thái
+        $trangThaiList = [
+            0 => 'Tất cả',
+            1 => 'Chờ xử lý',
+            2 => 'Đang giao hàng',
+            3 => 'Hoàn thành',
+            4 => 'Đã huỷ',
+        ];
+
+        return $trangThaiList[$this->TrangThai];
     }
 }
