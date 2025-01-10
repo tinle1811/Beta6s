@@ -25,6 +25,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('user.account.purchase')}}"><i class="bi bi-cart"></i><span class="text">Đơn mua</span></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.account.purchaseHistory') }}"><i class="bi bi-cart-check"></i><span class="text">Lịch sử mua hàng</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.account.historyEvaluate') }}"><i class="bi bi-chat-left"></i><span class="text">Lịch sử đánh giá</span></a>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-9 profile-content">
