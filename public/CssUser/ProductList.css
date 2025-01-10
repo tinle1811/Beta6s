@@ -111,3 +111,224 @@
     background-color: #007bff !important;
     color: #fff;
 }
+
+/*===================== Css danh sách sản phẩm đã mua ===============================*/
+/* Định dạng danh sách sản phẩm */
+.product-list {
+    display: flex;
+    flex-direction: column;
+    /* Hiển thị sản phẩm theo cột */
+    gap: 15px;
+    /* Khoảng cách giữa các sản phẩm */
+}
+
+/* Định dạng từng sản phẩm */
+.product-item {
+    display: flex;
+    align-items: center;
+    /* Căn giữa nội dung theo chiều dọc */
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-3px);
+    /* Hiệu ứng hover nâng sản phẩm lên */
+}
+
+/* Hình ảnh sản phẩm */
+.product-img {
+    width: 100px;
+    /* Chiều rộng hình ảnh */
+    height: 100px;
+    /* Chiều cao hình ảnh */
+    object-fit: cover;
+    /* Bảo đảm hình ảnh không bị méo */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Thông tin sản phẩm */
+.product-details {
+    flex: 1;
+    /* Chiếm toàn bộ chiều ngang còn lại */
+    margin-left: 15px;
+    /* Khoảng cách giữa hình ảnh và thông tin */
+}
+
+.product-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.product-details p {
+    margin: 2px 0;
+    color: #666;
+}
+
+.product-details strong {
+    color: #e63946;
+    /* Màu nổi bật cho các thông tin quan trọng */
+}
+
+/* Responsive cho thiết bị nhỏ */
+@media (max-width: 767px) {
+    .product-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .product-img {
+        margin-bottom: 10px;
+    }
+
+    .product-details {
+        margin-left: 0;
+    }
+}
+
+/* Định dạng phân trang */
+/*.pagination-wrapper {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.pagination .page-link {
+    color: #007bff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}*/
+
+/*==================== CSS Danh sách sản phẩm đã đánh giá ===========================*/
+/* Định dạng danh sách sản phẩm theo cột */
+.product-list {
+    display: flex;
+    flex-direction: column;
+    /* Hiển thị danh sách theo chiều dọc */
+    gap: 20px;
+    /* Khoảng cách giữa các sản phẩm */
+    margin-top: 20px;
+}
+
+/* Định dạng từng sản phẩm */
+.product-item {
+    display: flex;
+    align-items: center;
+    /* Căn giữa nội dung theo chiều dọc */
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    /* Hiệu ứng hover nâng sản phẩm */
+}
+
+/* Hình ảnh sản phẩm */
+.product-img {
+    width: 100px;
+    /* Chiều rộng hình ảnh */
+    height: 100px;
+    /* Chiều cao hình ảnh */
+    object-fit: cover;
+    /* Đảm bảo hình ảnh không bị méo */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Thông tin sản phẩm */
+.product-details {
+    flex: 1;
+    /* Chiếm toàn bộ chiều ngang còn lại */
+    margin-left: 15px;
+    /* Khoảng cách giữa hình ảnh và thông tin */
+}
+
+.product-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.product-details p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.product-details strong {
+    color: #e63946;
+    /* Màu nổi bật cho thông tin quan trọng */
+}
+
+/* Định dạng sao đánh giá */
+.rating-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 20px;
+    color: #ccc;
+}
+
+.rating-stars .star {
+    cursor: default;
+    transition: color 0.3s ease;
+}
+
+.rating-stars .star.filled {
+    color: #FFD700;
+    /* Màu vàng cho sao đã đánh giá */
+}
+
+/* Responsive cho thiết bị nhỏ */
+@media (max-width: 767px) {
+    .product-item {
+        flex-direction: column;
+        /* Chuyển sang dạng cột */
+        text-align: center;
+        /* Căn giữa nội dung */
+    }
+
+    .product-img {
+        margin-bottom: 10px;
+    }
+
+    .product-details {
+        margin-left: 0;
+    }
+}
+
+/* Định dạng phân trang */
+/*.pagination-wrapper {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination .page-link {
+    color: #007bff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}*/
