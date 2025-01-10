@@ -63,6 +63,8 @@ Route::middleware('checkRole:shared')->group(function () {
    Route::get('/account',[AccountController::class,'index'])->name('user.account.index');
    Route::get('/purchase',[AccountController::class,'purchase'])->name('user.account.purchase');
    Route::get('/orderlist', [AccountController::class, 'orderlist'])->name('test');
+   Route::post('/addReview',[AccountController::class, 'addReview'])->name('user.account.addReview');
+
    
 });
 
