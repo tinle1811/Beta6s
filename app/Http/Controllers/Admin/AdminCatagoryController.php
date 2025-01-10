@@ -28,7 +28,7 @@ class AdminCatagoryController extends Controller {
         $newCategory->setCategoryName( $request->input( 'categoryName' ) );
         $newCategory->setCategoryStatus( 1 );
         $newCategory->save();
-        return redirect()->action( [ AdminCatagoryController::class, 'index' ] );
+        return redirect()->action( [ AdminCatagoryController::class, 'index' ] )->with('success', 'Thêm loại sản phẩm thành công!');
     }
 
     public function edit( $id ) {
@@ -45,7 +45,7 @@ class AdminCatagoryController extends Controller {
         $category->setCategoryName( $request->input( 'categoryName' ) );
         $category->setCategoryStatus( $request->input( 'categoryStatus' ) );
         $category->save();
-        return redirect()->action( [ AdminCatagoryController::class, 'index' ] );
+        return redirect()->action( [ AdminCatagoryController::class, 'index' ] )->with('success', 'Cập nhật loại sản phẩm thành công!');
     }
 
     public function delete( $id ) {

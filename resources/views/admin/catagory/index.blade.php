@@ -317,7 +317,7 @@
                                         </a>
                                     </td>
                                     <td>{{ $category->getCategoryName() }}</td>
-                                    <td class="TrangThai">{{ $category->getCategoryStatus() }}</td>
+                                    <td class="TrangThai">{{ $category->getCategoryStatus() == 1 ? 'Hoạt động' : 'Không hoạt động' }}</td>
                                     {{-- <td>
                   <label class="toggle-switch toggle-switch-sm" for="stocksCheckbox1">
                     <input type="checkbox" class="toggle-switch-input" id="stocksCheckbox1" checked="">
@@ -429,6 +429,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        @if (session('success'))
+            showAlert('{{ session('success') }}', 'success');
+        @endif
+
         $(document).on('click', '.delete-category', function() {
             var categoryId = $(this).closest('tr').data('id');
 
@@ -446,7 +450,7 @@
                                 var statusCell = row.find('.TrangThai');
 
                                 if (response.newStatus == 0) {
-                                    statusCell.text('0');
+                                    statusCell.text('Không hoạt động');
                                 }
                                 showAlert(response.success, 'success');
                             }

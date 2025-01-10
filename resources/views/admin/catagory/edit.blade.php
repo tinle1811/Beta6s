@@ -72,11 +72,11 @@
 
                                     <select class="form-control" name="categoryStatus" id="categoryStatusLabel">
                                         @if ($viewData['category']->getCategoryStatus() == 1)
-                                            <option value="1" selected>1</option>
-                                            <option value="0">0</option>
+                                            <option value="1" selected>Hoạt động</option>
+                                            <option value="0">Không hoạt động</option>
                                         @else
-                                            <option value="1">1</option>
-                                            <option value="0" selected>0</option>
+                                            <option value="1">Hoạt động</option>
+                                            <option value="0" selected>Không hoạt động</option>
                                         @endif
                                     </select>
                                 </div>

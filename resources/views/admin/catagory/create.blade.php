@@ -37,7 +37,7 @@
                             @if ($errors->any())
                                 <ul class="alert alert-danger list-unstyled">
                                     @foreach ($errors->all() as $error)
-                                        <li>- {{ $error }}</li>
+                                        <li>- Bạn chưa nhập tên loại sản phẩm!</li>
                                     @endforeach
                                 </ul>
                             @endif
