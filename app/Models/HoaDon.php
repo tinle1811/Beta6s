@@ -31,16 +31,18 @@ class HoaDon extends Model
         return $this->belongsTo(PhuongThucThanhToan::class, 'ThanhToan', 'MaPT');
     }
     public function getTrangThaiName()
-    {
-        // Mảng ánh xạ trạng thái
-        $trangThaiList = [
-            0 => 'Tất cả',
-            1 => 'Chờ lấy hàng',
-            2 => 'Chờ giao hàng',
-            3 => 'Hoàn thành',
-            4 => 'Đã huỷ',
-        ];
+{
+    // Mảng ánh xạ trạng thái theo yêu cầu và lớp text tương ứng
+    $trangThaiList = [
+        0 => ['name' => 'Chờ xử lý', 'class' => 'text-warning'],
+        1 => ['name' => 'Đang giao hàng', 'class' => 'text-primary'],
+        2 => ['name' => 'Đã hoàn thành', 'class' => 'text-success'],
+        3 => ['name' => 'Đã hủy', 'class' => 'text-danger'],
+    ];
+    $status = isset($trangThaiList[$this->TrangThai]) ? $trangThaiList[$this->TrangThai] : ['name' => 'Không xác định', 'class' => 'text-secondary'];
 
-        return $trangThaiList[$this->TrangThai] ;
-    }
+    return $status;
+}
+
+
 }

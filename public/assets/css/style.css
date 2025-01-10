@@ -7777,6 +7777,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border:0.2px solid #d1e2f3;
   border-radius: 5px;
   padding: 10px;
+  margin: 10px 0 ;
+  width: 100%;
 }
 #logo {
   width: 230px;             /* Giữ chiều rộng tự động */
@@ -7790,6 +7792,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   height: 15vh;  
   
 }
+
 .account_form h2 {
   font-size: 28px;
   text-transform: capitalize;
