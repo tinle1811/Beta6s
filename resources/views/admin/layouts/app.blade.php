@@ -63,7 +63,7 @@
         $(document).on('ready', function() {
 
             //Chạy thống kê doanh thu mặc định
-            chartdaysorder();
+            //chartdaysorder();
             // ONLY DEV
             // =======================================================
 
@@ -525,36 +525,8 @@
                 }
             });
         });
-
-        // Hàm thống kê tổng hết
-        var thongKesData = @json($viewData['thongKes']);
-
-        function chartdaysorder() {
-            var chartData = thongKesData.map(function(item) {
-                return {
-                    period: item.order_date, // Giả sử 'created_at' là ngày thống kê
-                    sales: item.sales, // Giá trị doanh thu
-                    profit: item.profit // Giá trị lợi nhuận
-                };
-            });
-
-            if (chartData.length === 0) {
-                $('#ThongKeRong').text('Không có dữ liệu thống kê.').show();
-                // Gọi hàm để vẽ dữ liệu vào biểu đồ hoặc hiển thị dữ liệu
-                return;
-            } else {
-                $('#ThongKeRong').hide();
-                $('#chart').show();
-                chart.setData(chartData); // Cập nhật dữ liệu cho chart
-            }
-
-
-        }
-
-        $('#resetData').click(function() {
-            chartdaysorder();
-        });
     </script>
+    @yield('jsThongKe')
 
     <!-- Thong Ke doanh thu -->
 
