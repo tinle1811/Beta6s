@@ -2,7 +2,25 @@
 @section('title', $viewData['title'])
 @section('content')
 <div class="container my-4">
-    <h2 class="mb-4">{{ $viewData['title'] }}</h2>
+    @if(isset($viewData['keyword']) && $viewData['keyword'] != '' && (!isset($viewData['loai_san_pham']) || $viewData['loai_san_pham'] == ''))
+    <h2 class="mb-4 text-center">{{ $viewData['title'] }} "{{ $viewData['keyword'] }}"</h2>
+    <h4>{{ $viewData['resultCount'] }} kết quả được tìm thấy</p>
+@endif
+
+@if(isset($viewData['loai_san_pham']) && $viewData['loai_san_pham'] != '' && (!isset($viewData['keyword']) || $viewData['keyword'] == ''))
+    <h2 class="mb-4 text-center">{{ $viewData['title'] }}: Loại sản phẩm {{ $viewData['loai_san_pham'] }}</h2>
+    <h4>{{ $viewData['resultCount'] }} kết quả được tìm thấy</h4>
+@endif
+
+@if(isset($viewData['keyword']) && $viewData['keyword'] != '' && isset($viewData['loai_san_pham']) && $viewData['loai_san_pham'] != '')
+    <h2 class="mb-4 text-center">{{ $viewData['title'] }} "{{ $viewData['keyword'] }}" trong loại sản phẩm {{ $viewData['loai_san_pham'] }}</h2>
+    <h4>{{ $viewData['resultCount'] }} kết quả được tìm thấy</h4>
+@endif
+
+@if((!isset($viewData['keyword']) || $viewData['keyword'] == '') && (!isset($viewData['loai_san_pham']) || $viewData['loai_san_pham'] == ''))
+    <h2 class="mb-4 text-center">{{ $viewData['title'] }} "Tất cả"</h2>
+    <h4>{{ $viewData['resultCount'] }} kết quả được tìm thấy</h4>
+@endif
     <div class="row">
         @foreach ($viewData['products'] as $product)
             <div class="col-md-4 mb-4">
@@ -35,6 +53,6 @@
 
     <!-- Phân trang -->
     <div class="d-flex justify-content-center">
-        {{ $viewData['products']->links('pagination::bootstrap-5') }}
+        {{ $viewData['products']->appends(request()->input())->links('pagination::bootstrap-5') }}
     </div>
 @endsection
