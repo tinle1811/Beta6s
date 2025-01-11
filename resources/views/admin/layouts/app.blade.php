@@ -63,7 +63,7 @@
         $(document).on('ready', function() {
 
             //Chạy thống kê doanh thu mặc định
-            chart30daysorder();
+            chartdaysorder();
             // ONLY DEV
             // =======================================================
 
@@ -327,9 +327,15 @@
                         endDate: endDate // Ngày kết thúc
                     },
                     success: function(data) {
-                        // Gọi hàm để vẽ dữ liệu vào biểu đồ hoặc hiển thị dữ liệu
-                        chart.setData(
-                            data); // Giả sử bạn có đối tượng `chart` để hiển thị dữ liệu
+                        if (data.length === 0) {
+                            $('#ThongKeRong').text('Không có dữ liệu thống kê.').show();
+                            // Gọi hàm để vẽ dữ liệu vào biểu đồ hoặc hiển thị dữ liệu
+                            $('#chart').hide();
+                        } else {
+                            $('#ThongKeRong').hide();
+                            $('#chart').show();
+                            chart.setData(data);
+                        }
                     },
                     error: function(xhr, status, error) {
                         alert('Đã xảy ra lỗi: ' + error);
@@ -462,8 +468,17 @@
                     endDate: to_date // Ngày kết thúc
                 },
                 success: function(data) {
+                    if (data.length === 0) {
+                        $('#ThongKeRong').text('Không có dữ liệu thống kê.').show();
+                        // Gọi hàm để vẽ dữ liệu vào biểu đồ hoặc hiển thị dữ liệu
+                        $('#chart').hide();
+                    } else {
+                        $('#ThongKeRong').hide();
+                        $('#chart').show();
+                        chart.setData(data);
+                    }
                     // Gọi hàm để vẽ dữ liệu vào biểu đồ hoặc hiển thị dữ liệu
-                    chart.setData(data); // Giả sử bạn có đối tượng `chart` để hiển thị dữ liệu
+                    chart.setData(data);
                 },
                 error: function(xhr, status, error) {
                     alert('Đã xảy ra lỗi: ' + error);
@@ -495,8 +510,15 @@
                     endDate: to_date // Ngày kết thúc
                 },
                 success: function(data) {
-                    // Gọi hàm để vẽ dữ liệu vào biểu đồ hoặc hiển thị dữ liệu
-                    chart.setData(data); // Giả sử bạn có đối tượng `chart` để hiển thị dữ liệu
+                    if (data.length === 0) {
+                        $('#ThongKeRong').text('Không có dữ liệu thống kê.').show();
+                        // Gọi hàm để vẽ dữ liệu vào biểu đồ hoặc hiển thị dữ liệu
+                        $('#chart').hide();
+                    } else {
+                        $('#ThongKeRong').hide();
+                        $('#chart').show();
+                        chart.setData(data);
+                    }
                 },
                 error: function(xhr, status, error) {
                     alert('Đã xảy ra lỗi: ' + error);
@@ -504,29 +526,10 @@
             });
         });
 
-        // Hàm thống kê 30 ngày qua
-        function chart30daysorder() {
-            // Lấy token CSRF để bảo mật yêu cầu
-            var token = $('meta[name="csrf-token"]').attr('content');
-
-            $.ajax({
-                url: "{{ url('/admin') }}", // Đảm bảo URL chính xác
-                method: "POST",
-                dataType: "JSON",
-                data: {
-                    _token: token
-                },
-                success: function(data) {
-                    chart.setData(data); // Cập nhật dữ liệu cho chart
-                },
-                error: function(xhr, status, error) {
-                    console.error("Có lỗi xảy ra: ", error); // Xử lý lỗi nếu có
-                }
-            });
-        }
+        // Hàm thống kê tổng hết
         var thongKesData = @json($viewData['thongKes']);
 
-        function chart30daysorder() {
+        function chartdaysorder() {
             var chartData = thongKesData.map(function(item) {
                 return {
                     period: item.order_date, // Giả sử 'created_at' là ngày thống kê
@@ -535,12 +538,21 @@
                 };
             });
 
-            chart.setData(chartData); // Cập nhật dữ liệu cho chart
+            if (chartData.length === 0) {
+                $('#ThongKeRong').text('Không có dữ liệu thống kê.').show();
+                // Gọi hàm để vẽ dữ liệu vào biểu đồ hoặc hiển thị dữ liệu
+                return;
+            } else {
+                $('#ThongKeRong').hide();
+                $('#chart').show();
+                chart.setData(chartData); // Cập nhật dữ liệu cho chart
+            }
+
 
         }
 
         $('#resetData').click(function() {
-            chart30daysorder();
+            chartdaysorder();
         });
     </script>
 

@@ -85,12 +85,14 @@
                                 trước</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:;" id="resetData"><i class="tio-update"></i></a>
+                            <a class="nav-link" href="javascript:;" data-toggle="tab" id="resetData"><i
+                                    class="tio-update"></i></a>
                         </li>
+
                     </ul>
 
                     <!-- Content to display the data -->
-                    <div id="dataContainer"></div>
+                    {{-- <div id="dataContainer"></div> --}}
                     <!-- End Nav -->
                 </div>
                 <!-- End Header -->
@@ -200,9 +202,11 @@
                     }'>
                         </canvas>
                     </div> --}}
+                    <div class="alert alert-soft-dark" role="alert" style="display:none;" id="ThongKeRong">
+                    </div>
 
-
-                    <div id="chart" style="height: 250px;"></div>
+                    <div id="chart" style="height: 250px;">
+                    </div>
                     <!-- End Bar Chart -->
                 </div>
                 <!-- End Body -->
@@ -314,37 +318,4 @@
 
         <!-- End Footer -->
     </main>
-    {{-- <script type="text/javascript">
-        var thongKesData = @json($viewData['thongKes']);
-
-        function chart30daysorder() {
-            var chartData = thongKesData.map(function(item) {
-                return {
-                    period: item.order_date, // Giả sử 'created_at' là ngày thống kê
-                    sales: item.sales, // Giá trị doanh thu
-                    profit: item.profit // Giá trị lợi nhuận
-                };
-            });
-
-            // Khởi tạo biểu đồ Morris
-            var chart = new Morris.Bar({
-                element: 'chart',
-                barColors: ['#ff69b4', '#800080'],
-                pointFillColors: ['#ffffff'],
-                pointStrokeColors: ['black'],
-                fillopacity: 0.6,
-                hideHover: 'auto',
-                parseTime: false,
-                xkey: 'period',
-                ykeys: ['sales', 'profit'],
-                behavelikeLine: true,
-                labels: ['doanh thu', 'lợi nhuận']
-            });
-            chart.setData(chartData); // Cập nhật dữ liệu cho chart
-
-        }
-        $(document).ready(function() {
-            chart30daysorder();
-        });
-    </script> --}}
 @endsection
