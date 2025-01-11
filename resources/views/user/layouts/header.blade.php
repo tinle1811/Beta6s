@@ -221,8 +221,18 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="top_right text-end">
                                 <ul>
-                                    <li><a href="{{route('user.account.index')}}"> My Account </a></li>
-                                    <li><a href="{{route('user.cart.checkout')}}"> Checkout </a></li>
+                                    @auth
+                                        <li>Xin chào, {{ Auth::user()->TenDN }}</li>
+                                        <li>
+                                            <form action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="button-link">Đăng xuất</button>
+                                            </form>
+                                        </li>
+                                    @else
+                                        <li><button class="button-link" onclick="openLoginPopup()">Đăng Nhập</button></li>
+                                        <li><a href="{{ route('user.auth.register') }}">Đăng ký</a></li>
+                                    @endauth
                                 </ul>
                             </div>
                         </div>
@@ -568,7 +578,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-3">
                     <div class="logo">
-                        <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                        <a href="{{route('user.home.index')}}"><img src="assets/img/logo/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-9">
