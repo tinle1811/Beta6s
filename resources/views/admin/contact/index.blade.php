@@ -43,26 +43,6 @@
                     </span>
 
                     <!-- Nav -->
-                    <div class="text-left">
-                        <ul class="nav nav-segment nav-pills mb-7" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="nav-one-eg1-tab" data-toggle="pill" href="#nav-one-eg1"
-                                    role="tab" aria-controls="nav-one-eg1" aria-selected="true">Tất cả</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="nav-two-eg1-tab" data-toggle="pill" href="#nav-two-eg1"
-                                    role="tab" aria-controls="nav-two-eg1" aria-selected="false">Chưa duyệt</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="nav-three-eg1-tab" data-toggle="pill" href="#nav-three-eg1"
-                                    role="tab" aria-controls="nav-three-eg1" aria-selected="false">Đã duyệt</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="nav-four-eg1-tab" data-toggle="pill" href="#nav-four-eg1"
-                                    role="tab" aria-controls="nav-four-eg1" aria-selected="false">Đã xóa</a>
-                            </li>
-                        </ul>
-                    </div>
                     <!-- End Nav -->
                     <!-- Nav -->
                     <ul class="nav nav-tabs page-header-tabs" id="pageHeaderTab" role="tablist">
@@ -246,24 +226,6 @@
                 </div>
                 <!-- End Table -->
                 <!-- Tab Content : làm phần chia ra chưa duyệt, đã duyệt, đã xóa-->
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="nav-one-eg1" role="tabpanel"
-                        aria-labelledby="nav-one-eg1-tab">
-                        <p>First tab content...</p>
-                    </div>
-
-                    <div class="tab-pane fade" id="nav-two-eg1" role="tabpanel" aria-labelledby="nav-two-eg1-tab">
-                        <p>Second tab content...</p>
-                    </div>
-
-                    <div class="tab-pane fade" id="nav-three-eg1" role="tabpanel" aria-labelledby="nav-three-eg1-tab">
-                        <p>Third tab content...</p>
-                    </div>
-
-                    <div class="tab-pane fade" id="nav-four-eg1" role="tabpanel" aria-labelledby="nav-four-eg1-tab">
-                        <p>Four tab content...</p>
-                    </div>
-                </div>
                 <!-- End Tab Content -->
 
                 <!-- Footer -->
