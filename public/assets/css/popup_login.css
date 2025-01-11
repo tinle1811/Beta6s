@@ -1,0 +1,26 @@
+.button-link {
+   all: unset; /* Xóa tất cả các kiểu mặc định của button */
+   color: #242424; /* Màu chữ giống với liên kết */
+   text-decoration: none;
+   text-transform: capitalize;
+   line-height: 43px;
+   display: inline-block;
+   font-weight: 400;
+   cursor: pointer; /* Con trỏ giống với liên kết */
+   display: inline; /* Đảm bảo hiển thị giống thẻ <a> */
+   padding: 0; /* Loại bỏ padding mặc định của button */
+}
+.button-link:hover{
+   color:#0d6efd;
+}
+.modal.fade .modal-dialog {
+   transform: translateY(-50px);
+   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+   opacity: 0;
+}
+
+
+.modal.show .modal-dialog {
+   transform: translateY(0);
+   opacity: 1;
+}
