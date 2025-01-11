@@ -74,6 +74,7 @@ Route::middleware('checkRole:shared')->group(function () {
 
 
    Route::get('/admin/catagory', [AdminCatagoryController::class, "index"])->name("admin.catagory");
+   Route::get('/admin/catagory/search', [AdminCatagoryController::class, "search"])->name("admin.catagory.search");
    Route::get('/admin/catagory/create', [AdminCatagoryController::class, "create"])->name("admin.catagory.create");
    Route::post('/admin/catagory/create', [AdminCatagoryController::class, "createSubmitForm"])->name("admin.catagory.createSubmitForm");
    Route::get('/admin/catagory/{id}/edit', [AdminCatagoryController::class, "edit"])->name("admin.catagory.edit");
