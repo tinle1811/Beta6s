@@ -71,7 +71,7 @@ class AccountController extends Controller
         $viewData['DSSP_DaMua'] = HoaDon::join('chi_tiet_hoa_dons', 'hoa_dons.MaHD', '=', 'chi_tiet_hoa_dons.MaHD')
                                         ->join('san_phams', 'chi_tiet_hoa_dons.MaSP', '=', 'san_phams.MaSP')
                                         ->where('hoa_dons.MaKH', $userId)
-                                        ->where('hoa_dons.TrangThai', 3)
+                                        ->where('hoa_dons.TrangThai', 2)
                                         ->paginate(10, [
                                             'san_phams.MaSP',
                                             'san_phams.HinhAnh',
