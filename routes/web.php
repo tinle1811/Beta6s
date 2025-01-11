@@ -46,9 +46,11 @@ Route::middleware('checkRole:shared')->group(function(){
    Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('user.cart.add');
    Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('user.cart.remove');
    Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('user.cart.update');
-   
+   Route::post('/cart/payment-method', [CartController::class, 'paymentMethod'])->name('user.cart.paymentMethod');
+
    Route::get('/checkout',[CheckoutController::class,'checkout'])->name('user.cart.checkout');
    Route::post('/checkout/payment',[CheckoutController::class,'payment'])->name('user.cart.payment');
+   Route::get('/checkout/momo',[CheckoutController::class,'momo'])->name('user.cart.momo');
 
    Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wishlist');
    Route::post('/wishlist/add/{id}',[HomeController::class,'addToWishlist'])->name('user.home.addWishlist');

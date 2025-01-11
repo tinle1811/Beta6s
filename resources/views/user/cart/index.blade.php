@@ -68,13 +68,16 @@
                             <h3>Hình thức thanh toán</h3>
                             <div class="d-flex justify-content-center">
                                 <!-- Thẻ bên trái: Thanh toán khi nhận hàng -->
+                                @foreach($paymentMethods as $method)
                                 <div class="m-4 w-100">
-                                    <button class="btn btn-primary p-3 w-100">Thanh toán khi nhận hàng</button>
+                                    <button type="button" 
+                                            class="btn p-3 w-100 {{ session('paymentMethod') == $method->MaPT ? 'btn-success' : 'btn-primary' }}" 
+                                            data-payment-method="{{ $method->MaPT }}"
+                                            onclick="selectPaymentMethod(this)">
+                                        {{ $method->TenPT }}
+                                    </button>
                                 </div>
-                                <!-- Thẻ bên phải: MoMo -->
-                                <div class="m-4 w-100">
-                                    <button class="btn btn-warning p-3 w-100">MoMo</button>
-                                </div>
+                            @endforeach
                             </div>
                         </div>
                     </div>
@@ -117,4 +120,28 @@
                 </div>
                 </div>
                 <!-- Shopping Cart Area End -->
+@endsection
+@section('script')
+<script>
+    function selectPaymentMethod(button) {
+        var paymentMethod = $(button).data('payment-method'); // Lấy giá trị phương thức thanh toán
+
+        // Gửi dữ liệu qua AJAX
+        $.ajax({
+            url: '{{ route("user.cart.paymentMethod") }}', // Đảm bảo route này đúng
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}', // Thêm CSRF token
+                paymentMethod: paymentMethod
+            },
+            success: function(response) {
+                // Sau khi thành công, cập nhật lại màu sắc của các button
+                location.reload(); // Tải lại trang để hiển thị trạng thái mới của các button
+            },
+            error: function(xhr, status, error) {
+                console.error("Error:", error);
+            }
+        });
+    }
+</script>
 @endsection
