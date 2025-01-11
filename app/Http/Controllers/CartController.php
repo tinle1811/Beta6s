@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GioHang;
+use App\Models\PhuongThucThanhToan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,6 +21,7 @@ class CartController extends Controller
         // lấy id tài khoản người dùng
         $maTk = Auth::user()->MaTK;
 
+        $paymentMethods = PhuongThucThanhToan::where('TrangThai', 1)->get();
         //lấy dữ liệu từ giỏ hàng
         $gioHang = GioHang::where('MaTK', $maTk)->with('product')->get();
 
@@ -37,7 +39,7 @@ class CartController extends Controller
             'total' => $total,
             'totalQuantity' => $totalQuantity
         ];
-        return View('user.cart.index')->with('viewData',$viewData);
+        return View('user.cart.index',compact('viewData','paymentMethods'));
     }
     public function addToCart(Request $request, $id)
     {
@@ -94,7 +96,15 @@ class CartController extends Controller
         return redirect()->route('user.cart.index')->with('success', 'Giỏ hàng đã được cập nhật.');
 
     }
-    
+    public function paymentMethod(Request $request)
+    {
+        if ($request->has('paymentMethod')) {
+            // Lưu phương thức thanh toán vào session
+            session(['paymentMethod' => $request->paymentMethod]);
+        }
+        return redirect()->route('user.cart.index');
+    }
+
    
     
 }
