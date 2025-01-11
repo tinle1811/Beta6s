@@ -12,18 +12,18 @@ class AdminContactController extends Controller
     public function index()
     {
         $viewData['title'] = "Trang quản lý liên hệ";
-        $viewData['contacts'] = Contact::all();
+        $viewData['contacts'] = Contact::where('TrangThai', '!=', 2)->get();
         return view('admin.contact.index')->with('viewData', $viewData);
     }
 
     public function updateContact(Request $request)
     {
         // Tìm liên hệ theo id
-        $contact = Contact::find($request->id);
+        $contact = Contact::where('MaLH', $request->id)->first();
 
         if ($contact) {
             // Thay đổi trạng thái hoặc thông tin khác theo yêu cầu
-            $contact->status = $request->status;
+            $contact->TrangThai = $request->status;
             $contact->save();  // Lưu thay đổi
 
             return response()->json(['success' => true]);
@@ -33,11 +33,11 @@ class AdminContactController extends Controller
     }
     public function delete(Request $request)
     {
-        $contact = Contact::find($request->id);
+        $contact = Contact::where('MaLH', $request->id)->first();
 
         if ($contact) {
             // Cập nhật trạng thái thành 2
-            $contact->status = 2;
+            $contact->TrangThai = 2;
             $contact->save();
 
             return response()->json(['success' => true]);

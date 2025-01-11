@@ -47,9 +47,9 @@
                     <!-- Nav -->
                     <ul class="nav nav-tabs page-header-tabs" id="pageHeaderTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" href="route{{ 'admin.contact' }}">Tất cả</a>
+                            <a class="nav-link active" href="#">Tất cả</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Chưa duyệt</a>
                         </li>
                         <li class="nav-item">
@@ -57,7 +57,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Đã xóa</a>
-                        </li>
+                        </li> --}}
                     </ul>
                     <!-- End Nav -->
                 </div>
@@ -200,9 +200,9 @@
                                     {{-- cột 6: trang thái --}}
                                     <td>
                                         <button type="submit"
-                                            class="btn {{ $contact->TrangThai == 1 ? 'btn-soft-primary' : 'btn-outline-warning' }} toggleStatus{{ $contact->MaBL }}"
-                                            data-id="{{ $contact->MaBL }}" data-status="{{ $contact->TrangThai }}"
-                                            onclick="toggleCommentStatus({{ $contact->MaBL }}, {{ $contact->TrangThai }})">
+                                            class="btn {{ $contact->TrangThai == 1 ? 'btn-soft-primary' : 'btn-outline-warning' }} toggleStatus{{ $contact->MaLH }}"
+                                            data-id="{{ $contact->MaLH }}" data-status="{{ $contact->TrangThai }}"
+                                            onclick="toggleContactStatus({{ $contact->MaLH }}, {{ $contact->TrangThai }})">
                                             {{ $contact->TrangThai == 1 ? 'Đã duyệt' : 'Chưa duyệt' }}
                                         </button>
                                     </td>
@@ -213,8 +213,8 @@
                                     <td>
                                         <div class="btn-group" role="group">
                                             <button type="button" class="btn btn-sm btn-danger"
-                                                data-id="{{ $contact->MaBL }}"
-                                                onclick="deleteComment({{ $contact->MaBL }})">
+                                                data-id="{{ $contact->MaLH }}"
+                                                onclick="deleteContact({{ $contact->MaLH }})">
                                                 <i class="tio-add-to-trash"></i> Xóa
                                             </button>
                                         </div>
@@ -277,13 +277,13 @@
     </main>
     <script>
         // Hàm thay đổi trạng thái
-        function toggleCommentStatus(contactId, currentStatus) {
+        function toggleContactStatus(contactId, currentStatus) {
             var newStatus = currentStatus == 1 ? 0 : 1; // Thay đổi trạng thái
-            alert('Đang thay đổi trạng thái của bình luận ' + contactId);
+            alert('Đang thay đổi trạng thái của liên hệ ' + contactId);
 
             //Gửi AJAX request
             $.ajax({
-                url: '/admin/contact/update', // URL xử lý AJAX
+                url: '/admin/contact/edit', // URL xử lý AJAX
                 type: 'POST',
                 data: {
                     _token: '{{ csrf_token() }}', // Đảm bảo token CSRF được gửi
@@ -292,11 +292,6 @@
                 },
                 success: function(response) {
                     if (response.success) {
-                        // // Cập nhật trạng thái trên giao diện
-                        // $('button.toggleStatus' + contactId).text(newStatus == 1 ? 'Đã duyệt' :
-                        // 'Chưa duyệt'); // Cập nhật văn bản của nút
-                        // $('button.toggleStatus' + contactId).data('status',
-                        // newStatus); // Cập nhật trạng thái mới
                         alert('Cập nhật thành công');
                         var button = document.querySelector('.toggleStatus' + contactId);
                         button.innerText = newStatus == 1 ? 'Đã duyệt' : 'Chưa duyệt';
@@ -317,8 +312,8 @@
             });
         }
 
-        function deleteComment(contactId) {
-            if (confirm('Bạn có chắc chắn muốn xóa bình luận này không?')) {
+        function deleteContact(contactId) {
+            if (confirm('Bạn có chắc chắn muốn xóa liên hệ này không?')) {
                 $.ajax({
                     url: '/admin/contact/delete', // URL xử lý
                     type: 'POST',
@@ -331,7 +326,7 @@
 
                             // Hiển thị thông báo
                             const notificationDiv = document.getElementById('notificationDeleteComment');
-                            notificationDiv.textContent = 'Bình luận đã được xóa thành công!';
+                            notificationDiv.textContent = 'Liên hệ đã được xóa thành công!';
                             notificationDiv.style.display = 'block';
 
                             // Tự động ẩn sau 5 giây
@@ -340,7 +335,7 @@
                             }, 5000);
 
                             // Xóa bình luận khỏi giao diện
-                            document.querySelector(`button[data-id='${contactId}']`).closest('tr').remove();
+                            document.querySelector('button[data-id="'+ contactId +'"]').closest('tr').remove();
                         } else {
                             alert('Có lỗi xảy ra. Vui lòng thử lại.');
                         }
@@ -352,36 +347,3 @@
             }
         }
     </script>
-
-    {{-- <script>
-        $(document).ready(function() {
-            $('.toggleStatus{{ $contact->MaBL }}').click(function() {
-                var contactId = $(this).data('id');
-                var currentStatus = $(this).data('status');
-                var newStatus = currentStatus == 1 ? 0 : 1; // Thay đổi trạng thái
-                alert(newStatus);
-
-                Gửi AJAX request
-                $.ajax({
-                    url: '/admin/contact/update', // URL xử lý AJAX
-                    type: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}', // Đảm bảo token CSRF được gửi
-                        id: contactId,
-                        status: newStatus
-                    },
-                    success: function(response) {
-                        if (response.success) {
-                            // Cập nhật trạng thái trên giao diện
-                            $('#toggleStatus').text(newStatus == 1 ? 'Đã duyệt' : 'Chưa duyệt');
-                            $('#toggleStatus').data('status',
-                            newStatus); // Cập nhật trạng thái mới
-                        } else {
-                            alert('Có lỗi xảy ra. Vui lòng thử lại.');
-                        }
-                    }.bind(this)
-                });
-            });
-        });
-    </script> --}}
-@endsection

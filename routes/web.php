@@ -82,8 +82,8 @@ Route::get("/admin/infoweb/edit", [AdminInfoWebController::class, "edit"])->name
 Route::put("/admin/infoweb/update", [AdminInfoWebController::class, "update"])->name("admin.infoweb.update");
 
 Route::get("/admin/contact", [AdminContactController::class, "index"])->name("admin.contact");
-Route::get("/admin/contact/create", [AdminContactController::class, "create"])->name("admin.contact.create");
-Route::get("/admin/contact/edit", [AdminContactController::class, "edit"])->name("admin.contact.edit");
+Route::post("/admin/contact/delete", [AdminContactController::class, "delete"])->name("admin.contact.delete");
+Route::post("/admin/contact/edit", [AdminContactController::class, "updateContact"])->name("admin.contact.edit");
 
 Route::get("/admin/pay", [AdminPayController::class, "index"])->name("admin.pay");
 Route::get("/admin/pay/create", [AdminPayController::class, "create"])->name("admin.pay.create");
