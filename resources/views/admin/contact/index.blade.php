@@ -96,6 +96,8 @@
             </div>
 
 
+            <div id="notificationUpdateContact" class="alert alert-soft-success" role="alert" style="display: none;"></div>
+            <div id="notificationDeleteContact" class="alert alert-soft-success" role="alert" style="display: none;"></div>
 
 
             <!-- Card -->
@@ -292,7 +294,7 @@
                 },
                 success: function(response) {
                     if (response.success) {
-                        alert('Cập nhật thành công');
+
                         var button = document.querySelector('.toggleStatus' + contactId);
                         button.innerText = newStatus == 1 ? 'Đã duyệt' : 'Chưa duyệt';
                         button.setAttribute('data-status', newStatus);
@@ -304,6 +306,16 @@
                             button.classList.remove('btn-soft-primary');
                             button.classList.add('btn-outline-warning');
                         }
+
+                        // Hiển thị thông báo
+                        const notificationDiv = document.getElementById('notificationUpdateContact');
+                        notificationDiv.textContent = 'Cập nhật trạng thái thành công!';
+                        notificationDiv.style.display = 'block';
+
+                        // Tự động ẩn sau 5 giây
+                        setTimeout(() => {
+                            notificationDiv.style.display = 'none';
+                        }, 5000);
 
                     } else {
                         alert('Có lỗi xảy ra. Vui lòng thử lại.');
@@ -325,7 +337,7 @@
                         if (response.success) {
 
                             // Hiển thị thông báo
-                            const notificationDiv = document.getElementById('notificationDeleteComment');
+                            const notificationDiv = document.getElementById('notificationDeleteContact');
                             notificationDiv.textContent = 'Liên hệ đã được xóa thành công!';
                             notificationDiv.style.display = 'block';
 
