@@ -9,14 +9,14 @@ class Contact extends Model
 {
     use HasFactory;
     public static function validate($request)
-{
-    $request->validate([
-    'name' => 'required|max:255',
-    'email' => 'required|email|max:255',
-    'phone' => 'nullable|max:20',  // Để trường phone có thể rỗng
-    'message' => 'required',
-]);
-}
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|max:20',  // Để trường phone có thể rỗng
+            'message' => 'required',
+        ]);
+    }
 
     protected $table = 'lien_hes';
 
@@ -27,7 +27,7 @@ class Contact extends Model
         'NoiDung',
         'TrangThai',
     ];
-    
+
 
     public function getId()
     {

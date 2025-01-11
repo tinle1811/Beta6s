@@ -8,26 +8,28 @@ use App\Models\Contact;
 use App\Models\TaiKhoan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Auth;
+
 
 class HomeController extends Controller
 {
-  
+
     public $viewData = [];
     public function index()
     {
         $viewData['title'] = "Trang chủ";
-        return view('user.home.index')->with('viewData',$viewData);
+        return view('user.home.index')->with('viewData', $viewData);
     }
 
     public function show()
     {
         $viewData['title'] = "Trang chi tiết";
-        return view('user.home.show')->with('viewData',$viewData);
+        return view('user.home.show')->with('viewData', $viewData);
     }
     public function about()
     {
         $viewData['title'] = "Trang giới thiệu";
-        return view('user.home.about')->with('viewData',$viewData);
+        return view('user.home.about')->with('viewData', $viewData);
     }
     public function contact()
     {
@@ -38,25 +40,27 @@ class HomeController extends Controller
     }
     public function wishlist()
     {
-        $viewData['title']= "Trang yêu thích";
-        return view('user.home.wishlist')->with('viewData',$viewData);
+        $viewData['title'] = "Trang yêu thích";
+        return view('user.home.wishlist')->with('viewData', $viewData);
     }
 
     public function handleContactForm(Request $request)
-{
-    Contact::validate($request);
-    // Tạo mới đối tượng Contact
-    $newContact = new \App\Models\Contact();
-    $newContact->setCustomerName($request->input('name')); 
-    $newContact->setEmail($request->input('email'));       
-    $newContact->setPhone($request->input('phone'));       
-    $newContact->setContent($request->input('message'));   
-    $newContact->setStatus(0);                             
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|digits_between:10,15',
+            'message' => 'required|string',
+        ]);
 
-    // Lưu vào cơ sở dữ liệu
-    $newContact->save();
+        Contact::create([
+            'TenKH' => $validated['name'],
+            'Email' => $validated['email'],
+            'SDT' => $validated['phone'],
+            'NoiDung' => $validated['message'],
+            'TrangThai' => 0, // Mặc định là chưa xử lý
+        ]);
 
-    return response()->json(['success' => true, 'message' => 'Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.']);
-}
-
+        return response()->json(['success' => true, 'message' => 'Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.']);
+    }
 }
