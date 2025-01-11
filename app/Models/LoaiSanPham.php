@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class LoaiSanPham extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'MaLSP';
+
     protected $fillable = [
         "TenLSP",
         "TrangThai",
     ];
+
     public function getCategoryId()
     {
         return $this->attributes['MaLSP'];

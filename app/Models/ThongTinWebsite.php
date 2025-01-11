@@ -73,7 +73,7 @@ class ThongTinWebsite extends Model
     // Getter và Setter cho facebook
     public function getFacebookAttribute($value)
     {
-        return 'https://facebook.com/' . $value; // Trả về link đầy đủ của Facebook
+        return $value; // Trả về link đầy đủ của Facebook
     }
 
     public function setFacebookAttribute($value)
@@ -84,7 +84,7 @@ class ThongTinWebsite extends Model
     // Getter và Setter cho instagram
     public function getInstagramAttribute($value)
     {
-        return 'https://instagram.com/' . $value; // Trả về link đầy đủ của Instagram
+        return $value; // Trả về link đầy đủ của Instagram
     }
 
     public function setInstagramAttribute($value)
@@ -95,7 +95,7 @@ class ThongTinWebsite extends Model
     // Getter và Setter cho twitter
     public function getTwitterAttribute($value)
     {
-        return 'https://twitter.com/' . $value; // Trả về link đầy đủ của Twitter
+        return $value; // Trả về link đầy đủ của Twitter
     }
 
     public function setTwitterAttribute($value)

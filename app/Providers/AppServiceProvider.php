@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\GioHang;
 use App\Models\YeuThich;
+use App\Models\LoaiSanPham;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\ThongTinWebsite;
@@ -36,6 +37,8 @@ class AppServiceProvider extends ServiceProvider
             $viewData = [];
             $viewData['cartCount'] = 0; // Giá trị mặc định
             $viewData['wishlistCount'] = 0;
+            $loaiSanPhams = LoaiSanPham::all();//Dùng cho chức năng search
+            $view->with('loaiSanPhams', $loaiSanPhams);//Dùng cho chức năng search
 
             // Kiểm tra người dùng đã đăng nhập hay chưa
             if (Auth::check()) {

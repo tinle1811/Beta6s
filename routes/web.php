@@ -73,9 +73,12 @@ Route::middleware('checkRole:admin')->group(function () {
     Route::delete('/admin/product/delete/{MaSP}', [AdminProductController::class, "destroy"])->name("admin.product.delete");
 
 
-    Route::get('/admin/catagory', [AdminCatagoryController::class, "index"])->name("admin.catagory");
+   Route::get('/admin/catagory', [AdminCatagoryController::class, "index"])->name("admin.catagory");
    Route::get('/admin/catagory/create', [AdminCatagoryController::class, "create"])->name("admin.catagory.create");
-   Route::get('/admin/catagory/edit', [AdminCatagoryController::class, "edit"])->name("admin.catagory.edit");
+   Route::post('/admin/catagory/create', [AdminCatagoryController::class, "createSubmitForm"])->name("admin.catagory.createSubmitForm");
+   Route::get('/admin/catagory/{id}/edit', [AdminCatagoryController::class, "edit"])->name("admin.catagory.edit");
+   Route::put('/admin/catagory/{id}/edit', [AdminCatagoryController::class, "editSubmitForm"])->name("admin.catagory.editSubmitForm");
+   Route::delete('/admin/catagory/{id}/delete', [AdminCatagoryController::class, "delete"])->name("admin.catagory.delete");
 
    Route::get('/admin/account', [AdminAccountController::class, 'index'])->name("admin.account");
    Route::get('/admin/account/create', [AdminAccountController::class, 'create'])->name("admin.account.create");

@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body d-flex justify-content-between pt-0">
                 <div class="d-flex align-items-center">
-                    <img id="logo" src="{{ asset('storage/logos/'.$websiteInfo->logo) }}" class="">
+                    <img id="logo" src="{{ asset('storage/logos/' . $websiteInfo->logo) }}" class="">
                 </div>
                 <div class="form-section" style="flex: 1; padding: 1.5rem;">
                     <form id="loginForm">
@@ -44,6 +44,9 @@
 
 
 <script>
+    // Biến đếm số lần đăng nhập thất bại
+    let failedLoginAttempts = localStorage.getItem('failedLoginAttempts') || 0;
+
     document.getElementById('loginForm').addEventListener('submit', function (e) {
         // ngăn reload trang
         e.preventDefault();
@@ -63,10 +66,20 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
+                    // Đăng nhập thành công, reset số lần thất bại
+                    localStorage.setItem('failedLoginAttempts', 0);
                     window.location.href = data.redirect;
                 } else {
+                    failedLoginAttempts++;
+                    localStorage.setItem('failedLoginAttempts', failedLoginAttempts);
+
                     document.getElementById('error-message').style.display = 'block';
                     document.getElementById('error-message').innerText = data.error;
+
+                    if (failedLoginAttempts >= 3) {
+                        alert("Bạn đã đăng nhập thất bại! Bạn có muốn đổi mật khẩu không?");
+                        // window.location.href = '';
+                    }
                 }
             })
             .catch(error => console.error('Error:', error));

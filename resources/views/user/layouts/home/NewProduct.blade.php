@@ -4,12 +4,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="section_title">
-                    <h2>Sản Phẩm Bán Chạy</h2>
+                    <h2>Sản Phẩm Mới</h2>
                 </div>
             </div>
         </div>
         <div class="product_list">
-            @foreach ($viewData['DSSP-BanChay'] as $product)
+            @foreach ($viewData['DSSP-Moi'] as $product)
                 <div class="product_item">
                     <div class="product_thumbnail">
                         <a href="{{ route('user.home.show', ['slug' => $product->getProductSlug()]) }}">
@@ -49,7 +49,7 @@
         </div>
 
         <div class="pagination">
-            {{ $viewData['DSSP-BanChay']->appends(['pageSPBanChay' => request('pageSPBanChay')])->links('') }}
+            {{ $viewData['DSSP-Moi']->appends(['pageSPMoi' => request('pageSPMoi')])->links('') }}
         </div>
 
     </div>

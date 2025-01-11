@@ -35,17 +35,19 @@
                         </ul>
                     </div>
                     <div class="search_container">
-                        <form action="#">
+                        <form action="GET" action="{{ route('user.search.index') }}">
+                            @csrf
                             <div class="hover_category">
-                                <select class="select_option" name="select" id="categori">
-                                    <option selected value="1">Các loại sản phẩm</option>
-                                    <option value="2">Thường</option>
-                                    <option value="3">Đặc biệt</option>
+                                <select class="select_option" name="loai_san_pham" id="categori">
+                                    <option selected value="">Các loại sản phẩm</option>
+                                    @foreach($loaiSanPhams as $loaiSanPham)
+                                        <option value="{{ $loaiSanPham->MaLSP }}">{{ $loaiSanPham->TenLoaiSP }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="search_box">
-                                <input placeholder="Search product..." type="text">
-                                <button type="submit">Search</button>
+                                <input placeholder="Tìm sản phẩm..." type="text" name="keyword">
+                                <button type="submit">Tìm kiếm</button>
                             </div>
                         </form>
                     </div>
@@ -122,11 +124,6 @@
                                         <a href="#">Shop Layouts</a>
                                         <ul class="sub-menu">
                                             <li><a href="shop.html">shop</a></li>
-                                            <li><a href="shop-fullwidth.html">Full Width</a></li>
-                                            <li><a href="shop-fullwidth-list.html">Full Width list</a></li>
-                                            <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>
-                                            <li><a href="shop-right-sidebar-list.html"> Right Sidebar list</a></li>
-                                            <li><a href="shop-list.html">List View</a></li>
                                         </ul>
                                     </li>
                                     <li class="menu-item-has-children">
@@ -142,11 +139,6 @@
                                     <li class="menu-item-has-children">
                                         <a href="#">Product Types</a>
                                         <ul class="sub-menu">
-
-                                            <li><a href="product-sidebar.html">product sidebar</a></li>
-                                            <li><a href="product-grouped.html">product grouped</a></li>
-                                            <li><a href="variable-product.html">product variable</a></li>
-                                            <li><a href="product-countdown.html">product countdown</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -258,21 +250,23 @@
 
                     <div class="col-lg-9 col-md-6">
                         <div class="middel_right">
-                            <div class="search_container">
-                                <form action="#">
-                                    <div class="hover_category">
-                                        <select class="select_option" name="select" id="categori1">
-                                            <option selected value="1">Các loại sản phẩm</option>
-                                            <option value="2">Thường</option>
-                                            <option value="3">Đặc biệt</option>
-                                        </select>
-                                    </div>
-                                    <div class="search_box">
-                                        <input placeholder="Search product..." type="text">
-                                        <button type="submit">Search</button>
-                                    </div>
-                                </form>
-                            </div>
+                                <div class="search_container">
+                                    <form method="GET" action="{{ route('user.search.index') }}">
+                                        <div class="hover_category">
+                                            <select class="select_option" name="loai_san_pham" id="categori">
+                                                <option value="" {{ request('loai_san_pham') == '' ? 'selected' : '' }}>Các loại sản phẩm</option>
+                                                @foreach($loaiSanPhams as $loaiSanPham)
+                                                    <option value="{{ $loaiSanPham->MaLSP }}" {{ request('loai_san_pham') == $loaiSanPham->MaLSP ? 'selected' : '' }}
+                                                        >{{ $loaiSanPham->TenLSP }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="search_box">
+                                            <input placeholder="Tìm sản phẩm..." type="text" name="keyword" value="{{ request('keyword') }}">
+                                            <button type="submit">Search</button>
+                                        </div>
+                                    </form>
+                                </div>
                             <div class="middel_right_info">
                                 <div class="header_wishlist">
                                     <a href="{{ route('user.home.wishlist') }}"><i class="fa fa-heart-o"
@@ -365,80 +359,21 @@
                             <nav>
                                 <ul>
                                     <li><a class="active" href="{{ route('user.home.index') }}">Trang chủ</a></li>
-                                    <li class="mega_items"><a href="shop.html">shop<i
+                                    <li class="mega_items"><a href="#">shop<i
                                                 class="fa fa-angle-down"></i></a>
                                         <div class="mega_menu">
                                             <ul class="mega_menu_inner">
-                                                <li><a href="#">Shop Layouts</a>
-                                                    <ul>
-                                                        <li><a href="shop-fullwidth.html">Full Width</a></li>
-                                                        <li><a href="shop-fullwidth-list.html">Full Width list</a>
-                                                        </li>
-                                                        <li><a href="shop-right-sidebar.html">Right Sidebar </a>
-                                                        </li>
-                                                        <li><a href="shop-right-sidebar-list.html"> Right Sidebar
-                                                                list</a></li>
-                                                        <li><a href="shop-list.html">List View</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">other Pages</a>
-                                                    <ul>
-                                                        <li><a href="{{ route('user.cart.index') }}">cart</a></li>
-                                                        <li><a href="{{ route('user.home.wishlist') }}">Wishlist</a>
-                                                        </li>
-                                                        <li><a href="{{ route('user.cart.checkout') }}">Checkout</a>
-                                                        </li>
-                                                        <li><a href="{{ route('user.account.index') }}">my account</a>
-                                                        </li>
-                                                        <li><a href="404.html">Error 404</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Product Types</a>
-                                                    <ul>
-                                                        <li><a href="product-sidebar.html">product sidebar</a></li>
-                                                        <li><a href="product-grouped.html">product grouped</a></li>
-                                                        <li><a href="variable-product.html">product variable</a>
-                                                        </li>
-                                                        <li><a href="product-countdown.html">product countdown</a>
-                                                        </li>
-
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Concrete Tools</a>
-                                                    <ul>
-                                                        <li><a href="shop.html">Cables & Connectors</a></li>
-                                                        <li><a href="shop-list.html">Graphics Tablets</a></li>
-                                                        <li><a href="shop-fullwidth.html">Printers, Ink & Toner</a>
-                                                        </li>
-                                                        <li><a href="shop-fullwidth-list.html">Refurbished
-                                                                Tablets</a></li>
-                                                        <li><a href="shop-right-sidebar.html">Optical Drives</a>
-                                                        </li>
-
-                                                    </ul>
-                                                </li>
+                                               
                                             </ul>
                                         </div>
                                     </li>
-                                    <li><a href="{{ route('user.blog.index') }}">blog<i
-                                                class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="{{ route('user.blog.show') }}">blog details</a></li>
-                                            <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                            <li><a href="blog-sidebar.html">blog left sidebar</a></li>
-                                            <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
-                                        </ul>
+                                    <li><a href="{{ route('user.blog.index') }}">blog</a>
                                     </li>
-                                    <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
+                                    <li><a href="#">Các trang <i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                             <li><a href="{{ route('user.home.about') }}">Giới thiệu</a></li>
-                                            <li><a href="services.html">services</a></li>
-                                            <li><a href="privacy-policy.html">privacy policy</a></li>
-                                            <li><a href="faq.html">Frequently Questions</a></li>
-                                            <li><a href="{{ route('user.home.contact') }}">contact</a></li>
-                                            <li><a href="login.html">login</a></li>
+                                            <li><a href="{{ route('user.home.contact') }}">Liên hệ</a></li>
                                             <li><a href="404.html">Error 404</a></li>
-                                            <li><a href="compare.html">Compare</a></li>
                                         </ul>
                                     </li>
 
@@ -485,68 +420,17 @@
                                 <li class="mega_items"><a href="shop.html">shop<i class="fa fa-angle-down"></i></a>
                                     <div class="mega_menu">
                                         <ul class="mega_menu_inner">
-                                            <li><a href="#">Shop Layouts</a>
-                                                <ul>
-                                                    <li><a href="shop-fullwidth.html">Full Width</a></li>
-                                                    <li><a href="shop-fullwidth-list.html">Full Width list</a></li>
-                                                    <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>
-                                                    <li><a href="shop-right-sidebar-list.html"> Right Sidebar
-                                                            list</a></li>
-                                                    <li><a href="shop-list.html">List View</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">other Pages</a>
-                                                <ul>
-                                                    <li><a href="{{ route('user.cart.index') }}">cart</a></li>
-                                                    <li><a href="{{ route('user.home.wishlist') }}">Wishlist</a></li>
-                                                    <li><a href="{{ route('user.cart.checkout') }}">Checkout</a></li>
-                                                    <li><a href="{{ route('user.account.index') }}">my account</a>
-                                                    </li>
-                                                    <li><a href="404.html">Error 404</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Product Types</a>
-                                                <ul>
-
-                                                    <li><a href="product-sidebar.html">product sidebar</a></li>
-                                                    <li><a href="product-grouped.html">product grouped</a></li>
-                                                    <li><a href="variable-product.html">product variable</a></li>
-                                                    <li><a href="product-countdown.html">product countdown</a></li>
-
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Concrete Tools</a>
-                                                <ul>
-                                                    <li><a href="shop.html">Cables & Connectors</a></li>
-                                                    <li><a href="shop-list.html">Graphics Tablets</a></li>
-                                                    <li><a href="shop-fullwidth.html">Printers, Ink & Toner</a></li>
-                                                    <li><a href="shop-fullwidth-list.html">Refurbished Tablets</a>
-                                                    </li>
-                                                    <li><a href="shop-right-sidebar.html">Optical Drives</a></li>
-
-                                                </ul>
-                                            </li>
+                        
                                         </ul>
                                     </div>
                                 </li>
-                                <li><a href="{{ route('user.blog.index') }}">blog<i class="fa fa-angle-down"></i></a>
-                                    <ul class="sub_menu pages">
-                                        <li><a href="{{ route('user.blog.show') }}">blog details</a></li>
-                                        <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                        <li><a href="blog-sidebar.html">blog left sidebar</a></li>
-                                        <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
-                                    </ul>
+                                <li><a href="{{ route('user.blog.index') }}">blog</a>
                                 </li>
-                                <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
+                                <li><a href="#">Các trang <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub_menu pages">
                                         <li><a href="{{ route('user.home.about') }}">Giới thiệu</a></li>
-                                        <li><a href="services.html">services</a></li>
-                                        <li><a href="privacy-policy.html">privacy policy</a></li>
-                                        <li><a href="faq.html">Frequently Questions</a></li>
                                         <li><a href="{{ route('user.home.contact') }}">contact</a></li>
-                                        <li><a href="login.html">login</a></li>
                                         <li><a href="404.html">Error 404</a></li>
-                                        <li><a href="compare.html">Compare</a></li>
                                     </ul>
                                 </li>
 

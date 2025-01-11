@@ -94,11 +94,11 @@
                                     target="_blank"></a> </p>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6">
+                    <!-- <div class="col-lg-6 col-md-6">
                         <div class="footer_payment text-end">
                             <a href="#"><img src="assets/img/icon/payment.png" alt=""></a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
