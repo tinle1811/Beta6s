@@ -104,7 +104,8 @@
       <div class="card-header">
         <div class="row justify-content-between align-items-center flex-grow-1">
           <div class="col-md-4 mb-3 mb-md-0">
-            <form>
+            <form method="GET" action="{{ route('admin.product.search') }}">
+              @csrf
               <!-- Search -->
               <div class="input-group input-group-merge input-group-flush">
                 <div class="input-group-prepend">
@@ -112,8 +113,8 @@
                     <i class="tio-search"></i>
                   </div>
                 </div>
-                <input id="datatableSearch" type="search" class="form-control" placeholder="Search users"
-                  aria-label="Search users">
+                <input id="datatableSearch" type="search" name="search" class="form-control" placeholder="Nhập thông tin tìm kiếm"
+                  aria-label="Search users" value="{{ request()->get('search') }}">
               </div>
               <!-- End Search -->
             </form>
@@ -339,6 +340,11 @@
 
           </td>
         </tr>
+        @if($products->isEmpty())
+          <tr>
+            <td colspan="9" class="text-center">Không có sản phẩm nào phù hợp với kết quả tìm kiếm.</td>
+          </tr>
+        @endif
 
       @endforeach
           </tbody>

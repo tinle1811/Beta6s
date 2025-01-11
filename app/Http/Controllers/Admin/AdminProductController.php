@@ -130,4 +130,27 @@ class AdminProductController extends Controller
 
         return redirect()->route('admin.product')->with('success', 'Sản phẩm đã được xóa mềm thành công.');
     }
+
+    public function search(Request $request)
+    {
+        $query = SanPham::query();
+
+        // Kiểm tra nếu có từ khóa tìm kiếm
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->join('loai_san_phams', 'san_phams.LoaiSP', '=', 'loai_san_phams.MaLSP')
+            ->where('TenSP', 'like', "%{$search}%")
+            ->orWhere('MaSP', 'like', "%{$search}%")
+            ->orWhere('MoTa', 'like', "%{$search}%")
+            ->orWhere('Gia', 'like', "%{$search}%")
+            ->orWhere('loai_san_phams.TenLSP', 'like', "%{$search}%");
+            
+        }
+
+
+        // Lấy danh sách sản phẩm
+        $products = $query->get();
+
+        return view('admin.product.index', compact('products'))->with('title', 'Danh sách sản phẩm');
+    }
 }
