@@ -65,7 +65,7 @@ class HomeController extends Controller
     public function wishlist()
     {
         if (!Auth::check()) {
-            return redirect()->route('user.home.index')->with('error', 'Vui lòng đăng nhập để thêm vào yêu thích');
+            return redirect()->route('user.home.index')->with('error', 'Vui lòng đăng nhập để xem danh sách sản phẩm yêu thích');
         }
         $maTk = Auth::user()->MaTK;
 
@@ -80,7 +80,7 @@ class HomeController extends Controller
     public function addToWishlist(Request $request, $id)
     {
         if (!Auth::check()) {
-            return redirect()->route('user.home.index')->with('error', 'Vui lòng đăng nhập để thêm vào yêu thích');
+            return redirect()->route('user.home.index')->with('error', 'Vui lòng đăng nhập để thêm vào danh sách sản phẩm yêu thích');
         }
 
         $maTk = Auth::user()->MaTK;
@@ -102,13 +102,13 @@ class HomeController extends Controller
 
         // Kiểm tra nếu sản phẩm không tồn tại
         if (!$wishlistItem) {
-            return redirect()->route('user.home.wishlist')->with('error', 'Sản phẩm không tồn tại trong yêu thích.');
+            return redirect()->route('user.home.wishlist')->with('error', 'Sản phẩm không tồn tại trong danh sách sản phẩm yêu thích.');
         }
 
         // Xóa sản phẩm khỏi giỏ hàng
         $wishlistItem->delete();
 
         // Chuyển hướng về trang giỏ hàng với thông báo
-        return redirect()->route('user.home.wishlist')->with('success', 'Sản phẩm đã được xóa khỏi yêu thích.');
+        return redirect()->route('user.home.wishlist')->with('success', 'Sản phẩm đã được xóa khỏi danh sách sản phẩm yêu thích.');
     }
 }
