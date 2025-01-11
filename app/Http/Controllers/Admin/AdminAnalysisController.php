@@ -7,16 +7,37 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Illuminate\Http\Request;
 use App\Models\ThongKe; // Đảm bảo đã import model
+use App\Models\HoaDon;
+use App\Models\ChiTietHoaDon;
 
 class AdminAnalysisController extends Controller
 {
     public $viewData = [];
     public function index(Request $request)
     {
+        // Khởi tạo mảng viewData
         $viewData['title'] = "Thống Kê";
+        
+        // Lấy dữ liệu thống kê
         $thongKes = ThongKe::all();
         $viewData['thongKes'] = $thongKes;
-        return view('admin.analysis.index')->with('viewData', $viewData);
+
+        // Tổng lượt mua
+        $totalPurchases = HoaDon::count();
+
+        // Tổng doanh thu
+        $totalRevenue = HoaDon::sum('TongTien');
+
+        // Tổng sản phẩm đã bán
+        $totalSoldProducts = ChiTietHoaDon::sum('SoLuong');
+
+        // Truyền các dữ liệu vào view
+        $viewData['totalPurchases'] = $totalPurchases;
+        $viewData['totalRevenue'] = $totalRevenue;
+        $viewData['totalSoldProducts'] = $totalSoldProducts;
+
+        // Trả về view với dữ liệu thống kê
+        return view('admin.analysis.index', compact('viewData'));
     }
 
     public function filter_by_date(Request $request)

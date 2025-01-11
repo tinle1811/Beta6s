@@ -212,6 +212,59 @@
 
         </div>
         <!-- End Content -->
+        <div class="row gx-2 gx-lg-3 justify-content-center">
+  
+            <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+              <!-- Card -->
+              <a class="card card-hover-shadow h-100" href="#">
+                <div class="card-body">
+                  <h6 class="card-subtitle">Tổng lượt mua</h6>
+  
+                  <div class="row align-items-center gx-2 mb-1">
+                    <div class="col-6">
+                      <span class="card-title h2">{{ $viewData['totalPurchases'] }}</span>
+                    </div>
+                  </div>
+                  <!-- End Row -->
+                </div>
+              </a>
+              <!-- End Card -->
+            </div>
+            <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+                <!-- Card -->
+                <a class="card card-hover-shadow h-100" href="#">
+                  <div class="card-body">
+                    <h6 class="card-subtitle">Tổng doanh thu</h6>
+    
+                    <div class="row align-items-center gx-2 mb-1">
+                      <div class="col-6">
+                        <span class="card-title h2">{{ number_format($viewData['totalRevenue'], 0) }} VND</span>
+                      </div>
+                    </div>
+                    <!-- End Row -->
+                  </div>
+                </a>
+                <!-- End Card -->
+              </div>
+            <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+                <!-- Card -->
+                <a class="card card-hover-shadow h-100" href="#">
+                  <div class="card-body">
+                    <h6 class="card-subtitle">Tổng sản phẩm đã bán</h6>
+    
+                    <div class="row align-items-center gx-2 mb-1">
+                      <div class="col-6">
+                        <span class="card-title h2">{{ $viewData['totalSoldProducts'] }}</span>
+                      </div>
+                    </div>
+                    <!-- End Row -->
+                  </div>
+                </a>
+                <!-- End Card -->
+              </div>
+  
+          </div>
+          
 
         <div class="content container-fluid ">
             <div class="card mb-3 mb-lg-5 shadow-soft p-3 mb-5 bg-white rounded">
