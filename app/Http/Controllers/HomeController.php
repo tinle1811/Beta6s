@@ -108,6 +108,23 @@ class HomeController extends Controller
                 'MaSP' => $productId,
             ]);
         }
+        // Tính tổng số lượt yêu thích của sản phẩm
+        $tongYeuThich = YeuThich::where('MaSP', $productId)->count();
+
+        // Lấy thông tin sản phẩm cần cập nhật
+        $sanpham = SanPham::find($productId);
+        if ($sanpham) {
+            $sanpham->SoLuotYeuThich = $tongYeuThich; // Cập nhật số lượt yêu thích
+            $sanpham->save(); // Lưu lại thay đổi
+        }
+
+        // Phát sự kiện Pusher với dữ liệu cập nhật
+        event(new SanPhamUpdated([
+            'MaSP' => $sanpham->MaSP,
+            'SoLuotYeuThich' => $sanpham->SoLuotYeuThich,
+            'SoLuotXem' => $sanpham->SoLuotXem,
+            'DiemRatingTB' => $sanpham->DiemRatingTB,
+        ]));
         return redirect()->route('user.home.wishlist');
     }
     public function removeToWishlist($id)
@@ -120,8 +137,28 @@ class HomeController extends Controller
             return redirect()->route('user.home.wishlist')->with('error', 'Sản phẩm không tồn tại trong yêu thích.');
         }
 
+        $productId = $wishlistItem->MaSP;
+
         // Xóa sản phẩm khỏi giỏ hàng
         $wishlistItem->delete();
+
+        // Tính tổng số lượt yêu thích của sản phẩm
+        $tongYeuThich = YeuThich::where('MaSP', $productId)->count();
+
+        // Lấy thông tin sản phẩm cần cập nhật
+        $sanpham = SanPham::find($productId);
+        if ($sanpham) {
+            $sanpham->SoLuotYeuThich = $tongYeuThich; // Cập nhật số lượt yêu thích
+            $sanpham->save(); // Lưu lại thay đổi
+        }
+
+        // Phát sự kiện Pusher với dữ liệu cập nhật
+        event(new SanPhamUpdated([
+            'MaSP' => $sanpham->MaSP,
+            'SoLuotYeuThich' => $sanpham->SoLuotYeuThich,
+            'SoLuotXem' => $sanpham->SoLuotXem,
+            'DiemRatingTB' => $sanpham->DiemRatingTB,
+        ]));
 
         // Chuyển hướng về trang giỏ hàng với thông báo
         return redirect()->route('user.home.wishlist')->with('success', 'Sản phẩm đã được xóa khỏi yêu thích.');

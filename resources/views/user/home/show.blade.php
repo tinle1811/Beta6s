@@ -44,8 +44,9 @@
                             <div class=" product_ratting">
                                 <ul>
                                     <li>
-                                        <p id="eventRatingRealTime">{{ $viewData['sanpham']->DiemRatingTB }} <i
-                                                class="fa fa-star"></i> / 5</p>
+                                        <p id="eventRatingRealTime">
+                                            {{ ($viewData['sanpham']->DiemRatingTB ?? 0) > 0 ? $viewData['sanpham']->DiemRatingTB : 5 }}
+                                            <i class="fa fa-star"></i> / 5</p>
                                     </li>
                                 </ul>
 
@@ -178,39 +179,39 @@
 
                                 </div>
                                 <!-- <div class="comment_title">
-                                                                    <h2>Add a review </h2>
-                                                                    <p>Your email address will not be published. Required fields are marked </p>
-                                                                </div>
-                                                                <div class="product_ratting mb-10">
-                                                                    <h3>Your rating</h3>
-                                                                    <ul>
-                                                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="product_review_form">
-                                                                    <form action="#">
-                                                                        <div class="row">
-                                                                            <div class="col-12">
-                                                                                <label for="review_comment">Your review </label>
-                                                                                <textarea name="comment" id="review_comment"></textarea>
-                                                                            </div>
-                                                                            <div class="col-lg-6 col-md-6">
-                                                                                <label for="author">Name</label>
-                                                                                <input id="author" type="text">
+                                                                        <h2>Add a review </h2>
+                                                                        <p>Your email address will not be published. Required fields are marked </p>
+                                                                    </div>
+                                                                    <div class="product_ratting mb-10">
+                                                                        <h3>Your rating</h3>
+                                                                        <ul>
+                                                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="product_review_form">
+                                                                        <form action="#">
+                                                                            <div class="row">
+                                                                                <div class="col-12">
+                                                                                    <label for="review_comment">Your review </label>
+                                                                                    <textarea name="comment" id="review_comment"></textarea>
+                                                                                </div>
+                                                                                <div class="col-lg-6 col-md-6">
+                                                                                    <label for="author">Name</label>
+                                                                                    <input id="author" type="text">
 
+                                                                                </div>
+                                                                                <div class="col-lg-6 col-md-6">
+                                                                                    <label for="email">Email </label>
+                                                                                    <input id="email" type="text">
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="col-lg-6 col-md-6">
-                                                                                <label for="email">Email </label>
-                                                                                <input id="email" type="text">
-                                                                            </div>
-                                                                        </div>
-                                                                        <button type="submit">Submit</button>
-                                                                    </form>
-                                                                </div> -->
+                                                                            <button type="submit">Submit</button>
+                                                                        </form>
+                                                                    </div> -->
                             </div>
                         </div>
                     </div>
