@@ -60,6 +60,7 @@ Route::middleware('checkRole:shared')->group(function () {
 });
 
 // Các route admin sử dụng middleware
+Route::middleware('checkRole:admin')->group(function () {
    Route::get("/admin", [AdminAnalysisController::class, "index"])->name("admin.analysis");
 
     Route::get('/admin/product', [AdminProductController::class, "index"])->name("admin.product");
@@ -138,3 +139,5 @@ Route::middleware('checkRole:shared')->group(function () {
 
    // Route để cập nhật trạng thái thanh toán
    Route::post('/admin/order/toggle-status', [AdminOrderController::class, 'togglePaymentStatus'])->name('order.toggleStatus');
+
+});
