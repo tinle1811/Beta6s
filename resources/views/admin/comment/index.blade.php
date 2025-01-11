@@ -112,6 +112,8 @@
                 </div>
             </div>
             <!-- End Row -->
+            <div class="alert alert-soft-danger" role="alert" style="display: none;" id="notificationNoChange">
+            </div>
             <div class="alert alert-soft-success" role="alert" style="display: none;" id="notificationDeleteComment">
             </div>
             <div class="alert alert-soft-success" role="alert" style="display: none;" id="notificationUpdateComment">
@@ -330,6 +332,18 @@
     <script>
         // Hàm thay đổi trạng thái
         function toggleCommentStatus(commentId, currentStatus) {
+
+            if (currentStatus == 1) {
+                // Nếu trạng thái là "Đã duyệt", không thực hiện thay đổi
+                const notificationDiv = document.getElementById('notificationNoChange');
+                notificationDiv.textContent = 'Bình luận đã duyệt, vui lòng không thay đổi!';
+                notificationDiv.style.display = 'block';
+
+                setTimeout(() => {
+                    notificationDiv.style.display = 'none';
+                }, 5000);
+                return; // Ngừng thực hiện
+            }
             var newStatus = currentStatus == 1 ? 0 : 1; // Thay đổi trạng thái
 
             //Gửi AJAX request

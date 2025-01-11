@@ -9,27 +9,29 @@ use App\Models\BinhLuan;
 
 class AccountController extends Controller
 {
-    public $viewData= [];
-    public function index(){
-        $viewData['title']= "Trang tài khoản";
+    public $viewData = [];
+    public function index()
+    {
+        $viewData['title'] = "Trang tài khoản";
 
-        return view('user.account.index')->with('viewData',$viewData);
+        return view('user.account.index')->with('viewData', $viewData);
     }
-    public function purchase(Request $request){
+    public function purchase(Request $request)
+    {
         $viewData['title'] = "Trang đơn mua";
-        $validStatuses = [1,2,3,4];
+        $validStatuses = [1, 2, 3, 4];
         $type = (int)$request->query('type');
 
 
         if (in_array($type, $validStatuses)) {
             $hoaDons = HoaDon::where('TrangThai', $type)->get();
         } else {
-            $hoaDons = HoaDon::all(); 
-            $type = 0;  
-            
+            $hoaDons = HoaDon::all();
+            $type = 0;
+
             // Lọc đơn hàng theo trạng thái
         }
-        return view('user.account.purchase',compact('viewData','hoaDons','type'));
+        return view('user.account.purchase', compact('viewData', 'hoaDons', 'type'));
     }
     public function orderlist(Request $request)
     {
@@ -48,8 +50,9 @@ class AccountController extends Controller
         // Lấy danh sách hóa đơn theo tài khoản
         //$hoaDons = HoaDon::where('MaKH', $user->MaTK)->get();
         $hoaDons = HoaDon::where('MaKH', $user->MaTK)
-        ->with(['chiTietHoaDons.sanPham', 'binhLuans'])
-        ->get();
+            ->with(['chiTietHoaDons.sanPham', 'binhLuans'])
+            ->orderBy('created_at', 'asc')
+            ->get();
 
         return view('user.account.orderlist', [
             'user' => $user,
@@ -71,7 +74,7 @@ class AccountController extends Controller
         foreach ($validated['reviews'] as $review) {
             BinhLuan::create([
                 'MaHD' => $review['maHD'],
-                'MaKH' => Auth::user()->MaTK, 
+                'MaKH' => Auth::user()->MaTK,
                 'MaSP' => $review['maSP'],
                 'DanhGia' => $review['rating'],
                 'NoiDung' => $review['comment'],
