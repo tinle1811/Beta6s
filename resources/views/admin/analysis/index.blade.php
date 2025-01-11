@@ -41,7 +41,10 @@
                             <li class="nav-item">
                                 <a class="nav-link active" href="javascript:;">Thống kê</a>
                             </li>
+
                         </ul>
+
+
                         <!-- End Nav -->
                     </div>
                     <!-- End Nav Scroller -->
@@ -74,12 +77,15 @@
                         </li> --}}
                         <li class="nav-item" data-toggle="chart" data-datasets="0" data-trigger="click"
                             data-action="toggle">
-                            <a class="nav-link active" href="javascript:;" data-toggle="tab" id="thisWeek">Tuần này</a>
+                            <a class="nav-link" href="javascript:;" data-toggle="tab" id="thisWeek">Tuần này</a>
                         </li>
                         <li class="nav-item" data-toggle="chart" data-datasets="1" data-trigger="click"
                             data-action="toggle">
                             <a class="nav-link" href="javascript:;" data-toggle="tab" id="lastWeek">Tuần
                                 trước</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:;" id="resetData"><i class="tio-update"></i></a>
                         </li>
                     </ul>
 
@@ -217,11 +223,16 @@
             <div class="card mb-3 mb-lg-5 shadow-soft p-3 mb-5 bg-white rounded">
                 <div class="card-header border border-dark ">
                     <h1>Thống kê tổng</h1>
-                    <a href="{{ route('admin.analysis.export') }}" class="btn btn-success">
-                        <i class="tio-download-to mr-1"></i> Export
-                    </a>
+
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.analysis.export') }}" class="btn btn-primary">
+                                <i class="tio-download-to mr-1"></i> Export
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                
+
                 <!-- Table -->
                 <table class="table table-dark">
                     <thead>
@@ -303,4 +314,37 @@
 
         <!-- End Footer -->
     </main>
+    {{-- <script type="text/javascript">
+        var thongKesData = @json($viewData['thongKes']);
+
+        function chart30daysorder() {
+            var chartData = thongKesData.map(function(item) {
+                return {
+                    period: item.order_date, // Giả sử 'created_at' là ngày thống kê
+                    sales: item.sales, // Giá trị doanh thu
+                    profit: item.profit // Giá trị lợi nhuận
+                };
+            });
+
+            // Khởi tạo biểu đồ Morris
+            var chart = new Morris.Bar({
+                element: 'chart',
+                barColors: ['#ff69b4', '#800080'],
+                pointFillColors: ['#ffffff'],
+                pointStrokeColors: ['black'],
+                fillopacity: 0.6,
+                hideHover: 'auto',
+                parseTime: false,
+                xkey: 'period',
+                ykeys: ['sales', 'profit'],
+                behavelikeLine: true,
+                labels: ['doanh thu', 'lợi nhuận']
+            });
+            chart.setData(chartData); // Cập nhật dữ liệu cho chart
+
+        }
+        $(document).ready(function() {
+            chart30daysorder();
+        });
+    </script> --}}
 @endsection

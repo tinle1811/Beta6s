@@ -14,7 +14,7 @@ class AdminAnalysisController extends Controller
     public function index(Request $request)
     {
         $viewData['title'] = "Thống Kê";
-        $thongKes = ThongKe::all();
+        $thongKes = ThongKe::orderBy('order_date', 'asc')->get();
         $viewData['thongKes'] = $thongKes;
         return view('admin.analysis.index')->with('viewData', $viewData);
     }
@@ -42,15 +42,13 @@ class AdminAnalysisController extends Controller
                 'quantity' => $val->quantity
             );
         }
-
         echo $data = json_encode($chart_data);
     }
 
     public function export()
     {
         // Lấy dữ liệu thống kê từ bảng thong_kes
-        $thongKes = ThongKe::all();
-
+        $thongKes = ThongKe::orderBy('order_date', 'asc')->get();
         // Tạo một đối tượng Spreadsheet mới
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();

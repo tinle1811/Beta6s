@@ -524,6 +524,24 @@
                 }
             });
         }
+        var thongKesData = @json($viewData['thongKes']);
+
+        function chart30daysorder() {
+            var chartData = thongKesData.map(function(item) {
+                return {
+                    period: item.order_date, // Giả sử 'created_at' là ngày thống kê
+                    sales: item.sales, // Giá trị doanh thu
+                    profit: item.profit // Giá trị lợi nhuận
+                };
+            });
+
+            chart.setData(chartData); // Cập nhật dữ liệu cho chart
+
+        }
+
+        $('#resetData').click(function() {
+            chart30daysorder();
+        });
     </script>
 
     <!-- Thong Ke doanh thu -->
