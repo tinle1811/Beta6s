@@ -215,18 +215,28 @@
 
         <!-- Content -->
         <div class="purchase-statistics">
+            <style>
+                #text-muted {
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    color: green;
+                    margin-top: 20px;
+                    text-align: center;
+                }
+            </style>
             <div class="content-pie-chart">
                 <h4 style="margin-left: 20px; margin-top: 30px;">Thống kê lượt mua</h4>
                 <div class="d-flex justify-content-end mb-3" style="border-top: solid 1px silver; position: relative;">
-                    <h6 style="position: absolute; top: 7.5px; left: 30px; padding: 5px 5px; box-shadow: 0 3px 6px silver; border-radius: 5px">
-                        <b>Tổng lượt mua: </b><span style="color: red" id="TLM">{{ $viewData['TongLuotMua_ALLSP'] }}</span>
+                    <h6
+                        style="position: absolute; top: 7.5px; left: 30px; padding: 5px 5px; box-shadow: 0 3px 6px silver; border-radius: 5px">
+                        <b>Tổng lượt mua: </b><span style="color: red"
+                            id="TLM">{{ $viewData['TongLuotMua_ALLSP'] }}</span>
                     </h6>
                     <!-- Nav -->
                     <ul class="nav nav-segment" id="expensesTab" role="tablist">
                         <li class="nav-item" data-toggle="chart-doughnut" data-datasets="0" data-trigger="click"
                             data-action="toggle">
-                            <a class="nav-link active" href="javascript:;"
-                                data-toggle="tab">Tuần này</a>
+                            <a class="nav-link active" href="javascript:;" data-toggle="tab">Tuần này</a>
                         </li>
                         <li class="nav-item" data-toggle="chart-doughnut" data-datasets="1" data-trigger="click"
                             data-action="toggle">

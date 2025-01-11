@@ -29,60 +29,28 @@ updatingDoughnutChart.update();
     e.preventDefault();  // Ngừng hành động mặc định của thẻ <a>
         
         let keyDataset = $(e.currentTarget).attr('data-datasets')
+        let URL;
+
+        if (keyDataset == 0) { URL = '/admin/thisweek'; }
+        else if (keyDataset == 1) { URL = '/admin/lastweek'; }
         
-        if (keyDataset == 0)
-        {
-            $.ajax({
-                url: '/admin/thisweek',
-                type: 'get',
-                success: function (response) {
-                    $('#SPBC').html(response.TongLuotMua_SPBC + ' lượt mua');
-                    $('#SPNB').html(response.TongLuotMua_SPNB + ' lượt mua');
-                    $('#SPM').html(response.TongLuotMua_SPM + ' lượt mua');
-                    $('#TLM').html(response.TongLuotMua_ALLSP);
+        $.ajax({
+            url: URL,
+            type: 'get',
+            success: function (response) {
+                $('#SPBC').html(response.TongLuotMua_SPBC + ' lượt mua');
+                $('#SPNB').html(response.TongLuotMua_SPNB + ' lượt mua');
+                $('#SPM').html(response.TongLuotMua_SPM + ' lượt mua');
+                $('#TLM').html(response.TongLuotMua_ALLSP);
 
-                    var updatedData = [response.totalPurchases_spnb, response.totalPurchases_spbc, response.totalPurchases_spm];
-                    
-                    // Cập nhật dữ liệu trong biểu đồ mà không thay đổi cấu trúc ban đầu
-                    updatingDoughnutChart.data.datasets[0].data = updatedData; // Cập nhật mảng dữ liệu của biểu đồ
-
-                    // Cập nhật lại biểu đồ
-                    updatingDoughnutChart.update();
-                },
-                error: function(xhr) {
-                    alert('Có lỗi xảy ra! Vui lòng thử lại.');
-                }
-            });
-        }
-        else if (keyDataset == 1)
-        {
-            $.ajax({
-                url: '/admin/lastweek',
-                type: 'get',
-                success: function (response) {
-                    $('#SPBC').html(response.TongLuotMua_SPBC + ' lượt mua');
-                    $('#SPNB').html(response.TongLuotMua_SPNB + ' lượt mua');
-                    $('#SPM').html(response.TongLuotMua_SPM + ' lượt mua');
-                    $('#TLM').html(response.TongLuotMua_ALLSP);
-
-                    var updatedData = [response.totalPurchases_spnb, response.totalPurchases_spbc, response.totalPurchases_spm];
-                    
-                    // Cập nhật dữ liệu trong biểu đồ mà không thay đổi cấu trúc ban đầu
-                    updatingDoughnutChart.data.datasets[0].data = updatedData; // Cập nhật mảng dữ liệu của biểu đồ
-
-                    // Cập nhật lại biểu đồ
-                    updatingDoughnutChart.update();
-                },
-                error: function(xhr) {
-                    alert('Có lỗi xảy ra! Vui lòng thử lại.');
-                }
-            });
-        }
-        // Update datasets for chart
-        // updatingDoughnutChart.data.datasets.forEach(function(dataset, key) {
-        // dataset.data = updatingDoughnutChartDatasets[keyDataset][key];
-        // });
-        // updatingDoughnutChart.update();
+                var updatedData = [response.totalPurchases_spnb, response.totalPurchases_spbc, response.totalPurchases_spm];
+                
+                CheckStatisticalData(updatedData);
+            },
+            error: function(xhr) {
+                alert('Có lỗi xảy ra! Vui lòng thử lại.');
+            }
+        });
     })
     
     // Lắng nghe sự kiện tùy chỉnh 'daterangeApplied' từ file khác
@@ -98,11 +66,7 @@ updatingDoughnutChart.update();
 
             var updatedData = [item.totalPurchases_spnb, item.totalPurchases_spbc, item.totalPurchases_spm];
             
-            // Cập nhật dữ liệu trong biểu đồ mà không thay đổi cấu trúc ban đầu
-            updatingDoughnutChart.data.datasets[0].data = updatedData; // Cập nhật mảng dữ liệu của biểu đồ
-
-            // Cập nhật lại biểu đồ
-            updatingDoughnutChart.update();
+            CheckStatisticalData(updatedData);
         }
         else
         {
@@ -113,11 +77,31 @@ updatingDoughnutChart.update();
 
             var updatedData = [0, 0, 0];
             
-            // Cập nhật dữ liệu trong biểu đồ mà không thay đổi cấu trúc ban đầu
-            updatingDoughnutChart.data.datasets[0].data = updatedData; // Cập nhật mảng dữ liệu của biểu đồ
+            CheckStatisticalData(updatedData);
+        }
+    });
+
+    function CheckStatisticalData(updatedData) {
+        if (updatedData.every(val => val === 0)) {
+            // Cập nhật dữ liệu trong biểu đồ
+            updatingDoughnutChart.data.datasets[0].data = updatedData;
+
+            // Cập nhật lại biểu đồ
+            updatingDoughnutChart.update();
+
+            // Hiển thị thông báo cho người dùng
+            $('#updatingDoughnutChart').hide(); // Ẩn biểu đồ
+            $('.content-pie-chart').append('<div class="text-center" id="text-muted">Không có lượt mua trong thời gian này</div>');
+        } else {
+            // Xóa thông báo nếu có dữ liệu
+            $('#updatingDoughnutChart').show(); // Hiển thị biểu đồ
+            $('.content-pie-chart #text-muted').remove();
+
+            // Cập nhật dữ liệu trong biểu đồ
+            updatingDoughnutChart.data.datasets[0].data = updatedData;
 
             // Cập nhật lại biểu đồ
             updatingDoughnutChart.update();
         }
-    });
+    }
 });
