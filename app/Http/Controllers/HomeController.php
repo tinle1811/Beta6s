@@ -11,6 +11,11 @@ use App\Models\LoaiSanPham;
 use App\Models\YeuThich;
 use App\Models\Blog;
 use App\Events\SanPhamUpdated;
+use App\Http\Controllers\Cacbon;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;       // For database queries
+use Illuminate\Support\Carbon;          // For date and time handling
+use Illuminate\Support\Facades\Log;     // For logging
 
 class HomeController extends Controller
 {

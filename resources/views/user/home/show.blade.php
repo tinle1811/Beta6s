@@ -45,11 +45,14 @@
 
                         <div class="product_ratting">
                             <ul>
+                                @for ($i = 1; $i <= 5; $i++)
                                 <li>
-                                    <p id="eventRatingRealTime">{{ $viewData['sanpham']->DiemRatingTB }}
-                                        <i class="fa fa-star"></i> / 5
-                                    </p>
+                                    <a href="#">
+                                        <i class="fa {{ $i <= round($viewData['averageRating']) ? 'fa-star' : 'fa-star-o' }}"></i>
+                                    </a>
                                 </li>
+                                 @endfor
+                                <li class="review"><a href="#">({{ $viewData['comments']->count()}} customer reviews)</a></li>
                             </ul>
                         </div>
 
@@ -135,40 +138,32 @@
                             </div>
                         </div>
                         <div class="product_info_content">
-                            <p>Fashion has been creating well-designed collections since 2010. The brand offers
-                                feminine designs delivering stylish separates and statement dresses which have
-                                since evolved into a full ready-to-wear collection in which every item is a
-                                vital part of a woman's wardrobe. The result? Cool, easy, chic looks with
-                                youthful elegance and unmistakable signature style. All the beautiful pieces are
-                                made in Italy and manufactured with the greatest attention. Now Fashion extends
-                                to a range of accessories including shoes, hats, belts and more!</p>
                         </div>
                     </div>
 
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                         <div class="reviews_wrapper">
-                            <h2>1 review for Donec eu furniture</h2>
-                            <div class="reviews_comment_box">
-                                <div class="comment_thmb">
-                                    <img src="assets/img/blog/comment2.jpg" alt="">
-                                </div>
-                                <div class="comment_text">
-                                    <div class="reviews_meta">
-                                        <div class="star_rating">
-                                            <ul>
-                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <p><strong>admin </strong>- September 12, 2022</p>
-                                        <span>roadthemes</span>
+                            <h2>Bình luận</h2>
+                            @foreach ($viewData['comments'] as $comment)
+                            <div class="comment_text">
+                                <div class="reviews_meta">
+                                    <div class="star_rating">
+                                        <ul>
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="ion-ios-star {{ $i <= round($comment->DanhGia) ? '' : '-outline' }}"></i>
+                                                    </a>
+                                                </li>
+                                            @endfor
+                                        </ul>
                                     </div>
+                                    <p><strong>{{ $comment->khachHang->TenKH }}</strong> - {{ $comment->created_at->format('F d, Y') }}</p>
+                                    <span>{{ $comment->khachHang->SDT }}</span>
                                 </div>
-
+                                <p>{{ $comment->NoiDung }}</p>  <!-- Nội dung bình luận -->
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

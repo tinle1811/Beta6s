@@ -45,7 +45,7 @@ class AuthController extends Controller
             'Password' => Hash::make($request->Password),
             'LoaiTK' => 1,
             'TrangThai' => 1,
-            'remember_token' => \Str::random(60), // Thêm remember_token
+            'remember_token' => Str::random(60), // Thêm remember_token
         ]);
 
 
