@@ -10,7 +10,7 @@ class AdminRoleController extends Controller
     public $viewData = [];
     public function index()
     {
-        $viewData['title'] = "Trang Loại Tài Khoản";
+        $viewData['title'] = "Trang quản lý loại tài khoản";
         return view('admin.role.index')->with('viewData',$viewData);
     }
     public function create(){
@@ -18,7 +18,7 @@ class AdminRoleController extends Controller
         return view("admin.role.create")->with("viewData",$viewData);
     }
     public function edit(){
-        $viewData['title'] = "Trang Cập nhật loại tài khoản";
+        $viewData['title'] = "Trang cập nhật loại tài khoản";
         return view("admin.role.edit")->with("viewData",$viewData);
     }
 }

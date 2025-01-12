@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 use App\Models\BinhLuan;
+use Illuminate\Support\Facades\DB;
+
+use Carbon\Carbon;
+
 use App\Models\SanPham;
 use App\Models\LoaiSanPham;
 use App\Models\YeuThich;
@@ -13,10 +17,7 @@ use App\Models\Blog;
 use App\Events\SanPhamUpdated;
 use App\Http\Controllers\Cacbon;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;       // For database queries
-use Illuminate\Support\Carbon;          // For date and time handling
-use Illuminate\Support\Facades\Log;     // For logging
-
+use Illuminate\Support\Facades\Log;    
 class HomeController extends Controller
 {
 
@@ -83,7 +84,7 @@ class HomeController extends Controller
         $averageRating = $comments->avg('DanhGia');
 
         $viewData = [
-            'title' => 'Chi tiết sản phẩm',
+            'title' => 'Trang chi tiết sản phẩm',
             'sanpham' => $sanpham,
             'relatedProducts' => $relatedProducts,
             'comments' => $comments,

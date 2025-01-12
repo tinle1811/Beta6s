@@ -18,11 +18,7 @@
                                     href="{{ route('user.home.show', ['slug' => $product->getProductSlug()]) }}"><img
                                         src="{{ asset('/assetsUser/img_product/' . $product->getProductImage()) }}"
                                         alt="{{ $product->getProductName() }}"></a>
-                                {{-- <a class="secondary_img" href="{{ route('user.home.show') }}"><img
-                                        src="assets/img/product/product14.jpg" alt=""></a> --}}
-                                {{-- <div class="label_product">
-                                    <span class="label_sale">sale</span>
-                                </div> --}}
+
                             </div>
                             <figcaption class="product_content">
                                 <div class="price_box">

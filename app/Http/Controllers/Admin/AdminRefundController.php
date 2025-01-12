@@ -10,7 +10,7 @@ class AdminRefundController extends Controller
     public $viewData = [];
     public function index()
     {
-        $viewData['title'] = "Phiếu Trả Hàng";
+        $viewData['title'] = "Trang quản lý phiếu trả hàng";
         return view('admin.refund.index')->with('viewData',$viewData);
     }
  

@@ -10,11 +10,17 @@
                     <p>Khoa Nguyễn</p>
                 </div>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link active" href="#"><i class="bi bi-person"></i><span
-                                class="text">Tài khoản của tôi</span></a></li>
-                    <li class="nav-item sub"><a class="nav-link" href="#"><span class="text">Hồ sơ</span></a></li>
-                    <li class="nav-item sub"><a class="nav-link" href="#"><span class="text">Địa chỉ</span></a></li>
-                    <li class="nav-item sub"><a class="nav-link" href="#"><span class="text">Đổi mật khẩu</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ route('user.account.index') }}"><i class="bi bi-person"></i><span
+                                class="text">Tài khoản của tôi</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.account.purchaseHistory') }}"><i
+                                class="bi bi-cart-check"></i><span class="text">Lịch sử mua hàng</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.account.historyEvaluate') }}"><i
+                                class="bi bi-chat-left"></i><span class="text">Lịch sử đánh giá</span></a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cart"></i><span
                                 class="text">Đơn mua</span></a></li>
