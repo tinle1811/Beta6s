@@ -59,19 +59,18 @@ class AuthController extends Controller
             'Email' => 'required|email',
             'Password' => 'required|min:6',
         ]);
-
-
-        $taiKhoan = TaiKhoan::where('Email', $request->Email)->first();
-        if ($taiKhoan && Hash::check($request->Password, $taiKhoan->Password)) {
+        $taiKhoan = TaiKhoan::where('Email',$request->Email)->first();
+        if($taiKhoan && Hash::check($request->Password, $taiKhoan->Password)){
             // đăng nhập thành công
             Auth::login($taiKhoan);
-
-
-            // Kiểm tra phân quyền và điều hướng
-            if ($taiKhoan->LoaiTK == 1) {
-                return response()->json(['success' => true, 'redirect' => route('user.home.index')]);
-            } else {
-                return response()->json(['success' => true, 'redirect' => route('admin.analysis')]);
+            
+            // Lưu thông tin vào session nếu chọn "Nhớ mật khẩu"
+            
+            //kiểm tra phân quyền và điều hướng
+            if($taiKhoan->LoaiTK == 1){
+                return redirect()->route('user.home.index')->with('success','Chào mừng người dùng!');
+            }else{
+                return redirect()->route('admin.analysis')->with('success','Chào mừng admin!');
             }
         } else {
             return response()->json(['success' => false, 'error' => 'Email hoặc mật khẩu không khớp']);

@@ -38,11 +38,17 @@
                                         class="add-to-cart-form" id="add-to-cart-form">
                                         @csrf
                                         @auth
+<<<<<<< HEAD
                                             <input type="hidden" name="MaSP" value="{{ $product->MaSP}}">
                                             <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
                                         @else
                                             <a href="javascript:void(0)" onclick="openLoginPopup()" class="btn btn-primary"
                                                 title="add to cart">Thêm vào giỏ hàng</a>
+=======
+                                            <button type="submit"  class="btn btn-primary">Thêm vào giỏ hàng</button>
+                                        @else
+                                            <a href="javascript:void(0)" onclick="openLoginPopup()"  class="btn btn-primary">Thêm vào giỏ hàng</a>
+>>>>>>> 0df39d88a4c6f1777dae42a08aa084060abd336c
                                         @endauth
                                     </form>
                                 </div>

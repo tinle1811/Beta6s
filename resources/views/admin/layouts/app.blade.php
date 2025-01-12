@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Title -->
-    <title>@yield('title')</title>
+    <title>{{ $viewData['title'] ?? 'Beat6s' }}</title>
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
     <!-- Font -->

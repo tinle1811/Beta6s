@@ -9,8 +9,7 @@ function openLoginPopup() {
     loginModal.show();
     document.getElementById('overlay').style.display = 'block';
     console.log('overlay đã được gọi');
-
-
+    
 }
 
 

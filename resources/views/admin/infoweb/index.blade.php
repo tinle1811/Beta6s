@@ -44,7 +44,7 @@
                                         </label>
 
                                         <!-- Avatar image below the label (Hiển thị logo cũ mặc định) -->
-                                        <span class="avatar avatar-xl avatar-centered avatar-circle avatar-border-lg mb-3">
+                                        <span class="avatar avatar-xxl avatar-4by3">
                                             <img class="avatar-img" id="logoPreview"
                                                 src="{{ asset('storage/logos/' . $viewData['websiteInfo']->logo) }}"
                                                 alt="Logo cũ">

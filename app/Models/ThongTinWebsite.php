@@ -23,7 +23,7 @@ class ThongTinWebsite extends Model
     // Getter và Setter cho logo
     public function getLogoAttribute()
     {
-        return $this->attributes['logo']; 
+        return $this->attributes['logo'];
     }
 
     public function setLogoAttribute($value)

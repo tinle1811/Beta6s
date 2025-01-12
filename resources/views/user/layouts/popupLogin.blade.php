@@ -6,31 +6,30 @@
                 <button type="button" class="btn-close" onclick="closeLoginPopup()" aria-label="Close"></button>
             </div>
             <div class="modal-body d-flex justify-content-between pt-0">
-                <div class="d-flex align-items-center">
-                    <img id="logo" src="{{ asset('storage/logos/' . $websiteInfo->logo) }}" class="">
+                <div  class="d-flex align-items-center">
+                    <img id="logo" src="{{asset('assets/img/logoBeta6s.jpg')}}"  class="">
                 </div>
                 <div class="form-section" style="flex: 1; padding: 1.5rem;">
-                    <form id="loginForm">
+                    <form action="{{ route('login') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="Email" class="form-label">Email</label>
                             <input type="email" id="Email" name="Email" class="form-control" placeholder="Nhập email"
-                                required>
+                             required>
                         </div>
                         <div class="mb-3">
                             <label for="Password" class="form-label">Mật khẩu</label>
                             <input type="password" id="Password" name="Password" class="form-control"
                                 placeholder="Nhập mật khẩu" required>
                         </div>
-                        <div id="error-message" class="text-danger" style="display: none;"></div>
                         <button type="submit" class="btn btn-primary w-100">Đăng Nhập</button>
                     </form>
                     <a href="#">Quên mật khẩu?</a>
                     <div class="register_link text-center mt-1">
-                        <p>Bạn chưa có tài khoản?<a href="{{ route('user.auth.register') }}"
-                                class="text-primary text-decoration-none">Đăng ký</a></p>
+                        <p>Bạn chưa có tài khoản?<a href="{{route("user.auth.register")}}" class="text-primary text-decoration-none">Đăng ký</a></p>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>

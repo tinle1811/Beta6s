@@ -74,9 +74,9 @@
                                 <div class="m-4 w-100">
                                     <button class="btn btn-primary p-3 w-100">Thanh toán khi nhận hàng</button>
                                 </div>
-                                <!-- Thẻ bên phải: Master Card/Visa -->
+                                <!-- Thẻ bên phải: MoMo -->
                                 <div class="m-4 w-100">
-                                    <button class="btn btn-warning p-3 w-100">Master Card/Visa</button>
+                                    <button class="btn btn-warning p-3 w-100">MoMo</button>
                                 </div>
                             </div>
                         </div>
@@ -104,8 +104,12 @@
                                     <p>Tổng:</p>
                                     <p class="cart_amount text-success">{{ number_format($viewData['total'], 0, ',', '.') }} VNĐ</p>
                                 </div>
+                                
                                 <div class="checkout_btn">
-                                    <a href="" class="btn btn-success">Thanh toán</a>
+                                    {{-- <form action="" method="GET">
+                                        <button type="submit" class="btn btn-primary">Thanh toán</button>
+                                    </form> --}}
+                                    <a href="{{ route('user.cart.checkout') }}" class="btn btn-success">Thanh toán</a>
                                 </div>
                             </div>
                         </div>

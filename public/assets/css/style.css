@@ -3464,7 +3464,7 @@ textarea:-ms-input-placeholder {
   line-height: 16px;
   text-align: center;
   font-size: 12px;
-  padding: 12px 40px;
+  padding: 9px 15px;
   text-transform: uppercase;
   font-weight: 500;
   display: inline-block;
@@ -8347,7 +8347,30 @@ textarea:-ms-input-placeholder {
 .user-actions h3 a {
   color: #0063d1;
 }
+.payment_method{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.payment_button_div {
+  margin-top: 30px; 
+  margin-bottom: 30px; 
+  text-align: center; 
+}
 
+.payment_button {
+  padding: 12px 30px; 
+  font-size: 16px; 
+  background-color: black;
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+
+.payment_button:hover {
+  background-color: #757575; 
+}
 .checkout_info {
   border: 1px solid #ebebeb;
   margin-top: 25px;
@@ -8489,7 +8512,7 @@ textarea:-ms-input-placeholder {
 }
 
 .checkout_form input {
-  border: 1px solid #ebebeb;
+  border: 1px solid black;
   background: none;
   height: 40px;
   width: 100%;
@@ -8612,9 +8635,12 @@ textarea:-ms-input-placeholder {
     margin-bottom: 60px;
   }
 }
-
+#formCheckout{
+  display: flex;
+  justify-content: space-around;
+}
 .order_table {
-  margin-bottom: 35px;
+  margin: 35px 0;
 }
 
 .order_table table {
@@ -8625,28 +8651,28 @@ textarea:-ms-input-placeholder {
   min-width: 50%;
   text-align: center;
   padding: 15px 0;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid black;
 }
 
 .order_table table tbody tr td {
   min-width: 50%;
   text-align: center;
   padding: 15px 0;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid black;
 }
 
 .order_table table tfoot tr th {
   min-width: 50%;
   text-align: center;
   padding: 15px 0;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid black;
 }
 
 .order_table table tfoot tr td {
   min-width: 50%;
   text-align: center;
   padding: 15px 0;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid black;
 }
 
 .panel-default input[type=radio] {
@@ -8658,7 +8684,8 @@ textarea:-ms-input-placeholder {
 }
 
 .panel-default img {
-  width: 160px;
+  width: 70px;
+  height: 40px;
 }
 
 .order_button button {
@@ -8842,6 +8869,23 @@ textarea:-ms-input-placeholder {
 
 /*contact page css end*/
 /* 17. login page css here */
+.info-producct{
+  border:0.2px solid #d1e2f3;
+  border-radius: 5px;
+  padding: 10px;
+}
+#logo {
+  width: 230px;             /* Giữ chiều rộng tự động */
+  max-width: 100%;         /* Giới hạn chiều rộng ảnh tối đa là 100% của phần tử chứa */
+  height: auto;            /* Giữ tỷ lệ chiều cao của ảnh */
+  max-height: 80%;         /* Giới hạn chiều cao tối đa của ảnh là 80% của phần tử chứa */
+  object-fit: contain;     /* Giữ tỷ lệ cho ảnh mà không bị cắt */
+  display: flex;
+  justify-content: center; /* Căn giữa ảnh theo chiều ngang */
+  align-items: center;     /* Căn giữa ảnh theo chiều dọc */
+  height: 15vh;  
+  
+}
 .account_form h2 {
   font-size: 28px;
   text-transform: capitalize;
@@ -8908,18 +8952,21 @@ textarea:-ms-input-placeholder {
 
 .login_submit label input[type=checkbox] {
   width: 15px;
-  height: 13px;
-  margin-right: 3px;
+  height: 15px;
+  margin-right: 5px;
 }
-
+.login_submit label input{
+  font-size: 15px;
+}
 .login_submit {
   text-align: right;
+  display: flex;
+  justify-content: space-between;
 }
 
 .login_submit a {
-  font-size: 13px;
+  font-size: 15px;
   float: left;
-  line-height: 39px;
 }
 
 .login_submit a:hover {
@@ -8940,9 +8987,34 @@ textarea:-ms-input-placeholder {
     float: none;
     line-height: 18px;
     display: block;
-    margin-bottom: 20px;
   }
 }
+.popup-container .window {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 100%; /* Đảm bảo popup không vượt quá kích thước màn hình */
+  box-sizing: border-box;
+  position: relative; /* Đảm bảo popup có thể được căn giữa */
+}
+.popup-container #popup-close {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  cursor: pointer;
+  font-size: 13px;
+  background: #242424;
+  color: #ffffff;
+  padding: 6px 12px;
+  line-height: 17px;
+  font-weight: 600;
+}
+
+.popup-container #popup-close:hover {
+  background: #0063d1;
+}
+
 
 .customer_login {
   padding-bottom: 60px;
@@ -9156,7 +9228,7 @@ textarea:-ms-input-placeholder {
 }
 
 .table-responsive table tbody tr td {
-  border-right: 1px solid #ebebeb;
+  border-right: 1px solid black;
   font-weight: 500;
   text-transform: capitalize;
   font-size: 14px;
@@ -9168,11 +9240,14 @@ textarea:-ms-input-placeholder {
   color: #0063d1;
 }
 
+<<<<<<< HEAD
 .table-responsive .table {
   border-left: 1px solid #ebebeb;
   border-bottom: 1px solid #ebebeb;
   border-right: 1px solid #ebebeb;
 }
+=======
+>>>>>>> a5d2ff0bb74d01da43b3a8f9a468f575510d3b44
 
 .dashboard_content address {
   font-weight: 500;
@@ -9298,7 +9373,7 @@ textarea:-ms-input-placeholder {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .chose_content h3 {
     font-size: 16px;
-    argin-bottom: 13px;
+    margin-bottom: 13px;
   }
 }
 
@@ -11275,7 +11350,7 @@ textarea:-ms-input-placeholder {
 
 /*modal css end*/
 /*  23. newsletter popup css here */
-.newletter-popup {
+.popup-login, .popup-container, .popup-register {
   background: #fff;
   top: 50% !important;
   margin-top: -179px;
@@ -11283,37 +11358,81 @@ textarea:-ms-input-placeholder {
   padding: 50px;
   text-align: center;
   display: none;
+  z-index: 9999;
+}
+
+
+.popup-container .popup-container-inner {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;  /* Chiều rộng popup */
+  max-width: 90%;  /* Giới hạn chiều rộng tối đa */
+  height: auto;
+  max-height: 90%; /* Giới hạn chiều cao */
+  overflow-y: auto;  /* Nếu nội dung dài, có thanh cuộn dọc */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);  /* Tạo bóng đổ cho popup */
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media only screen and (max-width: 767px) {
-  .newletter-popup {
+  .popup-container {
     padding: 30px 20px;
     width: 95%;
   }
 }
-
-#boxes .newletter-title h2 {
+.popup-title h2 {
   font-size: 30px;
   text-transform: uppercase;
   margin: 0 0 30px;
 }
 
 @media only screen and (max-width: 767px) {
-  #boxes .newletter-title h2 {
+  .popup-title h2 {
     font-size: 22px;
     margin: 0 0 10px;
   }
 }
+.popup-content input[type="email"],
+.popup-content input[type="password"],
+.popup-content button {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.popup-content .submit-button button {
+  font-size: 16px;
+  background-color: #0056a3;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.popup-content .submit-button button:hover {
+  background: #004088;
+}
+/* .popup-window {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+} */
 
-#boxes .box-content label {
+
+#boxes .box-content form label {
   font-weight: 400;
   font-size: 14px;
 }
-
-#boxes .box-content .newletter-label {
-  width: 70%;
-  margin-bottom: 36px;
+.popup-content form{
+  text-align: left;
 }
+<<<<<<< HEAD
 
 @media only screen and (max-width: 767px) {
   #boxes .box-content .newletter-label {
@@ -11334,20 +11453,24 @@ textarea:-ms-input-placeholder {
 }
 
 #frm_subscribe form input {
+=======
+.popup-content form input {
+>>>>>>> a5d2ff0bb74d01da43b3a8f9a468f575510d3b44
   background: #EBEBEB;
-  padding: 0 127px 0 20px;
+  padding: 0 20px;
   height: 45px;
   border: 0;
   width: 100%;
   color: #747474;
-  margin-bottom: 0;
+  margin-bottom: 20px;
 }
 
 @media only screen and (max-width: 767px) {
-  #frm_subscribe form input {
+  .popup-content form input {
     padding: 0 104px 0 20px;
   }
 }
+<<<<<<< HEAD
 
 #frm_subscribe form a.theme-btn-outlined {
   position: absolute;
@@ -11375,31 +11498,13 @@ textarea:-ms-input-placeholder {
     width: 90px;
   }
 }
+=======
+>>>>>>> a5d2ff0bb74d01da43b3a8f9a468f575510d3b44
 
-#boxes .box-content .subscribe-bottom {
-  margin-top: 20px;
-}
 
-#boxes .box-content .subscribe-bottom label {
-  margin: 0;
-  font-size: 13px;
-}
 
-#boxes .box-content .subscribe-bottom #newsletter_popup_dont_show_again {
-  display: inline-block;
-  margin: 0;
-  vertical-align: middle;
-}
 
-#boxes #frm_subscribe #notification {
-  color: #f00;
-}
-
-#boxes #frm_subscribe #notification .success {
-  color: #67D7BB;
-}
-
-#popup2 {
+#popup-close {
   position: absolute;
   right: 1px;
   top: 1px;
@@ -11416,8 +11521,12 @@ textarea:-ms-input-placeholder {
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
+<<<<<<< HEAD
 
 #popup2:hover {
+=======
+#popup-close:hover {
+>>>>>>> a5d2ff0bb74d01da43b3a8f9a468f575510d3b44
   background: #0063d1;
 }
 
