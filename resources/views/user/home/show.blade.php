@@ -29,6 +29,10 @@
                                     <strong><i class="fa-regular fa-thumbs-up"></i></strong>
                                     {{ $viewData['sanpham']->SoLuotYeuThich }}
                                 </p>
+                                <p id="eventSoLuongTon" class="mb-0">
+                                    <strong>Số lượng tồn: </strong>
+                                    {{ $viewData['sanpham']->SoLuong }}
+                                </p>
                                 <p id="eventSoLuotXem" class="mb-0">
                                     <strong><i class="fa-solid fa-eye"></i></strong> {{ $viewData['sanpham']->SoLuotXem }}
                                 </p>
@@ -85,7 +89,8 @@
                                         @endif
                                     </div>
                                     <div class="product_variant quantity mt-3">
-                                        <input type="hidden" name="MaSP" value="{{ $viewData['sanpham']->getProductId() }}">
+                                        <input type="hidden" name="MaSP"
+                                            value="{{ $viewData['sanpham']->getProductId() }}">
                                         <button type="submit" class="btn btn-warning" style="color:white">Thêm vào giỏ
                                             hàng</button>
                                     </div>

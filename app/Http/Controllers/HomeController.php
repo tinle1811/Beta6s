@@ -58,6 +58,7 @@ class HomeController extends Controller
             'SoLuotYeuThich' => $sanpham->SoLuotYeuThich,
             'SoLuotXem' => $sanpham->SoLuotXem,
             'DiemRatingTB' => $sanpham->DiemRatingTB,
+            'SoLuongTon' => $sanpham->SoLuong,
         ]));
 
         // Phát sự kiện SanPhamUpdated với sản phẩm đã cập nhật
@@ -172,6 +173,7 @@ class HomeController extends Controller
             'SoLuotYeuThich' => $sanpham->SoLuotYeuThich,
             'SoLuotXem' => $sanpham->SoLuotXem,
             'DiemRatingTB' => $sanpham->DiemRatingTB,
+            'SoLuongTon' => $sanpham->SoLuong,
         ]));
         return redirect()->route('user.home.wishlist');
     }

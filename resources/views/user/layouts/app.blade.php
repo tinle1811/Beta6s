@@ -48,6 +48,8 @@
                     `<strong><i class="fa-solid fa-eye"></i></strong> ${data.SoLuotXem}`;
                 document.getElementById('eventRatingRealTime').innerHTML =
                     `<strong>${data.DiemRatingTB} <i class="fa fa-star"></i> / 5 </strong> `;
+                document.getElementById('eventSoLuongTon').innerHTML =
+                    `<strong>Số lượng tôn: ${data.DiemRatingTB} </strong> `;
             } else {
                 console.error('Invalid data received:', data);
             }
