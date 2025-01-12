@@ -37,7 +37,10 @@ Route::get('/product-detail', [HomeController::class, 'show'])->name('user.home.
 Route::get('/product-detail/{slug}', [HomeController::class, 'show'])->name('user.home.show');
 Route::get('/contact', [HomeController::class, 'contact'])->name('user.home.contact');
 Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wishlist');
+
 Route::get('/search', [SearchController::class, 'index'])->name('user.search.index');
+Route::get('/search/result', [SearchController::class, 'search'])->name('user.product.search');
+
 
 //KN- Trang giới thiệu - trang blog
 Route::get('/about', [HomeController::class, 'about'])->name('user.home.about');
@@ -68,7 +71,7 @@ Route::middleware('checkRole:shared')->group(function () {
 
 // Các route admin sử dụng middleware
 Route::middleware('checkRole:admin')->group(function () {
-   Route::get("/admin", [AdminAnalysisController::class, "index"])->name("admin.analysis");
+    Route::get("/admin", [AdminAnalysisController::class, "index"])->name("admin.analysis");
 
     Route::get('/admin/product', [AdminProductController::class, "index"])->name("admin.product");
     Route::get('/admin/product/create', [AdminProductController::class, "create"])->name("admin.product.create");
@@ -80,12 +83,12 @@ Route::middleware('checkRole:admin')->group(function () {
     Route::delete('/admin/product/delete/{MaSP}', [AdminProductController::class, "destroy"])->name("admin.product.delete");
 
 
-   Route::get('/admin/catagory', [AdminCatagoryController::class, "index"])->name("admin.catagory");
-   Route::get('/admin/catagory/create', [AdminCatagoryController::class, "create"])->name("admin.catagory.create");
-   Route::post('/admin/catagory/create', [AdminCatagoryController::class, "createSubmitForm"])->name("admin.catagory.createSubmitForm");
-   Route::get('/admin/catagory/{id}/edit', [AdminCatagoryController::class, "edit"])->name("admin.catagory.edit");
-   Route::put('/admin/catagory/{id}/edit', [AdminCatagoryController::class, "editSubmitForm"])->name("admin.catagory.editSubmitForm");
-   Route::delete('/admin/catagory/{id}/delete', [AdminCatagoryController::class, "delete"])->name("admin.catagory.delete");
+    Route::get('/admin/catagory', [AdminCatagoryController::class, "index"])->name("admin.catagory");
+    Route::get('/admin/catagory/create', [AdminCatagoryController::class, "create"])->name("admin.catagory.create");
+    Route::post('/admin/catagory/create', [AdminCatagoryController::class, "createSubmitForm"])->name("admin.catagory.createSubmitForm");
+    Route::get('/admin/catagory/{id}/edit', [AdminCatagoryController::class, "edit"])->name("admin.catagory.edit");
+    Route::put('/admin/catagory/{id}/edit', [AdminCatagoryController::class, "editSubmitForm"])->name("admin.catagory.editSubmitForm");
+    Route::delete('/admin/catagory/{id}/delete', [AdminCatagoryController::class, "delete"])->name("admin.catagory.delete");
 
     Route::get('/admin/account', [AdminAccountController::class, 'index'])->name("admin.account");
     Route::get('/admin/account/create', [AdminAccountController::class, 'create'])->name("admin.account.create");

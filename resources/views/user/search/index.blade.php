@@ -1,58 +1,69 @@
 @extends('user.layouts.app')
 @section('title', $viewData['title'])
 @section('content')
-<div class="container my-4">
-    @if(isset($viewData['keyword']) && $viewData['keyword'] != '' && (!isset($viewData['loai_san_pham']) || $viewData['loai_san_pham'] == ''))
-        <h2 class="mb-4 text-center">{{ $viewData['title'] }} "{{ $viewData['keyword'] }}"</h2>
-        <h4>{{ $viewData['resultCount'] }} kết quả được tìm thấy</p>
-    @endif
-    
-        @if(isset($viewData['loai_san_pham']) && $viewData['loai_san_pham'] != '' && (!isset($viewData['keyword']) || $viewData['keyword'] == ''))
-            <h2 class="mb-4 text-center">{{ $viewData['title'] }}: Loại sản phẩm {{ $viewData['loai_san_pham'] }}</h2>
-            <h4>{{ $viewData['resultCount'] }} kết quả được tìm thấy</h4>
-        @endif
-    
-        @if(isset($viewData['keyword']) && $viewData['keyword'] != '' && isset($viewData['loai_san_pham']) && $viewData['loai_san_pham'] != '')
-            <h2 class="mb-4 text-center">{{ $viewData['title'] }} "{{ $viewData['keyword'] }}" trong loại sản phẩm
-                {{ $viewData['loai_san_pham'] }}</h2>
-            <h4>{{ $viewData['resultCount'] }} kết quả được tìm thấy</h4>
-        @endif
-    
-        @if((!isset($viewData['keyword']) || $viewData['keyword'] == '') && (!isset($viewData['loai_san_pham']) || $viewData['loai_san_pham'] == ''))
-            <h2 class="mb-4 text-center">{{ $viewData['title'] }} "Tất cả"</h2>
-            <h4>{{ $viewData['resultCount'] }} kết quả được tìm thấy</h4>
-        @endif
-    <div class="row">
-        @foreach ($viewData['products'] as $product)
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm">
-                    <!-- Hình ảnh sản phẩm -->
-                    <a href="{{ route('user.home.show', ['slug' => $product->getProductSlug()]) }}">
-                        <img src="{{ asset('/storage/' . $product->getProductImage()) }}"
-                            alt="{{ $product->getProductName() }}" class="card-img-top img-fluid">
-                    </a>
-                    <!-- Nội dung sản phẩm -->
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="{{ route('user.home.show', ['slug' => $product->getProductSlug()]) }}" class="text-decoration-none text-dark">
-                                {{ $product->getProductName() }}
-                            </a>
-                        </h5>
-                        <p class="card-text text-success fw-bold">
-                            {{ number_format($product->getProductPrice(), 0, ',', '.') }} đ
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <a href="cart.html" class="btn btn-primary btn-sm">Thêm vào giỏ hàng</a>
-                            <a href="wishlist.html" class="btn btn-outline-secondary btn-sm">Yêu thích</a>
-                        </div>
+    <div class="container my-4">
+        <h2 class="mb-4" style="color: blue">Kết Quả Tìm Kiếm</h2>
+
+        <div class="row">
+            <!-- Form tìm kiếm -->
+            <form action="{{ route('user.product.search') }}" method="GET" class="col-md-12 mb-4">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm theo từ khóa"
+                            value="{{ request()->get('keyword') }}">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <select name="category" class="form-control">
+                            <option value="">Chọn danh mục</option>
+                            @foreach ($viewData['categories'] as $category)
+                                <option value="{{ $category->MaLSP }}"
+                                    {{ request()->category == $category->MaLSP ? 'selected' : '' }}>
+                                    {{ $category->TenLSP }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <input type="number" name="min_price" class="form-control" placeholder="Giá tối thiểu"
+                            value="{{ request()->min_price }}">
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <input type="number" name="max_price" class="form-control" placeholder="Giá tối đa"
+                            value="{{ request()->max_price }}">
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <button type="submit" class="btn btn-primary w-100">Tìm kiếm</button>
                     </div>
                 </div>
-            </div>
-        @endforeach
-    </div>
+            </form>
 
-    <!-- Phân trang -->
-    <div class="d-flex justify-content-center">
-        {{ $viewData['products']->appends(request()->input())->links('pagination::bootstrap-5') }}
+            <!-- Hiển thị các sản phẩm -->
+            @if ($viewData['products']->count() > 0)
+                <div class="row">
+                    @foreach ($viewData['products'] as $product)
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="{{ asset('storage/' . $product->HinhAnh) }}" class="card-img-top"
+                                    alt="{{ $product->TenSP }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $product->TenSP }}</h5>
+                                    <p class="card-text">{{ Str::limit($product->MoTa, 100) }}</p>
+                                    <p class="card-text">Giá: {{ number_format($product->Gia) }} VNĐ</p>
+                                    <a href="{{ route('user.home.show', $product->Slug) }}" class="btn btn-info">Xem chi
+                                        tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- phân trang -->
+                <div class="d-flex justify-content-center">
+                    {{ $viewData['products']->links('pagination::bootstrap-4') }}
+                </div>
+            @else
+                <p>Không có sản phẩm nào phù hợp với tiêu chí tìm kiếm của bạn.</p>
+            @endif
+        </div>
     </div>
 @endsection

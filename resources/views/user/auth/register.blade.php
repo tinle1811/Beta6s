@@ -13,13 +13,14 @@
                         @csrf
                         <div class="mb-3">
                             <label for="TenDN" class="form-label">Tên đăng nhập</label>
-                            <input type="text" id="TenDN" name="TenDN" class="form-control"
-                                placeholder="Nhập tên đăng nhập" required>
+                            <input type="text" id="TenDN" name="TenDN" class="form-control" value="{{ old('TenDN', $viewData['oldData']['TenDN'] ?? '') }}" placeholder="Nhập tên đăng nhập" required>
                         </div>
                         <div class="mb-3">
                             <label for="Email" class="form-label">Email</label>
-                            <input type="email" id="Email" name="Email" class="form-control" placeholder="Nhập email"
-                                required>
+                            <input type="email" id="Email" name="Email" class="form-control" value="{{ old('Email', $viewData['oldData']['Email'] ?? '') }}" placeholder="Nhập email" required>
+                            @if(isset($viewData['error']))
+                                <div class="text-danger">{{ $viewData['error'] }}</div>
+                            @endif
                         </div>
                         <div class="mb-3">
                             <label for="Password" class="form-label">Mật khẩu</label>

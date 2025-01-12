@@ -8,6 +8,9 @@ class BinhLuan extends Model
 {
     protected $table = 'binh_luans';
     protected $primaryKey = 'MaBL';
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
     public $timestamps = false;
     protected $fillable = [
         'MaHD',    // Thêm vào đây

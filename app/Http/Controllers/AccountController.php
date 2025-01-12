@@ -66,7 +66,7 @@ class AccountController extends Controller
             'user' => $user,
             'hoaDons' => $hoaDons,
             'viewData' => $viewData,
-            'type' => $statusMap[$type]
+            'type' => $type
         ]);
     }
 
