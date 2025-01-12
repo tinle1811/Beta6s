@@ -104,7 +104,20 @@ class CartController extends Controller
         }
         return redirect()->route('user.cart.index');
     }
+    public function clearCart()
+    {
+        // Kiểm tra người dùng đã đăng nhập chưa
+        if (!Auth::check()) {
+            return redirect()->route('user.home.index')->with('error', 'Vui lòng đăng nhập để xóa giỏ hàng');
+        }
 
-   
-    
+        // Lấy id tài khoản người dùng
+        $maTk = Auth::user()->MaTK;
+
+        // Xóa tất cả sản phẩm trong giỏ hàng của người dùng
+        GioHang::where('MaTK', $maTk)->delete();
+
+        // Chuyển hướng về trang giỏ hàng với thông báo thành công
+        return redirect()->route('user.cart.index')->with('success', 'Giỏ hàng đã được xóa.');
+    }
 }

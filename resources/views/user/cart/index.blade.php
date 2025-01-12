@@ -6,7 +6,6 @@
         <!--shopping cart area start -->
         <div class="shopping_cart_area mt-60">
         <div class="container">
-            <form action="#">
                 <div class="row">
                     <div class="col-12">
                         <div class="table_desc">
@@ -58,6 +57,12 @@
                                 </table>
                             </div>
                         </div>
+                        @if(count($viewData['cartItems']) > 0)
+                            <form action="{{ route('user.cart.clear') }}" method="POST" class="text-end">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Xóa hết giỏ hàng</button>
+                            </form>
+                        @endif
                     </div>
                 </div>
                 <!-- Coupon & Cart Totals -->
