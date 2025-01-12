@@ -22,7 +22,7 @@ return new class extends Migration
             // Khóa ngoại tài khoản -> loại tài khoản
             $table->foreign('LoaiTK')
                 ->references('MaLTK')
-                ->on('Loai_tai_khoans')
+                ->on('loai_tai_khoans')
                 ->onDelete('cascade');
 
             $table->timestamps();
