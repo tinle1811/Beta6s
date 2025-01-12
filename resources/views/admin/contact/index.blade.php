@@ -94,7 +94,11 @@
             <!-- End Row -->
             <div class="alert alert-soft-success" role="alert" style="display: none;" id="notificationDeleteComment">
             </div>
-
+            <div class="alert alert-success alert-dismissible fade show" role="alert" id="notificationReview"
+            style="display: none;">
+            Đã cập nhật trạng thái liên hệ
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
 
             <div id="notificationUpdateContact" class="alert alert-soft-success" role="alert" style="display: none;"></div>
             <div id="notificationDeleteContact" class="alert alert-soft-success" role="alert" style="display: none;"></div>
@@ -280,8 +284,11 @@
     <script>
         // Hàm thay đổi trạng thái
         function toggleContactStatus(contactId, currentStatus) {
+            if (!confirm('Bạn có chắc chắn muốn thay đổi trạng thái của liên hệ này?')) {
+                return;
+            }
+
             var newStatus = currentStatus == 1 ? 0 : 1; // Thay đổi trạng thái
-            alert('Đang thay đổi trạng thái của liên hệ ' + contactId);
 
             //Gửi AJAX request
             $.ajax({
@@ -295,27 +302,30 @@
                 success: function(response) {
                     if (response.success) {
 
-                        var button = document.querySelector('.toggleStatus' + contactId);
-                        button.innerText = newStatus == 1 ? 'Đã duyệt' : 'Chưa duyệt';
-                        button.setAttribute('data-status', newStatus);
+                            location.reload();
+                            // Lưu trạng thái thông báo vào localStorage
+                            localStorage.setItem('reviewSuccess', 'true');
+                        // var button = document.querySelector('.toggleStatus' + contactId);
+                        // button.innerText = newStatus == 1 ? 'Đã duyệt' : 'Chưa duyệt';
+                        // button.setAttribute('data-status', newStatus);
 
-                        if (newStatus == 1) {
-                            button.classList.remove('btn-outline-warning');
-                            button.classList.add('btn-soft-primary');
-                        } else {
-                            button.classList.remove('btn-soft-primary');
-                            button.classList.add('btn-outline-warning');
-                        }
+                        // if (newStatus == 1) {
+                        //     button.classList.remove('btn-outline-warning');
+                        //     button.classList.add('btn-soft-primary');
+                        // } else {
+                        //     button.classList.remove('btn-soft-primary');
+                        //     button.classList.add('btn-outline-warning');
+                        // }
 
-                        // Hiển thị thông báo
-                        const notificationDiv = document.getElementById('notificationUpdateContact');
-                        notificationDiv.textContent = 'Cập nhật trạng thái thành công!';
-                        notificationDiv.style.display = 'block';
+                        // // Hiển thị thông báo
+                        // const notificationDiv = document.getElementById('notificationUpdateContact');
+                        // notificationDiv.textContent = 'Cập nhật trạng thái thành công!';
+                        // notificationDiv.style.display = 'block';
 
-                        // Tự động ẩn sau 5 giây
-                        setTimeout(() => {
-                            notificationDiv.style.display = 'none';
-                        }, 5000);
+                        // // Tự động ẩn sau 5 giây
+                        // setTimeout(() => {
+                        //     notificationDiv.style.display = 'none';
+                        // }, 5000);
 
                     } else {
                         alert('Có lỗi xảy ra. Vui lòng thử lại.');
@@ -323,6 +333,22 @@
                 }
             });
         }
+        window.addEventListener('load', function() {
+            const notificationDiv = document.getElementById('notificationReview');
+            if (localStorage.getItem('reviewSuccess') === 'true') {
+                // Hiển thị thông báo thành công
+                notificationDiv.textContent = 'Cảm ơn bạn đã đánh giá !';
+                notificationDiv.style.display = 'block';
+
+                // Tự động ẩn sau 5 giây
+                setTimeout(() => {
+                    notificationDiv.style.display = 'none';
+                }, 5000);
+
+                // Xóa trạng thái thông báo sau khi hiển thị
+                localStorage.removeItem('reviewSuccess');
+            }
+        });
 
         function deleteContact(contactId) {
             if (confirm('Bạn có chắc chắn muốn xóa liên hệ này không?')) {
