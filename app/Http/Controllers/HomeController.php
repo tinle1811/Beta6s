@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $viewData['title'] = "Trang chủ";
-        $viewData["DSSP-Slider"] = SanPham::limit(3)->get();
+        $viewData["DSSP-Slider"] = SanPham::OrderBy('san_phams.created_at', 'Asc')->limit(5)->get();
         $viewData["DSSP-BanChay"] = SanPham::join('chi_tiet_hoa_dons', 'san_phams.MaSP', '=', 'chi_tiet_hoa_dons.MaSP')
             ->join('hoa_dons', 'chi_tiet_hoa_dons.MaHD', '=', 'hoa_dons.MaHD')
             ->select('san_phams.MaSP', 'san_phams.Slug', 'san_phams.HinhAnh', 'san_phams.Gia', 'san_phams.TenSP', 'san_phams.MoTa', DB::raw('SUM(chi_tiet_hoa_dons.SoLuong) as total_quantity'))
