@@ -106,6 +106,7 @@
                 </div>
                 <input id="datatableSearch" type="search" name="search" class="form-control" placeholder="Nhập thông tin tìm kiếm"
                   aria-label="Search users" value="{{ request()->get('search') }}">
+                  <button type="submit" class="btn btn-sucess"> Tìm kiếm</button>
               </div>
               <!-- End Search -->
             </form>
@@ -276,6 +277,11 @@
                   "isShowPaging": false,
                   "pagination": "datatablePagination"
                 }'>
+                @if(isset($viewData['message']))
+          <div class="alert alert-warning">
+              {{ $viewData['message'] }}
+          </div>
+      @endif
           <thead class="thead-light">
             <tr>
               <th scope="col" class="table-column-pr-0">
@@ -372,8 +378,6 @@
           </td>
         </tr>
       @endforeach
-
-
           </tbody>
         </table>
       </div>

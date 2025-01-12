@@ -115,6 +115,7 @@
                 </div>
                 <input id="datatableSearch" type="search" name="search" class="form-control" placeholder="Nhập thông tin tìm kiếm"
                   aria-label="Search users" value="{{ request()->get('search') }}">
+                <button type="submit" class="btn btn-sucess"> Tìm kiếm</button>
               </div>
               <!-- End Search -->
             </form>
@@ -284,6 +285,11 @@
                   "isShowPaging": false,
                   "pagination": "datatablePagination"
                 }'>
+                @if($products->isEmpty())
+          <tr>
+            <div class="alert alert-warning">Không có sản phẩm nào phù hợp với kết quả tìm kiếm.</div>
+          </tr>
+        @endif
           <thead class="thead-light style=text-align:center">
             <tr>
               {{-- <th scope="col" class="table-column-pr-0">
@@ -340,11 +346,7 @@
 
           </td>
         </tr>
-        @if($products->isEmpty())
-          <tr>
-            <td colspan="9" class="text-center">Không có sản phẩm nào phù hợp với kết quả tìm kiếm.</td>
-          </tr>
-        @endif
+       
 
       @endforeach
           </tbody>

@@ -144,9 +144,7 @@ class AdminProductController extends Controller
             ->orWhere('MoTa', 'like', "%{$search}%")
             ->orWhere('Gia', 'like', "%{$search}%")
             ->orWhere('loai_san_phams.TenLSP', 'like', "%{$search}%");
-            
         }
-
 
         // Lấy danh sách sản phẩm
         $products = $query->get();
