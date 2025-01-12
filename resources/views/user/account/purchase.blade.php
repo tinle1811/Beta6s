@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="text-end">
                                     @if($hoaDon->TrangThai == 0)
-                                        <button class="btn btn-danger me-2">Hủy</button>
+                                        <button data-id="{{ $hoaDon->MaHD }}" onclick="cancelOrder({{$hoaDon->MaHD}})" class="btn btn-danger me-2 cancel-order">Hủy</button>
                                         <button class="btn btn-primary me-2">Liên hệ</button>
                                     @elseif($hoaDon->TrangThai == 1)
                                         <button class="btn btn-success me-2">Đã nhận được hàng</button>
@@ -80,4 +80,34 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+<script>
+   function cancelOrder(MaHD) {
+    // Hiển thị confirm box xác nhận
+    if (confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?')) {
+        $.ajax({
+            url: '/purchase/cancel-order' , 
+            method: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}', // Gửi token CSRF
+                MaHD: MaHD
+            },
+            success: function(response) {
+                if (response.success) {
+                    alert(response.message);
+                    location.reload(); // Tự động làm mới trang
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                alert('Có lỗi xảy ra. Vui lòng thử lại.');
+            }
+        });
+    }
+}
+
+
+</script>
 @endsection

@@ -58,6 +58,7 @@ Route::middleware('checkRole:shared')->group(function(){
 
    Route::get('/account',[AccountController::class,'index'])->name('user.account.index');
    Route::get('/purchase',[AccountController::class,'purchase'])->name('user.account.purchase');
+   Route::post('/purchase/cancel-order', [AccountController::class, 'cancelOrder'])->name('user.account.cancel');
    
 });
 

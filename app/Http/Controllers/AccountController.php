@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChiTietHoaDon;
 use App\Models\HoaDon;
+use App\Models\SanPham;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,6 +54,37 @@ class AccountController extends Controller
         }
 
         return view('user.account.purchase', compact('viewData', 'hoaDons', 'type'));
+    }
+
+    public function cancelOrder(Request $request)
+    {
+        $user = Auth::user();
+        $id = $request->input('MaHD');  // Lấy MaHD từ dữ liệu POST
+
+        $hoaDon = HoaDon::where('MaHD', $id)->where('MaKH', $user->MaTK)->first();
+
+        // Kiểm tra nếu không tìm thấy đơn hàng
+        if (!$hoaDon) {
+            return response()->json(['status' => 'error', 'message' => 'Đơn hàng không tồn tại.']);
+        }
+
+        if ($hoaDon->TrangThai == 0) {
+            // Cập nhật trạng thái đơn hàng thành "3" (hủy)
+            $hoaDon->TrangThai = 3;
+            $hoaDon->save();
+
+            // Cập nhật số lượng sản phẩm trong đơn hàng
+            $chiTietHoaDons = ChiTietHoaDon::where('MaHD', $hoaDon->MaHD)->get();
+            foreach ($chiTietHoaDons as $chitiet) {
+                $product = SanPham::find($chitiet->MaSP);
+                $product->SoLuong += $chitiet->SoLuong;
+                $product->save();
+            }
+
+            return response()->json(['success' => true, 'message' => 'Đơn hàng đã được hủy thành công']);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Không thể hủy đơn hàng này']);
     }
 
 }
