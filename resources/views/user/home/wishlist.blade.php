@@ -54,7 +54,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="6">Yêu thích của bạn hiện đang trống!</td>
+                                            <td colspan="6">Danh sách sản phẩm yêu thích của bạn hiện đang trống!</td>
                                         </tr>
                                     @endforelse
                                 </tbody>

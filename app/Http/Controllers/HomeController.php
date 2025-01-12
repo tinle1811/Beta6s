@@ -97,7 +97,7 @@ class HomeController extends Controller
     public function wishlist()
     {
         if (!Auth::check()) {
-            return redirect()->route('user.home.index')->with('error', 'Vui lòng đăng nhập để thêm vào yêu thích');
+            return redirect()->route('user.home.index')->with('error', 'Vui lòng đăng nhập để xem danh sách sản phẩm yêu thích');
         }
         $maTk = Auth::user()->MaTK;
 
