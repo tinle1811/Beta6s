@@ -21,7 +21,7 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         $viewData = [];
-        $viewData['title'] = "Trang Blog";
+        $viewData['title'] = "Trang danh sách bài viết";
 
         // Nhận từ khóa tìm kiếm từ request
         $search = $request->input('search');
@@ -40,7 +40,7 @@ class BlogController extends Controller
     public function show($id)
     {
         $viewData = [];
-        $viewData['title'] = "Trang chi tiết Blog";
+        $viewData['title'] = "Trang chi tiết bài viết";
         $viewData['blogDetail'] = Blog::where('MaBV', $id)->firstOrFail();
         $noiDung = $viewData['blogDetail']->NoiDung; // Lấy nội dung từ cơ sở dữ liệu
 

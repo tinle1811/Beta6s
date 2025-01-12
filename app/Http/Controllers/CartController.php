@@ -48,18 +48,19 @@ class CartController extends Controller
 
         $userId = Auth::id();
         $productId = $id;
+        $quantity = $request->input('soLuong',1);
 
         //kiểm tra sản phẩm đã tồn tại trong giỏ hàng chưa
         $cartItems = GioHang::where('MaTK', $userId)->where('MaSP', $productId)->first();
         if($cartItems)
         {
-            $cartItems->soLuong += 1;
+            $cartItems->soLuong += $quantity;
             $cartItems->save();
         }else{
             GioHang::create([
                 'MaTK'=>$userId,
                 'MaSP'=>$productId,
-                'soLuong'=>1,
+                'soLuong'=>$quantity,
             ]);
         }
         return redirect()->route('user.cart.index');

@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SanPham extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'san_phams';
     protected $primaryKey = 'MaSP';
@@ -26,7 +27,11 @@ class SanPham extends Model
         'SoLuotXem',
         'DiemRatingTB',
     ];
-    
+
+    public function loaiSanPham()
+    {
+        return $this->belongsTo(LoaiSanPham::class, 'LoaiSP', 'MaLSP');
+    }
     public function binhLuans()
     {
         return $this->hasMany(BinhLuan::class, 'MaSP', 'MaSP');

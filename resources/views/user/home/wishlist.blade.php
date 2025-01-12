@@ -6,7 +6,6 @@
 <!--wishlist area start -->
 <div class="wishlist_area mt-60">
     <div class="container">
-        <form action="#">
             <div class="row">
                 <div class="col-12">
                     <div class="table_desc wishlist">
@@ -26,7 +25,7 @@
                                     @forelse($viewData['yeuThich'] as $item)
                                         <tr>
                                             <td class="product_thumb">
-                                                <img src="{{ asset('/assetsUser/img_product/' . $item->product->HinhAnh) }}" alt="">
+                                                <img src="{{ asset('/storage/' . $item->product->HinhAnh) }}" alt="">
                                             </td>
                                             <td class="product_name">{{$item->product->TenSP}}</td>
                                             <td class="product-price">{{ number_format($item->product->Gia, 0, ',', '.') }} đ</td>
@@ -65,8 +64,6 @@
                     </div>
                 </div>
             </div>
-
-        </form>
         <div class="row">
             <div class="col-12">
                 <div class="wishlist_share">

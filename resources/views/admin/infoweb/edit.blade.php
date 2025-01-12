@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+@section('title', $viewData['title'])
 @section('content')
     <main id="content" role="main" class="main">
         <!-- Content -->

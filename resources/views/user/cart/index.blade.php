@@ -6,7 +6,6 @@
         <!--shopping cart area start -->
         <div class="shopping_cart_area mt-60">
         <div class="container">
-            <form action="#">
                 <div class="row">
                     <div class="col-12">
                         <div class="table_desc">
@@ -26,17 +25,21 @@
                                         @forelse ($viewData['cartItems'] as $item)
                                             <tr>
                                                 <td class="product_thumb">
-                                                    <img src="{{ asset('/assetsUser/img_product/' . $item->product->HinhAnh) }}" alt="">
+                                                    <img src="{{ asset('/storage/' . $item->product->HinhAnh) }}" alt="">
                                                 </td>
                                                 <td class="product_name">{{ $item->product->TenSP }}</td>
                                                 <td class="product-price">{{ number_format($item->product->Gia, 0, ',', '.') }} đ</td>
                                                 <td class="product_quantity">
+                                                    @if($item->product->SoLuong > 0)
                                                     <form action="{{route('user.cart.update', ['id' => $item->id])}}" method="POST">
                                                         @csrf
                                                         <input type="number" name="soLuong" value="{{ $item->soLuong }}" min="1" class="form-control text-center"
                                                             style="width: 80px; display: inline-block;">
                                                         <button type="submit" class="btn btn-primary btn-sm">Cập nhật</button>
                                                     </form>
+                                                    @else
+                                                    <p>Hết hàng</p>
+                                                    @endif
                                                 </td>
                                                 <td class="product_total">{{ number_format($item->soLuong * $item->product->Gia, 0, ',', '.') }} đ</td>
                                                 <td class="product_remove">

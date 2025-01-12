@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
+use Carbon\Carbon;
+
 use App\Models\SanPham;
+use App\Models\LoaiSanPham;
 use App\Models\YeuThich;
 use App\Models\Blog;
 use App\Events\SanPhamUpdated;
@@ -20,8 +25,20 @@ class HomeController extends Controller
     public function index()
     {
         $viewData['title'] = "Trang chủ";
-        $viewData["DSSP-BanChay"] = SanPham::limit(10)->get();
-        $viewData["DSSP-NoiBat"] = SanPham::skip(10)->limit(10)->get();
+        $viewData["DSSP-Slider"] = SanPham::limit(3)->get();
+        $viewData["DSSP-BanChay"] = SanPham::join('chi_tiet_hoa_dons', 'san_phams.MaSP', '=', 'chi_tiet_hoa_dons.MaSP')
+            ->join('hoa_dons', 'chi_tiet_hoa_dons.MaHD', '=', 'hoa_dons.MaHD')
+            ->select('san_phams.MaSP', 'san_phams.Slug', 'san_phams.HinhAnh', 'san_phams.Gia', 'san_phams.TenSP', 'san_phams.MoTa', DB::raw('SUM(chi_tiet_hoa_dons.SoLuong) as total_quantity'))
+            ->where('hoa_dons.TrangThai', 2)
+            ->where('san_phams.TrangThai', 1)
+            ->groupBy('san_phams.MaSP', 'san_phams.Slug', 'san_phams.HinhAnh', 'san_phams.Gia', 'san_phams.TenSP', 'san_phams.MoTa')
+            ->orderBy('total_quantity', 'Desc')
+            ->paginate(10, ['*'], 'pageSPBanChay');
+        $viewData["DSSP-NoiBat"] = SanPham::where('TrangThai', 2)->get();
+        $viewData["DSSP-Moi"] = SanPham::where('created_at', '>=', Carbon::now()->subMonth())
+            ->where('TrangThai', 1)
+            ->orderBy('created_at', 'Desc')
+            ->paginate(10, ['*'], 'pageSPMoi');
         $viewData["blogs"] = Blog::limit(5)->get();
         return view('user.home.index')->with('viewData', $viewData);
     }

@@ -9,8 +9,12 @@ function openLoginPopup() {
     loginModal.show();
     document.getElementById('overlay').style.display = 'block';
     console.log('overlay đã được gọi');
-    
+
+
 }
+
+
+
 
 function closeLoginPopup() {
     const loginModal = bootstrap.Modal.getInstance(document.getElementById('login-popup'));
@@ -18,10 +22,19 @@ function closeLoginPopup() {
     document.getElementById('overlay').style.display = 'none';
 }
 
+
+
+
 document.getElementById('login-form').addEventListener('submit', async function (e) {
     e.preventDefault(); // Ngăn chặn reload trang
 
+
+
+
     const formData = new FormData(this);
+
+
+
 
     try {
         const response = await fetch("{{ route('login') }}", {
@@ -32,7 +45,13 @@ document.getElementById('login-form').addEventListener('submit', async function 
             body: formData
         });
 
+
+
+
         const result = await response.json();
+
+
+
 
         if (response.ok) {
             alert(result.message);

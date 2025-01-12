@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Title -->
-    <title>{{ $viewData['title'] ?? 'Beat6s' }}</title>
-
+    <title>@yield('title')</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
     <!-- Font -->
@@ -18,6 +17,8 @@
     <link rel="stylesheet" href="{{ asset('assetsAdmin\vendor\icon-set\style.css') }}">
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="{{ asset('assetsAdmin\css\theme.min.css?v=1.0') }}">
+    <!-- CSS Category -->
+    <link rel="stylesheet" href="{{asset('CssAdmin\category.css')}}">
     {{-- sử dụng biểu đồ morris thống kê --}}
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     {{-- sử dụng icon star cho bình luận --}}

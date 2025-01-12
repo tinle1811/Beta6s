@@ -39,9 +39,9 @@
                                                     </a>
                                                 </h4>
                                                 <div class="blog_meta">
-                                                    <span class="author">Posted by : <a
+                                                    <span class="author">Đăng bởi : <a
                                                             href="#">{{ $blog->TacGia }}</a> / </span>
-                                                    <span class="post_date">On : <a
+                                                    <span class="post_date">Ngày : <a
                                                             href="#">{{ $blog->created_at }}</a></span>
                                                 </div>
                                                 <div class="blog_desc">

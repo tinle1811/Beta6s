@@ -72,6 +72,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/popup_login.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/account.css') }}">
 
+    <!-- Css Product List -->
+    <link rel="stylesheet" href="{{ asset('/CssUser/ProductList.css') }}">
 
 </head>
 
@@ -79,7 +81,8 @@
     @include('user.layouts.header')
     @yield('content')
     @include('user.layouts.popupLogin')
-    @include('user.layouts.popupChat');
+    @include('user.layouts.popupChat')
+
     @include('user.layouts.footer')
     <!-- JS
 ============================================ -->
