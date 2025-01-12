@@ -122,7 +122,8 @@
                                             </li>
                                             <li>
                                                 <a data-bs-toggle="tab" href="#reviews" role="tab"
-                                                    aria-controls="reviews" aria-selected="false">Đánh giá</a>
+                                                    aria-controls="reviews" aria-selected="false">Đánh
+                                                    giá({{ $viewData['comments']->count() }})</a>
                                             </li>
                                         </ul>
                                     </div>
