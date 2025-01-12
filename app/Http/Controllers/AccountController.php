@@ -17,37 +17,110 @@ class AccountController extends Controller
 
         return view('user.account.index')->with('viewData', $viewData);
     }
-    public function purchase(Request $request)
-    {
-        $userId = Auth::id(); 
+    public function purchase(Request $request){
+        $userId = Auth::id();
+
         $viewData['title'] = "Trang đơn mua";
-        
-        $type = (int)$request->query('type', 0); // Mặc định type là 0 nếu không có query
+        $validStatuses = [1, 2, 3, 4];
+        $type = (int)$request->query('type');
 
-        $statusMap = [
-            1 => 0, // "Chờ xử lý" => TrangThai = 0
-            2 => 1, // "Đang giao hàng" => TrangThai = 1
-            3 => 2, // "Đã hoàn thành" => TrangThai = 2
-            4 => 3  // "Đã hủy" => TrangThai = 3
-        ];
 
-        // Nếu type = 0 thì lấy tất cả hóa đơn
-        if ($type == 0) {
-            $hoaDons = HoaDon::where('MaKH', $userId)->get();
+        if (in_array($type, $validStatuses)) {
+            //$hoaDons = HoaDon::where('TrangThai', $type)->get();
+            $hoaDons = HoaDon::join('chi_tiet_hoa_dons', 'hoa_dons.MaHD', '=', 'chi_tiet_hoa_dons.MaHD')
+                                ->join('san_phams', 'san_phams.MaSP', '=', 'chi_tiet_hoa_dons.MaSP')
+                                ->where('hoa_dons.MaKH', $userId)
+                                ->where('hoa_dons.TrangThai', $type)
+                                ->select([
+                                    'san_phams.MaSP',
+                                    'san_phams.HinhAnh',
+                                    'san_phams.TenSP',
+                                    'chi_tiet_hoa_dons.DonGia',
+                                    'chi_tiet_hoa_dons.SoLuong',
+                                    'hoa_dons.TrangThai',
+                                    'hoa_dons.TongTien',
+                                ])
+                                ->get();
         } else {
-            $hoaDons = HoaDon::where('TrangThai', $statusMap[$type])
-                            ->where('MaKH', $userId)
-                            ->get();
-            $viewData['TabMessage'] = $this->getTabMessage($type);
+            //$hoaDons = HoaDon::all();
+            $hoaDons = HoaDon::join('chi_tiet_hoa_dons', 'hoa_dons.MaHD', '=', 'chi_tiet_hoa_dons.MaHD')
+                                ->join('san_phams', 'san_phams.MaSP', '=', 'chi_tiet_hoa_dons.MaSP')
+                                ->where('hoa_dons.MaKH', $userId)
+                                ->select([
+                                    'san_phams.MaSP',
+                                    'san_phams.HinhAnh',
+                                    'san_phams.TenSP',
+                                    'chi_tiet_hoa_dons.DonGia',
+                                    'chi_tiet_hoa_dons.SoLuong',
+                                    'hoa_dons.TrangThai',
+                                    'hoa_dons.TongTien',
+                                ])
+                                ->get();
+
+            $type = 0;  
+            
+            // Lọc đơn hàng theo trạng thái
+        }
+        return view('user.account.purchase', compact('viewData', 'hoaDons', 'type'));
+    }
+    public function orderlist(Request $request)
+    {
+        $viewData['title'] = "Trang đơn mua";
+        // Lấy tài khoản đã đăng nhập
+        $user = Auth::user();
+
+        // Lấy danh sách hóa đơn theo tài khoản
+        //$hoaDons = HoaDon::where('MaKH', $user->MaTK)->get();
+
+        // Trả về View với dữ liệu hóa đơn
+        //return view('user.orders', ['hoaDons' => $hoaDons]);
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để xem thông tin.');
+        }
+        // Lấy danh sách hóa đơn theo tài khoản
+        //$hoaDons = HoaDon::where('MaKH', $user->MaTK)->get();
+        $hoaDons = HoaDon::where('MaKH', $user->MaTK)
+            ->with(['chiTietHoaDons.sanPham', 'binhLuans'])
+            ->orderBy('created_at', 'asc')
+            ->get();
+
+        return view('user.account.orderlist', [
+            'user' => $user,
+            'hoaDons' => $hoaDons,
+            'viewData' => $viewData,
+        ]);
+    }
+
+    public function addReview(Request $request)
+    {
+        $validated = $request->validate([
+            'reviews' => 'required|array',
+            'reviews.*.maHD' => 'required|integer',
+            'reviews.*.maSP' => 'required|integer',
+            'reviews.*.rating' => 'required|integer|min:1|max:5',
+            'reviews.*.comment' => 'required|string|max:1000',
+        ]);
+
+        foreach ($validated['reviews'] as $review) {
+            BinhLuan::create([
+                'MaHD' => $review['maHD'],
+                'MaKH' => Auth::user()->MaTK,
+                'MaSP' => $review['maSP'],
+                'DanhGia' => $review['rating'],
+                'NoiDung' => $review['comment'],
+                'TrangThai' => 0, // chưa duyệt
+                'created_at' => now(),
+            ]);
         }
 
-        return view('user.account.purchase', compact('viewData', 'hoaDons', 'type'));
+        // Trả về phản hồi thành công
+        return response()->json(['success' => true]);
     }
 
     public function purchaseHistory(){
         $userId = Auth::id();
 
-        $viewData['title'] = "Trang lịch sử mua hàng";
+        $viewData['title'] = "Trang sản phẩm đã mua";
 
         $viewData['DSSP_DaMua'] = HoaDon::join('chi_tiet_hoa_dons', 'hoa_dons.MaHD', '=', 'chi_tiet_hoa_dons.MaHD')
                                         ->join('san_phams', 'chi_tiet_hoa_dons.MaSP', '=', 'san_phams.MaSP')

@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Models\GioHang;
 use App\Models\LoaiSanPham;
 use App\Models\YeuThich;
-use App\Models\LoaiSanPham;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\ThongTinWebsite;
