@@ -29,7 +29,7 @@
 
                 <!-- Hiển thị danh sách sản phẩm đã đánh giá -->
                 <div class="product-list">
-                    @foreach ($viewData['DSSP_DaDanhGia'] as $review)
+                    @forelse ($viewData['DSSP_DaDanhGia'] as $review)
                         <div class="product-item d-flex align-items-center">
                             <!-- Hình ảnh sản phẩm -->
                             <img src="{{ asset('/assetsUser/img_product/' . $review->HinhAnh) }}" alt="{{ $review->TenSP }}" class="product-img me-3">
@@ -49,7 +49,9 @@
                                 <p><strong>Ngày đánh giá:</strong> {{ \Carbon\Carbon::parse($review->created_at)->format('d/m/Y') }}</p>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <p class="text-center text-success fw-bold">Bạn chưa đánh giá sản phẩm nào! <br> Danh sách sản phẩm đã đánh giá hiện đang trống</p>
+                    @endforelse
                 </div>
 
                 <!-- Pagination -->

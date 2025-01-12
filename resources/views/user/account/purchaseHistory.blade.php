@@ -29,7 +29,7 @@
 
                 <!-- Hiển thị danh sách sản phẩm đã mua -->
                 <div class="product-list">
-                    @foreach ($viewData['DSSP_DaMua'] as $order)
+                    @forelse ($viewData['DSSP_DaMua'] as $order)
                         <div class="product-item d-flex align-items-center">
                             <!-- Hình ảnh sản phẩm -->
                             <img src="{{ asset('/assetsUser/img_product/' . $order->HinhAnh) }}" alt="{{ $order->TenSP }}" class="product-img me-3">
@@ -42,7 +42,9 @@
                                 <p><strong>Ngày mua:</strong> {{ \Carbon\Carbon::parse($order->created_at)->format('d/m/Y - H:i:s') }}</p>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <p class="text-center text-success fw-bold">Bạn chưa mua sản phẩm nào! <br> Danh sách sản phẩm đã mua hiện đang trống</p>
+                    @endforelse
                 </div>
 
                 <!-- Pagination -->
