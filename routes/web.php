@@ -44,8 +44,6 @@ Route::get('/about', [HomeController::class, 'about'])->name('user.home.about');
 Route::get('/blog', [BlogController::class, 'index'])->name('user.blog.index');
 Route::get('/blog-detail/{id?}', [BlogController::class, 'show'])->name('user.blog.show');
 
-
-
 // các route chung cho cả hai phân hệ
 Route::middleware('checkRole:shared')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('user.cart.index');
@@ -139,6 +137,8 @@ Route::middleware('checkRole:admin')->group(function () {
     Route::get("/admin", [AdminAnalysisController::class, "index"])->name("admin.analysis");
     Route::post("/admin/date", [AdminAnalysisController::class, "filter_by_date"])->name("admin.analysis.filter_by_date");
     Route::get('/export-thong-ke', [AdminAnalysisController::class, 'export'])->name("admin.analysis.export");
+    Route::get("/admin/thisweek", [AdminAnalysisController::class, "filter_by_thisweek"])->name("admin.analysis.filter_by_thisweek");
+    Route::get("/admin/lastweek", [AdminAnalysisController::class, "filter_by_lastweek"])->name("admin.analysis.filter_by_lastweek");
 
     //cập nhật đơn hàng
     Route::get("/admin/order", [AdminOrderController::class, "index"])->name("admin.order");

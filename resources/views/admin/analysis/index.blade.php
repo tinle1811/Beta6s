@@ -269,6 +269,90 @@
 
             </div>
         </div>
+        <!-- Content -->
+        <div class="purchase-statistics">
+            <style>
+                #text-muted {
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    color: green;
+                    margin-top: 20px;
+                    text-align: center;
+                }
+            </style>
+            <div class="content-pie-chart">
+                <h4 style="margin-left: 20px; margin-top: 30px;">Thống kê lượt mua</h4>
+                <div class="d-flex justify-content-end mb-3" style="border-top: solid 1px silver; position: relative;">
+                    <h6
+                        style="position: absolute; top: 7.5px; left: 30px; padding: 5px 5px; box-shadow: 0 3px 6px silver; border-radius: 5px">
+                        <b>Tổng lượt mua: </b><span style="color: red"
+                            id="TLM">{{ $viewData['TongLuotMua_ALLSP'] }}</span>
+                    </h6>
+                    <!-- Nav -->
+                    <ul class="nav nav-segment" id="expensesTab" role="tablist">
+                        <li class="nav-item" data-toggle="chart-doughnut" data-datasets="0" data-trigger="click"
+                            data-action="toggle">
+                            <a class="nav-link active" href="javascript:;" data-toggle="tab">Tuần này</a>
+                        </li>
+                        <li class="nav-item" data-toggle="chart-doughnut" data-datasets="1" data-trigger="click"
+                            data-action="toggle">
+                            <a class="nav-link" href="javascript:;" data-toggle="tab">Tuần trước</a>
+                        </li>
+                    </ul>
+                    <!-- End Nav -->
+                </div>
+
+                <!-- Pie Chart -->
+                <div class="chartjs-custom mb-3 mb-sm-5" style="height: 14rem;">
+                    <canvas id="updatingDoughnutChart"
+                        data-hs-chartjs-options='{
+                "type": "doughnut",
+                "data": {
+                "labels": ["sản phẩm nổi bật", "sản phẩm bán chạy", "sản phẩm mới"],
+                "datasets": [{
+                    "backgroundColor": ["#377dff", "#00c9db", "#e7eaf3"],
+                    "borderWidth": 5,
+                    "hoverBorderColor": "#fff"
+                }]
+                },
+                "options": {
+                "cutoutPercentage": 80,
+                "tooltips": {
+                    "postfix": "%",
+                    "hasIndicator": true,
+                    "mode": "index",
+                    "intersect": false
+                },
+                "hover": {
+                    "mode": "nearest",
+                    "intersect": true
+                }
+                }
+            }'></canvas>
+                </div>
+                <!-- End Pie Chart -->
+
+                <!-- Legend Indicators -->
+                <div class="row justify-content-center">
+                    <div class="col-auto mb-3 mb-sm-0">
+                        <span class="card-title h4" id="SPNB">{{ $viewData['TongLuotMua_SPNB'] }} lượt mua</span>
+                        <span class="legend-indicator bg-primary"></span> sản phẩm nổi bật
+                    </div>
+
+                    <div class="col-auto mb-3 mb-sm-0">
+                        <span class="card-title h4" id="SPBC">{{ $viewData['TongLuotMua_SPBC'] }} lượt mua</span>
+                        <span class="legend-indicator bg-info"></span> sản phẩm bán chạy
+                    </div>
+
+                    <div class="col-auto">
+                        <span class="card-title h4" id="SPM">{{ $viewData['TongLuotMua_SPM'] }} lượt mua</span>
+                        <span class="legend-indicator"></span> sản phẩm mới
+                    </div>
+                </div>
+                <!-- End Legend Indicators -->
+            </div>
+        </div>
+        <!-- End Content -->
 
         <!-- Footer -->
 
@@ -319,6 +403,13 @@
 
         <!-- End Footer -->
     </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var banChay = {{ $viewData['totalPurchases_spbc'] }};
+        var noiBat = {{ $viewData['totalPurchases_spnb'] }};
+        var moi = {{ $viewData['totalPurchases_spm'] }};
+    </script>
 @endsection
 @section('jsThongKe')
     <script>
