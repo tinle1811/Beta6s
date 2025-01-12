@@ -126,6 +126,7 @@ class AccountController extends Controller
                                         ->join('san_phams', 'chi_tiet_hoa_dons.MaSP', '=', 'san_phams.MaSP')
                                         ->where('hoa_dons.MaKH', $userId)
                                         ->where('hoa_dons.TrangThai', 2)
+                                        ->orderBy('hoa_dons.created_at', 'Desc')
                                         ->paginate(10, [
                                             'san_phams.MaSP',
                                             'san_phams.HinhAnh',
@@ -145,6 +146,7 @@ class AccountController extends Controller
 
         $viewData['DSSP_DaDanhGia'] = BinhLuan::join('san_phams', 'binh_luans.MaSP', '=', 'san_phams.MaSP')
                                 ->where('binh_luans.MaKH', $userId)
+                                ->orderBy('binh_luans.created_at', 'Desc')
                                 ->paginate(10, [
                                     'san_phams.MaSP',
                                     'san_phams.HinhAnh',
