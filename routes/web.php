@@ -74,6 +74,7 @@ Route::middleware('checkRole:admin')->group(function () {
     Route::get("/admin", [AdminAnalysisController::class, "index"])->name("admin.analysis");
 
     Route::get('/admin/product', [AdminProductController::class, "index"])->name("admin.product");
+    Route::get('admin/product/search', [AdminProductController::class, "search"])->name('admin.product.search');
     Route::get('/admin/product/create', [AdminProductController::class, "create"])->name("admin.product.create");
     Route::post('/admin/product/createPost', [AdminProductController::class, "createPost"])->name("admin.product.createPost");
 
@@ -84,6 +85,7 @@ Route::middleware('checkRole:admin')->group(function () {
 
 
     Route::get('/admin/catagory', [AdminCatagoryController::class, "index"])->name("admin.catagory");
+    Route::get('/admin/catagory/search', [AdminCatagoryController::class, "search"])->name("admin.catagory.search");
     Route::get('/admin/catagory/create', [AdminCatagoryController::class, "create"])->name("admin.catagory.create");
     Route::post('/admin/catagory/create', [AdminCatagoryController::class, "createSubmitForm"])->name("admin.catagory.createSubmitForm");
     Route::get('/admin/catagory/{id}/edit', [AdminCatagoryController::class, "edit"])->name("admin.catagory.edit");
@@ -112,8 +114,8 @@ Route::middleware('checkRole:admin')->group(function () {
     Route::get("/admin/refund/edit", [AdminRefundController::class, "edit"])->name("admin.refund.edit");
 
     Route::get("/admin/contact", [AdminContactController::class, "index"])->name("admin.contact");
-    Route::get("/admin/contact/create", [AdminContactController::class, "create"])->name("admin.contact.create");
-    Route::get("/admin/contact/edit", [AdminContactController::class, "edit"])->name("admin.contact.edit");
+    Route::post("/admin/contact/delete", [AdminContactController::class, "delete"])->name("admin.contact.delete");
+    Route::post("/admin/contact/edit", [AdminContactController::class, "updateContact"])->name("admin.contact.edit");
 
     Route::get("/admin/pay", [AdminPayController::class, "index"])->name("admin.pay");
     Route::get("/admin/pay/create", [AdminPayController::class, "create"])->name("admin.pay.create");

@@ -57,4 +57,38 @@ class AdminCatagoryController extends Controller {
             'newStatus' => $category->getCategoryStatus()
         ]);
     }
+
+    public function search(Request $request)
+{
+    $query = LoaiSanPham::query();
+
+    // Kiểm tra nếu có từ khóa tìm kiếm
+    if ($request->has('search') && $request->search != '') {
+        $search = $request->search;
+        $query->where('MaLSP', 'like', "%{$search}%")
+            ->orWhere('TenLSP', 'like', "%{$search}%");
+
+        // Kiểm tra nếu có lọc theo trạng thái hoạt động
+        if ($search == 'Hoạt động') {
+            $query->orWhere('TrangThai', 1); 
+        } elseif ($search == 'Không hoạt động') {
+            $query->orWhere('TrangThai', 0); 
+        }
+    }
+
+    // Phân trang kết quả, mặc định 10 sản phẩm mỗi trang
+    $categorys = $query->paginate(10);
+
+    // Kiểm tra nếu không có kết quả nào
+    if ($categorys->isEmpty()) {
+        $viewData['message'] = 'Không tìm thấy loại sản phẩm nào.';
+    }
+
+    $viewData['categorys'] = $categorys;
+    $viewData['title'] = 'Trang loại sản phẩm';
+
+    // Trả về view với dữ liệu tìm kiếm và tiêu đề
+    return view('admin.catagory.index', compact('viewData'));
+}
+
 }

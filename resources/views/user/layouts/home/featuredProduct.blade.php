@@ -34,11 +34,11 @@
                                         href="{{ route('user.home.show', ['slug' => $product->getProductSlug()]) }}">{{ $product->getProductName() }}</a>
                                 </h3>
                                 <div class="add_to_cart">
-                                    <form action="{{route('user.cart.add', ['id' => $product->MaSP])}}" method="POST"
+                                    <form action="{{ route('user.cart.add', ['id' => $product->MaSP]) }}" method="POST"
                                         class="add-to-cart-form" id="add-to-cart-form">
                                         @csrf
                                         @auth
-                                            <input type="hidden" name="MaSP" value="{{ $product->MaSP}}">
+                                            <input type="hidden" name="MaSP" value="{{ $product->MaSP }}">
                                             <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
                                         @else
                                             <a href="javascript:void(0)" onclick="openLoginPopup()" class="btn btn-primary"

@@ -7,16 +7,42 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Illuminate\Http\Request;
 use App\Models\ThongKe; // Đảm bảo đã import model
+use App\Models\HoaDon;
+use App\Models\ChiTietHoaDon;
+use App\Models\TaiKhoan;
+
 
 class AdminAnalysisController extends Controller
 {
     public $viewData = [];
     public function index(Request $request)
     {
+        // Khởi tạo mảng viewData
         $viewData['title'] = "Thống Kê";
+
+        // Lấy dữ liệu thống kê
         $thongKes = ThongKe::orderBy('order_date', 'asc')->get();
+
         $viewData['thongKes'] = $thongKes;
-        return view('admin.analysis.index')->with('viewData', $viewData);
+
+        // Tổng hóa đơn đã hoàn thành
+        $totalPurchases = HoaDon::where('TrangThai', 2)->count();
+
+        // Tổng tài khoản đã đăng ký
+        $totalAccount = TaiKhoan::count();
+
+        // Tổng số sản phẩm đã bán từ hóa đơn đã hoàn thành
+        $totalSoldProducts = ChiTietHoaDon::join('hoa_dons', 'chi_tiet_hoa_dons.MaHD', '=', 'hoa_dons.MaHD')
+            ->where('hoa_dons.TrangThai', 2)
+            ->sum('chi_tiet_hoa_dons.SoLuong');
+
+        // Truyền các dữ liệu vào view
+        $viewData['totalPurchases'] = $totalPurchases;
+        $viewData['totalAccount'] = $totalAccount;
+        $viewData['totalSoldProducts'] = $totalSoldProducts;
+
+        // Trả về view với dữ liệu thống kê
+        return view('admin.analysis.index', compact('viewData'));
     }
 
     public function filter_by_date(Request $request)
