@@ -10,6 +10,7 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <h1 class="page-header-title">Dashboard</h1>
+
                         </div>
 
                         <div class="col-auto">
@@ -224,140 +225,141 @@
         </div>
         <!-- End Content -->
         <div class="row gx-2 gx-lg-3 justify-content-center">
-  
+
             <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
-              <!-- Card -->
-              <a class="card card-hover-shadow h-100" href="#">
-                <div class="card-body">
-                  <h6 class="card-subtitle">Tổng hóa đơn đã hoàn thành</h6>
-  
-                  <div class="row align-items-center gx-2 mb-1">
-                    <div class="col-6">
-                      <span class="card-title h2">{{ $viewData['totalPurchases'] }}</span>
+                <!-- Card -->
+                <a class="card card-hover-shadow h-100" href="#">
+                    <div class="card-body">
+                        <h6 class="card-subtitle">Tổng hóa đơn đã hoàn thành</h6>
+
+                        <div class="row align-items-center gx-2 mb-1">
+                            <div class="col-6">
+                                <span class="card-title h2">{{ $viewData['totalPurchases'] }}</span>
+                            </div>
+                        </div>
+                        <!-- End Row -->
                     </div>
-                  </div>
-                  <!-- End Row -->
-                </div>
-              </a>
-              <!-- End Card -->
+                </a>
+                <!-- End Card -->
             </div>
             <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
                 <!-- Card -->
                 <a class="card card-hover-shadow h-100" href="#">
-                  <div class="card-body">
-                    <h6 class="card-subtitle">Tổng tài khoản đã đăng ký</h6>
-    
-                    <div class="row align-items-center gx-2 mb-1">
-                      <div class="col-6">
-                        <span class="card-title h2">{{ $viewData['totalAccount'] }}</span>
-                      </div>
+                    <div class="card-body">
+                        <h6 class="card-subtitle">Tổng tài khoản đã đăng ký</h6>
+
+                        <div class="row align-items-center gx-2 mb-1">
+                            <div class="col-6">
+                                <span class="card-title h2">{{ $viewData['totalAccount'] }}</span>
+                            </div>
+                        </div>
+                        <!-- End Row -->
                     </div>
-                    <!-- End Row -->
-                  </div>
                 </a>
                 <!-- End Card -->
-              </div>
-            
-          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
-            <!-- Card -->
-            <a class="card card-hover-shadow h-100" href="#">
-              <div class="card-body">
-                <h6 class="card-subtitle">Tổng sản phẩm đã bán</h6>
-
-                <div class="row align-items-center gx-2 mb-1">
-                  <div class="col-6">
-                    <span class="card-title h2">{{ $viewData['totalSoldProducts'] }}</span>
-                  </div>
-                </div>
-                <!-- End Row -->
-              </div>
-            </a>
-            <!-- End Card -->
-          </div>
-          
-
-        <div class="content container-fluid ">
-            <div class="card mb-3 mb-lg-5 shadow-soft p-3 mb-5 bg-white rounded">
-                <div class="card-header border border-dark ">
-                    <h1>Thống kê tổng</h1>
-
-                    <ul class="nav justify-content-end">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.analysis.export') }}" class="btn btn-primary">
-                                <i class="tio-download-to mr-1"></i> Export
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Table -->
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col" style="text-align: center;">STT</th>
-                            <th scope="col" style="text-align: center;">Ngày thống kê</th>
-                            <th scope="col" style="text-align: center;">Doanh Thu</th>
-                            <th scope="col" style="text-align: center;">Lợi Nhuận</th>
-                            <th scope="col" style="text-align: center;">Số lượng bán</th>
-                            <th scope="col" style="text-align: center;">Tổng Đơn Hàng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($viewData['thongKes'] as $thongKe)
-                            <tr>
-                                <td scope="row" style="text-align: center;">{{ $thongKe->id }}</td>
-                                <td style="text-align: center;">{{ $thongKe->order_date }}</td>
-                                <td style="text-align: center;">{{ $thongKe->sales }}</td>
-                                <td style="text-align: center;">{{ $thongKe->profit }}</td>
-                                <td style="text-align: center;">{{ $thongKe->quantity }}</td>
-                                <td style="text-align: center;">{{ $thongKe->total_order }}</td>
-
-                            </tr>
-                        @endforeach
-
-
-                    </tbody>
-                </table>
-
             </div>
-        </div>
-        <!-- Content -->
-        <div class="purchase-statistics">
-            <style>
-                #text-muted {
-                    font-size: 1.2rem;
-                    font-weight: 700;
-                    color: green;
-                    margin-top: 20px;
-                    text-align: center;
-                }
-            </style>
-            <div class="content-pie-chart">
-                <h4 style="margin-left: 20px; margin-top: 30px;">Thống kê lượt mua</h4>
-                <div class="d-flex justify-content-end mb-3" style="border-top: solid 1px silver; position: relative;">
-                    <h6
-                        style="position: absolute; top: 7.5px; left: 30px; padding: 5px 5px; box-shadow: 0 3px 6px silver; border-radius: 5px">
-                        <b>Tổng lượt mua: </b><span style="color: red"
-                            id="TLM">{{ $viewData['PieChartData']['TongLuotMua_ALLSP'] }}</span>
-                    </h6>
-                    <!-- Nav -->
-                    <ul class="nav nav-segment" id="expensesTab" role="tablist">
-                        <li class="nav-item" data-toggle="chart-doughnut" data-datasets="0" data-trigger="click"
-                            data-action="toggle">
-                            <a class="nav-link active" href="javascript:;" data-toggle="tab">Tuần này</a>
-                        </li>
-                        <li class="nav-item" data-toggle="chart-doughnut" data-datasets="1" data-trigger="click"
-                            data-action="toggle">
-                            <a class="nav-link" href="javascript:;" data-toggle="tab">Tuần trước</a>
-                        </li>
-                    </ul>
-                    <!-- End Nav -->
-                </div>
 
-                <!-- Pie Chart -->
-                <div class="chartjs-custom mb-3 mb-sm-5" style="height: 14rem;">
-                    <canvas id="updatingDoughnutChart"
-                        data-hs-chartjs-options='{
+            <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+                <!-- Card -->
+                <a class="card card-hover-shadow h-100" href="#">
+                    <div class="card-body">
+                        <h6 class="card-subtitle">Tổng sản phẩm đã bán</h6>
+
+                        <div class="row align-items-center gx-2 mb-1">
+                            <div class="col-6">
+                                <span class="card-title h2">{{ $viewData['totalSoldProducts'] }}</span>
+                            </div>
+                        </div>
+                        <!-- End Row -->
+                    </div>
+                </a>
+                <!-- End Card -->
+            </div>
+
+
+            <div class="content container-fluid ">
+                <div class="card mb-3 mb-lg-5 shadow-soft p-3 mb-5 bg-white rounded">
+                    <div class="card-header border border-dark ">
+                        <h1>Thống kê tổng</h1>
+
+                        <ul class="nav justify-content-end">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.analysis.export') }}" class="btn btn-primary">
+                                    <i class="tio-download-to mr-1"></i> Export
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Table -->
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="text-align: center;">STT</th>
+                                <th scope="col" style="text-align: center;">Ngày thống kê</th>
+                                <th scope="col" style="text-align: center;">Doanh Thu</th>
+                                <th scope="col" style="text-align: center;">Lợi Nhuận</th>
+                                <th scope="col" style="text-align: center;">Số lượng bán</th>
+                                <th scope="col" style="text-align: center;">Tổng Đơn Hàng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($viewData['thongKes'] as $thongKe)
+                                <tr>
+                                    <td scope="row" style="text-align: center;">{{ $thongKe->id }}</td>
+                                    <td style="text-align: center;">{{ $thongKe->order_date }}</td>
+                                    <td style="text-align: center;">{{ $thongKe->sales }}</td>
+                                    <td style="text-align: center;">{{ $thongKe->profit }}</td>
+                                    <td style="text-align: center;">{{ $thongKe->quantity }}</td>
+                                    <td style="text-align: center;">{{ $thongKe->total_order }}</td>
+
+                                </tr>
+                            @endforeach
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <!-- Content -->
+            <div class="purchase-statistics">
+                <style>
+                    #text-muted {
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                        color: green;
+                        margin-top: 20px;
+                        text-align: center;
+                    }
+                </style>
+                <div class="content-pie-chart">
+                    <h4 style="margin-left: 20px; margin-top: 30px;">Thống kê lượt mua</h4>
+                    <div class="d-flex justify-content-end mb-3"
+                        style="border-top: solid 1px silver; position: relative;">
+                        <h6
+                            style="position: absolute; top: 7.5px; left: 30px; padding: 5px 5px; box-shadow: 0 3px 6px silver; border-radius: 5px">
+                            <b>Tổng lượt mua: </b><span style="color: red"
+                                id="TLM">{{ $viewData['PieChartData']['TongLuotMua_ALLSP'] }}</span>
+                        </h6>
+                        <!-- Nav -->
+                        <ul class="nav nav-segment" id="expensesTab" role="tablist">
+                            <li class="nav-item" data-toggle="chart-doughnut" data-datasets="0" data-trigger="click"
+                                data-action="toggle">
+                                <a class="nav-link" href="javascript:;" data-toggle="tab">Tuần này</a>
+                            </li>
+                            <li class="nav-item" data-toggle="chart-doughnut" data-datasets="1" data-trigger="click"
+                                data-action="toggle">
+                                <a class="nav-link" href="javascript:;" data-toggle="tab">Tuần trước</a>
+                            </li>
+                        </ul>
+                        <!-- End Nav -->
+                    </div>
+
+                    <!-- Pie Chart -->
+                    <div class="chartjs-custom mb-3 mb-sm-5" style="height: 14rem;">
+                        <canvas id="updatingDoughnutChart"
+                            data-hs-chartjs-options='{
                 "type": "doughnut",
                 "data": {
                 "labels": ["sản phẩm nổi bật", "sản phẩm bán chạy", "sản phẩm mới"],
@@ -381,57 +383,60 @@
                 }
                 }
             }'></canvas>
+                    </div>
+                    <!-- End Pie Chart -->
+
+                    <!-- Legend Indicators -->
+                    <div class="row justify-content-center">
+                        <div class="col-auto mb-3 mb-sm-0">
+                            <span class="card-title h4"
+                                id="SPNB">{{ $viewData['PieChartData']['TongLuotMua_SPNB'] }} lượt mua</span>
+                            <span class="legend-indicator bg-primary"></span> sản phẩm nổi bật
+                        </div>
+
+                        <div class="col-auto mb-3 mb-sm-0">
+                            <span class="card-title h4"
+                                id="SPBC">{{ $viewData['PieChartData']['TongLuotMua_SPBC'] }} lượt mua</span>
+                            <span class="legend-indicator bg-info"></span> sản phẩm bán chạy
+                        </div>
+
+                        <div class="col-auto">
+                            <span class="card-title h4" id="SPM">{{ $viewData['PieChartData']['TongLuotMua_SPM'] }}
+                                lượt mua</span>
+                            <span class="legend-indicator"></span> sản phẩm mới
+                        </div>
+                    </div>
+                    <!-- End Legend Indicators -->
                 </div>
-                <!-- End Pie Chart -->
-
-                <!-- Legend Indicators -->
-                <div class="row justify-content-center">
-                    <div class="col-auto mb-3 mb-sm-0">
-                        <span class="card-title h4" id="SPNB">{{ $viewData['PieChartData']['TongLuotMua_SPNB'] }} lượt mua</span>
-                        <span class="legend-indicator bg-primary"></span> sản phẩm nổi bật
-                    </div>
-
-                    <div class="col-auto mb-3 mb-sm-0">
-                        <span class="card-title h4" id="SPBC">{{ $viewData['PieChartData']['TongLuotMua_SPBC'] }} lượt mua</span>
-                        <span class="legend-indicator bg-info"></span> sản phẩm bán chạy
-                    </div>
-
-                    <div class="col-auto">
-                        <span class="card-title h4" id="SPM">{{ $viewData['PieChartData']['TongLuotMua_SPM'] }} lượt mua</span>
-                        <span class="legend-indicator"></span> sản phẩm mới
-                    </div>
-                </div>
-                <!-- End Legend Indicators -->
             </div>
-        </div>
-        <!-- End Content -->
+            <!-- End Content -->
 
-        <!-- Footer -->
+            <!-- Footer -->
 
-        <div class="footer">
-            <div class="row justify-content-between align-items-center">
-                <div class="col">
-                    <p class="font-size-sm mb-0">&copy; Front. <span class="d-none d-sm-inline-block">2020
-                            Htmlstream.</span></p>
-                </div>
-                <div class="col-auto">
-                    <div class="d-flex justify-content-end">
-                        <!-- List Dot -->
-                        <ul class="list-inline list-separator">
-                            <li class="list-inline-item">
-                                <a class="list-separator-link" href="#">FAQ</a>
-                            </li>
+            <div class="footer">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col">
+                        <p class="font-size-sm mb-0">&copy; Front. <span class="d-none d-sm-inline-block">2020
+                                Htmlstream.</span></p>
+                    </div>
+                    <div class="col-auto">
+                        <div class="d-flex justify-content-end">
+                            <!-- List Dot -->
+                            <ul class="list-inline list-separator">
+                                <li class="list-inline-item">
+                                    <a class="list-separator-link" href="#">FAQ</a>
+                                </li>
 
-                            <li class="list-inline-item">
-                                <a class="list-separator-link" href="#">License</a>
-                            </li>
+                                <li class="list-inline-item">
+                                    <a class="list-separator-link" href="#">License</a>
+                                </li>
 
-                            <li class="list-inline-item">
-                                <!-- Keyboard Shortcuts Toggle -->
-                                <div class="hs-unfold">
-                                    <a class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
-                                        href="javascript:;"
-                                        data-hs-unfold-options='{
+                                <li class="list-inline-item">
+                                    <!-- Keyboard Shortcuts Toggle -->
+                                    <div class="hs-unfold">
+                                        <a class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
+                                            href="javascript:;"
+                                            data-hs-unfold-options='{
                             "target": "#keyboardShortcutsSidebar",
                             "type": "css-animation",
                             "animationIn": "fadeInRight",
@@ -439,32 +444,23 @@
                             "hasOverlay": true,
                             "smartPositionOff": true
                            }'>
-                                        <i class="tio-command-key"></i>
-                                    </a>
-                                </div>
-                                <!-- End Keyboard Shortcuts Toggle -->
-                            </li>
-                        </ul>
-                        <!-- End List Dot -->
+                                            <i class="tio-command-key"></i>
+                                        </a>
+                                    </div>
+                                    <!-- End Keyboard Shortcuts Toggle -->
+                                </li>
+                            </ul>
+                            <!-- End List Dot -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
 
-        <!-- End Footer -->
+            <!-- End Footer -->
     </main>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        var banChay = {{ $viewData['PieChartData']['totalPurchases_spbc'] }};
-        var noiBat = {{ $viewData['PieChartData']['totalPurchases_spnb'] }};
-        var moi = {{ $viewData['PieChartData']['totalPurchases_spm'] }};
-    </script>
-@endsection
-@section('jsThongKe')
-    <script>
+    {{-- <script>
         //THONG KE DOANH THU
         var chart = new Morris.Bar({
             element: 'chart',
@@ -485,25 +481,20 @@
 
 
         // Hàm thống kê tổng hết
-        var thongKesData = @json($viewData['thongKes']);
+        var thongKesData = $viewData['data'];
+        console.log(thongKesData);
+
 
         function chartdaysorder() {
-            var chartData = thongKesData.map(function(item) {
-                return {
-                    period: item.order_date, // Giả sử 'created_at' là ngày thống kê
-                    sales: item.sales, // Giá trị doanh thu
-                    profit: item.profit // Giá trị lợi nhuận
-                };
-            });
 
-            if (chartData.length === 0) {
+            if (thongKesData.length === 0) {
                 $('#ThongKeRong').text('Không có dữ liệu thống kê.').show();
                 // Gọi hàm để vẽ dữ liệu vào biểu đồ hoặc hiển thị dữ liệu
                 return;
             } else {
                 $('#ThongKeRong').hide();
                 $('#chart').show();
-                chart.setData(chartData); // Cập nhật dữ liệu cho chart
+                chart.setData(thongKesData); // Cập nhật dữ liệu cho chart
             }
 
 
@@ -515,6 +506,43 @@
         $(document).ready(function() {
 
             //Chạy thống kê doanh thu mặc định
+            chartdaysorder();
+        });
+    </script> --}}
+
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    <script>
+        var banChay = {{ $viewData['PieChartData']['totalPurchases_spbc'] }};
+        var noiBat = {{ $viewData['PieChartData']['totalPurchases_spnb'] }};
+        var moi = {{ $viewData['PieChartData']['totalPurchases_spm'] }};
+    </script>
+@endsection
+
+
+@section('jsThongKe')
+    <script>
+        var thongKesData = {!! $data !!};
+        console.log(thongKesData);
+
+        // Hàm thống kê
+        function chartdaysorder() {
+            if (thongKesData.length === 0) {
+                $('#ThongKeRong').text('Không có dữ liệu thống kê.').show();
+                $('#chart').hide();
+            } else {
+                $('#ThongKeRong').hide();
+                $('#chart').show();
+                chart.setData(thongKesData); // Cập nhật dữ liệu
+            }
+        }
+
+        // Nút reset
+        $('#resetData').click(function() {
+            chartdaysorder();
+        });
+
+        // Chạy mặc định
+        $(document).ready(function() {
             chartdaysorder();
         });
     </script>

@@ -18,7 +18,7 @@
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="{{ asset('assetsAdmin\css\theme.min.css?v=1.0') }}">
     <!-- CSS Category -->
-    <link rel="stylesheet" href="{{asset('CssAdmin\category.css')}}">
+    <link rel="stylesheet" href="{{ asset('CssAdmin\category.css') }}">
     {{-- sử dụng biểu đồ morris thống kê --}}
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     {{-- sử dụng icon star cho bình luận --}}
@@ -340,10 +340,12 @@
                             chart.setData(data);
                         }
                         // Lưu trữ dữ liệu vào biến toàn cục
-                        window.data = data;  // Biến toàn cục chứa dữ liệu data
+                        window.data = data; // Biến toàn cục chứa dữ liệu data
 
                         // Phát ra sự kiện để thông báo cho các file JS khác biết rằng dữ liệu đã sẵn sàng
-                        $(document).trigger('dataLoaded', [window.data]);  // Phát sự kiện 'dataLoaded'
+                        $(document).trigger('dataLoaded', [window
+                            .data
+                        ]); // Phát sự kiện 'dataLoaded'
                     },
                     error: function(xhr, status, error) {
                         alert('Đã xảy ra lỗi: ' + error);
@@ -438,8 +440,14 @@
             }
 
             if (type === 'lastWeek') {
+                const dayOfWeek = currentDate.getDay();
+                const diffToMonday = (dayOfWeek === 0 ? 6 : dayOfWeek - 1);
+
+                // Tính ngày bắt đầu tuần trước
                 startOfWeek = new Date(currentDate);
-                startOfWeek.setDate(currentDate.getDate() - currentDate.getDay() - 7);
+                startOfWeek.setDate(currentDate.getDate() - diffToMonday - 7);
+
+                // Tính ngày kết thúc tuần trước
                 endOfWeek = new Date(startOfWeek);
                 endOfWeek.setDate(startOfWeek.getDate() + 6);
             }
