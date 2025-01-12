@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\ThongKe; // Đảm bảo đã import model
 use App\Models\HoaDon;
 use App\Models\ChiTietHoaDon;
+use App\Models\TaiKhoan;
+
 
 class AdminAnalysisController extends Controller
 {
@@ -22,18 +24,20 @@ class AdminAnalysisController extends Controller
         $thongKes = ThongKe::all();
         $viewData['thongKes'] = $thongKes;
 
-        // Tổng lượt mua
-        $totalPurchases = HoaDon::count();
+        // Tổng hóa đơn đã hoàn thành
+        $totalPurchases = HoaDon::where('TrangThai', 2)->count();
 
-        // Tổng doanh thu
-        $totalRevenue = HoaDon::sum('TongTien');
+        // Tổng tài khoản đã đăng ký
+        $totalAccount = TaiKhoan::count();
 
-        // Tổng sản phẩm đã bán
-        $totalSoldProducts = ChiTietHoaDon::sum('SoLuong');
+        // Tổng số sản phẩm đã bán từ hóa đơn đã hoàn thành
+        $totalSoldProducts = ChiTietHoaDon::join('hoa_dons', 'chi_tiet_hoa_dons.MaHD', '=', 'hoa_dons.MaHD')
+            ->where('hoa_dons.TrangThai', 2)
+            ->sum('chi_tiet_hoa_dons.SoLuong');
 
         // Truyền các dữ liệu vào view
         $viewData['totalPurchases'] = $totalPurchases;
-        $viewData['totalRevenue'] = $totalRevenue;
+        $viewData['totalAccount'] = $totalAccount;
         $viewData['totalSoldProducts'] = $totalSoldProducts;
 
         // Trả về view với dữ liệu thống kê

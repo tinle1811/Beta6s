@@ -218,7 +218,7 @@
               <!-- Card -->
               <a class="card card-hover-shadow h-100" href="#">
                 <div class="card-body">
-                  <h6 class="card-subtitle">Tổng lượt mua</h6>
+                  <h6 class="card-subtitle">Tổng hóa đơn đã hoàn thành</h6>
   
                   <div class="row align-items-center gx-2 mb-1">
                     <div class="col-6">
@@ -234,11 +234,11 @@
                 <!-- Card -->
                 <a class="card card-hover-shadow h-100" href="#">
                   <div class="card-body">
-                    <h6 class="card-subtitle">Tổng doanh thu</h6>
+                    <h6 class="card-subtitle">Tổng tài khoản đã đăng ký</h6>
     
                     <div class="row align-items-center gx-2 mb-1">
                       <div class="col-6">
-                        <span class="card-title h2">{{ number_format($viewData['totalRevenue'], 0) }} VND</span>
+                        <span class="card-title h2">{{ $viewData['totalAccount'] }}</span>
                       </div>
                     </div>
                     <!-- End Row -->
@@ -246,23 +246,22 @@
                 </a>
                 <!-- End Card -->
               </div>
-            <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
-                <!-- Card -->
-                <a class="card card-hover-shadow h-100" href="#">
-                  <div class="card-body">
-                    <h6 class="card-subtitle">Tổng sản phẩm đã bán</h6>
-    
-                    <div class="row align-items-center gx-2 mb-1">
-                      <div class="col-6">
-                        <span class="card-title h2">{{ $viewData['totalSoldProducts'] }}</span>
-                      </div>
-                    </div>
-                    <!-- End Row -->
+            
+          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+            <!-- Card -->
+            <a class="card card-hover-shadow h-100" href="#">
+              <div class="card-body">
+                <h6 class="card-subtitle">Tổng sản phẩm đã bán</h6>
+
+                <div class="row align-items-center gx-2 mb-1">
+                  <div class="col-6">
+                    <span class="card-title h2">{{ $viewData['totalSoldProducts'] }}</span>
                   </div>
-                </a>
-                <!-- End Card -->
+                </div>
+                <!-- End Row -->
               </div>
-  
+            </a>
+            <!-- End Card -->
           </div>
           
 
