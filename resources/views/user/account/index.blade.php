@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-3 profile-sidebar">
                 <div class="profile-avatar-wrapper">
-                    <img src="{{asset('/assetsUser/img_product/4-4.jpg')}}" alt="avata" class="profile-avatar">
+                    <img src="{{asset('/assetsUser/img_product/' . $viewData['ThongTinTaiKhoan']->HinhAnh)}}" alt="avata" class="profile-avatar">
                     <p>Khoa Nguyễn</p>
                 </div>
                 <ul class="nav flex-column">
@@ -37,48 +37,59 @@
                             <div class="row form-group">
                                 <label for="username" class="col-sm-4 col-form-label">Tên đăng nhập:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="username" value="Nguyễn Hải Đăng Khoa"
+                                    <input type="text" class="form-control" id="username" value="{{ $viewData['ThongTinTaiKhoan']->TenDN }}"
                                         disabled>
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <label for="displayName" class="col-sm-4 col-form-label">Tên khách hàng:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="displayName" value="Khoa Nguyễn">
+                                    <input type="text" class="form-control" id="displayName" value="{{ $viewData['ThongTinTaiKhoan']->TenKH }}">
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <label for="email" class="col-sm-4 col-form-label">Email:</label>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="email" value="0306221240@caothang.edu.vn"
+                                    <input type="email" class="form-control" id="email" value="{{ $viewData['ThongTinTaiKhoan']->Email }}"
                                         disabled>
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <label for="phone" class="col-sm-4 col-form-label">Số điện thoại:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="phone" value="0373275100">
+                                    <input type="text" class="form-control" id="phone" value="{{ $viewData['ThongTinTaiKhoan']->SDT }}">
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <label class="col-sm-4 col-form-label">Giới tính:</label>
                                 <div class="col-sm-8">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="male" name="gender" value="male"
-                                            checked>
-                                        <label class="form-check-label" for="male">Nam</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="female" name="gender"
-                                            value="female">
-                                        <label class="form-check-label" for="female">Nữ</label>
-                                    </div>
+                                    @if ($viewData['ThongTinTaiKhoan']->GioiTinh == 'Nam')
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" id="male" name="gender" value="male"
+                                                checked>
+                                            <label class="form-check-label" for="male">Nam</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" id="female" name="gender"
+                                                value="female">
+                                            <label class="form-check-label" for="female">Nữ</label>
+                                        </div>
+                                    @else
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" id="male" name="gender" value="male">
+                                            <label class="form-check-label" for="male">Nam</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" id="female" name="gender" value="female" checked>
+                                            <label class="form-check-label" for="female">Nữ</label>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <label for="dob" class="col-sm-4 col-form-label">Ngày sinh:</label>
                                 <div class="col-sm-8">
-                                    <input type="date" class="form-control" id="dob" value="2004-12-23">
+                                    <input type="date" class="form-control" id="dob" value="{{ $viewData['ThongTinTaiKhoan']->NgaySinh }}">
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -88,7 +99,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 avatar-section text-center">
-                            <img src="{{asset('/assetsUser/img_product/4-4.jpg')}}" alt="Khoa Nguyễn" class="profile-avatar mb-3">
+                            <img src="{{asset('/assetsUser/img_product/' . $viewData['ThongTinTaiKhoan']->HinhAnh )}}" alt="Khoa Nguyễn" class="profile-avatar mb-3">
                             <button type="button" class="btn btn-primary btn-change-avatar" data-bs-toggle="modal" data-bs-target="#changeAvatarModal" style="margin-left:35%">Đổi Ảnh</button>
                             <p class="text-small">Dung lượng file tối đa 1MB<br>Định dạng: .JPEG, .PNG</p>
                         </div>

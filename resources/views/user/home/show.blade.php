@@ -2,6 +2,11 @@
 @section('title', $viewData['sanpham']->getProductName())
 @section('content')
 @include('user.layouts.breadcrumbs')
+        @if (session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @elseif(session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
 <!--product details start-->
 <div class="product_details mt-60 mb-60">
     <div class="container">
@@ -33,26 +38,32 @@
                                 <strong><i class="fa-solid fa-eye"></i></strong> {{ $viewData['sanpham']->SoLuotXem }}
                             </p>
                             @auth
+                                @php
+    $yeuThich = \App\Models\YeuThich::where('MaTK', Auth::user()->MaTK)->where('MaSP', $viewData['sanpham']->MaSP)->exists();
+                                @endphp
                                 <form action="{{ route('user.home.addWishlist', ['id' => $viewData['sanpham']->MaSP]) }}"
                                     method="POST" class="add-to-cart-form" id="add-to-cart-form">
                                     @csrf
-                                    <button type="submit" title="Add to Wishlist" style="background: none; border:none">
-                                        <i class="fa fa-heart-o" style="color: black" aria-hidden="true"></i>
-                                    </button>
+                                    @if(!$yeuThich)
+                                        <button type="submit" title="Add to Wishlist" style="background: none; border:none">
+                                            <i class="fa fa-heart-o" style="color: black" aria-hidden="true"></i>
+                                        </button>
+                                    @else
+                                        <button type="button" title="Add to Wishlist" style="background: none; border:none">
+                                            <i class="bi bi-bookmark-heart" aria-hidden="true"></i>
+                                        </button>
+                                    @endif
                                 </form>
                             @endauth
                         </div>
 
                         <div class="product_ratting">
                             <ul>
-                                @for ($i = 1; $i <= 5; $i++)
                                 <li>
-                                    <a href="#">
-                                        <i class="fa {{ $i <= round($viewData['averageRating']) ? 'fa-star' : 'fa-star-o' }}"></i>
-                                    </a>
+                                    <p id="eventRatingRealTime">{{ $viewData['sanpham']->DiemRatingTB }}
+                                        <i class="fa fa-star"></i> / 5
+                                    </p>
                                 </li>
-                                 @endfor
-                                <li class="review"><a href="#">({{ $viewData['comments']->count()}} customer reviews)</a></li>
                             </ul>
                         </div>
 
@@ -63,7 +74,7 @@
                         </div>
 
                         <div>
-                            @if ($viewData['sanpham']->TrangThai == 1)
+                            @if ($viewData['sanpham']->TrangThai == 1 || $viewData['sanpham']->TrangThai == 2)
                                 <p>Tình trạng: <span style="color:#757575">Còn hàng</span></p>
                             @else
                                 <p>Tình trạng: <span class="text-danger">Hết hàng</span></p>
@@ -76,7 +87,7 @@
                                 @csrf
                                 <div class="product_variant quantity d-flex align-items-center gap-3">
                                     <label>Số lượng: </label>
-                                    <input min="1" max="100" name="soLuong" value="1" type="number"
+                                    <input min="1" name="soLuong" value="1" type="number"
                                         class="form-control w-auto">
                                 </div>
                                 <div class="product_meta mt-3 d-flex align-items-center gap-3">
@@ -87,9 +98,12 @@
                                     @endif
                                 </div>
                                 <div class="product_variant quantity mt-3">
-                                    <input type="hidden" name="MaSP" value="{{ $viewData['sanpham']->getProductId() }}">
-                                    <button type="submit" class="btn btn-warning" style="color:white">Thêm vào giỏ
-                                        hàng</button>
+                                    @if ($viewData['sanpham']->TrangThai == 1 || $viewData['sanpham']->TrangThai == 2)
+                                        <input type="hidden" name="MaSP" value="{{ $viewData['sanpham']->getProductId() }}">
+                                        <button type="submit" class="btn btn-warning" style="color:white">Thêm vào giỏ hàng</button>
+                                    @else
+                                        <button type="button" class="btn btn-warning" style="color:white">Thêm vào giỏ hàng</button>
+                                    @endif
                                 </div>
                             </form>
                             <div class="product_variant quantity mt-3">
@@ -138,32 +152,40 @@
                             </div>
                         </div>
                         <div class="product_info_content">
+                            <p>Fashion has been creating well-designed collections since 2010. The brand offers
+                                feminine designs delivering stylish separates and statement dresses which have
+                                since evolved into a full ready-to-wear collection in which every item is a
+                                vital part of a woman's wardrobe. The result? Cool, easy, chic looks with
+                                youthful elegance and unmistakable signature style. All the beautiful pieces are
+                                made in Italy and manufactured with the greatest attention. Now Fashion extends
+                                to a range of accessories including shoes, hats, belts and more!</p>
                         </div>
                     </div>
 
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                         <div class="reviews_wrapper">
-                            <h2>Bình luận</h2>
-                            @foreach ($viewData['comments'] as $comment)
-                            <div class="comment_text">
-                                <div class="reviews_meta">
-                                    <div class="star_rating">
-                                        <ul>
-                                            @for ($i = 1; $i <= 5; $i++)
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="ion-ios-star {{ $i <= round($comment->DanhGia) ? '' : '-outline' }}"></i>
-                                                    </a>
-                                                </li>
-                                            @endfor
-                                        </ul>
-                                    </div>
-                                    <p><strong>{{ $comment->khachHang->TenKH }}</strong> - {{ $comment->created_at->format('F d, Y') }}</p>
-                                    <span>{{ $comment->khachHang->SDT }}</span>
+                            <h2>1 review for Donec eu furniture</h2>
+                            <div class="reviews_comment_box">
+                                <div class="comment_thmb">
+                                    <img src="assets/img/blog/comment2.jpg" alt="">
                                 </div>
-                                <p>{{ $comment->NoiDung }}</p>  <!-- Nội dung bình luận -->
+                                <div class="comment_text">
+                                    <div class="reviews_meta">
+                                        <div class="star_rating">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <p><strong>admin </strong>- September 12, 2022</p>
+                                        <span>roadthemes</span>
+                                    </div>
+                                </div>
+
                             </div>
-                            @endforeach
                         </div>
                     </div>
                 </div>

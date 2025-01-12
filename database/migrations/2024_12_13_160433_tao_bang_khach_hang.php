@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('khach_hangs', function (Blueprint $table) {
             $table->increments('MaTK');
             $table->string('TenKH', 255);
-            $table->string('SDT', 20);
+            $table->string('HinhAnh', 255)->nullable();
+            $table->date('NgaySinh');
+            $table->string('SDT', 20)->nullable();
+            $table->string('GioiTinh', 10);
             $table->string('DiaChi', 255);
 
             // Khóa ngoại khách hàng -> tài khoản

@@ -10,6 +10,16 @@ class KhachHang extends Model
     protected $primaryKey = 'MaTK';
     public $timestamps = false;
 
+    protected $fillable = [
+        'MaTK',
+        'TenKH',
+        'HinhAnh',
+        'NgaySinh',
+        'SDT',
+        'GioiTinh',
+        'DiaChi',
+    ];
+
     public function binhLuans()
     {
         return $this->hasMany(BinhLuan::class, 'MaKH', 'MaTK');
