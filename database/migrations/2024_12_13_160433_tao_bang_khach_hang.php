@@ -19,9 +19,9 @@ return new class extends Migration
 
             // Khóa ngoại khách hàng -> tài khoản
             $table->foreign('MaTK')
-                ->references('MaTK')
-                ->on('tai_khoans')
-                ->onDelete('cascade');
+            ->references('MaTK')
+            ->on('tai_khoans')
+            ->onDelete('cascade');
         });
     }
 

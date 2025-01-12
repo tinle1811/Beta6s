@@ -31,17 +31,26 @@
                         </p>
                         <div class="product_actions">
                             @auth
+                                @php
+                                    $yeuThich = \App\Models\YeuThich::where('MaTK', Auth::user()->MaTK)->where('MaSP', $product->MaSP)->exists();
+                                @endphp
                                 <form action="{{ route('user.home.addWishlist', ['id' => $product->MaSP]) }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="btn_add_wishlist" title="Add to Wishlist">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                    </button>
+                                    @if(!$yeuThich)
+                                        <button type="submit" class="btn_add_wishlist" title="Add to Wishlist">
+                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                        </button>
+                                    @else
+                                        <button type="button" class="btn_add_wishlist" title="">
+                                            <i class="bi bi-bookmark-heart" aria-hidden="true"></i>
+                                        </button>
+                                    @endif
                                 </form>
                             @endauth
                             <form action="{{ route('user.cart.add', ['id' => $product->MaSP]) }}" method="POST">
                                 @csrf
                                 @auth
-                                    <input type="hidden" name="MaSP" value="{{ $product->MaSP}}">
+                                <input type="hidden" name="MaSP" value="{{ $product->MaSP}}">
                                     <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
                                 @else
                                     <a href="javascript:void(0)" onclick="openLoginPopup()" class="btn btn-primary" title="add to cart">Thêm vào giỏ

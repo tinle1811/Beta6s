@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\BinhLuan;
 use App\Models\ChiTietHoaDon;
 use App\Models\SanPham;
+use App\Models\KhachHang;
 
 class AccountController extends Controller
 {
@@ -15,6 +16,13 @@ class AccountController extends Controller
     public function index()
     {
         $viewData['title'] = "Trang tài khoản";
+
+        // lấy id tài khoản người dùng
+        $maTk = Auth::user()->MaTK;
+
+        $viewData['ThongTinTaiKhoan'] = KhachHang::join('tai_khoans', 'khach_hangs.MaTK', '=', 'tai_khoans.MaTK')
+            ->where('tai_khoans.MaTK', $maTk)
+            ->first();
 
         return view('user.account.index')->with('viewData', $viewData);
     }

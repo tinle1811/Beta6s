@@ -11,9 +11,17 @@ class KhachHang extends Model
     protected $table = 'khach_hangs';
     protected $primaryKey = 'MaTK';
     public $timestamps = false;
+
     protected $fillable = [
-        'TenKH', 'SDT', 'DiaChi',
+        'MaTK',
+        'TenKH',
+        'HinhAnh',
+        'NgaySinh',
+        'SDT',
+        'GioiTinh',
+        'DiaChi',
     ];
+
     public function binhLuans()
     {
         return $this->hasMany(BinhLuan::class, 'MaKH', 'MaTK');

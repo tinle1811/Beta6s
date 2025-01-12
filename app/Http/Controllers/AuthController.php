@@ -6,10 +6,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TaiKhoan;
+use App\Models\KhachHang;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 
+use Illuminate\Support\Carbon;
 
 
 class AuthController extends Controller
@@ -50,8 +52,21 @@ class AuthController extends Controller
             'remember_token' => Str::random(60), // Thêm remember_token
         ]);
 
+        $ngaySinh = Carbon::now();
+
+        KhachHang::create([
+            'MaTK' => $user->MaTK,
+            'TenKH' => '',
+            'HinhAnh' => '',
+            'NgaySinh' => $ngaySinh->toDateString(),
+            'SDT' => '',
+            'GioiTinh' => 'Nam',
+            'DiaChi' => '',
+        ]);
+
 
         Auth::login($user);
+
         // Chuyển hướng về trang chủ với thông báo chào mừng
         return redirect()->route('user.home.index')->with('success', 'Xin chào ' . $user->TenDN . '!');
     }
