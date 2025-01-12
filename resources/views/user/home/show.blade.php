@@ -1,5 +1,5 @@
 @extends('user.layouts.app')
-@section('title', $viewData['title'])
+@section('title', $viewData['sanpham']->getProductName())
 @section('content')
 @include('user.layouts.breadcrumbs')
 <!--product details start-->

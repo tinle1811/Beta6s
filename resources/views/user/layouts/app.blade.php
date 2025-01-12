@@ -79,6 +79,9 @@
 <body>
     @include('user.layouts.header')
     @yield('content')
+    @include('user.layouts.popupLogin')
+    @include('user.layouts.popupChat')
+
     @include('user.layouts.footer')
     <!-- JS
 ============================================ -->

@@ -6,7 +6,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="widgets_container contact_us">
                             <div class="footer_logo">
-                                <a href="#">
+                                <a href="{{ route('user.home.index') }}">
                                     @if ($websiteInfo && $websiteInfo->logo)
                                         <img src="{{ asset('storage/logos/' . $websiteInfo->logo) }}" alt="Website Logo">
                                     @else
@@ -27,10 +27,9 @@
                             <h3>Thông tin</h3>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="about.html">Trang chủ</a></li>
-                                    <li><a href="blog.html">Shop</a></li>
-                                    <li><a href="contact.html">Blog</a></li>
-                                    <li><a href="services.html">Page</a></li>
+                                    <li><a href="{{ route('user.home.index') }}">Trang chủ</a></li>
+                                    <li><a href="#">Shop</a></li>
+                                    <li><a href="#">Các trang</a></li>
                                     <li><a href="#">Giới thiệu</a></li>
                                     <li><a href="#">Liên hệ</a></li>
                                 </ul>

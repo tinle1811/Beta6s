@@ -38,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
             $viewData['cartCount'] = 0; // Giá trị mặc định
             $viewData['wishlistCount'] = 0;
             $loaiSanPhams = LoaiSanPham::all();//Dùng cho chức năng search
+            $viewData['DS-DanhMuc'] = LoaiSanPham::where('TrangThai', 1)->limit(5)->get();//Dùng cho chức năng hiển thị một số danh mục
             $view->with('loaiSanPhams', $loaiSanPhams);//Dùng cho chức năng search
 
             // Kiểm tra người dùng đã đăng nhập hay chưa

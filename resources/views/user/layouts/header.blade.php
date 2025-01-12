@@ -144,12 +144,7 @@
                                 </ul>
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="{{ route('user.blog.index') }}">blog</a>
-                                <ul class="sub-menu">
-                                    <li><a href="{{ route('user.blog.index') }}">blog</a></li>
-
-                                </ul>
-
+                        
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="#">pages </a>
@@ -255,7 +250,7 @@
                                         <div class="hover_category">
                                             <select class="select_option" name="loai_san_pham" id="categori">
                                                 <option value="" {{ request('loai_san_pham') == '' ? 'selected' : '' }}>Các loại sản phẩm</option>
-                                                @foreach($loaiSanPhams as $loaiSanPham)
+                                                @foreach($viewData['DS-DanhMuc'] as $loaiSanPham)
                                                     <option value="{{ $loaiSanPham->MaLSP }}" {{ request('loai_san_pham') == $loaiSanPham->MaLSP ? 'selected' : '' }}
                                                         >{{ $loaiSanPham->TenLSP }}</option>
                                                 @endforeach
@@ -263,7 +258,7 @@
                                         </div>
                                         <div class="search_box">
                                             <input placeholder="Tìm sản phẩm..." type="text" name="keyword" value="{{ request('keyword') }}">
-                                            <button type="submit">Search</button>
+                                            <button type="submit">Tìm kiếm</button>
                                         </div>
                                     </form>
                                 </div>
@@ -321,10 +316,10 @@
                                         </div>
                                         <div class="mini_cart_footer">
                                             <div class="cart_button">
-                                                <a href="{{ route('user.cart.index') }}">View cart</a>
+                                                <a href="{{ route('user.cart.index') }}">Giỏ hàng</a>
                                             </div>
                                             <div class="cart_button">
-                                                <a href="{{ route('user.cart.checkout') }}">Checkout</a>
+                                                <a href="{{ route('user.cart.checkout') }}">Thanh toán</a>
                                             </div>
                                         </div>
                                     </div>
@@ -367,7 +362,6 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li><a href="{{ route('user.blog.index') }}">blog</a>
                                     </li>
                                     <li><a href="#">Các trang <i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
@@ -424,7 +418,6 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li><a href="{{ route('user.blog.index') }}">blog</a>
                                 </li>
                                 <li><a href="#">Các trang <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub_menu pages">
