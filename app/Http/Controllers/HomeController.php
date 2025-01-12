@@ -49,14 +49,14 @@ class HomeController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
-            'phone' => 'nullable|digits_between:10,15',
+            'phone' => 'required|digits_between:10,15',
             'message' => 'required|string',
         ]);
 
         Contact::create([
             'TenKH' => $validated['name'],
             'Email' => $validated['email'],
-            'SDT' => $validated['phone']?? null,
+            'SDT' => $validated['phone'],
             'NoiDung' => $validated['message'],
             'TrangThai' => 0, // Mặc định là chưa xử lý
         ]);
