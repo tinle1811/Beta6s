@@ -8,39 +8,58 @@ use App\Models\LoaiSanPham;
 
 class SearchController extends Controller
 {
-    public $viewData = [];
-    public function index(Request $request)
+    
+    public function index()
     {
-        $viewData['title'] = "Kết quả tìm kiếm";
+        $productPagi = SanPham::paginate(9); 
+        $viewData = [
+            'products' => $productPagi
+        ];
+        
+        return view('user.search.index', compact('viewData'));
+    }
 
-        // Bắt đầu truy vấn sản phẩm
-        $query = SanPham::join('loai_san_phams', 'san_phams.LoaiSP', '=', 'loai_san_phams.MaLSP')
-            ->select('san_phams.*', 'loai_san_phams.TenLSP');
+    public function search(Request $request)
+    {
+       
+        $query = SanPham::query();
 
-        // Nếu có loại sản phẩm trong request, lọc sản phẩm theo loại
-        if ($request->has('loai_san_pham') && $request->input('loai_san_pham') != null) {
-            $loai_san_pham = $request->input('loai_san_pham');
-            $query->where('san_phams.LoaiSP', $loai_san_pham);
-
-            $tenLoaiSanPham = LoaiSanPham::where('MaLSP', $loai_san_pham)->value('TenLSP');
-            $viewData['loai_san_pham'] = $tenLoaiSanPham;
+        // Tìm kiếm theo từ khóa trong tên và mô tả
+        if ($request->has('keyword') && $request->keyword) {
+            $keyword = $request->keyword;
+            $query->where(function ($q) use ($keyword) {
+                $q->where('TenSP', 'like', "%{$keyword}%")
+                  ->orWhere('MoTa', 'like', "%{$keyword}%");
+            });
         }
 
-        // Nếu có từ khóa tìm kiếm trong request, lọc sản phẩm theo tên
-        if ($request->has('keyword') && $request->input('keyword') != null) {
-            $keyword = $request->input('keyword');
-            $query->where('san_phams.TenSP', 'like', '%' . $keyword . '%');
-            $viewData['keyword'] = $keyword;
+        // Tìm kiếm theo danh mục (nếu có)
+        if ($request->has('category') && $request->category) {
+            $query->where('LoaiSP', $request->category);
         }
 
-        // Lấy tất cả sản phẩm sau khi lọc
-        $viewData['products'] = $query->paginate(9);
-        $viewData['resultCount'] = $viewData['products']->total();
+        // Tìm kiếm theo giá (nếu có)
+        if ($request->has('min_price') && $request->min_price) {
+            $query->where('Gia', '>=', $request->min_price);
+        }
 
-        // Lấy tất cả loại sản phẩm
-        $loaiSanPhams = LoaiSanPham::all();
+        if ($request->has('max_price') && $request->max_price) {
+            $query->where('Gia', '<=', $request->max_price);
+        }
+        
+      
+        $products = $query->paginate(9);
 
-        // Trả về view với dữ liệu tìm kiếm và danh sách loại sản phẩm
-        return view('user.search.index', compact('loaiSanPhams', 'viewData'));
+        
+        $categories = LoaiSanPham::all();
+
+        // Truyền dữ liệu vào view
+        $viewData = [
+            'title' => 'Trang Tìm Kiếm',
+            'products' => $products,
+            'categories' => $categories
+        ];
+        
+        return view('user.search.index', compact('viewData'));
     }
 }
