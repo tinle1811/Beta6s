@@ -24,7 +24,7 @@ class AdminAnalysisController extends Controller {
         $startOfWeek = Carbon::now()->startOfWeek();
         $endOfWeek = Carbon::now()->endOfWeek();
 
-        $viewData = $this->getPieChartData( $startOfWeek, $endOfWeek );
+        $viewData['PieChartData'] = $this->getPieChartData( $startOfWeek, $endOfWeek );
         
         return view('admin.analysis.index')->with('viewData', $viewData);
     }

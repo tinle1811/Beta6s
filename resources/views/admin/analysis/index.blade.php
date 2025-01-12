@@ -286,7 +286,7 @@
                     <h6
                         style="position: absolute; top: 7.5px; left: 30px; padding: 5px 5px; box-shadow: 0 3px 6px silver; border-radius: 5px">
                         <b>Tổng lượt mua: </b><span style="color: red"
-                            id="TLM">{{ $viewData['TongLuotMua_ALLSP'] }}</span>
+                            id="TLM">{{ $viewData['PieChartData']['TongLuotMua_ALLSP'] }}</span>
                     </h6>
                     <!-- Nav -->
                     <ul class="nav nav-segment" id="expensesTab" role="tablist">
@@ -335,17 +335,17 @@
                 <!-- Legend Indicators -->
                 <div class="row justify-content-center">
                     <div class="col-auto mb-3 mb-sm-0">
-                        <span class="card-title h4" id="SPNB">{{ $viewData['TongLuotMua_SPNB'] }} lượt mua</span>
+                        <span class="card-title h4" id="SPNB">{{ $viewData['PieChartData']['TongLuotMua_SPNB'] }} lượt mua</span>
                         <span class="legend-indicator bg-primary"></span> sản phẩm nổi bật
                     </div>
 
                     <div class="col-auto mb-3 mb-sm-0">
-                        <span class="card-title h4" id="SPBC">{{ $viewData['TongLuotMua_SPBC'] }} lượt mua</span>
+                        <span class="card-title h4" id="SPBC">{{ $viewData['PieChartData']['TongLuotMua_SPBC'] }} lượt mua</span>
                         <span class="legend-indicator bg-info"></span> sản phẩm bán chạy
                     </div>
 
                     <div class="col-auto">
-                        <span class="card-title h4" id="SPM">{{ $viewData['TongLuotMua_SPM'] }} lượt mua</span>
+                        <span class="card-title h4" id="SPM">{{ $viewData['PieChartData']['TongLuotMua_SPM'] }} lượt mua</span>
                         <span class="legend-indicator"></span> sản phẩm mới
                     </div>
                 </div>
@@ -406,9 +406,9 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        var banChay = {{ $viewData['totalPurchases_spbc'] }};
-        var noiBat = {{ $viewData['totalPurchases_spnb'] }};
-        var moi = {{ $viewData['totalPurchases_spm'] }};
+        var banChay = {{ $viewData['PieChartData']['totalPurchases_spbc'] }};
+        var noiBat = {{ $viewData['PieChartData']['totalPurchases_spnb'] }};
+        var moi = {{ $viewData['PieChartData']['totalPurchases_spm'] }};
     </script>
 @endsection
 @section('jsThongKe')

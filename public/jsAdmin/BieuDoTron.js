@@ -91,7 +91,11 @@ updatingDoughnutChart.update();
 
             // Hiển thị thông báo cho người dùng
             $('#updatingDoughnutChart').hide(); // Ẩn biểu đồ
-            $('.content-pie-chart').append('<div class="text-center" id="text-muted">Không có lượt mua trong thời gian này</div>');
+
+            if ($('#text-muted').length === 0)
+            {
+                $('.content-pie-chart').append('<div class="text-center" id="text-muted">Không có lượt mua trong thời gian này</div>');
+            }
         } else {
             // Xóa thông báo nếu có dữ liệu
             $('#updatingDoughnutChart').show(); // Hiển thị biểu đồ
