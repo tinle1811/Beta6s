@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-//use Auth;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Contact;
+use App\Models\TaiKhoan;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Auth;
+
 
 use Illuminate\Support\Facades\DB;
 
@@ -92,6 +95,8 @@ class HomeController extends Controller
     public function contact()
     {
         $viewData['title'] = "Trang liên hệ";
+        $viewData['errors'] = "";
+        $viewData['taikhoan'] = TaiKhoan::find(auth()->id());
         return view('user.home.contact')->with('viewData', $viewData);
     }
     public function wishlist()
@@ -142,5 +147,25 @@ class HomeController extends Controller
 
         // Chuyển hướng về trang giỏ hàng với thông báo
         return redirect()->route('user.home.wishlist')->with('success', 'Sản phẩm đã được xóa khỏi yêu thích.');
+    }
+
+    public function handleContactForm(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|digits_between:10,15',
+            'message' => 'required|string',
+        ]);
+
+        Contact::create([
+            'TenKH' => $validated['name'],
+            'Email' => $validated['email'],
+            'SDT' => $validated['phone'],
+            'NoiDung' => $validated['message'],
+            'TrangThai' => 0, // Mặc định là chưa xử lý
+        ]);
+
+        return response()->json(['success' => true, 'message' => 'Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.']);
     }
 }

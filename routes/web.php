@@ -36,6 +36,7 @@ Route::get('/', [HomeController::class, 'index'])->name('user.home.index');
 Route::get('/product-detail', [HomeController::class, 'show'])->name('user.home.show');
 Route::get('/product-detail/{slug}', [HomeController::class, 'show'])->name('user.home.show');
 Route::get('/contact', [HomeController::class, 'contact'])->name('user.home.contact');
+Route::post('/contact',[HomeController::class, 'handleContactForm'])->name('contact.form');
 Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wishlist');
 Route::get('/search', [SearchController::class, 'index'])->name('user.search.index');
 
@@ -69,7 +70,7 @@ Route::middleware('checkRole:shared')->group(function () {
 });
 
 // Các route admin sử dụng middleware
-Route::middleware('checkRole:admin')->group(function () {
+
    Route::get("/admin", [AdminAnalysisController::class, "index"])->name("admin.analysis");
 
     Route::get('/admin/product', [AdminProductController::class, "index"])->name("admin.product");
@@ -150,4 +151,3 @@ Route::middleware('checkRole:admin')->group(function () {
    // Route để cập nhật trạng thái thanh toán
    Route::post('/admin/order/toggle-status', [AdminOrderController::class, 'togglePaymentStatus'])->name('order.toggleStatus');
 
-});
