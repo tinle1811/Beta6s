@@ -64,6 +64,9 @@ Route::middleware('checkRole:shared')->group(function () {
     Route::get('/purchase', [AccountController::class, 'purchase'])->name('user.account.purchase');
     Route::get('/orderlist', [AccountController::class, 'orderlist'])->name('test');
     Route::post('/addReview', [AccountController::class, 'addReview'])->name('user.account.addReview');
+    Route::get('/purchaseHistory',[AccountController::class,'purchaseHistory'])->name('user.account.purchaseHistory');
+    Route::get('/historyEvaluate',[AccountController::class,'historyEvaluate'])->name('user.account.historyEvaluate');
+   
 });
 
 // Các route admin sử dụng middleware

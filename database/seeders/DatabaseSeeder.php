@@ -2,6 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\ChiTietHoaDon;
+use App\Models\HoaDon;
+use App\Models\PhuongThucThanhToan;
+use App\Models\TaiKhoan;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,8 +19,8 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();    
         $this->call(LoaiSanPhamSeeder::class);
-
         $this->call(SanPhamSeeder::class);
+        
         $this->call(LoaiTaiKhoanSeeder::class);
         $this->call(PhuongThucThanhToanSeeder::class);
     }

@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider3.jpg">
             <div class="container">

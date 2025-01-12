@@ -10,7 +10,7 @@ class AdminCatagoryController extends Controller {
     public $viewData = [];
 
     public function index() {
-        $viewData[ 'title' ] = 'Trang loại sản phẩm';
+        $viewData[ 'title' ] = 'Trang quản lý loại sản phẩm';
         $viewData[ 'categorys' ] = LoaiSanPham::paginate(10);
         return view( 'admin.catagory.index' )->with( 'viewData', $viewData );
     }

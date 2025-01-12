@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+@section('title', $viewData['title'])
 @section('content')
     <main id="content" role="main" class="main">
         <!-- Content -->
@@ -549,4 +550,8 @@
         <!-- End Card -->
       </div> --}}
         </div>
+<<<<<<< HEAD
     @endsection
+=======
+    @endsection
+>>>>>>> a4ab829a041452b21ed295320b2b4ccfa31d671c
