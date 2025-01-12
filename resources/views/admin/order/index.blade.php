@@ -253,7 +253,8 @@
                                                     href="{{ route('admin.order.edit', ['maHD' => $hoaDon->MaHD]) }}">
                                                     <i class="tio-edit"></i>
                                                 </a>
-                                                <a class="btn btn-sm btn-danger" href="">
+                                                {{-- xóa đơn hàng --}}
+                                                <a data-id="{{ $hoaDon->MaHD }}" onclick="remove({{$hoaDon->MaHD}})" class="btn btn-sm btn-danger remove" href="javascript:void(0)">
                                                     <i class="tio-add-to-trash"></i>
                                                 </a>
                                             </div>
@@ -346,6 +347,31 @@
                     }
                 }
             });
+        }
+        function remove(MaHD) {
+            // Hiển thị confirm box xác nhận
+            if (confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?')) {
+                $.ajax({
+                    url: '/admin/order/remove' , 
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}', // Gửi token CSRF
+                        MaHD: MaHD
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            alert(response.message);
+                            location.reload(); // Tự động làm mới trang
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function(xhr) {
+                        console.log('reponse' + xhr.responseText);
+                        alert('Có lỗi xảy ra. Vui lòng thử lại.');
+                    }
+                });
+            }
         }
     </script>
 @endsection

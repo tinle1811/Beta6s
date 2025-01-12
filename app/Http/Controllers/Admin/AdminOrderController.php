@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ChiTietHoaDon;
 use Illuminate\Http\Request;
 use App\Models\HoaDon;
+use App\Models\SanPham;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AdminOrderController extends Controller
 {
@@ -129,5 +133,75 @@ class AdminOrderController extends Controller
         }
 
         return response()->json(['success' => false, 'message' => 'Hóa đơn không tồn tại']);
+    }
+    public function remove(Request $request)
+    {
+        $user = Auth::user();
+        $MaHD = $request->input('MaHD');  // Lấy MaHD từ dữ liệu POST
+        $hoaDon = HoaDon::where('MaHD', $MaHD)->first();
+        
+        if ($hoaDon && $hoaDon->TrangThai == 0) {
+            // Cập nhật trạng thái đơn hàng thành "3" (hủy)
+            $hoaDon->TrangThai = 3;
+            $hoaDon->save();
+            // Cập nhật số lượng sản phẩm trong đơn hàng
+            $chiTietHoaDons = ChiTietHoaDon::where('MaHD', $hoaDon->MaHD)->get();
+            foreach ($chiTietHoaDons as $chitiet) {
+                $product = SanPham::find($chitiet->MaSP);
+                Log::info('Sản phẩm: ', ['product' => $product]);
+                if($product){
+                    $product->SoLuong += $chitiet->SoLuong;
+                    Log::info('Sản phẩm: ', ['product' => $product->SoLuong]);
+
+                    $product->save();
+                    Log::info('Sản phẩm: ', ['product' => $product->SoLuong]);
+                }
+            }
+            if ($hoaDon->TrangThai == 3) {
+                $order_date = $hoaDon->created_at->toDateString(); // Lấy ngày tạo hóa đơn
+                $sales = DB::table('hoa_dons')
+                    ->whereDate('created_at', $order_date)
+                    ->where('TrangThai', 2) // Hóa đơn hoàn thành
+                    ->sum('TongTien');
+                $profit = $sales - DB::table('phieu_nhaps')
+                    ->whereDate('created_at', $order_date)
+                    ->sum('TongTien');
+                $quantity = DB::table('chi_tiet_hoa_dons')
+                    ->join('hoa_dons', 'chi_tiet_hoa_dons.MaHD', '=', 'hoa_dons.MaHD')
+                    ->whereDate('hoa_dons.created_at', $order_date)
+                    ->where('hoa_dons.TrangThai', 2) // Hóa đơn hoàn thành
+                    ->sum('SoLuong');
+                $totalOrder = DB::table('hoa_dons')
+                    ->whereDate('created_at', $order_date)
+                    ->where('TrangThai', 2) // Hóa đơn hoàn thành
+                    ->count();
+    
+                // Kiểm tra xem đã có bản ghi thống kê cho ngày này chưa
+                $thongKe = DB::table('thong_kes')->where('order_date', $order_date)->first();
+    
+                if ($thongKe) {
+                    DB::table('thong_kes')->where('order_date', $order_date)->update([
+                        'sales' => $sales,
+                        'profit' => $profit,
+                        'quantity' => $quantity,
+                        'total_order' => $totalOrder,
+                        'updated_at' => now(),
+                    ]);
+                } else {
+
+                    DB::table('thong_kes')->insert([
+                        'order_date' => $order_date,
+                        'sales' => $sales,
+                        'profit' => $profit,
+                        'quantity' => $quantity,
+                        'total_order' => $totalOrder,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
+            }
+            return response()->json(['success' => true, 'message' => 'Đơn hàng đã được hủy thành công']);
+        }
+        return response()->json(['success' => false, 'message' => 'Không thể hủy đơn hàng này']);
     }
 }
