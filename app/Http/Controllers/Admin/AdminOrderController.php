@@ -200,8 +200,8 @@ class AdminOrderController extends Controller
                     ]);
                 }
             }
-            return response()->json(['success' => true, 'message' => 'Đơn hàng đã được hủy thành công']);
+            return response()->json(['success' => true, 'message' => 'Đơn hàng đã được xóa thành công']);
         }
-        return response()->json(['success' => false, 'message' => 'Không thể hủy đơn hàng này']);
+        return response()->json(['success' => false, 'message' => 'Không thể xóa đơn hàng này']);
     }
 }

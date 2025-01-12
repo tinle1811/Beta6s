@@ -350,7 +350,7 @@
         }
         function remove(MaHD) {
             // Hiển thị confirm box xác nhận
-            if (confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?')) {
+            if (confirm('Bạn có chắc chắn muốn xóa đơn hàng này không?')) {
                 $.ajax({
                     url: '/admin/order/remove' , 
                     method: 'POST',
@@ -366,8 +366,7 @@
                             alert(response.message);
                         }
                     },
-                    error: function(xhr) {
-                        console.log('reponse' + xhr.responseText);
+                    error: function() {
                         alert('Có lỗi xảy ra. Vui lòng thử lại.');
                     }
                 });
