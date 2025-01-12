@@ -46,37 +46,16 @@ class CheckoutController extends Controller
             'city' => 'required|string|max:255',
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:10',  
             'email' => 'required|email|max:255',
-            // 'address_checkbox' => 'nullable',
-            // 'first_name_other' => 'required_if:address_checkbox,1|string|max:255',
-            // 'last_name_other' => 'required_if:address_checkbox,1|string|max:255',
-            // 'address_street_other' => 'required_if:address_checkbox,1|string|max:255',
-            // 'district_other' => 'required_if:address_checkbox,1|string|max:255',
-            // 'city_other' => 'required_if:address_checkbox,1|string|max:255',
-            // 'phone_other' => 'required_if:address_checkbox,1|regex:/^([0-9\s\-\+\(\)]*)$/|max:10',
-            // 'email_other' => 'required_if:address_checkbox,1|email|max:255',
             'order_note' => 'nullable|string|max:500',
         ]);
 
-       
-        if ($request->input('address_checkbox') == 1) {
-            // Nếu người dùng muốn nhập địa chỉ của người khác
-            $firstName = $request->input('first_name_other');
-            $lastName = $request->input('last_name_other');
-            $addressStreet = $request->input('address_street_other');
-            $district = $request->input('district_other');
-            $city = $request->input('city_other');
-            $phone = $request->input('phone_other');
-            $email = $request->input('email_other');
-        }   
-        else{
-            $firstName = $request->input('first_name');
-            $lastName = $request->input('last_name');
-            $addressStreet = $request->input('address_street');
-            $district = $request->input('district');
-            $city = $request->input('city');
-            $phone = $request->input('phone');
-            $email = $request->input('email');
-        }
+        $firstName = $request->input('first_name');
+        $lastName = $request->input('last_name');
+        $addressStreet = $request->input('address_street');
+        $district = $request->input('district');
+        $city = $request->input('city');
+        $phone = $request->input('phone');
+        $email = $request->input('email');
         $note = $request->get('order_note');
         $paymentMethods = $request->input('check_method');
         // Kiểm tra và cập nhật thông tin khách hàng
@@ -167,7 +146,7 @@ class CheckoutController extends Controller
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
         $orderInfo = "Thanh toán qua ATM MoMo cho đơn hàng ". $order->MaHD;
         $amount = $totalAmount;
-        $orderId = time() . "";
+        $orderId = $order->MaHD . '-' . time();
         $redirectUrl = route('user.cart.momo');
         $ipnUrl = "http://127.0.0.1:8000/";
         $extraData = "";
@@ -190,14 +169,13 @@ class CheckoutController extends Controller
             'signature' => $signature);
         $result = $this->execPostRequest($endpoint, json_encode($data));
         $jsonResult = json_decode($result, true);  
-
         return redirect()->to($jsonResult['payUrl']);
     }
     public function momo(Request $request)
     {
         $orderId = $request->input('orderId');
         $resultCode = $request->input('resultCode');
-
+        $orderMaHD = explode('-', $orderId)[0];
         $order = HoaDon::find($orderId);
 
         if ($resultCode == 0) { // Thanh toán thành công
