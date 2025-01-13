@@ -169,17 +169,18 @@ class AccountController extends Controller
         $viewData['title'] = "Trang sản phẩm đã mua";
 
         $viewData['DSSP_DaMua'] = HoaDon::join('chi_tiet_hoa_dons', 'hoa_dons.MaHD', '=', 'chi_tiet_hoa_dons.MaHD')
-            ->join('san_phams', 'chi_tiet_hoa_dons.MaSP', '=', 'san_phams.MaSP')
-            ->where('hoa_dons.MaKH', $userId)
-            ->where('hoa_dons.TrangThai', 2)
-            ->paginate(10, [
-                'san_phams.MaSP',
-                'san_phams.HinhAnh',
-                'san_phams.TenSP',
-                'chi_tiet_hoa_dons.SoLuong',
-                'chi_tiet_hoa_dons.DonGia',
-                'hoa_dons.created_at',
-            ]);
+                                        ->join('san_phams', 'chi_tiet_hoa_dons.MaSP', '=', 'san_phams.MaSP')
+                                        ->where('hoa_dons.MaKH', $userId)
+                                        ->where('hoa_dons.TrangThai', 2)
+                                        ->orderBy('hoa_dons.created_at', 'Desc')
+                                        ->paginate(10, [
+                                            'san_phams.MaSP',
+                                            'san_phams.HinhAnh',
+                                            'san_phams.TenSP',
+                                            'chi_tiet_hoa_dons.SoLuong',
+                                            'chi_tiet_hoa_dons.DonGia',
+                                            'hoa_dons.created_at',
+                                        ]);
 
         return view('user.account.purchaseHistory')->with('viewData', $viewData);
     }
@@ -191,15 +192,16 @@ class AccountController extends Controller
         $viewData['title'] = "Trang lịch sử đánh giá";
 
         $viewData['DSSP_DaDanhGia'] = BinhLuan::join('san_phams', 'binh_luans.MaSP', '=', 'san_phams.MaSP')
-            ->where('binh_luans.MaKH', $userId)
-            ->paginate(10, [
-                'san_phams.MaSP',
-                'san_phams.HinhAnh',
-                'san_phams.TenSP',
-                'binh_luans.DanhGia',
-                'binh_luans.NoiDung',
-                'binh_luans.created_at',
-            ]);
+                                ->where('binh_luans.MaKH', $userId)
+                                ->orderBy('binh_luans.created_at', 'Desc')
+                                ->paginate(10, [
+                                    'san_phams.MaSP',
+                                    'san_phams.HinhAnh',
+                                    'san_phams.TenSP',
+                                    'binh_luans.DanhGia',
+                                    'binh_luans.NoiDung',
+                                    'binh_luans.created_at',
+                                ]);
 
         return view('user.account.historyEvaluate')->with('viewData', $viewData);
     }
