@@ -1436,7 +1436,7 @@
             <li class="navbar-vertical-aside-has-menu nav-item">
               <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:;" title="2-step Verification">
                 <span class="tio-circle nav-indicator-icon"></span>
-                <span class="text-truncate">2-step Verification</span>
+                <span class="text-truncate">2step Verification</span>
               </a>
 
               <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
