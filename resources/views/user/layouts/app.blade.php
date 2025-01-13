@@ -49,7 +49,7 @@
                 document.getElementById('eventRatingRealTime').innerHTML =
                     `<strong>${data.DiemRatingTB} <i class="fa fa-star"></i> / 5 </strong> `;
                 document.getElementById('eventSoLuongTon').innerHTML =
-                    `<strong>Số lượng tôn: ${data.DiemRatingTB} </strong> `;
+                    `<strong>Số lượng tồn: ${data.SoLuongTon} </strong> `;
             } else {
                 console.error('Invalid data received:', data);
             }

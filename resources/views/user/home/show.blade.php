@@ -85,6 +85,10 @@
                                     <p>Tình trạng: <span class="text-danger">Hết hàng</span></p>
                                 @endif
                             </div>
+                            <p id="eventSoLuongTon" class="mb-0">
+                                <strong>Số lượng tồn: </strong>
+                                {{ $viewData['sanpham']->SoLuong }}
+                            </p>
 
                             @auth
                                 <form action="{{ route('user.cart.add', ['id' => $viewData['sanpham']->getProductId()]) }}"
@@ -95,10 +99,7 @@
                                         <input min="1" name="soLuong" value="1" type="number"
                                             class="form-control w-auto">
                                     </div>
-                                    <p id="eventSoLuongTon" class="mb-0">
-                                        <strong>Số lượng tồn: </strong>
-                                        {{ $viewData['sanpham']->SoLuong }}
-                                    </p>
+
                                     <div class="product_meta mt-3 d-flex align-items-center gap-3">
                                         @if ($viewData['sanpham']->LoaiSP == 1)
                                             <span>Phiên bản: <a href="#">Thường</a></span>

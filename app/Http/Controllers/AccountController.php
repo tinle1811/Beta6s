@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\BinhLuan;
 use App\Models\SanPham;
 use App\Models\KhachHang;
+use App\Events\SanPhamUpdated;
 
 class AccountController extends Controller
 {
@@ -101,6 +102,14 @@ class AccountController extends Controller
                 $product = SanPham::find($chitiet->MaSP);
                 $product->SoLuong += $chitiet->SoLuong;
                 $product->save();
+                
+                event(new SanPhamUpdated([
+                    'MaSP' => $product->MaSP,
+                    'SoLuotYeuThich' => $product->SoLuotYeuThich,
+                    'SoLuotXem' => $product->SoLuotXem,
+                    'DiemRatingTB' => $product->DiemRatingTB,
+                    'SoLuongTon' => $product->SoLuong,
+                ]));
             }
 
             return response()->json(['success' => true, 'message' => 'Đơn hàng đã được hủy thành công']);
