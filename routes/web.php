@@ -53,6 +53,12 @@ Route::middleware('checkRole:shared')->group(function () {
     Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('user.cart.add');
     Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('user.cart.remove');
     Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('user.cart.update');
+    Route::post('/cart/payment-method', [CartController::class, 'paymentMethod'])->name('user.cart.paymentMethod');
+    Route::post('/cart/clear', [CartController::class, 'clearCart'])->name('user.cart.clear');
+
+    Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('user.cart.checkout');
+    Route::post('/checkout/payment', [CheckoutController::class, 'payment'])->name('user.cart.payment');
+    Route::get('/checkout/momo', [CheckoutController::class, 'momo'])->name('user.cart.momo');
 
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('user.cart.checkout');
     Route::post('/checkout/payment', [CheckoutController::class, 'payment'])->name('user.cart.payment');
@@ -63,11 +69,12 @@ Route::middleware('checkRole:shared')->group(function () {
 
     Route::get('/account', [AccountController::class, 'index'])->name('user.account.index');
     Route::get('/purchase', [AccountController::class, 'purchase'])->name('user.account.purchase');
+    Route::post('/purchase/cancel-order', [AccountController::class, 'cancelOrder'])->name('user.account.cancel');
+
     Route::get('/orderlist', [AccountController::class, 'orderlist'])->name('test');
     Route::post('/addReview', [AccountController::class, 'addReview'])->name('user.account.addReview');
-    Route::get('/purchaseHistory',[AccountController::class,'purchaseHistory'])->name('user.account.purchaseHistory');
-    Route::get('/historyEvaluate',[AccountController::class,'historyEvaluate'])->name('user.account.historyEvaluate');
-   
+    Route::get('/purchaseHistory', [AccountController::class, 'purchaseHistory'])->name('user.account.purchaseHistory');
+    Route::get('/historyEvaluate', [AccountController::class, 'historyEvaluate'])->name('user.account.historyEvaluate');
 });
 
 // Các route admin sử dụng middleware
@@ -150,7 +157,7 @@ Route::middleware('checkRole:admin')->group(function () {
     Route::get("/admin/order/create", [AdminOrderController::class, "create"])->name("admin.order.create");
     Route::get("/admin/order/edit/{maHD}", [AdminOrderController::class, "edit"])->name("admin.order.edit"); //xem hóa đơn cần chỉnh sửa
     Route::put('/admin/order/update/{maHD}', [AdminOrderController::class, 'update'])->name('admin.order.update'); //update hóa đơn
-    Route::post("/admin/order/remove",[AdminOrderController::class, 'remove'])->name('admin.order.remove');
+    Route::post("/admin/order/remove", [AdminOrderController::class, 'remove'])->name('admin.order.remove');
     // Route để cập nhật trạng thái thanh toán
     Route::post('/admin/order/toggle-status', [AdminOrderController::class, 'togglePaymentStatus'])->name('order.toggleStatus');
 });

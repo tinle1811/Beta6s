@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChiTietHoaDon;
 use App\Models\HoaDon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\BinhLuan;
-use App\Models\ChiTietHoaDon;
 use App\Models\SanPham;
 use App\Models\KhachHang;
 
@@ -30,13 +30,13 @@ class AccountController extends Controller
     {
         switch ($type) {
             case 1:
-                return "cần xử lý";
+                return "cần xử lý"; 
             case 2:
-                return "đang giao";
+                return "đang giao"; 
             case 3:
-                return "đã hoàn thành";
+                return "đã hoàn thành"; 
             case 4:
-                return "đã hủy";
+                return "đã hủy"; 
         }
     }
     public function purchase(Request $request)

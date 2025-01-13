@@ -28,16 +28,11 @@
             </div>
             <div class="col-md-9 profile-content">
                 <ul class="d-flex justify-content-between align-items-center list-unstyled bg-black py-3 px-4 fs-6 mx-1">
-                    <li><a href="{{ route('user.account.purchase', ['type' => 0]) }}"
-                            class="text-white text-decoration-none {{ $type == 0 ? 'fw-bold' : '' }}">Tất cả</a></li>
-                    <li><a href="{{ route('user.account.purchase', ['type' => 1]) }}"
-                            class="text-white text-decoration-none {{ $type == 1 ? 'fw-bold' : '' }}">Chờ lấy hàng</a></li>
-                    <li><a href="{{ route('user.account.purchase', ['type' => 2]) }}"
-                            class="text-white text-decoration-none {{ $type == 2 ? 'fw-bold' : '' }}">Chờ giao hàng</a></li>
-                    <li><a href="{{ route('user.account.purchase', ['type' => 3]) }}"
-                            class="text-white text-decoration-none {{ $type == 3 ? 'fw-bold' : '' }}">Hoàn thành</a></li>
-                    <li><a href="{{ route('user.account.purchase', ['type' => 4]) }}"
-                            class="text-white text-decoration-none {{ $type == 4 ? 'fw-bold' : '' }}">Đã hủy</a></li>
+                    <li><a href="{{ route('user.account.purchase', ['type' => 0]) }}" class="text-white text-decoration-none {{ $type == 0 ? 'fw-bold' : '' }}">Tất cả</a></li>
+                    <li><a href="{{ route('user.account.purchase', ['type' => 1]) }}" class="text-white text-decoration-none {{ $type == 1 ? 'fw-bold' : '' }}">Chờ lấy hàng</a></li>
+                    <li><a href="{{ route('user.account.purchase', ['type' => 2]) }}" class="text-white text-decoration-none {{ $type == 2 ? 'fw-bold' : '' }}">Chờ giao hàng</a></li>
+                    <li><a href="{{ route('user.account.purchase', ['type' => 3]) }}" class="text-white text-decoration-none {{ $type == 3 ? 'fw-bold' : '' }}">Hoàn thành</a></li>
+                    <li><a href="{{ route('user.account.purchase', ['type' => 4]) }}" class="text-white text-decoration-none {{ $type == 4 ? 'fw-bold' : '' }}">Đã hủy</a></li>
                 </ul>
                 <div class="alert alert-success alert-dismissible fade show" role="alert" id="notificationReview"
                     style="display: none;">
@@ -46,7 +41,7 @@
                 </div>
                 <div class="container mt-4">
                     <div class="mb-3 rounded">
-                        {{ $hasOrders = false }}
+                        {{$hasOrders = false;}}
                         @foreach ($hoaDons as $hoaDon)
                             @php $hasOrders = true; @endphp
                             <div class="p-3 bg-light border mb-3 rounded">
@@ -69,19 +64,16 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <p class="fs-7">
-                                                {{ number_format($cthd->DonGia * $cthd->SoLuong, 0, ',', '.') }}đ</p>
+                                            <p class="fs-7">{{ number_format($cthd->DonGia * $cthd->SoLuong, 0, ',', '.' )}}đ</p>
                                         </div>
                                     </div>
                                 @endforeach
                                 <div class="text-end py-3 me-3">
-                                    <p class="fw-bold mb-0 fs-5">Tổng tiền:
-                                        {{ number_format($hoaDon->TongTien, 0, ',', '.') }}đ</p>
+                                    <p class="fw-bold mb-0 fs-5">Tổng tiền: {{ number_format($hoaDon->TongTien, 0, ',', '.' )}}đ</p>
                                 </div>
                                 <div class="text-end">
-                                    @if ($hoaDon->TrangThai == 0)
-                                        <button data-id="{{ $hoaDon->MaHD }}" onclick="cancelOrder({{ $hoaDon->MaHD }})"
-                                            class="btn btn-danger me-2 cancel-order">Hủy</button>
+                                    @if($hoaDon->TrangThai == 0)
+                                        <button data-id="{{ $hoaDon->MaHD }}" onclick="cancelOrder({{$hoaDon->MaHD}})" class="btn btn-danger me-2 cancel-order">Hủy</button>
                                         <button class="btn btn-primary me-2">Liên hệ</button>
                                     @elseif($hoaDon->TrangThai == 1)
                                         <button class="btn btn-success me-2">Đã nhận được hàng</button>
@@ -111,9 +103,8 @@
                                 </div>
                             </div>
                         @endforeach
-                        @if (!$hasOrders)
-                            <p class="text-center text-muted bg-light py-3 rounded">Bạn chưa có đơn hàng nào
-                                {{ $viewData['TabMessage'] }}</p>
+                        @if(!$hasOrders)
+                        <p class="text-center text-muted bg-light py-3 rounded">Bạn chưa có đơn hàng nào {{ $viewData['TabMessage'] }}</p>
                         @endif
                     </div>
                 </div>
