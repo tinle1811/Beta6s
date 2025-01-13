@@ -9,6 +9,7 @@ use App\Models\KhachHang;
 use App\Models\HoaDon;
 use App\Models\ChiTietHoaDon;
 use App\Models\PhuongThucThanhToan;
+use App\Events\SanPhamUpdated;
 
 class CheckoutController extends Controller
 {
@@ -130,6 +131,14 @@ class CheckoutController extends Controller
                 'SoLuong' => $item->soLuong,
                 'DonGia' => $product->Gia,
             ]);
+
+            event(new SanPhamUpdated([
+                'MaSP' => $product->MaSP,
+                'SoLuotYeuThich' => $product->SoLuotYeuThich,
+                'SoLuotXem' => $product->SoLuotXem,
+                'DiemRatingTB' => $product->DiemRatingTB,
+                'SoLuongTon' => $product->SoLuong,
+            ]));
         }
     
         // Xóa giỏ hàng sau khi thanh toán thành công

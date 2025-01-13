@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use App\Events\SanPhamUpdated;
 
 class AdminOrderController extends Controller
 {
@@ -155,6 +156,15 @@ class AdminOrderController extends Controller
 
                     $product->save();
                     Log::info('Sản phẩm: ', ['product' => $product->SoLuong]);
+
+                    //gọi sự kiện cập nhật lại số lượng realtime
+                    event(new SanPhamUpdated([
+                        'MaSP' => $product->MaSP,
+                        'SoLuotYeuThich' => $product->SoLuotYeuThich,
+                        'SoLuotXem' => $product->SoLuotXem,
+                        'DiemRatingTB' => $product->DiemRatingTB,
+                        'SoLuongTon' => $product->SoLuong,
+                    ]));
                 }
             }
             if ($hoaDon->TrangThai == 3) {
@@ -202,6 +212,8 @@ class AdminOrderController extends Controller
             }
             return response()->json(['success' => true, 'message' => 'Đơn hàng đã được xóa thành công']);
         }
+
+        
         return response()->json(['success' => false, 'message' => 'Không thể xóa đơn hàng này']);
     }
 }

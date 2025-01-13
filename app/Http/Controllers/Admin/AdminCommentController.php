@@ -62,6 +62,7 @@ class AdminCommentController extends Controller
                     'SoLuotYeuThich' => $sanPham->SoLuotYeuThich,
                     'SoLuotXem' => $sanPham->SoLuotXem,
                     'DiemRatingTB' => $sanPham->DiemRatingTB,
+                    'SoLuongTon' => $sanPham->SoLuong,
                 ]));
                 return response()->json(['success' => true]);
             }
@@ -102,6 +103,7 @@ class AdminCommentController extends Controller
                     'SoLuotYeuThich' => $sanPham->SoLuotYeuThich,
                     'SoLuotXem' => $sanPham->SoLuotXem,
                     'DiemRatingTB' => $sanPham->DiemRatingTB,
+                    'SoLuongTon' => $sanPham->SoLuong,
                 ]));
                 return response()->json(['success' => true]);
             }
