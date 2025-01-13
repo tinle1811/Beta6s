@@ -93,6 +93,7 @@
                           <span class="custom-checkbox-list-stretched-bg"></span>
                         </div>
                         <div class="avatar avatar-sm avatar-circle">
+                          
                           <img class="avatar-img" src="assetsAdmin\img\160x160\img3.jpg" alt="Image Description">
                         </div>
                       </div>
