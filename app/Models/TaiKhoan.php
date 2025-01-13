@@ -10,6 +10,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class TaiKhoan extends Authenticatable
 {
     use HasFactory, Notifiable;
+        public function showContactForm()
+    {
+        // Lấy thông tin tài khoản từ model TaiKhoan
+        $taiKhoan = \App\Models\TaiKhoan::find(auth()->id()); // Hoặc tìm theo một điều kiện khác
+
+        return view('contact-form', compact('taiKhoan'));
+    }
 
     protected $table = 'tai_khoans';  // Đảm bảo tên bảng đúng
     protected $primaryKey = 'MaTK'; // Khóa chính

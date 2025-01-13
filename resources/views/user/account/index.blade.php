@@ -28,10 +28,6 @@
                                 class="text">Đơn mua</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('test') }}"><i class="bi bi-cart"></i><span class="text">Danh
-                                sách đơn hàng</span></a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('user.account.purchaseHistory') }}"><i class="bi bi-cart-check"></i><span class="text">Sản phẩm đã mua</span></a>
                     </li>
                     <li class="nav-item">
