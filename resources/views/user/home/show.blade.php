@@ -64,7 +64,8 @@
                             <div class="product_ratting">
                                 <ul>
                                     <li>
-                                        <p id="eventRatingRealTime">{{ $viewData['sanpham']->DiemRatingTB }}
+                                        <p id="eventRatingRealTime">
+                                            {{ ($viewData['sanpham']->DiemRatingTB ?? 0) > 0 ? $viewData['sanpham']->DiemRatingTB : 5 }}
                                             <i class="fa fa-star"></i> / 5
                                         </p>
                                     </li>
