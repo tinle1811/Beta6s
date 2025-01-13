@@ -1482,12 +1482,13 @@
         <li class="nav-item">
           <a class="nav-link " href="welcome-page.html" title="Welcome Page">
             <i class="tio-visible-outlined nav-icon"></i>
+            
             <span class="nav-compact-title text-truncate">Welcome Page</span>
           </a>
         </li>
 
         <li class="nav-item">
-          
+
           <a class="nav-link " href="layouts\layouts.html" title="Layouts">
             <i class="tio-dashboard-vs-outlined nav-icon"></i>
             <span class="nav-compact-title text-truncate">Layouts</span>
