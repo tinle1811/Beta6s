@@ -150,7 +150,7 @@ Route::middleware('checkRole:admin')->group(function () {
     Route::get("/admin/order/create", [AdminOrderController::class, "create"])->name("admin.order.create");
     Route::get("/admin/order/edit/{maHD}", [AdminOrderController::class, "edit"])->name("admin.order.edit"); //xem hóa đơn cần chỉnh sửa
     Route::put('/admin/order/update/{maHD}', [AdminOrderController::class, 'update'])->name('admin.order.update'); //update hóa đơn
-
+    Route::post("/admin/order/remove",[AdminOrderController::class, 'remove'])->name('admin.order.remove');
     // Route để cập nhật trạng thái thanh toán
     Route::post('/admin/order/toggle-status', [AdminOrderController::class, 'togglePaymentStatus'])->name('order.toggleStatus');
 });
