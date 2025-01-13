@@ -99,7 +99,7 @@
                     </div>
                     <div class="col ml-n3">
                       <span class="card-title h5">Brian Warner</span>
-                      <p class="card-text font-size-sm">changed an issue from "In Progress" to <span class="badge badge-success">Review</span></p>
+                      <p class="card-text font-size-sm"> an issue from "In Progress" to <span class="badge badge-success">Review</span></p>
                     </div>
                     <small class="col-auto text-muted text-cap">2hr</small>
                   </div>
