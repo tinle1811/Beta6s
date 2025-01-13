@@ -50,7 +50,7 @@ class AdminCommentController extends Controller
             if ($sanPham) {
                 // Tính toán điểm rating trung bình mới cho sản phẩm
                 $danhGiaTB = BinhLuan::where('MaSP', $sanPham->MaSP)->where('TrangThai', 1)->avg('DanhGia');
-                $sanPham->DiemRatingTB = round($danhGiaTB, 2);  // Làm tròn điểm rating trung bình
+                $sanPham->DiemRatingTB = round($danhGiaTB, 1);  // Làm tròn điểm rating trung bình
 
                 // Lưu thay đổi vào sản phẩm
                 $sanPham->save();
@@ -91,7 +91,7 @@ class AdminCommentController extends Controller
                     'MaSP' => $sanPham->MaSP,
                     'TrangThai' => 1
                 ])->avg('DanhGia') ?? 0;
-                $sanPham->DiemRatingTB = round($danhGiaTB, 2);  // Làm tròn điểm rating trung bình
+                $sanPham->DiemRatingTB = round($danhGiaTB, 1);  // Làm tròn điểm rating trung bình
 
                 // Lưu thay đổi vào sản phẩm
                 $sanPham->save();

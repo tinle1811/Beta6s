@@ -59,13 +59,13 @@ class AccountController extends Controller
         if ($type == 0) {
             $hoaDons = HoaDon::where('MaKH', $userId)
                 ->with(['chiTietHoaDons.sanPham', 'binhLuans'])
-                ->orderBy('created_at', 'asc')
+                ->orderBy('created_at', 'desc')
                 ->get();
         } else {
             $hoaDons = HoaDon::where('TrangThai', $statusMap[$type])
                 ->where('MaKH', $userId)
                 ->with(['chiTietHoaDons.sanPham', 'binhLuans'])
-                ->orderBy('created_at', 'asc')
+                ->orderBy('created_at', 'desc')
                 ->get();
             $viewData['TabMessage'] = $this->getTabMessage($type);
         }

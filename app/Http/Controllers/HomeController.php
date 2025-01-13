@@ -23,7 +23,8 @@ use App\Models\Blog;
 use App\Events\SanPhamUpdated;
 use App\Http\Controllers\Cacbon;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Log;    
+use Illuminate\Support\Facades\Log;
+
 class HomeController extends Controller
 {
 
@@ -76,7 +77,7 @@ class HomeController extends Controller
             'SoLuotYeuThich' => $sanpham->SoLuotYeuThich,
             'SoLuotXem' => $sanpham->SoLuotXem,
             'DiemRatingTB' => $sanpham->DiemRatingTB,
-            'SoLuongTon' => $sanpham->SoLuong,            
+            'SoLuongTon' => $sanpham->SoLuong,
         ]);
 
         $relatedProducts = SanPham::where('LoaiSP', $sanpham->LoaiSP)
@@ -133,7 +134,9 @@ class HomeController extends Controller
     {
         $viewData['title'] = "Trang liên hệ";
         $viewData['errors'] = "";
-        $viewData['taikhoan'] = TaiKhoan::find(Auth::user()->MaTK);
+        if (Auth::check()) {
+            $viewData['taikhoan'] = TaiKhoan::find(Auth::user()->MaTK);
+        }
         return view('user.home.contact')->with('viewData', $viewData);
     }
     public function wishlist()

@@ -79,7 +79,9 @@
                             </div>
 
                             <div>
-                                @if ($viewData['sanpham']->TrangThai == 1 || $viewData['sanpham']->TrangThai == 2)
+                                @if (
+                                    ($viewData['sanpham']->TrangThai == 1 && $viewData['sanpham']->SoLuong > 0) ||
+                                        ($viewData['sanpham']->TrangThai == 2 && $viewData['sanpham']->SoLuong > 0))
                                     <p>Tình trạng: <span style="color:#757575">Còn hàng</span></p>
                                 @else
                                     <p>Tình trạng: <span class="text-danger">Hết hàng</span></p>

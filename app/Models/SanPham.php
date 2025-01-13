@@ -154,4 +154,13 @@ class SanPham extends Model
     {
         $this->attributes['deleted_at'] = $deletedAt;
     }
+    public function getDiemRatingTB()
+    {
+        return round($this->attributes['DiemRatingTB'], 1);
+    }
+
+    public function setDiemRatingTB($DiemRatingTB)
+    {
+        $this->attributes['DiemRatingTB'] = $DiemRatingTB;
+    }
 }
