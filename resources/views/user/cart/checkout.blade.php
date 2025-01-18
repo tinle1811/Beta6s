@@ -104,9 +104,9 @@
                                         <input id="payment_{{ $method->MaPT }}" name="check_method" type="radio" value="{{ $method->MaPT }}" @if(session('paymentMethod') == $method->MaPT) checked @endif />
                                         <label for="payment_{{ $method->MaPT }}">
                                             {{ $method->TenPT }}
-                                            @if(str_contains($method->TenPT, 'Momo'))
+                                            {{-- @if(str_contains($method->TenPT, 'Momo'))
                                                 <img src="assetsUser/{{ strtolower(str_replace(' ', '_', $method->TenPT)) }}.svg">
-                                            @endif
+                                            @endif --}}
                                         </label>
                                     </div>
                                 @endforeach

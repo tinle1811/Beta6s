@@ -78,11 +78,12 @@ class AdminProductController extends Controller
         }
 
         $categories = LoaiSanPham::where('TrangThai', 1)->get();
-
-        return view('admin.product.edit', [
+        $viewData = [
+            'title' => "Cập nhật sản phẩm",
             'product' => $product,
             'categories' => $categories,
-        ]);
+        ];
+        return view('admin.product.edit')->with("viewData", $viewData);
     }
     public function update(Request $request, $MaSP)
     {
@@ -139,11 +140,11 @@ class AdminProductController extends Controller
         if ($request->has('search') && $request->search != '') {
             $search = $request->search;
             $query->join('loai_san_phams', 'san_phams.LoaiSP', '=', 'loai_san_phams.MaLSP')
-            ->where('TenSP', 'like', "%{$search}%")
-            ->orWhere('MaSP', 'like', "%{$search}%")
-            ->orWhere('MoTa', 'like', "%{$search}%")
-            ->orWhere('Gia', 'like', "%{$search}%")
-            ->orWhere('loai_san_phams.TenLSP', 'like', "%{$search}%");
+                ->where('TenSP', 'like', "%{$search}%")
+                ->orWhere('MaSP', 'like', "%{$search}%")
+                ->orWhere('MoTa', 'like', "%{$search}%")
+                ->orWhere('Gia', 'like', "%{$search}%")
+                ->orWhere('loai_san_phams.TenLSP', 'like', "%{$search}%");
         }
 
         // Lấy danh sách sản phẩm

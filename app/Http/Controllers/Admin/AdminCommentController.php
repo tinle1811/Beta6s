@@ -18,22 +18,6 @@ class AdminCommentController extends Controller
         return view('admin.comment.index')->with('viewData', $viewData);
     }
 
-    // public function updateStatus(Request $request)
-    // {
-    //    // Tìm comment theo MaBL thay vì dùng id
-    //    $comment = BinhLuan::where('MaBL', $request->id)->first();
-    //
-    //    if ($comment) {
-    //        // Thay đổi trạng thái
-    //        $comment->TrangThai = $request->status;
-    //       $comment->save();  // Lưu thay đổi
-    //
-    //       return response()->json(['success' => true]);
-    //    }
-    //
-    //    return response()->json(['success' => false], 400);
-    // }
-
     public function updateStatus(Request $request)
     {
         // Tìm comment theo MaBL thay vì dùng id

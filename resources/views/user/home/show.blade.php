@@ -183,7 +183,7 @@
                                         <div class="reviews_meta">
                                             <div class="star_rating">
                                                 <ul>
-                                                    @for ($i = 1; $i <= 5; $i++)
+                                                    @for ($i = 1; $i <= round($comment->DanhGia); $i++)
                                                         <li>
                                                             <a href="#">
                                                                 <i

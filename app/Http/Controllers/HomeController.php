@@ -84,7 +84,8 @@ class HomeController extends Controller
             ->where('MaSP', '!=', $sanpham->MaSP)
             ->limit(5)
             ->get();
-        $comments = BinhLuan::with('khachHang') // Lấy bình luận cùng thông tin khách hàng
+        
+            $comments = BinhLuan::with('khachHang') // Lấy bình luận cùng thông tin khách hàng
             ->where('MaSP', $sanpham->MaSP)
             ->where('TrangThai', 1)
             ->get();

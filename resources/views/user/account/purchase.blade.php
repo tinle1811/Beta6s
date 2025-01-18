@@ -104,7 +104,7 @@
                             </div>
                         @endforeach
                         @if(!$hasOrders)
-                        <p class="text-center text-muted bg-light py-3 rounded">Bạn chưa có đơn hàng nào {{ $viewData['TabMessage'] }}</p>
+                        <p class="text-center text-muted bg-light py-3 rounded">Bạn chưa có đơn hàng nào </p>
                         @endif
                     </div>
                 </div>

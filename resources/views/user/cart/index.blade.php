@@ -60,6 +60,10 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <!-- Phân trang -->
+                            <div class="d-flex justify-content-center">
+                                {{ $viewData['cartItems']->links('pagination::bootstrap-5') }}
+                            </div>
                         </div>
                         @if(count($viewData['cartItems']) > 0)
                             <form action="{{ route('user.cart.clear') }}" method="POST" class="text-end">

@@ -66,17 +66,6 @@
 
                     <!-- Nav -->
                     <ul class="nav nav-segment nav-fill" id="projectsTab" role="tablist">
-                        {{-- <li class="nav-item" data-toggle="chart" data-datasets="0" data-trigger="click"
-                            data-action="toggle">
-                            <a class="nav-link active" href="javascript:;" data-toggle="tab" id="thisWeek"
-                                onclick="loadData('thisWeek')">Tuần này</a>
-                        </li>
-                        <li class="nav-item" data-toggle="chart" data-datasets="1" data-trigger="click"
-                            data-action="toggle">
-                            <a class="nav-link" href="javascript:;" data-toggle="tab" id="lastWeek"
-                                onclick="loadData('lastWeek')">Tuần
-                                trước</a>
-                        </li> --}}
                         <li class="nav-item" data-toggle="chart" data-datasets="0" data-trigger="click"
                             data-action="toggle">
                             <a class="nav-link" href="javascript:;" data-toggle="tab" id="thisWeek">Tuần này</a>

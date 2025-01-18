@@ -36,7 +36,7 @@ Route::get('/', [HomeController::class, 'index'])->name('user.home.index');
 Route::get('/product-detail', [HomeController::class, 'show'])->name('user.home.show');
 Route::get('/product-detail/{slug}', [HomeController::class, 'show'])->name('user.home.show');
 Route::get('/contact', [HomeController::class, 'contact'])->name('user.home.contact');
-Route::post('/contact',[HomeController::class, 'handleContactForm'])->name('contact.form');
+Route::post('/contact', [HomeController::class, 'handleContactForm'])->name('contact.form');
 Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('user.home.wishlist');
 
 Route::get('/search', [SearchController::class, 'index'])->name('user.search.index');

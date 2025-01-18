@@ -13,6 +13,7 @@ class CartController extends Controller
     public $viewData=[];
     public function index(){
 
+        
         // kiểm tra người dùng đã đăng nhập chưa
         if (!Auth::check()) {
             return redirect()->route('user.home.index')->with('error', 'Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng');
@@ -23,7 +24,7 @@ class CartController extends Controller
 
         $paymentMethods = PhuongThucThanhToan::where('TrangThai', 1)->get();
         //lấy dữ liệu từ giỏ hàng
-        $gioHang = GioHang::where('MaTK', $maTk)->with('product')->get();
+        $gioHang = GioHang::where('MaTK', $maTk)->with('product')->paginate(5);
 
         $subtotal = $gioHang->sum(function ($item) {
             return $item->soLuong * $item->product->Gia;

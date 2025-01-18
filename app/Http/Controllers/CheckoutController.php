@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\GioHang;
@@ -13,14 +14,15 @@ use App\Events\SanPhamUpdated;
 
 class CheckoutController extends Controller
 {
-    public function checkout() {
+    public function checkout()
+    {
         $viewData['title'] = "Trang thanh toán";
         $maTk = Auth::user()->MaTK;
-        
+
         // Lấy thông tin giỏ hàng của người dùng
         $cartItems = GioHang::where('MaTK', Auth::id())->get();
         $gioHang = GioHang::where('MaTK', $maTk)->with('product')->get();
-        
+
         $paymentMethods = PhuongThucThanhToan::where('TrangThai', 1)->get();
         //lấy thông tin người dùng hiện tại
         $user = Auth::user();
@@ -32,20 +34,21 @@ class CheckoutController extends Controller
         $subtotal = $gioHang->sum(function ($item) {
             return $item->soLuong * $item->product->Gia;
         });
-    
+
         // Hiển thị trang thanh toán với thông tin giỏ hàng
-        return view('user.cart.checkout', compact('cartItems','subtotal','viewData','user','paymentMethods','khachHang'));
+        return view('user.cart.checkout', compact('cartItems', 'subtotal', 'viewData', 'user', 'paymentMethods', 'khachHang'));
     }
-    
-    
-    public function payment(Request $request) {
+
+
+    public function payment(Request $request)
+    {
         $validateForm = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'address_street' => 'required|string|max:255',
             'district' => 'required|string|max:255',
             'city' => 'required|string|max:255',
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:10',  
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:10',
             'email' => 'required|email|max:255',
             'order_note' => 'nullable|string|max:500',
         ]);
@@ -81,17 +84,18 @@ class CheckoutController extends Controller
         // Kiểm tra giỏ hàng của người dùng
         $cartItems = GioHang::where('MaTK', Auth::id())->get();
         // Tính tổng tiền giỏ hàng
-        $totalAmount = $cartItems->sum(function($item) {
+        $totalAmount = $cartItems->sum(function ($item) {
             return $item->soLuong * $item->product->Gia;
         });
+        //momo chỉ cho thánh toán tối đa 50tr
 
         // Tạo hóa đơn trong bảng hoa_dons
         $order = HoaDon::create([
-            'MaKH' => Auth::id(),  
-            'ThanhToan' => $paymentMethods, 
+            'MaKH' => Auth::id(),
+            'ThanhToan' => $paymentMethods,
             'TongTien' => $totalAmount,
-            'GhiChu' => $note,  
-            'TrangThaiThanhToan' => 0, 
+            'GhiChu' => $note,
+            'TrangThaiThanhToan' => 0,
             'TrangThai' => 0, // Trạng thái đơn hàng
         ]);
 
@@ -118,13 +122,13 @@ class CheckoutController extends Controller
                 'SoLuongTon' => $product->SoLuong,
             ]));
         }
-    
+
         // Xóa giỏ hàng sau khi thanh toán thành công
         GioHang::where('MaTK', Auth::id())->delete();
-        if($paymentMethods == 2){
+        if ($paymentMethods == 2) {
             return redirect()->route('user.home.index')->with('success', 'Thanh toán thành công!');
         }
-        if($paymentMethods == 1){
+        if ($paymentMethods == 1) {
             return $this->momo_payment($order, $totalAmount);
         }
     }
@@ -134,9 +138,13 @@ class CheckoutController extends Controller
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        curl_setopt(
+            $ch,
+            CURLOPT_HTTPHEADER,
+            array(
                 'Content-Type: application/json',
-                'Content-Length: ' . strlen($data))
+                'Content-Length: ' . strlen($data)
+            )
         );
         curl_setopt($ch, CURLOPT_TIMEOUT, 5);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
@@ -153,7 +161,7 @@ class CheckoutController extends Controller
         $partnerCode = 'MOMOBKUN20180529';
         $accessKey = 'klm05TvNBzhg7h7j';
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
-        $orderInfo = "Thanh toán qua ATM MoMo cho đơn hàng ". $order->MaHD;
+        $orderInfo = "Thanh toán qua ATM MoMo cho đơn hàng " . $order->MaHD;
         $amount = $totalAmount;
         $orderId = $order->MaHD . '-' . time();
         $redirectUrl = route('user.cart.momo');
@@ -163,7 +171,8 @@ class CheckoutController extends Controller
         $requestType = "payWithATM";
         $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
         $signature = hash_hmac("sha256", $rawHash, $secretKey);
-        $data = array('partnerCode' => $partnerCode,
+        $data = array(
+            'partnerCode' => $partnerCode,
             'partnerName' => "Test",
             "storeId" => "MomoTestStore",
             'requestId' => $requestId,
@@ -175,9 +184,10 @@ class CheckoutController extends Controller
             'lang' => 'vi',
             'extraData' => $extraData,
             'requestType' => $requestType,
-            'signature' => $signature);
+            'signature' => $signature
+        );
         $result = $this->execPostRequest($endpoint, json_encode($data));
-        $jsonResult = json_decode($result, true);  
+        $jsonResult = json_decode($result, true);
         return redirect()->to($jsonResult['payUrl']);
     }
     public function momo(Request $request)

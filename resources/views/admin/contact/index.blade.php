@@ -201,7 +201,7 @@
 
 
                                     {{-- cột 5: nội dung --}}
-                                    <td{{ $contact->NoiDung }}</td>
+                                    <td>{{ $contact->NoiDung }}</td>
 
                                     {{-- cột 6: trang thái --}}
                                     <td>

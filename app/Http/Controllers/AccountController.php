@@ -67,7 +67,6 @@ class AccountController extends Controller
                 ->with(['chiTietHoaDons.sanPham', 'binhLuans'])
                 ->orderBy('created_at', 'desc')
                 ->get();
-            $viewData['TabMessage'] = $this->getTabMessage($type);
         }
 
         //return view('user.account.purchase', compact('viewData', 'hoaDons', 'type'));
